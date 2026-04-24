@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="page_register" name="Mentorize Register">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+    <div class="mtz-login-page">
+      <div class="mtz-left">
+        <div class="mtz-illustration">
+          <div class="mtz-illust-placeholder"></div>
+        </div>
+        <h2>Mulai Perjalanan Mentoringmu</h2>
+        <p>Daftarkan diri Anda sebagai mahasiswa atau alumni untuk memulai perjalanan mentoring bersama.</p>
+      </div>
+      <div class="mtz-right">
+        <div class="mtz-logo">
+          <div class="mtz-logo-circle">M</div>
+          <span>Mentorize</span>
+        </div>
+        <h1>Daftar Akun Mentorize</h1>
+        <p class="mtz-subtitle">Buat akun Anda untuk memulai</p>
+
+        <p class="mtz-role-label">Daftar Sebagai</p>
+        <div class="mtz-role-grid">
+          <div class="mtz-role-card active" id="role-mahasiswa" onclick="selectRole('mahasiswa')">
+            <div class="mtz-role-icon">🎓</div>
+            <div class="mtz-role-name">Mahasiswa</div>
+            <div class="mtz-role-desc">Cari mentor &amp; kembangkan skill</div>
+          </div>
+          <div class="mtz-role-card" id="role-alumni" onclick="selectRole('alumni')">
+            <div class="mtz-role-icon">⭐</div>
+            <div class="mtz-role-name">Alumni</div>
+            <div class="mtz-role-desc">Bagikan pengalaman &amp; mentor</div>
+          </div>
+        </div>
+
+        <t t-if="error">
+          <div class="mtz-alert-error">
+            <t t-esc="error"/>
+          </div>
+        </t>
+
+        <form action="/mentorize/register/submit" method="post">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+          <input type="hidden" name="role" id="input-role" value="mahasiswa"/>
+
+          <div class="mtz-form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" name="name" placeholder="Masukkan nama lengkap Anda" required="1"/>
+          </div>
+          <div class="mtz-form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="nama@email.com" required="1"/>
+          </div>
+          <div class="mtz-form-group">
+            <label id="identity-label">NIM</label>
+            <input type="text" name="identity" id="identity-input" placeholder="Masukkan NIM Anda" required="1"/>
+          </div>
+          <div class="mtz-form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="••••••••" required="1"/>
+          </div>
+          <div class="mtz-form-group">
+            <label>Konfirmasi Password</label>
+            <input type="password" name="confirm_password" placeholder="••••••••" required="1"/>
+          </div>
+
+          <div class="mtz-form-group mtz-checkbox-group">
+            <label class="mtz-checkbox-label">
+              <input type="checkbox" name="agree" required="1"/>
+              Saya menyetujui <a href="#" class="mtz-link">Syarat &amp; Ketentuan</a> dan <a href="#" class="mtz-link">Kebijakan Privasi</a>
+            </label>
+          </div>
+
+          <button type="submit" class="mtz-btn-primary" id="btn-register">
+            Daftar sebagai Mahasiswa
+          </button>
+        </form>
+
+        <p class="mtz-register-link">
+          Sudah punya akun? <a href="/mentorize/login">Masuk sekarang</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function selectRole(role) {
+        document.getElementById('role-mahasiswa').classList.remove('active');
+        document.getElementById('role-alumni').classList.remove('active');
+        document.getElementById('role-' + role).classList.add('active');
+        document.getElementById('input-role').value = role;
+        const label = document.getElementById('identity-label');
+        const input = document.getElementById('identity-input');
+        const btn = document.getElementById('btn-register');
+        if (role === 'mahasiswa') {
+          label.textContent = 'NIM';
+          input.placeholder = 'Masukkan NIM Anda';
+          btn.textContent = 'Daftar sebagai Mahasiswa';
+        } else {
+          label.textContent = 'KAPA';
+          input.placeholder = 'Masukkan KAPA Anda';
+          btn.textContent = 'Daftar sebagai Alumni';
+        }
+      }
+    </script>
+  </t>
+</template>
+</data>
+</odoo>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="dashboard_alumni" name="Dashboard Alumni">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+
+    <!-- NAVBAR -->
+    <nav class="mtz-navbar">
+      <div class="mtz-navbar-inner">
+        <div class="mtz-navbar-logo">
+          <div class="mtz-logo-circle">M</div>
+          <span>Mentorize</span>
+        </div>
+        <div class="mtz-navbar-menu">
+          <a href="/mentorize/alumni/dashboard" class="mtz-nav-link active">Dashboard</a>
+          <a href="/mentorize/alumni/requests" class="mtz-nav-link">Permintaan Mentoring</a>
+          <a href="/mentorize/alumni/sessions" class="mtz-nav-link">Sesi Mentoring</a>
+          <a href="/mentorize/alumni/chat" class="mtz-nav-link">Chat</a>
+        </div>
+        <div class="mtz-navbar-user">
+          <img t-attf-src="/web/image/res.users/#{user.id}/image_128" class="mtz-avatar"/>
+          <span t-esc="user.name"/>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="mtz-dashboard">
+
+      <!-- HERO BANNER -->
+      <div class="mtz-hero-alumni">
+        <h1>Selamat Datang, <t t-esc="alumni.name"/></h1>
+        <p>Terima kasih telah berkontribusi membimbing generasi berikutnya.</p>
+        <div class="mtz-stats-grid">
+          <div class="mtz-stat-card">
+            <div class="mtz-stat-header">
+              <span>Permintaan Baru</span>
+              <span class="mtz-stat-icon">🕐</span>
+            </div>
+            <div class="mtz-stat-value" t-esc="stats['permintaan_baru']"/>
+          </div>
+          <div class="mtz-stat-card">
+            <div class="mtz-stat-header">
+              <span>Sesi Aktif</span>
+              <span class="mtz-stat-icon">👥</span>
+            </div>
+            <div class="mtz-stat-value" t-esc="stats['sesi_aktif']"/>
+          </div>
+          <div class="mtz-stat-card">
+            <div class="mtz-stat-header">
+              <span>Total Sesi Selesai</span>
+              <span class="mtz-stat-icon">✅</span>
+            </div>
+            <div class="mtz-stat-value" t-esc="stats['sesi_selesai']"/>
+          </div>
+          <div class="mtz-stat-card">
+            <div class="mtz-stat-header">
+              <span>Rating Mentor</span>
+              <span class="mtz-stat-icon">⭐</span>
+            </div>
+            <div class="mtz-stat-value">★ <t t-esc="stats['rating']"/></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERMINTAAN TERBARU -->
+      <div class="mtz-section">
+        <h2 class="mtz-section-title">Permintaan Mentoring Terbaru</h2>
+        <div class="mtz-request-list">
+          <t t-if="not requests">
+            <div class="mtz-empty">Belum ada permintaan mentoring.</div>
+          </t>
+          <t t-foreach="requests" t-as="req">
+            <div class="mtz-request-card">
+              <div class="mtz-request-info">
+                <div class="mtz-avatar-sm">
+                  <t t-esc="req.mahasiswa_id.name[0]"/>
+                </div>
+                <div>
+                  <div class="mtz-request-name" t-esc="req.mahasiswa_id.name"/>
+                  <div class="mtz-request-jurusan" t-esc="req.mahasiswa_id.jurusan"/>
+                  <div class="mtz-request-topik">
+                    Topik: <t t-esc="req.topik"/>
+                  </div>
+                  <div class="mtz-request-date">🕐 <t t-esc="req.tanggal_request"/></div>
+                </div>
+              </div>
+              <div class="mtz-request-actions">
+                <a t-attf-href="/mentorize/alumni/request/#{req.id}/approve"
+                   class="mtz-btn-accept">Terima</a>
+                <a t-attf-href="/mentorize/alumni/request/#{req.id}/reject"
+                   class="mtz-btn-reject">Tolak</a>
+              </div>
+            </div>
+          </t>
+        </div>
+      </div>
+
+    </div>
+  </t>
+</template>
+</data>
+</odoo>
