@@ -1,2 +1,2 @@
-from . import mahasiswa
-from . import mentor
+from . import models
+from . import controllers

@@ -1,0 +1,449 @@
+.mtz-login-page {
+  display: flex;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.mtz-left {
+  flex: 1;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e8f5e9 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.mtz-left h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a3c5e;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.mtz-left p {
+  font-size: 14px;
+  color: #5a7a8a;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 300px;
+}
+.mtz-illustration img {
+  width: 280px;
+  margin-bottom: 1.5rem;
+}
+.mtz-right {
+  width: 420px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+}
+.mtz-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+.mtz-logo-circle {
+  width: 32px;
+  height: 32px;
+  background: #1d9e75;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+.mtz-logo span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+.mtz-right h1 {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+.mtz-subtitle {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.mtz-role-label {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+}
+.mtz-role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.mtz-role-card {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+.mtz-role-card.active {
+  border-color: #1d9e75;
+  background: #e8f8f3;
+}
+.mtz-role-icon {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+.mtz-role-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+.mtz-role-desc {
+  font-size: 11px;
+  color: #888;
+}
+.mtz-form-group {
+  margin-bottom: 1rem;
+}
+.mtz-form-group label {
+  font-size: 13px;
+  color: #555;
+  display: block;
+  margin-bottom: 4px;
+}
+.mtz-form-group input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.mtz-form-group input:focus {
+  border-color: #1d9e75;
+}
+.mtz-form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 13px;
+}
+.mtz-remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+}
+.mtz-forgot {
+  color: #1d9e75;
+  text-decoration: none;
+}
+.mtz-btn-primary {
+  width: 100%;
+  padding: 11px;
+  background: #1d9e75;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.15s;
+}
+.mtz-btn-primary:hover {
+  background: #0f6e56;
+}
+.mtz-divider {
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.mtz-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #eee;
+}
+.mtz-divider span {
+  background: white;
+  padding: 0 8px;
+  position: relative;
+}
+.mtz-register-link {
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  margin-top: 1rem;
+}
+.mtz-register-link a {
+  color: #1d9e75;
+  font-weight: 600;
+  text-decoration: none;
+}
+.mtz-alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 1rem;
+  border: 1px solid #fca5a5;
+}
+.mtz-alert-success {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 1rem;
+  border: 1px solid #6ee7b7;
+}
+.mtz-checkbox-group {
+  margin-bottom: 1rem;
+}
+.mtz-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.mtz-checkbox-label input {
+  margin-top: 2px;
+}
+.mtz-link {
+  color: #1d9e75;
+  text-decoration: none;
+}
+.mtz-illust-placeholder {
+  width: 250px;
+  height: 200px;
+  background: #9fe1cb;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+/* ===================== NAVBAR ===================== */
+.mtz-navbar {
+  background: white;
+  border-bottom: 0.5px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.mtz-navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.mtz-navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-decoration: none;
+}
+.mtz-navbar-menu {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+}
+.mtz-nav-link {
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+.mtz-nav-link.active,
+.mtz-nav-link:hover {
+  color: #1d9e75;
+  border-bottom-color: #1d9e75;
+}
+.mtz-navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+.mtz-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+}
+
+/* ===================== DASHBOARD ===================== */
+.mtz-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* HERO ALUMNI */
+.mtz-hero-alumni {
+  background: linear-gradient(135deg, #1a2f4e 0%, #0f3460 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+.mtz-hero-alumni h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: white;
+}
+.mtz-hero-alumni p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+.mtz-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.mtz-stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+.mtz-stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+.mtz-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+}
+
+/* SECTION */
+.mtz-section {
+  margin-bottom: 2rem;
+}
+.mtz-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+}
+
+/* REQUEST CARDS */
+.mtz-request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mtz-request-card {
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mtz-request-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.mtz-avatar-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1d9e75;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.mtz-request-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+.mtz-request-jurusan {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.mtz-request-topik {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 4px;
+}
+.mtz-request-date {
+  font-size: 12px;
+  color: #888;
+}
+.mtz-request-actions {
+  display: flex;
+  gap: 8px;
+}
+.mtz-btn-accept {
+  padding: 7px 16px;
+  background: #1d9e75;
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+.mtz-btn-reject {
+  padding: 7px 16px;
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.mtz-empty {
+  text-align: center;
+  color: #aaa;
+  padding: 2rem;
+  font-size: 14px;
+}

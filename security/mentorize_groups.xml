@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_mentorize_mahasiswa" model="res.groups">
+            <field name="name">Mahasiswa</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+        <record id="group_mentorize_alumni" model="res.groups">
+            <field name="name">Alumni</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+        <record id="group_mentorize_admin" model="res.groups">
+            <field name="name">Admin Mentorize</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+    </data>
+</odoo>
