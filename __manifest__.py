@@ -17,6 +17,7 @@
     'views/templates/dashboard_mahasiswa.xml',
     'views/templates/dashboard_alumni.xml',
     'views/templates/dashboard_admin.xml',
+    'views/templates/profil_mahasiswa.xml',
     ],
     'assets': {
         'web.assets_frontend': [
