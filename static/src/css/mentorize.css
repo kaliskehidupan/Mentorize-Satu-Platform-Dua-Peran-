@@ -447,3 +447,470 @@
   padding: 2rem;
   font-size: 14px;
 }
+
+/* ===================== PROFIL ===================== */
+.mtz-profil-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+.mtz-profil-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #1d9e75;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.mtz-profil-info {
+  flex: 1;
+}
+.mtz-profil-info h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+.mtz-profil-info p {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 8px;
+}
+.mtz-badge-nim {
+  background: #e8f8f3;
+  color: #0f6e56;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.mtz-btn-edit {
+  padding: 9px 20px;
+  background: white;
+  border: 1.5px solid #1d9e75;
+  color: #1d9e75;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.mtz-btn-edit:hover {
+  background: #e8f8f3;
+}
+.mtz-alert-warning {
+  background: #fef9c3;
+  color: #854d0e;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 1rem;
+  border: 1px solid #fde047;
+}
+.mtz-profil-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.mtz-profil-card {
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+.mtz-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.mtz-profil-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 0;
+  border-bottom: 0.5px solid #f5f5f5;
+  font-size: 13px;
+}
+.mtz-profil-label {
+  color: #888;
+}
+.mtz-profil-value {
+  color: #1a1a2e;
+  font-weight: 500;
+  text-align: right;
+}
+.mtz-profil-text {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.6;
+}
+.mtz-profil-empty {
+  font-size: 13px;
+  color: #aaa;
+  font-style: italic;
+}
+.mtz-badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mtz-badge-minat {
+  background: #e8f8f3;
+  color: #0f6e56;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.mtz-badge-skill {
+  background: #e8f0fe;
+  color: #1a56db;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.mtz-avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #1d9e75;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ===================== FORM EDIT PROFIL ===================== */
+.mtz-form-page {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.mtz-form-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.mtz-form-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+.mtz-back-link {
+  font-size: 13px;
+  color: #1d9e75;
+  text-decoration: none;
+}
+.mtz-form-card {
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 2rem;
+}
+.mtz-form-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.mtz-form-section:last-of-type {
+  border-bottom: none;
+}
+.mtz-form-section h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+}
+.mtz-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.mtz-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #444;
+  cursor: pointer;
+  padding: 6px 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+.mtz-checkbox-item:hover {
+  background: #f5f5f5;
+}
+.mtz-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+.mtz-btn-secondary {
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid #ddd;
+  color: #666;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ===================== DASHBOARD MAHASISWA ===================== */
+.mtz-hero-mahasiswa {
+  background: linear-gradient(135deg, #1a2f4e 0%, #0f3460 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mtz-hero-mahasiswa h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+.mtz-hero-mahasiswa p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+.mtz-btn-hero {
+  padding: 10px 24px;
+  background: #1d9e75;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.mtz-btn-hero:hover {
+  background: #0f6e56;
+}
+
+/* STATS ROW */
+.mtz-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.mtz-stat-box {
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mtz-stat-box-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mtz-stat-box-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
+}
+.mtz-stat-box-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* MENTORING AKTIF */
+.mtz-mentoring-card {
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 10px;
+}
+.mtz-mentoring-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1d9e75;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.mtz-mentoring-info {
+  flex: 1;
+}
+.mtz-mentoring-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.mtz-badge-aktif {
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.mtz-mentoring-bidang {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.mtz-mentoring-jadwal {
+  font-size: 12px;
+  color: #555;
+}
+.mtz-btn-lanjut {
+  padding: 8px 18px;
+  background: #1d9e75;
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.mtz-btn-lanjut:hover {
+  background: #0f6e56;
+}
+
+/* JADWAL */
+.mtz-jadwal-card {
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.mtz-jadwal-mentor {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 2px;
+}
+.mtz-jadwal-bidang {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.mtz-jadwal-waktu {
+  font-size: 12px;
+  color: #555;
+}
+.mtz-badge-upcoming {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* PROGRESS */
+.mtz-progress-card {
+  background: white;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.mtz-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.mtz-progress-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+.mtz-progress-subtitle {
+  font-size: 13px;
+  color: #555;
+}
+.mtz-progress-pct {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1d9e75;
+}
+.mtz-progress-bar-wrap {
+  background: #f0f0f0;
+  border-radius: 10px;
+  height: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.mtz-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1d9e75, #0f6e56);
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+.mtz-progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.mtz-progress-stat {
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.mtz-progress-stat-val {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.mtz-progress-stat-label {
+  font-size: 12px;
+  color: #555;
+}
+.mtz-empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}
+.mtz-empty-state p {
+  margin-bottom: 1rem;
+  font-size: 14px;
+}
