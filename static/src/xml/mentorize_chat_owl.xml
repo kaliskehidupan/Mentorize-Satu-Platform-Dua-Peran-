@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="mentorize.MentorizeChatApp" owl="1">
+
+        <div class="mz-chat-page">
+        <div
+            t-att-class="'mz-conversation active' if conv.id === state.selectedRoomId else 'mz-conversation'"
+            t-on-click="() => this.selectRoom(conv.id)"
+        >
+        <a t-att-href="'/mentorize/mahasiswa/chat?room_id=%s' % room.id" class="btn btn-success">
+            Buka Chat
+        </a>
+        <a t-att-href="'/mentorize/alumni/chat?room_id=%s' % room.id" class="btn btn-success">
+            Buka Chat
+        </a>
+
+            <!-- NAVBAR -->
+            <header class="mz-navbar">
+                <div class="mz-brand">
+                    <span class="mz-logo-mark">M</span>
+                    <span>Mentorize</span>
+                </div>
+
+                <nav class="mz-nav-menu">
+                    <a href="/mentorize/mahasiswa/dashboard">Dashboard</a>
+                    <a href="/mentorize/cari-mentor">Cari Mentor</a>
+                    <a href="/mentorize/riwayat">Riwayat Mentoring</a>
+                    <a class="active" href="/mentorize/mahasiswa/chat">Chat</a>
+                </nav>
+
+                <div class="mz-user-box">
+                    <div class="mz-user-avatar">
+                        <t t-esc="state.currentUser.avatar"/>
+                    </div>
+                    <div>
+                        <strong>
+                            <t t-esc="state.currentUser.name"/>
+                        </strong>
+                        <small>
+                            <t t-esc="state.currentUser.role"/>
+                        </small>
+                    </div>
+                </div>
+            </header>
+
+            <main class="mz-chat-layout">
+
+                <!-- SIDEBAR -->
+                <aside class="mz-sidebar">
+                    <h3>Percakapan</h3>
+
+                    <div class="mz-search-box">
+                        <span>⌕</span>
+                        <input type="text" placeholder="Cari percakapan..."/>
+                    </div>
+
+                    <t t-if="state.conversations.length">
+                        <t t-foreach="state.conversations" t-as="conv" t-key="conv.id">
+                            <div t-att-class="'mz-conversation active' if conv.id === state.selectedConversationId else 'mz-conversation'">
+                                <div class="mz-avatar photo">
+                                    <t t-esc="conv.avatar"/>
+                                </div>
+
+                                <div class="mz-conv-content">
+                                    <div class="mz-conv-top">
+                                        <strong>
+                                            <t t-esc="conv.name"/>
+                                        </strong>
+                                        <small>
+                                            <t t-esc="conv.time"/>
+                                        </small>
+                                    </div>
+
+                                    <p>
+                                        <t t-esc="conv.last_message"/>
+                                    </p>
+                                </div>
+
+                                <t t-if="conv.unread">
+                                    <span class="mz-badge">
+                                        <t t-esc="conv.unread"/>
+                                    </span>
+                                </t>
+                            </div>
+                        </t>
+                    </t>
+
+                    <t t-if="!state.conversations.length">
+                        <div class="mz-empty-sidebar">
+                            Belum ada percakapan.
+                        </div>
+                    </t>
+                </aside>
+
+                <!-- CHAT CENTER -->
+                <section class="mz-chat-center">
+
+                    <t t-if="state.conversations.length">
+
+                        <div class="mz-chat-header">
+                            <div class="mz-avatar photo large">
+                                <t t-esc="state.mentorDetail.avatar"/>
+                            </div>
+
+                            <div>
+                                <h3>
+                                    <t t-esc="state.mentorDetail.name"/>
+                                </h3>
+                                <span>Online</span>
+                            </div>
+
+                            <button class="mz-menu-btn">⋮</button>
+                        </div>
+
+                        <div class="mz-chat-messages">
+
+                            <div class="mz-day-label">Hari ini, 10:15</div>
+
+                            <t t-foreach="state.messages" t-as="msg" t-key="msg.id">
+                                <div t-att-class="'mz-message-row me' if msg.is_me else 'mz-message-row other'">
+
+                                    <t t-if="!msg.is_me">
+                                        <div class="mz-avatar small">
+                                            <t t-esc="msg.avatar"/>
+                                        </div>
+                                    </t>
+
+                                    <div>
+                                        <div t-att-class="'mz-message-bubble me' if msg.is_me else 'mz-message-bubble other'">
+                                            <t t-esc="msg.text"/>
+                                        </div>
+                                        <small t-att-class="'mz-time me' if msg.is_me else 'mz-time'">
+                                            <t t-esc="msg.time"/>
+                                        </small>
+                                    </div>
+
+                                    <t t-if="msg.is_me">
+                                        <div class="mz-avatar small dark">
+                                            <t t-esc="msg.avatar"/>
+                                        </div>
+                                    </t>
+
+                                </div>
+                            </t>
+                        </div>
+
+                        <div class="mz-input-area">
+                            <button class="mz-attach-btn">⌕</button>
+
+                            <input
+                                type="text"
+                                placeholder="Tulis pesan..."
+                                t-model="state.newMessage"
+                                t-on-keydown="onEnterKey"
+                            />
+
+                            <button class="mz-send-btn" t-on-click="sendMessage">
+                                ✈
+                            </button>
+                        </div>
+
+                    </t>
+
+                    <t t-if="!state.conversations.length">
+                        <div class="mz-empty-chat">
+                            <h2>Belum ada chat</h2>
+                            <p>Pilih percakapan untuk mulai chat.</p>
+                        </div>
+                    </t>
+
+                </section>
+
+                <!-- DETAIL -->
+                <aside class="mz-detail">
+                    <h3>Detail Mentoring</h3>
+
+                    <t t-if="state.conversations.length">
+
+                        <div class="mz-detail-profile">
+                            <div class="mz-avatar profile">
+                                <t t-esc="state.mentorDetail.avatar"/>
+                            </div>
+
+                            <h4>
+                                <t t-esc="state.mentorDetail.name"/>
+                            </h4>
+
+                            <p>
+                                <t t-esc="state.mentorDetail.title"/>
+                            </p>
+
+                            <div class="mz-rating">★ <t t-esc="state.mentorDetail.rating"/></div>
+                        </div>
+
+                        <div class="mz-detail-item">
+                            <div class="mz-icon green">▣</div>
+                            <div>
+                                <small>Bidang Keahlian</small>
+                                <strong>
+                                    <t t-esc="state.mentorDetail.expertise"/>
+                                </strong>
+                            </div>
+                        </div>
+
+                        <div class="mz-detail-item">
+                            <div class="mz-icon green">●</div>
+                            <div>
+                                <small>Status Mentoring</small>
+                                <strong class="status">
+                                    <t t-esc="state.mentorDetail.status"/>
+                                </strong>
+                            </div>
+                        </div>
+
+                        <div class="mz-detail-item progress">
+                            <div class="mz-icon purple">⌁</div>
+                            <div class="mz-progress-content">
+                                <div class="mz-progress-head">
+                                    <small>Progress</small>
+                                    <strong>
+                                        <t t-esc="state.mentorDetail.progress"/>%
+                                    </strong>
+                                </div>
+
+                                <div class="mz-progress-bar">
+                                    <div class="mz-progress-fill" t-att-style="'width:' + state.mentorDetail.progress + '%'"></div>
+                                </div>
+
+                                <p>
+                                    <t t-esc="state.mentorDetail.session_text"/>
+                                </p>
+                            </div>
+                        </div>
+
+                        <button class="mz-detail-btn">
+                            Lihat Detail Mentoring
+                        </button>
+
+                    </t>
+                </aside>
+
+            </main>
+
+        </div>
+
+    </t>
+
+</templates>

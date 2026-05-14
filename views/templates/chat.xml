@@ -1,0 +1,140 @@
+<odoo>
+    <template id="chat_page" name="Mentorize Chat">
+        <t t-call="website.layout">
+            <div id="mentorize_chat_app"></div>
+        </t>       
+        
+            <link rel="stylesheet" href="/mentorize/static/src/css/chat.css"/>
+
+            <div class="mentorize-chat-page">
+
+                <!-- NAVBAR -->
+                <div class="chat-navbar">
+                    <div class="chat-logo">Mentorize</div>
+                    <div class="chat-menu">
+                        <a href="/mentorize/mahasiswa/dashboard">Dashboard</a>
+                        <a href="/mentorize/cari-mentor">Cari Mentor</a>
+                        <a href="/mentorize/riwayat">Riwayat Mentoring</a>
+                        <a href="/mentorize/chat" class="active">Chat</a>
+                    </div>
+                    <div class="chat-user">
+                        <strong><t t-esc="current_user.name"/></strong>
+                        <span>Mahasiswa</span>
+                    </div>
+                </div>
+
+                <div class="chat-container">
+
+                    <!-- SIDEBAR PERCAKAPAN -->
+                    <div class="chat-sidebar">
+                        <h3>Percakapan</h3>
+
+                        <input type="text" placeholder="Cari percakapan..." class="chat-search"/>
+
+                        <div class="conversation-list">
+                            <t t-if="conversations">
+                                <t t-foreach="conversations" t-as="conv">
+                                    <a t-att-href="'/mentorize/chat?conversation_id=%s' % conv.id"
+                                       class="conversation-item">
+                                        <div class="avatar">
+                                            <t t-esc="conv.alumni_id.name[:1] if conv.alumni_id else 'A'"/>
+                                        </div>
+                                        <div>
+                                            <strong>
+                                                <t t-esc="conv.alumni_id.name or conv.mahasiswa_id.name"/>
+                                            </strong>
+                                            <p>Mulai percakapan...</p>
+                                        </div>
+                                    </a>
+                                </t>
+                            </t>
+
+                            <t t-if="not conversations">
+                                <p class="empty-text">Belum ada percakapan.</p>
+                            </t>
+                        </div>
+                    </div>
+
+                    <!-- AREA CHAT -->
+                    <div class="chat-main">
+                        <t t-if="selected_conversation">
+                            <div class="chat-header">
+                                <div class="avatar">A</div>
+                                <div>
+                                    <h3>
+                                        <t t-esc="selected_conversation.alumni_id.name or 'Mentor'"/>
+                                    </h3>
+                                    <span>Online</span>
+                                </div>
+                            </div>
+
+                            <div class="chat-messages">
+                                <t t-foreach="selected_conversation.message_ids" t-as="msg">
+                                    <div t-att-class="'message sent' if msg.sender_id.id == current_user.id else 'message received'">
+                                        <p>
+                                            <t t-esc="msg.isi_pesan"/>
+                                        </p>
+                                        <small>
+                                            <t t-esc="msg.create_date.strftime('%H:%M')"/>
+                                        </small>
+                                    </div>
+                                </t>
+                            </div>
+
+                            <form action="/mentorize/chat/send" method="post" class="chat-input">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="conversation_id" t-att-value="selected_conversation.id"/>
+
+                                <input type="text" name="isi_pesan" placeholder="Tulis pesan..." required="required"/>
+                                <button type="submit">➤</button>
+                            </form>
+                        </t>
+
+                        <t t-if="not selected_conversation">
+                            <div class="empty-chat">
+                                <h3>Belum ada chat</h3>
+                                <p>Pilih percakapan untuk mulai chat.</p>
+                            </div>
+                        </t>
+                    </div>
+
+                    <!-- DETAIL MENTORING -->
+                    <div class="chat-detail">
+                        <h3>Detail Mentoring</h3>
+
+                        <t t-if="selected_conversation">
+                            <div class="detail-profile">
+                                <div class="avatar large">A</div>
+                                <h4>
+                                    <t t-esc="selected_conversation.alumni_id.name or 'Mentor'"/>
+                                </h4>
+                                <p>Forensika Digital</p>
+                            </div>
+
+                            <div class="detail-info">
+                                <p><strong>Bidang Keahlian</strong></p>
+                                <span>Forensika Digital &amp; Sistem Pakar</span>
+                            </div>
+
+                            <div class="detail-info">
+                                <p><strong>Status Mentoring</strong></p>
+                                <span class="status-active">Aktif</span>
+                            </div>
+
+                            <div class="progress-box">
+                                <p><strong>Progress</strong></p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <small>4 dari 6 sesi selesai</small>
+                            </div>
+
+                            <button class="detail-button">Lihat Detail Mentoring</button>
+                        </t>
+                    </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

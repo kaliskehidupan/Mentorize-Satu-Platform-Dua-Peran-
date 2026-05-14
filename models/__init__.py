@@ -3,7 +3,7 @@ from . import mentorize_master
 from . import mentorize_mahasiswa
 from . import mentorize_alumni
 from . import mentorize_matchmaking
+from . import mentorize_chat
 from . import mentorize_request
 from . import mentorize_session
-from . import mentorize_chat
 from . import mentorize_feedback

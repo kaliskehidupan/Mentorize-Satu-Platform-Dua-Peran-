@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_mahasiswa_public,access_mahasiswa_public,model_mentorize_mahasiswa,base.group_public,1,0,1,0
 access_alumni_public,access_alumni_public,model_mentorize_alumni,base.group_public,1,0,1,0
+access_mentorize_room_chat,access_mentorize_room_chat,model_mentorize_room_chat,base.group_user,1,1,1,1
+access_mentorize_message,access_mentorize_message,model_mentorize_message,base.group_user,1,1,1,1
