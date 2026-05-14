@@ -1,5 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-    </data>
+<data>
+<template id="dashboard_mahasiswa" name="Dashboard Mahasiswa">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+
+    <!-- NAVBAR -->
+    <nav class="mtz-navbar">
+      <div class="mtz-navbar-inner">
+        <div class="mtz-navbar-logo">
+          <div class="mtz-logo-circle">M</div>
+          <span>Mentorize</span>
+        </div>
+        <div class="mtz-navbar-menu">
+          <a href="/mentorize/mahasiswa/dashboard" class="mtz-nav-link active">Dashboard</a>
+          <a href="/mentorize/mahasiswa/cari-mentor" class="mtz-nav-link">Cari Mentor</a>
+          <a href="/mentorize/mahasiswa/riwayat" class="mtz-nav-link">Riwayat Mentoring</a>
+          <a href="/mentorize/mahasiswa/chat" class="mtz-nav-link">Chat</a>
+        </div>
+        <div class="mtz-navbar-user">
+          <div class="mtz-avatar-circle" t-esc="user.name[0].upper()"/>
+          <div>
+            <div style="font-size:13px;font-weight:600;" t-esc="user.name"/>
+            <div style="font-size:11px;color:#888;">Mahasiswa</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mtz-dashboard">
+
+      <!-- HERO BANNER -->
+      <div class="mtz-hero-mahasiswa">
+        <div>
+          <h1>Selamat datang, <t t-esc="user.name"/> 👋</h1>
+          <p>Siap melanjutkan perjalanan mentoringmu hari ini?</p>
+        </div>
+        <a href="/mentorize/mahasiswa/cari-mentor" class="mtz-btn-hero">Cari Mentor</a>
+      </div>
+
+      <!-- STATS -->
+      <div class="mtz-stats-row">
+        <div class="mtz-stat-box">
+          <div class="mtz-stat-box-icon" style="background:#e8f8f3;">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#1d9e75" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="9" cy="7" r="4" stroke="#1d9e75" stroke-width="2"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#1d9e75" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#1d9e75" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="mtz-stat-box-label">Mentor Aktif</div>
+            <div class="mtz-stat-box-value" t-esc="stats['mentor_aktif']"/>
+          </div>
+        </div>
+        <div class="mtz-stat-box">
+          <div class="mtz-stat-box-icon" style="background:#fff8e1;">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="#f59e0b" stroke-width="2"/>
+              <path d="M12 6v6l4 2" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="mtz-stat-box-label">Sesi Berjalan</div>
+            <div class="mtz-stat-box-value" t-esc="stats['sesi_berjalan']"/>
+          </div>
+        </div>
+        <div class="mtz-stat-box">
+          <div class="mtz-stat-box-icon" style="background:#ede9fe;">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="#7c3aed" stroke-width="2"/>
+              <path d="M9 12l2 2 4-4" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="mtz-stat-box-label">Sesi Selesai</div>
+            <div class="mtz-stat-box-value" t-esc="stats['sesi_selesai']"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- MENTORING AKTIF -->
+      <div class="mtz-section">
+        <h2 class="mtz-section-title">Mentoring Aktif</h2>
+        <t t-if="not mentoring_aktif">
+          <div class="mtz-empty-state">
+            <p>Belum ada mentoring aktif.</p>
+            <a href="/mentorize/mahasiswa/cari-mentor" class="mtz-btn-primary">Cari Mentor Sekarang</a>
+          </div>
+        </t>
+        <t t-foreach="mentoring_aktif" t-as="req">
+          <div class="mtz-mentoring-card">
+            <div class="mtz-mentoring-avatar">
+              <t t-esc="req.alumni_id.name[0].upper()"/>
+            </div>
+            <div class="mtz-mentoring-info">
+              <div class="mtz-mentoring-name">
+                <t t-esc="req.alumni_id.name"/>
+                <span class="mtz-badge-aktif">Aktif</span>
+              </div>
+              <div class="mtz-mentoring-bidang" t-esc="req.alumni_id.pekerjaan or 'Alumni'"/>
+              <t t-if="req.session_ids">
+                <div class="mtz-mentoring-jadwal">
+                  Sesi berikutnya: <t t-esc="req.session_ids[0].tanggal_mentoring"/>
+                </div>
+              </t>
+            </div>
+            <a t-attf-href="/mentorize/chat/#{req.room_chat_id.id}" class="mtz-btn-lanjut">
+              Lanjutkan Mentoring
+            </a>
+          </div>
+        </t>
+      </div>
+
+      <!-- JADWAL TERDEKAT -->
+      <div class="mtz-section">
+        <h2 class="mtz-section-title">Jadwal Terdekat</h2>
+        <t t-if="not jadwal_terdekat">
+          <div class="mtz-empty">Belum ada jadwal sesi mendatang.</div>
+        </t>
+        <t t-foreach="jadwal_terdekat" t-as="sesi">
+          <div class="mtz-jadwal-card">
+            <div class="mtz-jadwal-info">
+              <div class="mtz-jadwal-mentor" t-esc="sesi.request_id.alumni_id.name"/>
+              <div class="mtz-jadwal-bidang" t-esc="sesi.request_id.alumni_id.pekerjaan or 'Alumni'"/>
+              <div class="mtz-jadwal-waktu">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:4px;">
+                  <rect x="3" y="4" width="18" height="18" rx="2" stroke="#888" stroke-width="2"/>
+                  <path d="M16 2v4M8 2v4M3 10h18" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <t t-esc="sesi.tanggal_mentoring"/>
+              </div>
+            </div>
+            <span class="mtz-badge-upcoming">Akan Datang</span>
+          </div>
+        </t>
+      </div>
+
+      <!-- PROGRESS MENTORING -->
+      <div class="mtz-section">
+        <h2 class="mtz-section-title">Progress Mentoring</h2>
+        <div class="mtz-progress-card">
+          <div class="mtz-progress-header">
+            <div>
+              <div class="mtz-progress-title">Pencapaian Overallmu</div>
+              <div class="mtz-progress-subtitle">
+                Kamu sudah menyelesaikan
+                <span style="color:#1d9e75;font-weight:600;">
+                  <t t-esc="stats['sesi_selesai']"/>
+                </span>
+                sesi mentoring
+              </div>
+            </div>
+            <div class="mtz-progress-pct">
+              <t t-esc="stats['progress_pct']"/>%
+            </div>
+          </div>
+          <div class="mtz-progress-bar-wrap">
+            <div class="mtz-progress-bar"
+                 t-attf-style="width: #{stats['progress_pct']}%"/>
+          </div>
+          <div class="mtz-progress-stats">
+            <div class="mtz-progress-stat" style="background:#f0fdf4;">
+              <div class="mtz-progress-stat-val" style="color:#1d9e75;">
+                <t t-esc="stats['sesi_selesai']"/>
+              </div>
+              <div class="mtz-progress-stat-label">Sesi Selesai</div>
+            </div>
+            <div class="mtz-progress-stat" style="background:#eff6ff;">
+              <div class="mtz-progress-stat-val" style="color:#1d4ed8;">
+                <t t-esc="stats['sesi_berjalan']"/>
+              </div>
+              <div class="mtz-progress-stat-label">Sesi Berjalan</div>
+            </div>
+            <div class="mtz-progress-stat" style="background:#f0fdf4;">
+              <div class="mtz-progress-stat-val" style="color:#1d9e75;">
+                <t t-esc="stats['mentor_aktif']"/>
+              </div>
+              <div class="mtz-progress-stat-label">Mentor Aktif</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </t>
+</template>
+</data>
 </odoo>

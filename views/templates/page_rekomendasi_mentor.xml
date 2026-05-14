@@ -1,0 +1,68 @@
+<odoo>
+    <template id="page_rekomendasi_mentor" name="Rekomendasi Mentor">
+        <t t-call="website.layout">
+
+            <div class="container mt-5 mb-5">
+
+                <div class="mb-4">
+                    <h1>Rekomendasi Mentor</h1>
+                    <p class="text-muted">
+                        Mentor terbaik berdasarkan matchmaking
+                    </p>
+                </div>
+
+                <t t-if="not matchmakings">
+                    <div class="alert alert-warning">
+                        Belum ada rekomendasi mentor.
+                    </div>
+                </t>
+
+                <div class="row">
+
+                    <t t-foreach="matchmakings" t-as="match">
+
+                        <div class="col-md-6 mb-4">
+
+                            <div class="card shadow-sm h-100">
+
+                                <div class="card-body">
+
+                                    <h4>
+                                        <t t-esc="match.alumni_id.user_id.name"/>
+                                    </h4>
+
+                                    <p class="mb-1">
+                                        <strong>Score Match:</strong>
+                                        <t t-esc="match.score"/>%
+                                    </p>
+
+                                    <p class="mb-1">
+                                        <strong>Skill Match:</strong>
+                                        <t t-esc="match.skill_match"/>
+                                    </p>
+
+                                    <p class="mb-3">
+                                        <strong>Recommended:</strong>
+                                        <t t-esc="match.is_recommended"/>
+                                    </p>
+
+                                    <a t-att-href="'/mentorize/mentor/%s' % match.alumni_id.id"
+                                       class="btn btn-primary">
+                                        Lihat Mentor
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </t>
+
+                </div>
+
+            </div>
+
+        </t>
+    </template>
+</odoo>

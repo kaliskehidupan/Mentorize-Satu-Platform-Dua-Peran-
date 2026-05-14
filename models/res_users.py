@@ -15,3 +15,9 @@ class ResUsers(models.Model):
     tujuan_karir = fields.Text(string='Tujuan Karir')
     bio = fields.Text(string='Bio')
     is_verified = fields.Boolean(string='Sudah Diverifikasi', default=False)
+    
+    availability = fields.Selection([
+        ('available', 'Tersedia'),
+        ('busy', 'Sibuk'),
+        ('offline', 'Offline'),
+    ], string='Ketersediaan', default='available')

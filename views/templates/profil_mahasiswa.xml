@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="page_profil_mahasiswa" name="Profil Mahasiswa">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+
+    <!-- NAVBAR -->
+    <nav class="mtz-navbar">
+      <div class="mtz-navbar-inner">
+        <div class="mtz-navbar-logo">
+          <div class="mtz-logo-circle">M</div>
+          <span>Mentorize</span>
+        </div>
+        <div class="mtz-navbar-menu">
+          <a href="/mentorize/mahasiswa/dashboard" class="mtz-nav-link">Dashboard</a>
+          <a href="/mentorize/mahasiswa/cari-mentor" class="mtz-nav-link">Cari Mentor</a>
+          <a href="/mentorize/mahasiswa/sessions" class="mtz-nav-link">Sesi Mentoring</a>
+          <a href="/mentorize/mahasiswa/chat" class="mtz-nav-link">Chat</a>
+        </div>
+        <div class="mtz-navbar-user">
+          <div class="mtz-avatar-circle" t-esc="user.name[0].upper()"/>
+          <span t-esc="user.name"/>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mtz-dashboard">
+
+      <!-- HEADER PROFIL -->
+      <div class="mtz-profil-header">
+        <div class="mtz-profil-avatar">
+          <t t-esc="user.name[0].upper()"/>
+        </div>
+        <div class="mtz-profil-info">
+          <h1 t-esc="user.name"/>
+          <p t-esc="mahasiswa.jurusan or 'Belum diisi'"/>
+          <span class="mtz-badge-nim">NIM: <t t-esc="mahasiswa.nim or '-'"/></span>
+        </div>
+        <a href="/mentorize/mahasiswa/profil/edit" class="mtz-btn-edit">Edit Profil</a>
+      </div>
+
+      <!-- ALERT PROFIL BELUM LENGKAP -->
+      <t t-if="not profil_lengkap">
+        <div class="mtz-alert-warning">
+          Profil kamu belum lengkap! Lengkapi profil agar sistem bisa merekomendasikan mentor yang tepat.
+        </div>
+      </t>
+
+      <!-- GRID PROFIL -->
+      <div class="mtz-profil-grid">
+
+        <!-- INFORMASI DASAR -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Informasi Dasar</h3>
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Nama Lengkap</span>
+            <span class="mtz-profil-value" t-esc="user.name"/>
+          </div>
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Email</span>
+            <span class="mtz-profil-value" t-esc="user.email"/>
+          </div>
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">NIM</span>
+            <span class="mtz-profil-value" t-esc="mahasiswa.nim or 'Belum diisi'"/>
+          </div>
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Jurusan</span>
+            <span class="mtz-profil-value" t-esc="mahasiswa.jurusan or 'Belum diisi'"/>
+          </div>
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Semester</span>
+            <span class="mtz-profil-value" t-esc="mahasiswa.semester or 'Belum diisi'"/>
+          </div>
+        </div>
+
+        <!-- TUJUAN KARIR -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Tujuan Karir</h3>
+          <p class="mtz-profil-text" t-esc="user.tujuan_karir or 'Belum diisi'"/>
+        </div>
+
+        <!-- MINAT -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Minat</h3>
+          <t t-if="mahasiswa.minat_ids">
+            <div class="mtz-badge-list">
+              <t t-foreach="mahasiswa.minat_ids" t-as="minat">
+                <span class="mtz-badge-minat" t-esc="minat.name"/>
+              </t>
+            </div>
+          </t>
+          <t t-else="">
+            <p class="mtz-profil-empty">Belum ada minat yang ditambahkan.</p>
+          </t>
+        </div>
+
+        <!-- SKILL -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Skill</h3>
+          <t t-if="mahasiswa.skill_ids">
+            <div class="mtz-badge-list">
+              <t t-foreach="mahasiswa.skill_ids" t-as="skill">
+                <span class="mtz-badge-skill" t-esc="skill.name"/>
+              </t>
+            </div>
+          </t>
+          <t t-else="">
+            <p class="mtz-profil-empty">Belum ada skill yang ditambahkan.</p>
+          </t>
+        </div>
+
+      </div>
+    </div>
+  </t>
+</template>
+
+<!-- =================== HALAMAN EDIT PROFIL =================== -->
+<template id="page_edit_profil_mahasiswa" name="Edit Profil Mahasiswa">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+
+    <nav class="mtz-navbar">
+      <div class="mtz-navbar-inner">
+        <div class="mtz-navbar-logo">
+          <div class="mtz-logo-circle">M</div>
+          <span>Mentorize</span>
+        </div>
+        <div class="mtz-navbar-menu">
+          <a href="/mentorize/mahasiswa/dashboard" class="mtz-nav-link">Dashboard</a>
+          <a href="/mentorize/mahasiswa/cari-mentor" class="mtz-nav-link">Cari Mentor</a>
+          <a href="/mentorize/mahasiswa/sessions" class="mtz-nav-link">Sesi Mentoring</a>
+          <a href="/mentorize/mahasiswa/chat" class="mtz-nav-link">Chat</a>
+        </div>
+        <div class="mtz-navbar-user">
+          <div class="mtz-avatar-circle" t-esc="user.name[0].upper()"/>
+          <span t-esc="user.name"/>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mtz-dashboard">
+      <div class="mtz-form-page">
+        <div class="mtz-form-header">
+          <a href="/mentorize/mahasiswa/profil" class="mtz-back-link">← Kembali ke Profil</a>
+          <h2>Edit Profil</h2>
+        </div>
+
+        <t t-if="success">
+          <div class="mtz-alert-success">Profil berhasil diperbarui!</div>
+        </t>
+        <t t-if="error">
+          <div class="mtz-alert-error" t-esc="error"/>
+        </t>
+
+        <form action="/mentorize/mahasiswa/profil/update" method="post" class="mtz-form-card">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+          <div class="mtz-form-section">
+            <h3>Informasi Dasar</h3>
+            <div class="mtz-form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" name="name" t-att-value="user.name" required="1"/>
+            </div>
+            <div class="mtz-form-group">
+              <label>NIM</label>
+              <input type="text" name="nim" t-att-value="mahasiswa.nim or ''"/>
+            </div>
+            <div class="mtz-form-group">
+              <label>Jurusan</label>
+              <input type="text" name="jurusan" t-att-value="mahasiswa.jurusan or ''"/>
+            </div>
+            <div class="mtz-form-group">
+              <label>Semester</label>
+              <input type="number" name="semester" min="1" max="14"
+                     t-att-value="mahasiswa.semester or ''"/>
+            </div>
+          </div>
+
+          <div class="mtz-form-section">
+            <h3>Tujuan Karir</h3>
+            <div class="mtz-form-group">
+              <label>Ceritakan tujuan karir kamu</label>
+              <textarea name="tujuan_karir" rows="4"
+                        placeholder="Contoh: Saya ingin menjadi data scientist di perusahaan teknologi...">
+                <t t-esc="user.tujuan_karir or ''"/>
+              </textarea>
+            </div>
+          </div>
+
+          <div class="mtz-form-section">
+            <h3>Minat</h3>
+            <div class="mtz-form-group">
+              <label>Pilih minat kamu (bisa lebih dari satu)</label>
+              <div class="mtz-checkbox-grid">
+                <t t-foreach="all_minat" t-as="minat">
+                  <label class="mtz-checkbox-item">
+                    <input type="checkbox" name="minat_ids"
+                           t-att-value="minat.id"
+                           t-att-checked="minat.id in selected_minat_ids and 'checked' or None"/>
+                    <t t-esc="minat.name"/>
+                  </label>
+                </t>
+              </div>
+            </div>
+          </div>
+
+          <div class="mtz-form-section">
+            <h3>Skill</h3>
+            <div class="mtz-form-group">
+              <label>Pilih skill kamu (bisa lebih dari satu)</label>
+              <div class="mtz-checkbox-grid">
+                <t t-foreach="all_skill" t-as="skill">
+                  <label class="mtz-checkbox-item">
+                    <input type="checkbox" name="skill_ids"
+                           t-att-value="skill.id"
+                           t-att-checked="skill.id in selected_skill_ids and 'checked' or None"/>
+                    <t t-esc="skill.name"/>
+                  </label>
+                </t>
+              </div>
+            </div>
+          </div>
+
+          <div class="mtz-form-actions">
+            <button type="submit" class="mtz-btn-primary">Simpan Perubahan</button>
+            <a href="/mentorize/mahasiswa/profil" class="mtz-btn-secondary">Batal</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </t>
+</template>
+</data>
+</odoo>
