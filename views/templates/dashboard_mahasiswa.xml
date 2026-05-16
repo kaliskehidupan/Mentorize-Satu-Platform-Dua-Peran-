@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="dashboard_mahasiswa" name="Dashboard Mahasiswa Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-animate-up">
+        <div>
+          <span class="mtz-kicker">Dashboard Mahasiswa</span>
+          <h1>Selamat datang, <t t-esc="user.name"/> 👋</h1>
+          <p>Siap melanjutkan perjalanan mentoring dan mengembangkan skill hari ini?</p>
+        </div>
+        <a href="/mentors" class="mtz-btn primary large">Cari Mentor</a>
+      </section>
+
+      <div class="mtz-stat-grid">
+        <div class="mtz-stat-card"><span>Rekomendasi</span><strong t-esc="stats['mentor_rekomendasi']"/><small>mentor cocok</small></div>
+        <div class="mtz-stat-card"><span>Request Pending</span><strong t-esc="stats['request_pending']"/><small>menunggu alumni</small></div>
+        <div class="mtz-stat-card"><span>Sesi Berjalan</span><strong t-esc="stats['sesi_aktif']"/><small>terjadwal / aktif</small></div>
+        <div class="mtz-stat-card"><span>Sesi Selesai</span><strong t-esc="stats['sesi_selesai']"/><small>riwayat sesi</small></div>
+      </div>
+
+      <div class="mtz-dashboard-grid">
+        <section class="mtz-card span-8">
+          <div class="mtz-card-head"><div><h2>Rekomendasi Mentor</h2><p>Mentor yang cocok dengan skill, minat, dan kebutuhanmu.</p></div><a href="/mentors">Lihat semua</a></div>
+          <div class="mtz-mentor-row">
+            <t t-if="recommended_mentors">
+              <t t-foreach="recommended_mentors" t-as="mentor">
+                <div class="mtz-mentor-card compact">
+                  <img t-att-src="'/web/image/res.users/%s/image_128' % mentor.user_id.id"/>
+                  <h3 t-esc="mentor.name"/><p t-esc="mentor.pekerjaan or 'Alumni Mentor'"/>
+                  <p t-if="mentor.deskripsi" t-esc="mentor.deskripsi[:90] + ('...' if len(mentor.deskripsi) &gt; 90 else '')"/>
+                  <div class="mtz-tags"><t t-foreach="mentor.skill_ids[:3]" t-as="skill"><span t-esc="skill.name"/></t></div>
+                  <button class="mtz-btn primary small full" data-mtz-open-request="1" t-att-data-mentor-id="mentor.id" t-att-data-mentor-name="mentor.name">Ajukan Mentoring</button>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state">Lengkapi minat dan skill agar rekomendasi mentor muncul.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-4">
+          <div class="mtz-card-head"><div><h2>Jadwal Terdekat</h2><p>Sesi mentoring mendatang.</p></div></div>
+          <div class="mtz-timeline">
+            <t t-if="upcoming_sessions">
+              <t t-foreach="upcoming_sessions" t-as="sesi">
+                <div class="mtz-timeline-item">
+                  <b t-esc="sesi.tanggal_mentoring.strftime('%d %b')"/>
+                  <div class="grow"><strong t-esc="sesi.topik or sesi.request_id.topik"/><p><t t-esc="sesi.alumni_id.name"/> • <t t-esc="sesi.status"/></p></div>
+                  <a t-if="sesi.request_id.room_chat_id" t-att-href="'/chat?room_id=%s' % sesi.request_id.room_chat_id.id">Chat</a>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada jadwal mentoring.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-6">
+          <div class="mtz-card-head"><h2>Status Request</h2></div>
+          <div class="mtz-list">
+            <t t-if="pending_requests or active_requests">
+              <t t-foreach="pending_requests" t-as="req"><div class="mtz-list-item"><div class="grow"><strong t-esc="req.topik"/><p>Menunggu <t t-esc="req.alumni_id.name"/> • <t t-esc="req.requested_datetime.strftime('%d %b %Y %H:%M')"/></p></div><span class="mtz-pill warning">Pending</span></div></t>
+              <t t-foreach="active_requests" t-as="req"><div class="mtz-list-item"><div class="grow"><strong t-esc="req.topik"/><p>Diterima oleh <t t-esc="req.alumni_id.name"/></p></div><span class="mtz-pill success">Diterima</span></div></t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada request aktif.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-6">
+          <div class="mtz-card-head"><div><h2>Ajukan Akhiri Sesi</h2><p>Ajukan jika mentoring dirasa sudah cukup.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="upcoming_sessions">
+              <t t-foreach="upcoming_sessions" t-as="sesi">
+                <t t-if="sesi.status in ['scheduled','active']">
+                  <form t-att-action="'/session/%s/end/request' % sesi.id" method="post" class="mtz-end-form">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div><strong t-esc="sesi.topik"/><p t-esc="sesi.alumni_id.name"/></div>
+                    <input type="text" name="note" placeholder="Catatan singkat..."/>
+                    <button class="mtz-btn soft small" type="submit">Ajukan Selesai</button>
+                  </form>
+                </t>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada sesi yang bisa diakhiri.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-12">
+          <div class="mtz-card-head"><div><h2>Riwayat Mentoring Terbaru</h2><p>Sesi terakhir yang sudah selesai.</p></div><a href="/history">Lihat riwayat</a></div>
+          <div class="mtz-history-row">
+            <t t-if="completed_sessions">
+              <t t-foreach="completed_sessions" t-as="sesi">
+                <a class="mtz-history-card" t-att-href="'/history/%s' % sesi.id"><img t-att-src="'/web/image/res.users/%s/image_128' % sesi.alumni_id.user_id.id"/><div><strong t-esc="sesi.alumni_id.name"/><p t-esc="sesi.summary_topic or sesi.topik"/></div></a>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Riwayat mentoring akan muncul setelah sesi selesai.</div></t>
+          </div>
+        </section>
+      </div>
+
+      <div class="mtz-modal-backdrop" id="mtz-request-modal">
+        <div class="mtz-modal-card">
+          <button type="button" class="mtz-modal-close" data-mtz-close-modal="1">×</button>
+          <h2>Ajukan Mentoring</h2>
+          <p>Request akan dikirim ke alumni untuk diterima atau ditolak.</p>
+          <form action="/mentoring/request" method="post" class="mtz-form">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input type="hidden" name="alumni_id" id="mtz-request-mentor-id"/>
+            <label>Mentor<input type="text" id="mtz-request-mentor-name" readonly="readonly"/></label>
+            <label>Topik Mentoring<input type="text" name="topik" placeholder="Contoh: Persiapan magang backend" required="required"/></label>
+            <label>Tanggal &amp; Jam<input type="datetime-local" name="requested_datetime" t-att-min="today_min" t-att-max="max_datetime" required="required"/></label>
+            <label>Catatan<textarea name="deskripsi" rows="4" placeholder="Ceritakan kebutuhan mentoringmu..."></textarea></label>
+            <button class="mtz-btn primary full" type="submit">Kirim Request</button>
+          </form>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>

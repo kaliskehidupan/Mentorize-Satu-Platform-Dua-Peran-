@@ -1,0 +1,61 @@
+PANDUAN INSTALL MENTORIZE FIX
+=============================
+
+1. Stop service Odoo:
+   net stop odoo-server-17.0
+
+2. Backup folder lama:
+   D:\odoo\server\odoo\addons\mentorize
+   ubah menjadi:
+   D:\odoo\server\odoo\addons\mentorize_backup
+
+3. Extract ZIP ini, pastikan bentuk akhirnya:
+   D:\odoo\server\odoo\addons\mentorize\__manifest__.py
+
+4. Upgrade module lewat CMD:
+   "D:\odoo\python\python.exe" "D:\odoo\server\odoo-bin" -c "D:\odoo\server\odoo.conf" -d Mentorize -u mentorize --stop-after-init --dev=assets
+
+   Jika nama database bukan Mentorize, ganti -d Mentorize sesuai nama database kamu.
+
+5. Start service Odoo:
+   net start odoo-server-17.0
+
+6. Buka dan test:
+   http://localhost:8069/
+   http://localhost:8069/login
+   http://localhost:8069/register
+
+CATATAN PERBAIKAN
+=================
+- Login sudah punya pilihan role Mahasiswa/Alumni.
+- Login memvalidasi role akun; jika pilih role yang salah akan diberi pesan jelas.
+- Akun lama yang field mentorize_role kosong akan dicoba dikenali dari grup, profil alumni/mahasiswa, KAPA/NIM, atau role yang dipilih saat login.
+- Register role Mahasiswa/Alumni sudah dibuat bisa diklik dari JavaScript yang lebih aman.
+- Public pages dan app pages memakai layout mandiri agar CSS/JS tidak hilang karena web.layout.
+- Dashboard mahasiswa/alumni dibuat lebih mendekati gaya Figma, dengan hero card gelap, statistik, request, jadwal, chat, dan riwayat.
+- Request mentoring memakai tanggal/jam dengan batas hari ini sampai 90 hari ke depan.
+- Alumni tidak boleh menerima dua sesi di tanggal dan jam yang sama.
+- Chat auto-update tanpa refresh manual melalui endpoint /chat/data dan /chat/send.
+- Popup logout, dropdown profil, dan dropdown notifikasi tetap dipertahankan.
+
+SETTING SMTP UNTUK RESET PASSWORD
+=================================
+Agar forgot password benar-benar mengirim email:
+
+1. Masuk Odoo sebagai admin.
+2. Aktifkan Developer Mode.
+3. Buka Settings > Technical > Email > Outgoing Mail Servers.
+4. Buat server SMTP baru.
+
+Contoh Gmail:
+- SMTP Server: smtp.gmail.com
+- SMTP Port: 587
+- Connection Security: TLS/STARTTLS
+- Username: email Gmail kamu
+- Password: App Password Gmail, bukan password biasa
+
+5. Klik Test Connection.
+6. Jika berhasil, fitur /forgot-password akan memakai action_reset_password Odoo untuk mengirim email reset.
+
+Jika masih gagal, cek log Odoo:
+D:\odoo\server\odoo.log

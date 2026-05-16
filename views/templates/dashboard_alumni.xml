@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="dashboard_alumni" name="Dashboard Alumni Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-animate-up">
+        <div>
+          <span class="mtz-kicker">Dashboard Alumni</span>
+          <h1>Selamat datang, <t t-esc="user.name"/> ⭐</h1>
+          <p>Kelola request mentoring, kalender sesi, chat, dan pengajuan akhir sesi.</p>
+        </div>
+        <a href="/chat" class="mtz-btn primary large">Buka Chat</a>
+      </section>
+      <t t-if="success"><div class="mtz-alert success" t-esc="success"/></t>
+      <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+
+      <div class="mtz-stat-grid">
+        <div class="mtz-stat-card"><span>Request Baru</span><strong t-esc="stats['permintaan_baru']"/><small>menunggu respon</small></div>
+        <div class="mtz-stat-card"><span>Sesi Aktif</span><strong t-esc="stats['sesi_aktif']"/><small>terjadwal</small></div>
+        <div class="mtz-stat-card"><span>Sesi Selesai</span><strong t-esc="stats['sesi_selesai']"/><small>riwayat</small></div>
+        <div class="mtz-stat-card"><span>Rating Mentor</span><strong t-esc="stats['rating']"/><small>dari feedback</small></div>
+      </div>
+
+      <div class="mtz-dashboard-grid">
+        <section class="mtz-card span-7">
+          <div class="mtz-card-head"><div><h2>Request Mentoring Masuk</h2><p>Terima atau tolak pengajuan dari mahasiswa.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="requests">
+              <t t-foreach="requests" t-as="req">
+                <div class="mtz-request-item">
+                  <img t-att-src="'/web/image/res.users/%s/image_128' % req.mahasiswa_id.user_id.id"/>
+                  <div class="grow"><strong t-esc="req.mahasiswa_id.name"/><p><t t-esc="req.topik"/> • <t t-esc="req.requested_datetime.strftime('%d %b %Y %H:%M')"/></p><small t-esc="req.deskripsi or 'Tidak ada catatan tambahan.'"/></div>
+                  <div class="mtz-action-stack"><a class="mtz-btn primary small" t-att-href="'/alumni/request/%s/approve' % req.id">Terima</a><a class="mtz-btn danger-soft small" t-att-href="'/alumni/request/%s/reject' % req.id">Tolak</a></div>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state">Belum ada request baru.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-5">
+          <div class="mtz-card-head"><div><h2>Kalender Mentoring</h2><p>Tanggal yang sudah ada mahasiswanya.</p></div></div>
+          <div class="mtz-calendar-list">
+            <t t-if="upcoming_sessions">
+              <t t-foreach="upcoming_sessions" t-as="sesi">
+                <div class="mtz-calendar-item">
+                  <div class="date"><b t-esc="sesi.tanggal_mentoring.strftime('%d')"/><span t-esc="sesi.tanggal_mentoring.strftime('%b')"/></div>
+                  <div class="grow"><strong t-esc="sesi.topik"/><p><t t-esc="sesi.mahasiswa_id.name"/> • <t t-esc="sesi.tanggal_mentoring.strftime('%H:%M')"/></p></div>
+                  <a t-if="sesi.request_id.room_chat_id" t-att-href="'/chat?room_id=%s' % sesi.request_id.room_chat_id.id">Chat</a>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada jadwal mentoring.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-7">
+          <div class="mtz-card-head"><div><h2>Pengajuan Akhir Sesi</h2><p>Mahasiswa yang merasa sesi mentoring sudah cukup.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="end_requests">
+              <t t-foreach="end_requests" t-as="sesi">
+                <div class="mtz-request-item">
+                  <img t-att-src="'/web/image/res.users/%s/image_128' % sesi.mahasiswa_id.user_id.id"/>
+                  <div class="grow"><strong t-esc="sesi.mahasiswa_id.name"/><p t-esc="sesi.topik"/><small t-esc="sesi.end_request_note or 'Mahasiswa mengajukan sesi untuk diakhiri.'"/></div>
+                  <div class="mtz-action-stack"><a class="mtz-btn primary small" t-att-href="'/session/%s/end/approve' % sesi.id">Setujui</a><a class="mtz-btn danger-soft small" t-att-href="'/session/%s/end/reject' % sesi.id">Tolak</a></div>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada pengajuan akhir sesi.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-5">
+          <div class="mtz-card-head"><div><h2>Riwayat Singkat</h2><p>Sesi mentoring yang telah selesai.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="completed_sessions">
+              <t t-foreach="completed_sessions" t-as="sesi"><div class="mtz-list-item"><div class="grow"><strong t-esc="sesi.topik"/><p><t t-esc="sesi.mahasiswa_id.name"/> • <t t-esc="sesi.tanggal_mentoring.strftime('%d %b %Y')"/></p></div><span class="mtz-pill success">Selesai</span></div></t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada riwayat selesai.</div></t>
+          </div>
+        </section>
+      </div>
+    </t>
+  </template>
+
+  <template id="dashboard_admin" name="Dashboard Admin Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-animate-up">
+        <div><span class="mtz-kicker">Admin Mentorize</span><h1>Monitoring Platform</h1><p>Pantau data mahasiswa, alumni, request, dan sesi mentoring.</p></div>
+      </section>
+      <div class="mtz-stat-grid">
+        <div class="mtz-stat-card"><span>Mahasiswa</span><strong t-esc="total_mahasiswa"/><small>terdaftar</small></div>
+        <div class="mtz-stat-card"><span>Alumni</span><strong t-esc="total_alumni"/><small>mentor</small></div>
+        <div class="mtz-stat-card"><span>Request</span><strong t-esc="total_requests"/><small>pengajuan</small></div>
+        <div class="mtz-stat-card"><span>Sesi</span><strong t-esc="total_sessions"/><small>mentoring</small></div>
+      </div>
+    </t>
+  </template>
+</odoo>

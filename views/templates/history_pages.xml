@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="page_summary" name="Rangkuman Mentoring">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-page-head"><div><span class="mtz-kicker">Rangkuman Mentoring</span><h1>Isi hasil mentoring</h1><p>Rangkuman ini akan tersimpan di riwayat mentoringmu.</p></div></section>
+      <form t-att-action="'/summary/%s/save' % session.id" method="post" class="mtz-card mtz-form summary-form">
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.users/%s/image_128' % session.alumni_id.user_id.id"/><div><h2 t-esc="session.alumni_id.name"/><p><t t-esc="session.topik"/> • <t t-esc="session.tanggal_mentoring.strftime('%d %b %Y')"/></p></div></div>
+        <label>Judul Rangkuman<input type="text" name="summary_topic" t-att-value="session.summary_topic or session.topik" required="required"/></label>
+        <label>Hal yang Didapat<textarea name="summary_learnings" rows="4" required="required"><t t-esc="session.summary_learnings or ''"/></textarea></label>
+        <label>Saran Mentor<textarea name="summary_advice" rows="4"><t t-esc="session.summary_advice or ''"/></textarea></label>
+        <label>Rencana Tindak Lanjut<textarea name="summary_next_steps" rows="4"><t t-esc="session.summary_next_steps or ''"/></textarea></label>
+        <label>Catatan Tambahan<textarea name="summary_notes" rows="3"><t t-esc="session.summary_notes or ''"/></textarea></label>
+        <div class="mtz-form-grid two"><label>Rating Mentor<select name="rating"><option value="5">5 - Sangat baik</option><option value="4">4 - Baik</option><option value="3">3 - Cukup</option><option value="2">2 - Kurang</option><option value="1">1 - Perlu evaluasi</option></select></label><label>Komentar Feedback<input type="text" name="komentar" placeholder="Komentar singkat untuk mentor"/></label></div>
+        <button class="mtz-btn primary" type="submit">Simpan ke Riwayat</button>
+      </form>
+    </t>
+  </template>
+
+  <template id="page_history" name="Riwayat Mentoring">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-page-head"><div><span class="mtz-kicker">Riwayat Mentoring</span><h1>Sesi yang sudah selesai</h1><p>Klik mentor untuk melihat rangkuman hasil mentoring.</p></div></section>
+      <div class="mtz-history-grid">
+        <t t-if="sessions">
+          <t t-foreach="sessions" t-as="sesi"><a class="mtz-history-big-card" t-att-href="'/history/%s' % sesi.id"><img t-att-src="'/web/image/res.users/%s/image_128' % sesi.alumni_id.user_id.id"/><div><h3 t-esc="sesi.alumni_id.name"/><p t-esc="sesi.summary_topic or sesi.topik"/><span t-esc="sesi.tanggal_mentoring.strftime('%d %b %Y')"/></div></a></t>
+        </t>
+        <t t-else=""><div class="mtz-empty-state">Belum ada riwayat mentoring.</div></t>
+      </div>
+    </t>
+  </template>
+
+  <template id="page_history_detail" name="Detail Riwayat Mentoring">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-page-head"><div><span class="mtz-kicker">Detail Riwayat</span><h1 t-esc="session.summary_topic or session.topik"/><p>Mentoring bersama <t t-esc="session.alumni_id.name"/></p></div><a href="/history" class="mtz-btn soft">Kembali</a></section>
+      <article class="mtz-card mtz-summary-view">
+        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.users/%s/image_128' % session.alumni_id.user_id.id"/><div><h2 t-esc="session.alumni_id.name"/><p t-esc="session.tanggal_mentoring.strftime('%d %b %Y %H:%M')"/></div></div>
+        <h3>Hal yang Didapat</h3><p t-esc="session.summary_learnings or '-'"/>
+        <h3>Saran Mentor</h3><p t-esc="session.summary_advice or '-'"/>
+        <h3>Rencana Tindak Lanjut</h3><p t-esc="session.summary_next_steps or '-'"/>
+        <h3>Catatan Tambahan</h3><p t-esc="session.summary_notes or '-'"/>
+      </article>
+    </t>
+  </template>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="page_chat" name="Chat Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-page-head"><div><span class="mtz-kicker">Chat Mentoring</span><h1>Diskusi Real-time</h1><p>Room chat aktif setelah alumni menerima request mentoring.</p></div></section>
+      <div class="mtz-chat-app" id="mtz-chat-app" t-att-data-room-id="selected_room.id if selected_room else 0" t-att-data-user-id="user.id">
+        <aside class="mtz-chat-sidebar">
+          <h2>Percakapan</h2>
+          <t t-if="rooms">
+            <t t-foreach="rooms" t-as="room">
+              <a t-att-class="'mtz-conv active' if selected_room and room.id == selected_room.id else 'mtz-conv'" t-att-href="'/chat?room_id=%s' % room.id">
+                <img t-att-src="'/web/image/res.users/%s/image_128' % (room.alumni_user_id.id if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.id)"/>
+                <div><strong t-esc="room.alumni_user_id.name if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.name"/><p t-esc="room.request_id.topik or 'Mentoring'"/></div>
+              </a>
+            </t>
+          </t>
+          <t t-else=""><div class="mtz-empty-state small">Belum ada percakapan.</div></t>
+        </aside>
+        <section class="mtz-chat-main">
+          <t t-if="selected_room">
+            <div class="mtz-chat-head">
+              <img t-att-src="'/web/image/res.users/%s/image_128' % (selected_room.alumni_user_id.id if user.id == selected_room.mahasiswa_user_id.id else selected_room.mahasiswa_user_id.id)"/>
+              <div><h2 t-esc="selected_room.alumni_user_id.name if user.id == selected_room.mahasiswa_user_id.id else selected_room.mahasiswa_user_id.name"/><p><t t-esc="selected_room.request_id.topik"/> • <t t-esc="selected_room.status"/></p></div>
+            </div>
+            <div class="mtz-chat-messages" id="mtz-chat-messages">
+              <t t-foreach="selected_room.message_ids" t-as="msg">
+                <div t-att-class="'mtz-message me' if msg.sender_id.id == user.id else 'mtz-message other'" t-att-data-message-id="msg.id">
+                  <p t-esc="msg.isi_pesan"/><span><t t-esc="msg.sender_id.name"/> • <t t-esc="msg.waktu_kirim.strftime('%H:%M')"/></span>
+                </div>
+              </t>
+            </div>
+            <form class="mtz-chat-input" id="mtz-chat-form">
+              <input type="text" id="mtz-chat-text" placeholder="Tulis pesan..." autocomplete="off"/>
+              <button class="mtz-btn primary" type="submit">Kirim</button>
+            </form>
+          </t>
+          <t t-else=""><div class="mtz-empty-chat"><h2>Belum ada room chat</h2><p>Room chat akan muncul setelah alumni menerima request mentoring.</p></div></t>
+        </section>
+        <aside class="mtz-chat-detail">
+          <h2>Detail Mentoring</h2>
+          <t t-if="selected_room">
+            <div class="mtz-detail-box"><span>Topik</span><strong t-esc="selected_room.request_id.topik"/></div>
+            <div class="mtz-detail-box"><span>Jadwal</span><strong t-esc="selected_room.session_id.tanggal_mentoring.strftime('%d %b %Y %H:%M') if selected_room.session_id else '-'"/></div>
+            <div class="mtz-detail-box"><span>Status</span><strong t-esc="selected_room.session_id.status if selected_room.session_id else selected_room.status"/></div>
+          </t>
+        </aside>
+      </div>
+    </t>
+  </template>
+</odoo>
