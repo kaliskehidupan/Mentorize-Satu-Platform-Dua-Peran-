@@ -914,3 +914,34 @@
   margin-bottom: 1rem;
   font-size: 14px;
 }
+
+/* FIX DASHBOARD LAYOUT */
+body { margin: 0; padding: 0; background: #f7f8fa; }
+
+.mtz-stats-row {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.mtz-stat-box {
+  background: white !important;
+  border: 0.5px solid #e0e0e0 !important;
+  border-radius: 12px !important;
+  padding: 1rem 1.25rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.mtz-hero-mahasiswa {
+  background: linear-gradient(135deg, #1a2f4e 0%, #0f3460 100%) !important;
+  border-radius: 16px !important;
+  padding: 2rem !important;
+  color: white !important;
+  margin-bottom: 1.5rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}

@@ -1,0 +1,143 @@
+<odoo>
+    <template id="page_edit_profil_mahasiswa" name="Edit Profil Mahasiswa">
+        <t t-call="website.layout">
+
+            <div class="container mt-5 mb-5">
+
+                <div class="card shadow-sm p-4">
+
+                    <h1 class="mb-4">
+                        Edit Profil Mahasiswa
+                    </h1>
+
+                    <t t-if="error">
+                        <div class="alert alert-danger">
+                            <t t-esc="error"/>
+                        </div>
+                    </t>
+
+                    <form action="/mentorize/mahasiswa/profil/update"
+                          method="post">
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    Nama
+                                </label>
+
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       t-att-value="user.name"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    NIM
+                                </label>
+
+                                <input type="text"
+                                       name="nim"
+                                       class="form-control"
+                                       t-att-value="mahasiswa.nim"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    Jurusan
+                                </label>
+
+                                <input type="text"
+                                       name="jurusan"
+                                       class="form-control"
+                                       t-att-value="mahasiswa.jurusan"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    Semester
+                                </label>
+
+                                <input type="number"
+                                       name="semester"
+                                       class="form-control"
+                                       t-att-value="mahasiswa.semester"/>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">
+                                    Tujuan Karir
+                                </label>
+
+                                <textarea name="tujuan_karir"
+                                          class="form-control"
+                                          rows="4"><t t-esc="user.tujuan_karir"/></textarea>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Minat
+                                </label>
+
+                                <select name="minat_ids"
+                                        class="form-select"
+                                        multiple="multiple">
+
+                                    <t t-foreach="all_minat" t-as="minat">
+
+                                        <option t-att-value="minat.id"
+                                                t-att-selected="'selected' if minat.id in selected_minat_ids else None">
+
+                                            <t t-esc="minat.name"/>
+
+                                        </option>
+
+                                    </t>
+
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Skill
+                                </label>
+
+                                <select name="skill_ids"
+                                        class="form-select"
+                                        multiple="multiple">
+
+                                    <t t-foreach="all_skill" t-as="skill">
+
+                                        <option t-att-value="skill.id"
+                                                t-att-selected="'selected' if skill.id in selected_skill_ids else None">
+
+                                            <t t-esc="skill.name"/>
+
+                                        </option>
+
+                                    </t>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary mt-3">
+                            Simpan Perubahan
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </t>
+    </template>
+</odoo>

@@ -3,6 +3,9 @@ from odoo.http import request
 
 class MentorizeController(http.Controller):
 
+    # =====================
+    # PUBLIC ROUTES
+    # =====================
     @http.route('/mentorize', type='http', auth='public', website=True)
     def index(self, **kwargs):
         return request.redirect('/mentorize/login')
@@ -114,17 +117,20 @@ class MentorizeController(http.Controller):
         ], limit=1)
 
         if not mahasiswa:
-            mahasiswa = request.env['mentorize.mahasiswa'].sudo().create({
-                'user_id': user.id,
-                'nim': user.nim or '',
-                'jurusan': user.jurusan or '',
-            })
+            return request.redirect('/mentorize/login')
 
+        # Request terbaru
+        requests = request.env['mentorize.request'].sudo().search([
+            ('mahasiswa_id', '=', mahasiswa.id)
+        ], order='tanggal_request desc', limit=5)
+
+        # Mentoring aktif
         mentoring_aktif = request.env['mentorize.request'].sudo().search([
             ('mahasiswa_id', '=', mahasiswa.id),
             ('status', '=', 'approved')
         ])
 
+        # Jadwal mentoring
         jadwal_terdekat = request.env['mentorize.session'].sudo().search([
             ('request_id.mahasiswa_id', '=', mahasiswa.id),
             ('status', '=', 'scheduled')
@@ -134,14 +140,27 @@ class MentorizeController(http.Controller):
             ('request_id.mahasiswa_id', '=', mahasiswa.id),
             ('status', '=', 'scheduled')
         ])
+
         sesi_selesai = request.env['mentorize.session'].sudo().search_count([
             ('request_id.mahasiswa_id', '=', mahasiswa.id),
             ('status', '=', 'completed')
         ])
+
         total_sesi = sesi_berjalan + sesi_selesai
         progress_pct = round((sesi_selesai / total_sesi * 100)) if total_sesi > 0 else 0
 
         stats = {
+            'total_request': request.env['mentorize.request'].sudo().search_count([
+                ('mahasiswa_id', '=', mahasiswa.id)
+            ]),
+            'approved': request.env['mentorize.request'].sudo().search_count([
+                ('mahasiswa_id', '=', mahasiswa.id),
+                ('status', '=', 'approved')
+            ]),
+            'pending': request.env['mentorize.request'].sudo().search_count([
+                ('mahasiswa_id', '=', mahasiswa.id),
+                ('status', '=', 'pending')
+            ]),
             'mentor_aktif': len(mentoring_aktif),
             'sesi_berjalan': sesi_berjalan,
             'sesi_selesai': sesi_selesai,
@@ -151,6 +170,7 @@ class MentorizeController(http.Controller):
         return request.render('mentorize.dashboard_mahasiswa', {
             'user': user,
             'mahasiswa': mahasiswa,
+            'requests': requests,
             'mentoring_aktif': mentoring_aktif,
             'jadwal_terdekat': jadwal_terdekat,
             'stats': stats,
@@ -172,7 +192,6 @@ class MentorizeController(http.Controller):
         profil_lengkap = bool(
             mahasiswa.nim and
             mahasiswa.jurusan and
-            user.tujuan_karir and
             mahasiswa.minat_ids and
             mahasiswa.skill_ids
         )
@@ -218,7 +237,6 @@ class MentorizeController(http.Controller):
         try:
             user.sudo().write({
                 'name': kwargs.get('name', user.name),
-                'tujuan_karir': kwargs.get('tujuan_karir', ''),
             })
 
             semester = kwargs.get('semester', '')
@@ -226,6 +244,7 @@ class MentorizeController(http.Controller):
                 'nim': kwargs.get('nim', ''),
                 'jurusan': kwargs.get('jurusan', ''),
                 'semester': int(semester) if semester else 0,
+                'tujuan_karir': kwargs.get('tujuan_karir', ''),
             })
 
             minat_ids = request.httprequest.form.getlist('minat_ids')
@@ -256,6 +275,180 @@ class MentorizeController(http.Controller):
             })
 
     # =====================
+    # LIST MENTOR
+    # =====================
+    @http.route('/mentorize/mentor', type='http', auth='user', website=True)
+    def list_mentor(self, **kwargs):
+        user = request.env.user
+        mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
+            ('user_id', '=', user.id)
+        ], limit=1)
+
+        if mahasiswa:
+            request.env['mentorize.matchmaking'].sudo().generate_matchmaking(mahasiswa.id)
+
+        alumni_list = request.env['mentorize.alumni'].sudo().search([
+            ('ketersediaan', '=', 'available'),
+        ])
+
+        matchmaking_data = {}
+        if mahasiswa:
+            matchmakings = request.env['mentorize.matchmaking'].sudo().search([
+                ('mahasiswa_id', '=', mahasiswa.id)
+            ])
+            for m in matchmakings:
+                matchmaking_data[m.alumni_id.id] = {
+                    'score': m.score,
+                    'is_recommended': m.is_recommended,
+                    'skill_match': m.skill_match,
+                }
+
+        skills = request.env['mentorize.skill'].sudo().search([])
+
+        return request.render('mentorize.page_list_mentor', {
+            'alumni_list': alumni_list,
+            'matchmaking_data': matchmaking_data,
+            'mahasiswa': mahasiswa,
+            'skills': skills,
+        })
+
+    # =====================
+    # DETAIL MENTOR
+    # =====================
+    @http.route('/mentorize/mentor/<int:alumni_id>', type='http', auth='user', website=True)
+    def detail_mentor(self, alumni_id, **kwargs):
+        user = request.env.user
+        alumni = request.env['mentorize.alumni'].sudo().browse(alumni_id)
+
+        if not alumni.exists():
+            return request.redirect('/mentorize/mentor')
+
+        mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
+            ('user_id', '=', user.id)
+        ], limit=1)
+
+        existing_request = False
+        if mahasiswa:
+            existing_request = request.env['mentorize.request'].sudo().search([
+                ('mahasiswa_id', '=', mahasiswa.id),
+                ('alumni_id', '=', alumni_id),
+                ('status', 'in', ['pending', 'approved']),
+            ], limit=1)
+
+        match_info = None
+        if mahasiswa:
+            match_info = request.env['mentorize.matchmaking'].sudo().search([
+                ('mahasiswa_id', '=', mahasiswa.id),
+                ('alumni_id', '=', alumni_id),
+            ], limit=1)
+
+        feedbacks = request.env['mentorize.feedback'].sudo().search([
+            ('alumni_id', '=', alumni_id)
+        ], limit=5)
+
+        return request.render('mentorize.page_detail_mentor', {
+            'alumni': alumni,
+            'mahasiswa': mahasiswa,
+            'existing_request': existing_request,
+            'match_info': match_info,
+            'feedbacks': feedbacks,
+        })
+
+    # =====================
+    # REQUEST MENTORING
+    # =====================
+    @http.route('/mentorize/mentor/request/<int:alumni_id>', type='http', auth='user', website=True, methods=['POST'], csrf=False)
+    def submit_request(self, alumni_id, **kwargs):
+        user = request.env.user
+        mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
+            ('user_id', '=', user.id)
+        ], limit=1)
+
+        if not mahasiswa:
+            return request.redirect('/mentorize/login')
+
+        alumni = request.env['mentorize.alumni'].sudo().browse(alumni_id)
+        if not alumni.exists():
+            return request.redirect('/mentorize/mentor')
+
+        existing = request.env['mentorize.request'].sudo().search([
+            ('mahasiswa_id', '=', mahasiswa.id),
+            ('alumni_id', '=', alumni_id),
+            ('status', 'in', ['pending', 'approved']),
+        ], limit=1)
+
+        if existing:
+            return request.redirect('/mentorize/mentor/' + str(alumni_id) + '?error=duplicate')
+
+        topik = kwargs.get('topik', '').strip()
+        deskripsi = kwargs.get('deskripsi', '').strip()
+
+        if not topik:
+            return request.redirect('/mentorize/mentor/' + str(alumni_id) + '?error=notopic')
+
+        try:
+            request.env['mentorize.request'].sudo().create({
+                'mahasiswa_id': mahasiswa.id,
+                'alumni_id': alumni_id,
+                'topik': topik,
+                'deskripsi': deskripsi,
+                'status': 'pending',
+            })
+        except Exception:
+            return request.redirect('/mentorize/mentor/' + str(alumni_id) + '?error=failed')
+
+        return request.redirect('/mentorize/mahasiswa/riwayat?success=1')
+
+    # =====================
+    # RIWAYAT & STATUS
+    # =====================
+    @http.route('/mentorize/mahasiswa/riwayat', type='http', auth='user', website=True)
+    def riwayat_mahasiswa(self, **kwargs):
+        user = request.env.user
+        mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
+            ('user_id', '=', user.id)
+        ], limit=1)
+
+        if not mahasiswa:
+            return request.redirect('/mentorize/login')
+
+        requests = request.env['mentorize.request'].sudo().search([
+            ('mahasiswa_id', '=', mahasiswa.id)
+        ], order='tanggal_request desc')
+
+        success = kwargs.get('success', False)
+
+        return request.render('mentorize.page_riwayat_mahasiswa', {
+            'mahasiswa': mahasiswa,
+            'requests': requests,
+            'success': success,
+        })
+
+    # =====================
+    # REKOMENDASI MENTOR
+    # =====================
+    @http.route('/mentorize/mentor/rekomendasi', type='http', auth='user', website=True)
+    def rekomendasi_mentor(self, **kwargs):
+        user = request.env.user
+        mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
+            ('user_id', '=', user.id)
+        ], limit=1)
+
+        if not mahasiswa:
+            return request.redirect('/mentorize/login')
+
+        request.env['mentorize.matchmaking'].sudo().generate_matchmaking(mahasiswa.id)
+
+        matchmakings = request.env['mentorize.matchmaking'].sudo().search([
+            ('mahasiswa_id', '=', mahasiswa.id),
+        ], order='score desc', limit=10)
+
+        return request.render('mentorize.page_rekomendasi_mentor', {
+            'mahasiswa': mahasiswa,
+            'matchmakings': matchmakings,
+        })
+
+    # =====================
     # ALUMNI ROUTES
     # =====================
     @http.route('/mentorize/alumni/dashboard', type='http', auth='user', website=True)
@@ -268,31 +461,29 @@ class MentorizeController(http.Controller):
         if not alumni:
             return request.redirect('/mentorize/login')
 
-        requests_list = request.env['mentorize.request'].sudo().search([
+        pending_requests = request.env['mentorize.request'].sudo().search([
             ('alumni_id', '=', alumni.id),
             ('status', '=', 'pending')
-        ], order='tanggal_request desc', limit=10)
-
-        sesi_aktif = request.env['mentorize.session'].sudo().search_count([
-            ('request_id.alumni_id', '=', alumni.id),
-            ('status', '=', 'scheduled')
-        ])
-        sesi_selesai = request.env['mentorize.session'].sudo().search_count([
-            ('request_id.alumni_id', '=', alumni.id),
-            ('status', '=', 'completed')
-        ])
+        ], order='tanggal_request desc')
 
         stats = {
-            'permintaan_baru': len(requests_list),
-            'sesi_aktif': sesi_aktif,
-            'sesi_selesai': sesi_selesai,
-            'rating': round(alumni.rating, 1) if alumni.rating else '0.0',
+            'permintaan_baru': len(pending_requests),
+            'sesi_aktif': request.env['mentorize.session'].sudo().search_count([
+                ('request_id.alumni_id', '=', alumni.id),
+                ('status', '=', 'scheduled')
+            ]),
+            'sesi_selesai': request.env['mentorize.session'].sudo().search_count([
+                ('request_id.alumni_id', '=', alumni.id),
+                ('status', '=', 'completed')
+            ]),
+            'rating': round(alumni.rating, 1) if alumni.rating else 0.0,
         }
 
         return request.render('mentorize.dashboard_alumni', {
             'user': user,
             'alumni': alumni,
-            'requests': requests_list,
+            'pending_requests': pending_requests,
+            'requests': pending_requests,
             'stats': stats,
         })
 
@@ -301,6 +492,9 @@ class MentorizeController(http.Controller):
         req = request.env['mentorize.request'].sudo().browse(req_id)
         if req.exists():
             req.write({'status': 'approved'})
+            req.alumni_id.sudo().write({
+                'slot_mentoring': max(0, req.alumni_id.slot_mentoring - 1)
+            })
         return request.redirect('/mentorize/alumni/dashboard')
 
     @http.route('/mentorize/alumni/request/<int:req_id>/reject', type='http', auth='user', website=True)
@@ -309,6 +503,46 @@ class MentorizeController(http.Controller):
         if req.exists():
             req.write({'status': 'rejected'})
         return request.redirect('/mentorize/alumni/dashboard')
+
+    @http.route('/mentorize/alumni/riwayat', type='http', auth='user', website=True)
+    def riwayat_alumni(self, **kwargs):
+        user = request.env.user
+        alumni = request.env['mentorize.alumni'].sudo().search([
+            ('user_id', '=', user.id)
+        ], limit=1)
+
+        if not alumni:
+            return request.redirect('/mentorize/login')
+
+        all_requests = request.env['mentorize.request'].sudo().search([
+            ('alumni_id', '=', alumni.id)
+        ], order='tanggal_request desc')
+
+        return request.render('mentorize.page_riwayat_alumni', {
+            'alumni': alumni,
+            'requests': all_requests,
+        })
+
+    @http.route('/mentorize/alumni/requests', type='http', auth='user', website=True)
+    def alumni_requests(self, **kwargs):
+        user = request.env.user
+        alumni = request.env['mentorize.alumni'].sudo().search([
+            ('user_id', '=', user.id)
+        ], limit=1)
+        if not alumni:
+            return request.redirect('/mentorize/login')
+        pending_requests = request.env['mentorize.request'].sudo().search([
+            ('alumni_id', '=', alumni.id),
+            ('status', '=', 'pending')
+        ], order='tanggal_request desc')
+        all_requests = request.env['mentorize.request'].sudo().search([
+            ('alumni_id', '=', alumni.id)
+        ], order='tanggal_request desc')
+        return request.render('mentorize.page_riwayat_alumni', {
+            'alumni': alumni,
+            'requests': all_requests,
+            'pending_requests': pending_requests,
+        })
 
     # =====================
     # ADMIN ROUTES

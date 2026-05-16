@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ======================== LIST MENTOR ======================== -->
+    <template id="page_list_mentor" name="List Mentor">
+        <t t-call="mentorize.layout">
+            <div class="mz-page">
+                <!-- Header -->
+                <div class="mz-page-header">
+                    <h1>Cari Mentor</h1>
+                    <p>Temukan mentor terbaik yang sesuai dengan kebutuhan kamu</p>
+                    <div class="mz-header-actions">
+                        <a href="/mentorize/mentor/rekomendasi" class="mz-btn mz-btn-primary">
+                            ✨ Lihat Rekomendasi untuk Saya
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Filter Skill -->
+                <div class="mz-filter-bar">
+                    <span class="mz-filter-label">Filter Skill:</span>
+                    <div class="mz-filter-chips">
+                        <a href="/mentorize/mentor" class="mz-chip mz-chip-active">Semua</a>
+                        <t t-foreach="skills" t-as="skill">
+                            <a t-attf-href="/mentorize/mentor?skill=#{skill.id}" class="mz-chip">
+                                <t t-esc="skill.name"/>
+                            </a>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- Grid Mentor -->
+                <div class="mz-mentor-grid">
+                    <t t-foreach="alumni_list" t-as="alumni">
+                        <div class="mz-mentor-card">
+                            <!-- Badge Rekomendasi -->
+                            <t t-if="matchmaking_data.get(alumni.id, {}).get('is_recommended')">
+                                <div class="mz-badge-recommended">⭐ Direkomendasikan</div>
+                            </t>
+
+                            <!-- Avatar -->
+                            <div class="mz-mentor-avatar">
+                                <span t-esc="alumni.name[0].upper() if alumni.name else 'A'"/>
+                            </div>
+
+                            <!-- Info Mentor -->
+                            <div class="mz-mentor-info">
+                                <h3 t-esc="alumni.name"/>
+                                <p class="mz-mentor-job">
+                                    <t t-esc="alumni.pekerjaan or '-'"/>
+                                    <t t-if="alumni.tempat_bekerja"> @ <t t-esc="alumni.tempat_bekerja"/></t>
+                                </p>
+                                <p class="mz-mentor-kapa">KAPA: <t t-esc="alumni.kapa or '-'"/></p>
+
+                                <!-- Rating -->
+                                <div class="mz-mentor-rating">
+                                    <span class="mz-star">★</span>
+                                    <span t-esc="'%.1f' % alumni.rating"/>
+                                    <span class="mz-slot"> · <t t-esc="alumni.slot_mentoring"/> slot tersisa</span>
+                                </div>
+
+                                <!-- Skills -->
+                                <div class="mz-skill-tags">
+                                    <t t-foreach="alumni.skill_ids[:3]" t-as="skill">
+                                        <span class="mz-skill-tag" t-esc="skill.name"/>
+                                    </t>
+                                    <t t-if="len(alumni.skill_ids) > 3">
+                                        <span class="mz-skill-tag mz-skill-more">+<t t-esc="len(alumni.skill_ids) - 3"/></span>
+                                    </t>
+                                </div>
+
+                                <!-- Match Score -->
+                                <t t-if="matchmaking_data.get(alumni.id)">
+                                    <div class="mz-match-score">
+                                        <span>🎯 <t t-esc="matchmaking_data[alumni.id]['skill_match']"/> skill cocok</span>
+                                    </div>
+                                </t>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="mz-mentor-actions">
+                                <a t-attf-href="/mentorize/mentor/#{alumni.id}" class="mz-btn mz-btn-outline">
+                                    Lihat Profil
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+
+                    <!-- Empty State -->
+                    <t t-if="not alumni_list">
+                        <div class="mz-empty-state">
+                            <div class="mz-empty-icon">🔍</div>
+                            <h3>Belum ada mentor tersedia</h3>
+                            <p>Coba lagi nanti atau ubah filter pencarian</p>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ======================== DETAIL MENTOR ======================== -->
+    <template id="page_detail_mentor" name="Detail Mentor">
+        <t t-call="mentorize.layout">
+            <div class="mz-page">
+                <!-- Back Button -->
+                <a href="/mentorize/mentor" class="mz-back-btn">← Kembali ke Daftar Mentor</a>
+
+                <div class="mz-detail-container">
+                    <!-- Left: Profil -->
+                    <div class="mz-detail-left">
+                        <div class="mz-profile-card">
+                            <!-- Avatar Besar -->
+                            <div class="mz-avatar-lg">
+                                <span t-esc="alumni.name[0].upper() if alumni.name else 'A'"/>
+                            </div>
+
+                            <h2 t-esc="alumni.name"/>
+                            <p class="mz-mentor-title">
+                                <t t-esc="alumni.pekerjaan or '-'"/>
+                                <t t-if="alumni.tempat_bekerja"> di <t t-esc="alumni.tempat_bekerja"/></t>
+                            </p>
+
+                            <!-- Status -->
+                            <div t-attf-class="mz-status-badge mz-status-#{alumni.ketersediaan}">
+                                <t t-if="alumni.ketersediaan == 'available'">🟢 Tersedia</t>
+                                <t t-elif="alumni.ketersediaan == 'busy'">🟡 Sibuk</t>
+                                <t t-else="">🔴 Offline</t>
+                            </div>
+
+                            <!-- Stats -->
+                            <div class="mz-profile-stats">
+                                <div class="mz-stat">
+                                    <span class="mz-stat-value">★ <t t-esc="'%.1f' % alumni.rating"/></span>
+                                    <span class="mz-stat-label">Rating</span>
+                                </div>
+                                <div class="mz-stat">
+                                    <span class="mz-stat-value" t-esc="alumni.slot_mentoring"/>
+                                    <span class="mz-stat-label">Slot Tersisa</span>
+                                </div>
+                                <div class="mz-stat">
+                                    <span class="mz-stat-value" t-esc="alumni.tahun_lulus or '-'"/>
+                                    <span class="mz-stat-label">Tahun Lulus</span>
+                                </div>
+                            </div>
+
+                            <!-- Match Info -->
+                            <t t-if="match_info">
+                                <div class="mz-match-info-card">
+                                    <h4>🎯 Kecocokan dengan Kamu</h4>
+                                    <div class="mz-match-bar">
+                                        <div class="mz-match-fill" t-attf-style="width: #{min(100, match_info.score * 10)}%"/>
+                                    </div>
+                                    <p><b><t t-esc="match_info.skill_match"/></b> skill cocok · Skor: <b><t t-esc="'%.1f' % match_info.score"/></b></p>
+                                </div>
+                            </t>
+
+                            <!-- Tombol Request -->
+                            <t t-if="mahasiswa">
+                                <t t-if="existing_request">
+                                    <div class="mz-alert mz-alert-info">
+                                        <t t-if="existing_request.status == 'pending'">
+                                            ⏳ Request kamu sedang menunggu konfirmasi
+                                        </t>
+                                        <t t-elif="existing_request.status == 'approved'">
+                                            ✅ Kamu sudah terhubung dengan mentor ini
+                                        </t>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="alumni.ketersediaan == 'available' and alumni.slot_mentoring > 0">
+                                        <button onclick="document.getElementById('modal-request').style.display='flex'" class="mz-btn mz-btn-primary mz-btn-full">
+                                            📩 Ajukan Mentoring
+                                        </button>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="mz-alert mz-alert-warning">Mentor sedang tidak tersedia</div>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+
+                    <!-- Right: Detail Info -->
+                    <div class="mz-detail-right">
+                        <!-- Deskripsi -->
+                        <div class="mz-detail-section">
+                            <h3>Tentang Mentor</h3>
+                            <p t-esc="alumni.deskripsi or 'Belum ada deskripsi.'"/>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="mz-detail-section">
+                            <h3>Keahlian</h3>
+                            <div class="mz-skill-tags">
+                                <t t-foreach="alumni.skill_ids" t-as="skill">
+                                    <span class="mz-skill-tag" t-esc="skill.name"/>
+                                </t>
+                                <t t-if="not alumni.skill_ids">
+                                    <p class="mz-text-muted">Belum ada skill terdaftar</p>
+                                </t>
+                            </div>
+                        </div>
+
+                        <!-- Pengalaman -->
+                        <div class="mz-detail-section">
+                            <h3>Pengalaman</h3>
+                            <t t-foreach="alumni.experience_ids" t-as="exp">
+                                <div class="mz-experience-item">
+                                    <div class="mz-exp-header">
+                                        <b t-esc="exp.posisi or '-'"/>
+                                        <span class="mz-text-muted"> di </span>
+                                        <span t-esc="exp.perusahaan or '-'"/>
+                                    </div>
+                                    <p class="mz-text-muted" t-esc="exp.deskripsi or ''"/>
+                                </div>
+                            </t>
+                            <t t-if="not alumni.experience_ids">
+                                <p class="mz-text-muted">Belum ada pengalaman terdaftar</p>
+                            </t>
+                        </div>
+
+                        <!-- Review -->
+                        <div class="mz-detail-section">
+                            <h3>Ulasan Mentee</h3>
+                            <t t-foreach="feedbacks" t-as="fb">
+                                <div class="mz-review-item">
+                                    <div class="mz-review-header">
+                                        <span class="mz-review-name" t-esc="fb.mahasiswa_id.name or 'Anonim'"/>
+                                        <span class="mz-review-star">★ <t t-esc="fb.rating"/></span>
+                                    </div>
+                                    <p t-esc="fb.komentar or ''"/>
+                                </div>
+                            </t>
+                            <t t-if="not feedbacks">
+                                <p class="mz-text-muted">Belum ada ulasan</p>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Request Mentoring -->
+                <div id="modal-request" class="mz-modal-overlay" style="display:none;">
+                    <div class="mz-modal">
+                        <h3>📩 Ajukan Mentoring</h3>
+                        <p>Kirim permintaan mentoring kepada <b t-esc="alumni.name"/></p>
+                        <form t-attf-action="/mentorize/mentor/request/#{alumni.id}" method="POST">
+                            <div class="mz-form-group">
+                                <label>Topik Mentoring *</label>
+                                <input type="text" name="topik" placeholder="Contoh: Tips masuk dunia kerja, Review CV, dsb." required="1"/>
+                            </div>
+                            <div class="mz-form-group">
+                                <label>Deskripsi / Catatan (opsional)</label>
+                                <textarea name="deskripsi" rows="4" placeholder="Ceritakan lebih detail apa yang ingin kamu diskusikan..."/>
+                            </div>
+                            <div class="mz-modal-actions">
+                                <button type="button" onclick="document.getElementById('modal-request').style.display='none'" class="mz-btn mz-btn-outline">
+                                    Batal
+                                </button>
+                                <button type="submit" class="mz-btn mz-btn-primary">
+                                    Kirim Request
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ======================== REKOMENDASI MENTOR ======================== -->
+    <template id="page_rekomendasi_mentor" name="Rekomendasi Mentor">
+        <t t-call="mentorize.layout">
+            <div class="mz-page">
+                <div class="mz-page-header">
+                    <h1>✨ Rekomendasi Mentor untuk Kamu</h1>
+                    <p>Berdasarkan skill dan minat yang kamu miliki</p>
+                </div>
+
+                <div class="mz-mentor-grid">
+                    <t t-foreach="matchmakings" t-as="match">
+                        <div class="mz-mentor-card">
+                            <t t-if="match.is_recommended">
+                                <div class="mz-badge-recommended">⭐ Top Match</div>
+                            </t>
+                            <div class="mz-mentor-avatar">
+                                <span t-esc="match.alumni_id.name[0].upper()"/>
+                            </div>
+                            <div class="mz-mentor-info">
+                                <h3 t-esc="match.alumni_id.name"/>
+                                <p t-esc="match.alumni_id.pekerjaan or '-'"/>
+                                <div class="mz-mentor-rating">
+                                    <span class="mz-star">★</span>
+                                    <span t-esc="'%.1f' % match.alumni_id.rating"/>
+                                </div>
+                                <div class="mz-match-score-detail">
+                                    <span>🎯 Skor Kecocokan: <b><t t-esc="'%.1f' % match.score"/></b></span>
+                                    <span>· <t t-esc="match.skill_match"/> skill cocok</span>
+                                </div>
+                                <div class="mz-skill-tags">
+                                    <t t-foreach="match.alumni_id.skill_ids[:3]" t-as="skill">
+                                        <span class="mz-skill-tag" t-esc="skill.name"/>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="mz-mentor-actions">
+                                <a t-attf-href="/mentorize/mentor/#{match.alumni_id.id}" class="mz-btn mz-btn-primary">
+                                    Lihat Profil
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+
+                    <t t-if="not matchmakings">
+                        <div class="mz-empty-state">
+                            <div class="mz-empty-icon">🤔</div>
+                            <h3>Belum ada rekomendasi</h3>
+                            <p>Lengkapi profil skill dan minat kamu agar sistem bisa menemukan mentor yang cocok</p>
+                            <a href="/mentorize/mahasiswa/dashboard" class="mz-btn mz-btn-primary">Lengkapi Profil</a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ======================== RIWAYAT MAHASISWA ======================== -->
+    <template id="page_riwayat_mahasiswa" name="Riwayat Mentoring Mahasiswa">
+        <t t-call="mentorize.layout">
+            <div class="mz-page">
+                <div class="mz-page-header">
+                    <h1>📋 Riwayat Mentoring</h1>
+                    <p>Semua request mentoring yang pernah kamu ajukan</p>
+                    <a href="/mentorize/mentor" class="mz-btn mz-btn-primary">+ Cari Mentor Baru</a>
+                </div>
+
+                <!-- Success Alert -->
+                <t t-if="success">
+                    <div class="mz-alert mz-alert-success">
+                        ✅ Request mentoring berhasil dikirim! Tunggu konfirmasi dari mentor.
+                    </div>
+                </t>
+
+                <!-- Tabel Riwayat -->
+                <div class="mz-table-container">
+                    <table class="mz-table">
+                        <thead>
+                            <tr>
+                                <th>Mentor</th>
+                                <th>Topik</th>
+                                <th>Tanggal Request</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="requests" t-as="req">
+                                <tr>
+                                    <td>
+                                        <div class="mz-table-mentor">
+                                            <span class="mz-table-avatar" t-esc="req.alumni_id.name[0].upper()"/>
+                                            <span t-esc="req.alumni_id.name"/>
+                                        </div>
+                                    </td>
+                                    <td t-esc="req.topik"/>
+                                    <td t-esc="req.tanggal_request.strftime('%d %b %Y') if req.tanggal_request else '-'"/>
+                                    <td>
+                                        <span t-attf-class="mz-status-pill mz-status-#{req.status}">
+                                            <t t-if="req.status == 'pending'">⏳ Menunggu</t>
+                                            <t t-elif="req.status == 'approved'">✅ Diterima</t>
+                                            <t t-elif="req.status == 'rejected'">❌ Ditolak</t>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/mentorize/mentor/#{req.alumni_id.id}" class="mz-btn mz-btn-sm mz-btn-outline">
+                                            Lihat Mentor
+                                        </a>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <t t-if="not requests">
+                        <div class="mz-empty-state">
+                            <div class="mz-empty-icon">📭</div>
+                            <h3>Belum ada riwayat mentoring</h3>
+                            <p>Mulai dengan mencari mentor yang sesuai</p>
+                            <a href="/mentorize/mentor" class="mz-btn mz-btn-primary">Cari Mentor</a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ======================== RIWAYAT ALUMNI ======================== -->
+    <template id="page_riwayat_alumni" name="Riwayat Mentoring Alumni">
+        <t t-call="mentorize.layout">
+            <div class="mz-page">
+                <div class="mz-page-header">
+                    <h1>📋 Riwayat Mentoring</h1>
+                    <p>Semua request mentoring yang masuk ke kamu</p>
+                </div>
+
+                <div class="mz-table-container">
+                    <table class="mz-table">
+                        <thead>
+                            <tr>
+                                <th>Mahasiswa</th>
+                                <th>Topik</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="requests" t-as="req">
+                                <tr>
+                                    <td t-esc="req.mahasiswa_id.name"/>
+                                    <td t-esc="req.topik"/>
+                                    <td t-esc="req.tanggal_request.strftime('%d %b %Y') if req.tanggal_request else '-'"/>
+                                    <td>
+                                        <span t-attf-class="mz-status-pill mz-status-#{req.status}">
+                                            <t t-if="req.status == 'pending'">⏳ Menunggu</t>
+                                            <t t-elif="req.status == 'approved'">✅ Diterima</t>
+                                            <t t-elif="req.status == 'rejected'">❌ Ditolak</t>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <t t-if="not requests">
+                        <div class="mz-empty-state">
+                            <div class="mz-empty-icon">📭</div>
+                            <h3>Belum ada riwayat</h3>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

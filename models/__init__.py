@@ -7,3 +7,5 @@ from . import mentorize_request
 from . import mentorize_session
 from . import mentorize_chat
 from . import mentorize_feedback
+from . import mentorize_skill
+from . import mentorize_minat
