@@ -1,0 +1,31 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mahasiswa_user,mentorize.mahasiswa mahasiswa,model_mentorize_mahasiswa,mentorize.group_mentorize_mahasiswa,1,1,1,0
+access_mahasiswa_admin,mentorize.mahasiswa admin,model_mentorize_mahasiswa,mentorize.group_mentorize_admin,1,1,1,1
+access_alumni_mahasiswa_read,mentorize.alumni mahasiswa read,model_mentorize_alumni,mentorize.group_mentorize_mahasiswa,1,0,0,0
+access_alumni_user,mentorize.alumni alumni,model_mentorize_alumni,mentorize.group_mentorize_alumni,1,1,1,0
+access_alumni_admin,mentorize.alumni admin,model_mentorize_alumni,mentorize.group_mentorize_admin,1,1,1,1
+access_minat_user,mentorize.minat user,model_mentorize_minat,base.group_user,1,0,0,0
+access_minat_admin,mentorize.minat admin,model_mentorize_minat,mentorize.group_mentorize_admin,1,1,1,1
+access_skill_user,mentorize.skill user,model_mentorize_skill,base.group_user,1,0,0,0
+access_skill_admin,mentorize.skill admin,model_mentorize_skill,mentorize.group_mentorize_admin,1,1,1,1
+access_experience_alumni,mentorize.experience alumni,model_mentorize_experience,mentorize.group_mentorize_alumni,1,1,1,0
+access_experience_mahasiswa_read,mentorize.experience mahasiswa read,model_mentorize_experience,mentorize.group_mentorize_mahasiswa,1,0,0,0
+access_experience_admin,mentorize.experience admin,model_mentorize_experience,mentorize.group_mentorize_admin,1,1,1,1
+access_matchmaking_mahasiswa,mentorize.matchmaking mahasiswa,model_mentorize_matchmaking,mentorize.group_mentorize_mahasiswa,1,1,1,0
+access_matchmaking_alumni,mentorize.matchmaking alumni,model_mentorize_matchmaking,mentorize.group_mentorize_alumni,1,0,0,0
+access_matchmaking_admin,mentorize.matchmaking admin,model_mentorize_matchmaking,mentorize.group_mentorize_admin,1,1,1,1
+access_request_mahasiswa,mentorize.request mahasiswa,model_mentorize_request,mentorize.group_mentorize_mahasiswa,1,1,1,0
+access_request_alumni,mentorize.request alumni,model_mentorize_request,mentorize.group_mentorize_alumni,1,1,0,0
+access_request_admin,mentorize.request admin,model_mentorize_request,mentorize.group_mentorize_admin,1,1,1,1
+access_session_mahasiswa,mentorize.session mahasiswa,model_mentorize_session,mentorize.group_mentorize_mahasiswa,1,1,1,0
+access_session_alumni,mentorize.session alumni,model_mentorize_session,mentorize.group_mentorize_alumni,1,1,0,0
+access_session_admin,mentorize.session admin,model_mentorize_session,mentorize.group_mentorize_admin,1,1,1,1
+access_roomchat_mahasiswa,mentorize.roomchat mahasiswa,model_mentorize_roomchat,mentorize.group_mentorize_mahasiswa,1,1,1,0
+access_roomchat_alumni,mentorize.roomchat alumni,model_mentorize_roomchat,mentorize.group_mentorize_alumni,1,1,0,0
+access_roomchat_admin,mentorize.roomchat admin,model_mentorize_roomchat,mentorize.group_mentorize_admin,1,1,1,1
+access_message_mahasiswa,mentorize.message mahasiswa,model_mentorize_message,mentorize.group_mentorize_mahasiswa,1,1,1,0
+access_message_alumni,mentorize.message alumni,model_mentorize_message,mentorize.group_mentorize_alumni,1,1,1,0
+access_message_admin,mentorize.message admin,model_mentorize_message,mentorize.group_mentorize_admin,1,1,1,1
+access_feedback_mahasiswa,mentorize.feedback mahasiswa,model_mentorize_feedback,mentorize.group_mentorize_mahasiswa,1,1,1,0
+access_feedback_alumni,mentorize.feedback alumni,model_mentorize_feedback,mentorize.group_mentorize_alumni,1,0,0,0
+access_feedback_admin,mentorize.feedback admin,model_mentorize_feedback,mentorize.group_mentorize_admin,1,1,1,1

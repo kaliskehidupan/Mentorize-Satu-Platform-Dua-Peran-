@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_mentorize_mahasiswa" model="res.groups">
+            <field name="name">Mahasiswa</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+        <record id="group_mentorize_alumni" model="res.groups">
+            <field name="name">Alumni</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+        <record id="group_mentorize_admin" model="res.groups">
+            <field name="name">Admin Mentorize</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+        <record id="rule_mahasiswa_own_profile" model="ir.rule">
+            <field name="name">Mahasiswa: hanya lihat profil sendiri</field>
+            <field name="model_id" ref="model_mentorize_mahasiswa"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_alumni_own_profile" model="ir.rule">
+            <field name="name">Alumni: hanya lihat profil sendiri</field>
+            <field name="model_id" ref="model_mentorize_alumni"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_mahasiswa_own_request" model="ir.rule">
+            <field name="name">Mahasiswa: hanya lihat request sendiri</field>
+            <field name="model_id" ref="model_mentorize_request"/>
+            <field name="domain_force">[('mahasiswa_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_alumni_own_request" model="ir.rule">
+            <field name="name">Alumni: hanya lihat request untuk dirinya</field>
+            <field name="model_id" ref="model_mentorize_request"/>
+            <field name="domain_force">[('alumni_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_mahasiswa_own_session" model="ir.rule">
+            <field name="name">Mahasiswa: hanya lihat sesi sendiri</field>
+            <field name="model_id" ref="model_mentorize_session"/>
+            <field name="domain_force">[('request_id.mahasiswa_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_alumni_own_session" model="ir.rule">
+            <field name="name">Alumni: hanya lihat sesi sendiri</field>
+            <field name="model_id" ref="model_mentorize_session"/>
+            <field name="domain_force">[('request_id.alumni_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_mahasiswa_own_chat" model="ir.rule">
+            <field name="name">Mahasiswa: hanya lihat chat sendiri</field>
+            <field name="model_id" ref="model_mentorize_roomchat"/>
+            <field name="domain_force">[('request_id.mahasiswa_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_alumni_own_chat" model="ir.rule">
+            <field name="name">Alumni: hanya lihat chat sendiri</field>
+            <field name="model_id" ref="model_mentorize_roomchat"/>
+            <field name="domain_force">[('request_id.alumni_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_mahasiswa_own_message" model="ir.rule">
+            <field name="name">Mahasiswa: hanya lihat pesan sendiri</field>
+            <field name="model_id" ref="model_mentorize_message"/>
+            <field name="domain_force">[('room_id.request_id.mahasiswa_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
+        </record>
+
+        <record id="rule_alumni_own_message" model="ir.rule">
+            <field name="name">Alumni: hanya lihat pesan sendiri</field>
+            <field name="model_id" ref="model_mentorize_message"/>
+            <field name="domain_force">[('room_id.request_id.alumni_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
+        </record>
+
+        <record id="rule_mahasiswa_own_feedback" model="ir.rule">
+            <field name="name">Mahasiswa: hanya lihat feedback sendiri</field>
+            <field name="model_id" ref="model_mentorize_feedback"/>
+            <field name="domain_force">[('mahasiswa_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
+        </record>
+
+        <record id="rule_alumni_own_feedback" model="ir.rule">
+            <field name="name">Alumni: hanya lihat feedback untuk dirinya</field>
+            <field name="model_id" ref="model_mentorize_feedback"/>
+            <field name="domain_force">[('alumni_id.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
+        </record>
+    </data>
+</odoo>

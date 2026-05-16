@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="page_register" name="Mentorize Register">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+
+    <main class="mtz-auth-page">
+      <section class="mtz-auth-visual mtz-animate-left">
+        <div class="mtz-auth-visual-inner">
+          <img src="/mentorize/static/src/img/mentorize-illustration.svg" alt="Mentorize"/>
+          <h2>Mulai Perjalanan Mentoringmu</h2>
+          <p>Daftar sebagai mahasiswa atau alumni untuk bergabung dalam ekosistem mentorship Mentorize.</p>
+        </div>
+      </section>
+
+      <section class="mtz-auth-panel mtz-animate-right">
+        <div class="mtz-auth-card mtz-auth-card-scroll">
+          <a class="mtz-logo" href="/">
+            <span class="mtz-logo-circle">M</span>
+            <span>Mentorize</span>
+          </a>
+          <h1>Daftar Akun Mentorize</h1>
+          <p class="mtz-subtitle">Buat akun Anda untuk memulai</p>
+
+          <t t-if="error">
+            <div class="mtz-alert-error"><t t-esc="error"/></div>
+          </t>
+
+          <form action="/register/submit" method="post" class="mtz-form mtz-loading-form">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input type="hidden" name="role" id="input-role" value="mahasiswa"/>
+
+            <p class="mtz-role-label">Daftar Sebagai</p>
+            <div class="mtz-role-owl-root" data-kind="register" data-default-role="mahasiswa"></div>
+
+            <div class="mtz-form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" name="name" placeholder="Masukkan nama lengkap Anda" required="1"/>
+            </div>
+            <div class="mtz-form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="nama@email.com" required="1" autocomplete="email"/>
+            </div>
+            <div class="mtz-form-group">
+              <label id="identity-label">NIM</label>
+              <input type="text" name="identity" id="identity-input" placeholder="Masukkan NIM Anda" required="1"/>
+            </div>
+            <div class="mtz-form-group">
+              <label>Password</label>
+              <input type="password" name="password" placeholder="••••••••" required="1" autocomplete="new-password"/>
+            </div>
+            <div class="mtz-form-group">
+              <label>Konfirmasi Password</label>
+              <input type="password" name="confirm_password" placeholder="••••••••" required="1" autocomplete="new-password"/>
+            </div>
+
+            <label class="mtz-checkbox-label">
+              <input type="checkbox" name="agree" required="1"/>
+              <span>Saya menyetujui Syarat &amp; Ketentuan dan Kebijakan Privasi.</span>
+            </label>
+
+            <button type="submit" class="mtz-btn-primary" id="btn-register">Daftar sebagai Mahasiswa</button>
+          </form>
+
+          <p class="mtz-register-link">Sudah punya akun? <a href="/login">Masuk sekarang</a></p>
+        </div>
+      </section>
+    </main>
+  </t>
+</template>
+</data>
+</odoo>

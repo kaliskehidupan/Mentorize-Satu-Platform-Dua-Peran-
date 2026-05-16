@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="page_mentors" name="Cari Mentor">
+  <t t-call="web.layout">
+    <t t-set="head"><link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/></t>
+
+    <main class="mtz-app-page">
+      <nav class="mtz-app-nav mtz-animate-down">
+        <a href="/dashboard" class="mtz-brand"><span class="mtz-logo-circle">M</span><span>Mentorize</span></a>
+        <div class="mtz-app-menu"><a href="/dashboard">Dashboard</a><a href="/mentors" class="active">Cari Mentor</a><a href="/profile">Profil</a><a href="/history">Riwayat</a><a href="/chat">Chat</a></div>
+        <div class="mtz-user-chip"><span class="mtz-avatar-circle"><t t-esc="user.name and user.name[:1].upper() or 'M'"/></span><span><b t-esc="user.name"/><small>Mahasiswa</small></span></div>
+      </nav>
+
+      <section class="mtz-dashboard-shell">
+        <div class="mtz-page-heading mtz-animate-up">
+          <div><span class="mtz-kicker">Cari Mentor</span><h1>Temukan alumni mentor yang sesuai</h1><p>Gunakan pencarian untuk mencari mentor berdasarkan nama, pekerjaan, atau tempat bekerja.</p></div>
+        </div>
+
+        <form action="/mentors" method="get" class="mtz-search-card mtz-animate-up mtz-delay-1">
+          <input type="text" name="q" t-att-value="query" placeholder="Cari mentor, bidang, pekerjaan..."/>
+          <button class="mtz-btn-primary mtz-btn-fit" type="submit">Cari</button>
+        </form>
+
+        <div class="mtz-mentor-grid mtz-mentor-grid-large mtz-animate-up mtz-delay-2">
+          <t t-if="not alumni_list"><div class="mtz-empty-state full"><b>Belum ada mentor ditemukan.</b><p>Coba kata kunci lain atau pastikan data alumni sudah tersedia.</p></div></t>
+          <t t-foreach="alumni_list" t-as="mentor">
+            <article class="mtz-mentor-card">
+              <div class="mtz-mentor-top">
+                <span class="mtz-avatar-circle"><t t-esc="mentor.name and mentor.name[:1].upper() or 'A'"/></span>
+                <div><h3 t-esc="mentor.name"/><p t-esc="mentor.pekerjaan or mentor.tempat_bekerja or 'Alumni Mentor'"/></div>
+                <span class="mtz-rating">★ <t t-esc="mentor.rating and ('%.1f' % mentor.rating) or '0.0'"/></span>
+              </div>
+              <p class="mtz-mentor-desc" t-esc="mentor.deskripsi or 'Belum ada deskripsi. Mentor ini tetap dapat menerima permintaan mentoring.'"/>
+              <div class="mtz-badge-list"><t t-foreach="mentor.skill_ids[:4]" t-as="skill"><span class="mtz-badge-skill" t-esc="skill.name"/></t></div>
+              <form t-attf-action="/mentors/#{mentor.id}/request" method="post" class="mtz-inline-form mtz-loading-form">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="mtz-form-group"><label>Topik Mentoring</label><input type="text" name="topik" value="Mentoring karier dan pengembangan skill"/></div>
+                <button type="submit" class="mtz-btn-primary">Ajukan Mentoring</button>
+              </form>
+            </article>
+          </t>
+        </div>
+      </section>
+    </main>
+  </t>
+</template>
+</data>
+</odoo>
