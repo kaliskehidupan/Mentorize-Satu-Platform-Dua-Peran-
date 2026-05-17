@@ -19,5 +19,3 @@ class ResUsers(models.Model):
         ('busy', 'Sibuk'),
         ('offline', 'Offline'),
     ], string='Ketersediaan', default='available')
-    
-    

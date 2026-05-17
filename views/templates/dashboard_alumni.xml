@@ -3,6 +3,7 @@
 <data>
 <template id="dashboard_alumni" name="Dashboard Alumni">
   <t t-call="web.layout">
+<<<<<<< HEAD
     <t t-set="head">
       <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
     </t>
@@ -104,3 +105,42 @@
 </template>
 </data>
 </odoo>
+=======
+    <t t-set="head"><link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/></t>
+
+    <main class="mtz-app-page">
+      <nav class="mtz-app-nav mtz-animate-down">
+        <a href="/alumni/dashboard" class="mtz-brand"><span class="mtz-logo-circle">M</span><span>Mentorize</span></a>
+        <div class="mtz-app-menu"><a href="/alumni/dashboard" class="active">Dashboard</a><a href="/sessions">Sesi Mentoring</a><a href="/chat">Chat</a></div>
+        <div class="mtz-user-chip"><span class="mtz-avatar-circle"><t t-esc="user.name and user.name[:1].upper() or 'A'"/></span><span><b t-esc="user.name"/><small>Alumni</small></span></div>
+      </nav>
+
+      <section class="mtz-dashboard-shell">
+        <div class="mtz-hero-dashboard alumni mtz-animate-up">
+          <div><span class="mtz-kicker-light">Dashboard Alumni</span><h1>Selamat datang, <t t-esc="alumni.name"/> ⭐</h1><p>Terima kasih telah berkontribusi membimbing generasi berikutnya.</p></div>
+        </div>
+
+        <div class="mtz-stats-row four mtz-animate-up mtz-delay-1">
+          <div class="mtz-stat-box dark"><small>Permintaan Baru</small><strong t-esc="stats['permintaan_baru']"/></div>
+          <div class="mtz-stat-box dark"><small>Sesi Aktif</small><strong t-esc="stats['sesi_aktif']"/></div>
+          <div class="mtz-stat-box dark"><small>Sesi Selesai</small><strong t-esc="stats['sesi_selesai']"/></div>
+          <div class="mtz-stat-box dark"><small>Rating Mentor</small><strong>★ <t t-esc="stats['rating']"/></strong></div>
+        </div>
+
+        <section class="mtz-panel mtz-animate-up mtz-delay-2">
+          <div class="mtz-panel-header compact"><div><h2>Permintaan Mentoring Terbaru</h2><p>Terima atau tolak permintaan dari mahasiswa.</p></div></div>
+          <t t-if="not requests"><div class="mtz-empty-small">Belum ada permintaan mentoring.</div></t>
+          <t t-foreach="requests" t-as="req">
+            <div class="mtz-request-card">
+              <div class="mtz-request-info"><span class="mtz-avatar-circle"><t t-esc="req.mahasiswa_id.name and req.mahasiswa_id.name[:1].upper() or 'M'"/></span><div><b t-esc="req.mahasiswa_id.name"/><small t-esc="req.mahasiswa_id.jurusan or 'Mahasiswa'"/><p>Topik: <t t-esc="req.topik"/></p></div></div>
+              <div class="mtz-request-actions"><a t-attf-href="/alumni/request/#{req.id}/approve" class="mtz-btn-accept">Terima</a><a t-attf-href="/alumni/request/#{req.id}/reject" class="mtz-btn-reject">Tolak</a></div>
+            </div>
+          </t>
+        </section>
+      </section>
+    </main>
+  </t>
+</template>
+</data>
+</odoo>
+>>>>>>> origin/sesi-mentoring-aisy

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="minat_web_development" model="mentorize.minat"><field name="name">Web Development</field></record>
+    <record id="minat_mobile_development" model="mentorize.minat"><field name="name">Mobile Development</field></record>
+    <record id="minat_data_science" model="mentorize.minat"><field name="name">Data Science</field></record>
+    <record id="minat_uiux" model="mentorize.minat"><field name="name">UI/UX Design</field></record>
+    <record id="minat_cyber_security" model="mentorize.minat"><field name="name">Cyber Security</field></record>
+    <record id="minat_project_management" model="mentorize.minat"><field name="name">Project Management</field></record>
+
+    <record id="skill_python" model="mentorize.skill"><field name="name">Python</field></record>
+    <record id="skill_javascript" model="mentorize.skill"><field name="name">JavaScript</field></record>
+    <record id="skill_odoo" model="mentorize.skill"><field name="name">Odoo</field></record>
+    <record id="skill_sql" model="mentorize.skill"><field name="name">SQL</field></record>
+    <record id="skill_figma" model="mentorize.skill"><field name="name">Figma</field></record>
+    <record id="skill_communication" model="mentorize.skill"><field name="name">Communication</field></record>
+</data>
+</odoo>

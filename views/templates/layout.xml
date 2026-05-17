@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<<<<<<< HEAD
     <template id="layout" name="Mentorize Layout">
         <t t-call="web.layout">
             <t t-set="head">
@@ -35,4 +36,8 @@
             </div>
         </t>
     </template>
+=======
+    <data>
+    </data>
+>>>>>>> origin/sesi-mentoring-aisy
 </odoo>
