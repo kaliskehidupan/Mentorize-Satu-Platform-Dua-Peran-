@@ -1,5 +1,6 @@
 from odoo import models, fields
 
+
 class MentorizeMinat(models.Model):
     _name = 'mentorize.minat'
     _description = 'Minat'
@@ -15,4 +16,3 @@ class MentorizeExperience(models.Model):
     posisi = fields.Char(string='Posisi')
     tanggal = fields.Date(string='Tanggal')
     deskripsi = fields.Text(string='Deskripsi')
-    

@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-    </data>
+<data>
+<template id="dashboard_admin" name="Dashboard Admin Mentorize">
+  <t t-call="web.layout">
+    <t t-set="head"><link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/></t>
+    <main class="mtz-app-page">
+      <nav class="mtz-app-nav mtz-animate-down"><a href="/admin/dashboard" class="mtz-brand"><span class="mtz-logo-circle">M</span><span>Mentorize</span></a><div class="mtz-app-menu"><a class="active" href="/admin/dashboard">Dashboard Admin</a></div><div class="mtz-user-chip"><span class="mtz-avatar-circle">A</span><span><b t-esc="user.name"/><small>Admin</small></span></div></nav>
+      <section class="mtz-dashboard-shell">
+        <div class="mtz-hero-dashboard mtz-animate-up"><div><span class="mtz-kicker-light">Admin Mentorize</span><h1>Monitoring Platform</h1><p>Pantau data pengguna, request, dan sesi mentoring.</p></div></div>
+        <div class="mtz-stats-row four mtz-animate-up mtz-delay-1">
+          <div class="mtz-stat-box"><span class="mtz-stat-icon green">🎓</span><div><small>Mahasiswa</small><strong t-esc="stats['mahasiswa']"/></div></div>
+          <div class="mtz-stat-box"><span class="mtz-stat-icon yellow">⭐</span><div><small>Alumni</small><strong t-esc="stats['alumni']"/></div></div>
+          <div class="mtz-stat-box"><span class="mtz-stat-icon blue">🤝</span><div><small>Request</small><strong t-esc="stats['request']"/></div></div>
+          <div class="mtz-stat-box"><span class="mtz-stat-icon purple">📅</span><div><small>Sesi</small><strong t-esc="stats['session']"/></div></div>
+        </div>
+      </section>
+    </main>
+  </t>
+</template>
+</data>
 </odoo>

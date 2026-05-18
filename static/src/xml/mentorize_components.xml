@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+  <t t-name="mentorize.RoleSelector" owl="1">
+    <div class="mtz-role-grid" t-ref="root">
+      <button type="button" t-att-class="state.role === 'mahasiswa' ? 'mtz-role-card active' : 'mtz-role-card'" t-on-click="() => this.selectRole('mahasiswa')">
+        <div class="mtz-role-icon">🎓</div>
+        <div class="mtz-role-name">Mahasiswa</div>
+        <div class="mtz-role-desc">Cari mentor &amp; kembangkan skill</div>
+      </button>
+      <button type="button" t-att-class="state.role === 'alumni' ? 'mtz-role-card active' : 'mtz-role-card'" t-on-click="() => this.selectRole('alumni')">
+        <div class="mtz-role-icon">⭐</div>
+        <div class="mtz-role-name">Alumni</div>
+        <div class="mtz-role-desc">Bagikan pengalaman &amp; mentor</div>
+      </button>
+    </div>
+  </t>
+</templates>
