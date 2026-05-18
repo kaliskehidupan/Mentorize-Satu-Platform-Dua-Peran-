@@ -1,43 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<<<<<<< HEAD
-    <template id="layout" name="Mentorize Layout">
-        <t t-call="web.layout">
-            <t t-set="head">
-                <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
-            </t>
-            <div id="wrap" class="mz-wrap">
-                <!-- Navbar -->
-                <nav class="mz-navbar">
-                    <div class="mz-navbar-brand">
-                        <a href="/mentorize">
-                            <span class="mz-logo-icon">M</span>
-                            <span class="mz-logo-text">Mentorize</span>
-                        </a>
-                    </div>
-                    <div class="mz-navbar-menu">
-                        <a href="/mentorize/mentor" class="mz-nav-link">Cari Mentor</a>
-                        <a href="/mentorize/mentor/rekomendasi" class="mz-nav-link">Rekomendasi</a>
-                        <a href="/mentorize/mahasiswa/riwayat" class="mz-nav-link">Riwayat</a>
-                        <a href="/mentorize/mahasiswa/dashboard" class="mz-nav-link">Dashboard</a>
-                        <a href="/web/session/logout?redirect=/mentorize/login" class="mz-nav-link mz-nav-logout">Keluar</a>
-                    </div>
-                </nav>
-
-                <!-- Main Content -->
-                <main class="mz-main">
-                    <t t-out="0"/>
-                </main>
-
-                <!-- Footer -->
-                <footer class="mz-footer">
-                    <p>© 2025 Mentorize · UNISA Yogyakarta</p>
-                </footer>
-            </div>
-        </t>
-    </template>
-=======
     <data>
     </data>
->>>>>>> origin/sesi-mentoring-aisy
 </odoo>

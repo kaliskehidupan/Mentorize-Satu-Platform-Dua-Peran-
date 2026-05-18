@@ -18,8 +18,9 @@
         'views/templates/dashboard_alumni.xml',
         'views/templates/dashboard_admin.xml',
         'views/templates/matchmaking_views.xml',
-        'views/templates/page_profil_mahasiswa.xml',
-        'views/templates/page_edit_profil_mahasiswa.xml',
+        'views/templates/profil_mahasiswa.xml',
+        'views/templates/sesi_mentoring_alumni.xml'
+        'views/templates/sesi_mentoring_mahasiswa.xml',  
     ],
     'assets': {
         'web.assets_frontend': [

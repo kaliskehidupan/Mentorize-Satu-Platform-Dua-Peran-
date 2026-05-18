@@ -2,7 +2,10 @@
 <odoo>
 
     <template id="page_sesi_mentoring_alumni" name="Halaman Sesi Mentoring Alumni">
-        <t t-call="website.layout">
+        <t t-call="web.layout">
+    <t t-set="head">   
+        <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
 
             <style>
                 .mz-page {

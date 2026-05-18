@@ -6,95 +6,6 @@
     <t t-set="head">
       <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
     </t>
-<<<<<<< HEAD
-    <div class="mtz-login-page">
-      <div class="mtz-left">
-        <div class="mtz-illustration">
-          <img src="/mentorize/static/src/img/login-illustration.png" alt="Mentorize"/>
-        </div>
-        <h2>Satu Platform, Dua Peran</h2>
-        <p>Masuk sebagai mahasiswa atau alumni untuk melanjutkan mentoring dan pengembangan karier Anda.</p>
-      </div>
-      <div class="mtz-right">
-        <div class="mtz-logo">
-          <div class="mtz-logo-circle">M</div>
-          <span>Mentorize</span>
-        </div>
-        <h1>Masuk ke Mentorize</h1>
-        <p class="mtz-subtitle">Lanjutkan perjalanan mentoring Anda</p>
-
-        <p class="mtz-role-label">Masuk Sebagai</p>
-        <div class="mtz-role-grid">
-          <div class="mtz-role-card active" id="role-mahasiswa" onclick="selectRole('mahasiswa')">
-            <div class="mtz-role-icon">🎓</div>
-            <div class="mtz-role-name">Mahasiswa</div>
-            <div class="mtz-role-desc">Cari mentor &amp; kembangkan skill</div>
-          </div>
-          <div class="mtz-role-card" id="role-alumni" onclick="selectRole('alumni')">
-            <div class="mtz-role-icon">⭐</div>
-            <div class="mtz-role-name">Alumni</div>
-            <div class="mtz-role-desc">Bagikan pengalaman &amp; mentor</div>
-          </div>
-        </div>
-
-        <form action="/mentorize/login/submit" method="post">
-          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-          <input type="hidden" name="role" id="input-role" value="mahasiswa"/>
-
-          <div class="mtz-form-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="nama@email.com" required="1"/>
-          </div>
-          <div class="mtz-form-group" id="nim-field">
-            <label id="nim-label">NIM</label>
-            <input type="text" name="identity" id="identity-input" placeholder="Masukkan NIM Anda"/>
-          </div>
-          <div class="mtz-form-group">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="••••••••" required="1"/>
-          </div>
-
-          <div class="mtz-form-row">
-            <label class="mtz-remember"><input type="checkbox" name="remember"/> Ingat saya</label>
-            <a href="/mentorize/forgot-password" class="mtz-forgot">Lupa password?</a>
-          </div>
-
-          <button type="submit" class="mtz-btn-primary" id="btn-login">
-            Masuk sebagai Mahasiswa
-          </button>
-        </form>
-
-        <div class="mtz-divider"><span>atau</span></div>
-        <p class="mtz-register-link">
-          Belum punya akun? <a href="/mentorize/register">Daftar sekarang</a>
-        </p>
-      </div>
-    </div>
-    <script>
-      function selectRole(role) {
-        document.getElementById('role-mahasiswa').classList.remove('active');
-        document.getElementById('role-alumni').classList.remove('active');
-        document.getElementById('role-' + role).classList.add('active');
-        document.getElementById('input-role').value = role;
-        const nimLabel = document.getElementById('nim-label');
-        const identityInput = document.getElementById('identity-input');
-        const btnLogin = document.getElementById('btn-login');
-        if (role === 'mahasiswa') {
-          nimLabel.textContent = 'NIM';
-          identityInput.placeholder = 'Masukkan NIM Anda';
-          btnLogin.textContent = 'Masuk sebagai Mahasiswa';
-        } else {
-          nimLabel.textContent = 'KAPA';
-          identityInput.placeholder = 'Masukkan KAPA Anda';
-          btnLogin.textContent = 'Masuk sebagai Alumni';
-        }
-      }
-    </script>
-  </t>
-</template>
-</data>
-</odoo>
-=======
 
     <main class="mtz-auth-page">
       <section class="mtz-auth-visual mtz-animate-left">
@@ -118,12 +29,23 @@
             <div class="mtz-alert-error"><t t-esc="error"/></div>
           </t>
 
-          <form action="/login/submit" method="post" class="mtz-form mtz-loading-form">
+          <form action="/mentorize/login/submit" method="post" class="mtz-form mtz-loading-form">
             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
             <input type="hidden" name="role" id="input-role" value="mahasiswa"/>
 
             <p class="mtz-role-label">Masuk Sebagai</p>
-            <div class="mtz-role-owl-root" data-kind="login" data-default-role="mahasiswa"></div>
+            <div class="mtz-role-grid">
+              <div class="mtz-role-card active" id="role-mahasiswa" onclick="selectRole('mahasiswa')">
+                <div class="mtz-role-icon">🎓</div>
+                <div class="mtz-role-name">Mahasiswa</div>
+                <div class="mtz-role-desc">Cari mentor &amp; kembangkan skill</div>
+              </div>
+              <div class="mtz-role-card" id="role-alumni" onclick="selectRole('alumni')">
+                <div class="mtz-role-icon">⭐</div>
+                <div class="mtz-role-name">Alumni</div>
+                <div class="mtz-role-desc">Bagikan pengalaman &amp; mentor</div>
+              </div>
+            </div>
 
             <div class="mtz-form-group">
               <label>Email</label>
@@ -140,19 +62,39 @@
 
             <div class="mtz-form-row">
               <label class="mtz-remember"><input type="checkbox" name="remember"/> Ingat saya</label>
-              <a href="/forgot-password" class="mtz-forgot">Lupa password?</a>
+              <a href="/mentorize/forgot-password" class="mtz-forgot">Lupa password?</a>
             </div>
 
             <button type="submit" class="mtz-btn-primary" id="btn-login">Masuk sebagai Mahasiswa</button>
           </form>
 
           <div class="mtz-divider"><span>atau</span></div>
-          <p class="mtz-register-link">Belum punya akun? <a href="/register">Daftar sekarang</a></p>
+          <p class="mtz-register-link">Belum punya akun? <a href="/mentorize/register">Daftar sekarang</a></p>
         </div>
       </section>
     </main>
+
+    <script>
+      function selectRole(role) {
+        document.getElementById('role-mahasiswa').classList.remove('active');
+        document.getElementById('role-alumni').classList.remove('active');
+        document.getElementById('role-' + role).classList.add('active');
+        document.getElementById('input-role').value = role;
+        var identityLabel = document.getElementById('identity-label');
+        var identityInput = document.getElementById('identity-input');
+        var btnLogin = document.getElementById('btn-login');
+        if (role === 'mahasiswa') {
+          identityLabel.textContent = 'NIM';
+          identityInput.placeholder = 'Masukkan NIM Anda';
+          btnLogin.textContent = 'Masuk sebagai Mahasiswa';
+        } else {
+          identityLabel.textContent = 'KAPA';
+          identityInput.placeholder = 'Masukkan KAPA Anda';
+          btnLogin.textContent = 'Masuk sebagai Alumni';
+        }
+      }
+    </script>
   </t>
 </template>
 </data>
 </odoo>
->>>>>>> origin/sesi-mentoring-aisy

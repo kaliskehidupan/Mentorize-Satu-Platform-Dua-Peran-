@@ -199,7 +199,7 @@ class MentorizeController(http.Controller):
     # =====================
     # MAHASISWA ROUTES
     # =====================
-    @http.route('/mentorize/mahasiswa/dashboard', type='http', auth='user', website=True)
+    @http.route(['/mentorize/mahasiswa/dashboard', '/dashboard', '/mentorize/dashboard'], type='http', auth='user', website=True)
     def dashboard_mahasiswa(self, **kwargs):
         if self._current_role() == 'alumni':
             return request.redirect('/mentorize/alumni/dashboard')
@@ -265,7 +265,7 @@ class MentorizeController(http.Controller):
     # =====================
     # PROFIL MAHASISWA
     # =====================
-    @http.route('/mentorize/mahasiswa/profil', type='http', auth='user', website=True)
+    @http.route(['/mentorize/mahasiswa/profil', '/profile', '/mentorize/profile'], type='http', auth='user', website=True)
     def profil_mahasiswa(self, **kwargs):
         if self._current_role() == 'alumni':
             return request.redirect('/mentorize/alumni/dashboard')
@@ -281,7 +281,7 @@ class MentorizeController(http.Controller):
             'success': kwargs.get('success'),
         })
 
-    @http.route('/mentorize/mahasiswa/profil/edit', type='http', auth='user', website=True)
+    @http.route(['/mentorize/mahasiswa/profil/edit', '/profile/edit'], type='http', auth='user', website=True)
     def edit_profil_mahasiswa(self, **kwargs):
         if self._current_role() == 'alumni':
             return request.redirect('/mentorize/alumni/dashboard')
@@ -297,7 +297,7 @@ class MentorizeController(http.Controller):
             'selected_skill_ids': mahasiswa.skill_ids.ids,
         })
 
-    @http.route('/mentorize/mahasiswa/profil/update', type='http', auth='user', website=True, methods=['POST'], csrf=False)
+    @http.route(['/mentorize/mahasiswa/profil/update', '/profile/update'], type='http', auth='user', website=True, methods=['POST'], csrf=False)
     def update_profil_mahasiswa(self, **kwargs):
         mahasiswa = self._ensure_mahasiswa()
         user = request.env.user.sudo()
@@ -331,7 +331,7 @@ class MentorizeController(http.Controller):
     # =====================
     # LIST MENTOR
     # =====================
-    @http.route('/mentorize/mentor', type='http', auth='user', website=True)
+    @http.route(['/mentorize/mentor', '/mentor', '/mentors', '/mentorize/mahasiswa/cari-mentor'], type='http', auth='user', website=True)
     def list_mentor(self, **kwargs):
         user = request.env.user
         mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
@@ -364,12 +364,13 @@ class MentorizeController(http.Controller):
             'matchmaking_data': matchmaking_data,
             'mahasiswa': mahasiswa,
             'skills': skills,
+            'user': request.env.user.sudo(),
         })
 
     # =====================
     # DETAIL MENTOR
     # =====================
-    @http.route('/mentorize/mentor/<int:alumni_id>', type='http', auth='user', website=True)
+    @http.route(['/mentorize/mentor/<int:alumni_id>', '/mentors/<int:alumni_id>'], type='http', auth='user', website=True)
     def detail_mentor(self, alumni_id, **kwargs):
         user = request.env.user
         alumni = request.env['mentorize.alumni'].sudo().browse(alumni_id)
@@ -406,57 +407,37 @@ class MentorizeController(http.Controller):
             'existing_request': existing_request,
             'match_info': match_info,
             'feedbacks': feedbacks,
+            'user': request.env.user.sudo(),
         })
 
     # =====================
     # REQUEST MENTORING
     # =====================
-    @http.route('/mentorize/mentor/request/<int:alumni_id>', type='http', auth='user', website=True, methods=['POST'], csrf=False)
-    def submit_request(self, alumni_id, **kwargs):
-        user = request.env.user
-        mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
-            ('user_id', '=', user.id)
-        ], limit=1)
-
-        if not mahasiswa:
-            return request.redirect('/mentorize/login')
-
+    @http.route(['/mentors/<int:alumni_id>/request'], type='http', auth='user', website=True, methods=['POST'], csrf=False)
+    def request_mentor_alias(self, alumni_id, **kwargs):
+        mahasiswa = self._ensure_mahasiswa()
         alumni = request.env['mentorize.alumni'].sudo().browse(alumni_id)
         if not alumni.exists():
             return request.redirect('/mentorize/mentor')
-
         existing = request.env['mentorize.request'].sudo().search([
             ('mahasiswa_id', '=', mahasiswa.id),
             ('alumni_id', '=', alumni_id),
             ('status', 'in', ['pending', 'approved']),
         ], limit=1)
-
-        if existing:
-            return request.redirect('/mentorize/mentor/' + str(alumni_id) + '?error=duplicate')
-
-        topik = kwargs.get('topik', '').strip()
-        deskripsi = kwargs.get('deskripsi', '').strip()
-
-        if not topik:
-            return request.redirect('/mentorize/mentor/' + str(alumni_id) + '?error=notopic')
-
-        try:
-            req = request.env['mentorize.request'].sudo().create({
+        if not existing:
+            request.env['mentorize.request'].sudo().create({
                 'mahasiswa_id': mahasiswa.id,
                 'alumni_id': alumni_id,
-                'topik': topik,
-                'deskripsi': deskripsi,
+                'topik': kwargs.get('topik') or 'Mentoring karier dan pengembangan skill',
+                'deskripsi': kwargs.get('deskripsi') or '',
                 'status': 'pending',
             })
-        except Exception:
-            return request.redirect('/mentorize/mentor/' + str(alumni_id) + '?error=failed')
-
         return request.redirect('/mentorize/mahasiswa/riwayat?success=1')
 
     # =====================
     # RIWAYAT & STATUS
     # =====================
-    @http.route('/mentorize/mahasiswa/riwayat', type='http', auth='user', website=True)
+    @http.route(['/mentorize/mahasiswa/riwayat', '/history', '/riwayat', '/mentorize/history'], type='http', auth='user', website=True)
     def riwayat_mahasiswa(self, **kwargs):
         user = request.env.user
         mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
@@ -476,12 +457,13 @@ class MentorizeController(http.Controller):
             'mahasiswa': mahasiswa,
             'requests': requests,
             'success': success,
+            'user': request.env.user.sudo(),
         })
 
     # =====================
     # REKOMENDASI MENTOR
     # =====================
-    @http.route('/mentorize/mentor/rekomendasi', type='http', auth='user', website=True)
+    @http.route(['/mentorize/mentor/rekomendasi', '/mentorize/recommendations', '/recommendations'], type='http', auth='user', website=True)
     def rekomendasi_mentor(self, **kwargs):
         user = request.env.user
         mahasiswa = request.env['mentorize.mahasiswa'].sudo().search([
@@ -500,6 +482,7 @@ class MentorizeController(http.Controller):
         return request.render('mentorize.page_rekomendasi_mentor', {
             'mahasiswa': mahasiswa,
             'matchmakings': matchmakings,
+            'user': request.env.user.sudo(), 
         })
 
     # =====================
@@ -601,7 +584,7 @@ class MentorizeController(http.Controller):
     # =====================
     # ALUMNI ROUTES
     # =====================
-    @http.route('/mentorize/alumni/dashboard', type='http', auth='user', website=True)
+    @http.route(['/mentorize/alumni/dashboard', '/alumni/dashboard'], type='http', auth='user', website=True)
     def dashboard_alumni(self, **kwargs):
         user = request.env.user.sudo()
         alumni = self._ensure_alumni()
@@ -632,7 +615,7 @@ class MentorizeController(http.Controller):
             'stats': stats,
         })
 
-    @http.route('/mentorize/alumni/sesi', type='http', auth='user', website=True)
+    @http.route(['/mentorize/alumni/sesi', '/sessions', '/mentorize/sessions'], type='http', auth='user', website=True)
     def sesi_mentoring_alumni(self, **kwargs):
         user = request.env.user.sudo()
         alumni = self._ensure_alumni()
@@ -701,6 +684,7 @@ class MentorizeController(http.Controller):
         return request.render('mentorize.page_riwayat_alumni', {
             'alumni': alumni,
             'requests': all_requests,
+            'user': request.env.user.sudo(),
         })
 
     @http.route('/mentorize/alumni/requests', type='http', auth='user', website=True)
@@ -722,7 +706,15 @@ class MentorizeController(http.Controller):
             'alumni': alumni,
             'requests': all_requests,
             'pending_requests': pending_requests,
+            'user': request.env.user.sudo(),
         })
+    
+    @http.route(['/chat', '/mentorize/chat', '/mentorize/mahasiswa/chat', '/mentorize/chat/request/<int:req_id>'], type='http', auth='user', website=True)
+    def chat_coming_soon(self, req_id=None, **kwargs):
+        return request.render('mentorize.page_coming_soon', {
+        'user': request.env.user.sudo(),
+        'req_id': req_id,
+    })
 
     # =====================
     # ADMIN ROUTES

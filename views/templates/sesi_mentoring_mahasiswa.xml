@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="page_sesi_mentoring_mahasiswa" name="Sesi Mentoring Mahasiswa">
-        <t t-call="website.layout">
+        <t t-call="web.layout">
+    <t t-set="head">
+        <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
             <style>
                 .mz-page {
                     background: #f5f8fb;
