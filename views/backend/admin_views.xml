@@ -1,6 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Admin views akan diisi nanti -->
+    <!-- MENU UTAMA -->
+    <menuitem id="mentorize_admin_root"
+              name="Mentorize Admin"
+              sequence="10"/>
+
+    <!-- USERS -->
+    <menuitem id="menu_users"
+              name="Users"
+              parent="mentorize_admin_root"
+              sequence="1"/>
+
+    <record id="action_users" model="ir.actions.act_window">
+        <field name="name">Users</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_users_action"
+              name="Manage Users"
+              parent="menu_users"
+              action="action_users"/>
+
+
+    <!-- MAHASISWA -->
+    <record id="action_mahasiswa" model="ir.actions.act_window">
+        <field name="name">Mahasiswa</field>
+        <field name="res_model">mentorize.mahasiswa</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_mahasiswa"
+              name="Mahasiswa"
+              parent="mentorize_admin_root"
+              action="action_mahasiswa"/>
+
+
+    <!-- ALUMNI -->
+    <record id="action_alumni" model="ir.actions.act_window">
+        <field name="name">Alumni</field>
+        <field name="res_model">mentorize.alumni</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_alumni"
+              name="Alumni"
+              parent="mentorize_admin_root"
+              action="action_alumni"/>
+
+
+    <!-- REQUEST -->
+    <record id="action_request" model="ir.actions.act_window">
+        <field name="name">Mentoring Requests</field>
+        <field name="res_model">mentorize.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_request"
+              name="Requests"
+              parent="mentorize_admin_root"
+              action="action_request"/>
+
+
+    <!-- SESSION -->
+    <record id="action_session" model="ir.actions.act_window">
+        <field name="name">Sessions</field>
+        <field name="res_model">mentorize.session</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_session"
+              name="Sessions"
+              parent="mentorize_admin_root"
+              action="action_session"/>
+
+
+    <!-- FEEDBACK -->
+    <record id="action_feedback" model="ir.actions.act_window">
+        <field name="name">Feedback</field>
+        <field name="res_model">mentorize.feedback</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_feedback"
+              name="Feedback"
+              parent="mentorize_admin_root"
+              action="action_feedback"/>
+
     </data>
 </odoo>

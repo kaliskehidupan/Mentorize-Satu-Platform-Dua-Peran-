@@ -1,2 +1,2 @@
 from . import main
-from . import sesi_mentoring
+from . import admin_controller

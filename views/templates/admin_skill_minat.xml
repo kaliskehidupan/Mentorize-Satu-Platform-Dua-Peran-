@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="admin_skill_minat"
+              name="Admin Skill Minat">
+
+        <t t-call="mentorize.layout_admin">
+
+            <div class="mz-admin-layout">
+
+                <!-- ================= SIDEBAR ================= -->
+                <div class="mz-admin-sidebar">
+
+                    <!-- LOGO -->
+                    <div class="mz-sidebar-header">
+
+                        <div class="mz-logo-wrap">
+
+                            <img src="/mentorize/static/src/css/logo.png"
+                                class="mz-logo"/>
+
+                            <div>
+
+                                <h2>Mentorize</h2>
+                                <p>Admin Panel</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MENU -->
+                    <div class="mz-sidebar-menu">
+
+                        <a href="/mentorize/admin/dashboard"
+                        class="mz-menu-item active">
+
+                            <i class="fa fa-chart-line"></i>
+                            Dashboard
+
+                        </a>
+
+                        <a href="/mentorize/admin/users"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Kelola User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/laporan"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Laporan
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/pelanggaran"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Pelanggaran
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/aktivitas"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Aktivitas User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/skill-minat"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Skill &amp; Minat
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/profile"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Profil Admin
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- MAIN -->
+                <div class="mz-admin-main">
+
+                    <!-- TOPBAR -->
+                    <div class="mz-admin-topbar">
+
+                        <div>
+
+                            <h1>Skill &amp; Minat User</h1>
+
+                            <p>
+                                Monitoring kompetensi mahasiswa dan alumni
+                            </p>
+
+                        </div>
+
+                        <div class="mz-admin-profile">
+
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"/>
+
+                            <div>
+                                <h4>Admin Mentorize</h4>
+                                <p>Administrator</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- STATS -->
+                    <div class="mz-stats-grid">
+
+                        <div class="mz-stat-card">
+
+                            <div class="mz-stat-info">
+
+                                <h2>
+                                    <t t-esc="total"/>
+                                </h2>
+
+                                <p>Total Data</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mz-stat-card">
+
+                            <div class="mz-stat-info">
+
+                                <h2>
+                                    <t t-esc="beginner"/>
+                                </h2>
+
+                                <p>Beginner</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mz-stat-card">
+
+                            <div class="mz-stat-info">
+
+                                <h2>
+                                    <t t-esc="intermediate"/>
+                                </h2>
+
+                                <p>Intermediate</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mz-stat-card">
+
+                            <div class="mz-stat-info">
+
+                                <h2>
+                                    <t t-esc="advanced"/>
+                                </h2>
+
+                                <p>Advanced</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- TABLE -->
+                    <div class="mz-dashboard-card">
+
+                        <div class="mz-card-header">
+
+                            <h3>Daftar Skill &amp; Minat User</h3>
+
+                        </div>
+
+                        <table class="mz-user-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>User</th>
+                                    <th>Skill</th>
+                                    <th>Level</th>
+                                    <th>Minat</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <t t-foreach="skills"
+                                   t-as="item">
+
+                                    <tr>
+
+                                        <!-- USER -->
+                                        <td>
+
+                                            <strong>
+                                                <t t-esc="item['user']"/>
+                                            </strong>
+
+                                        </td>
+
+                                        <!-- SKILL -->
+                                        <td>
+
+                                            <t t-esc="item['skill']"/>
+
+                                        </td>
+
+                                        <!-- LEVEL -->
+                                        <td>
+
+                                            <t t-if="item['level'] == 'beginner'">
+
+                                                <span class="mz-status pending">
+                                                    Beginner
+                                                </span>
+
+                                            </t>
+
+                                            <t t-if="item['level'] == 'intermediate'">
+
+                                                <span class="mz-status active">
+                                                    Intermediate
+                                                </span>
+
+                                            </t>
+
+                                            <t t-if="item['level'] == 'advanced'">
+
+                                                <span class="mz-status suspend">
+                                                    Advanced
+                                                </span>
+
+                                            </t>
+
+                                        </td>
+
+                                        <!-- MINAT -->
+                                        <td>
+
+                                            <t t-esc="item['interest']"/>
+
+                                        </td>
+
+                                    </tr>
+
+                                </t>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

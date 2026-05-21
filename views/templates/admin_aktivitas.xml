@@ -1,0 +1,195 @@
+<odoo>
+
+<template id="admin_aktivitas" name="Admin Aktivitas">
+
+<t t-call="mentorize.layout_admin">
+
+<div class="mz-admin-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+                <div class="mz-admin-sidebar">
+
+                    <!-- LOGO -->
+                    <div class="mz-sidebar-header">
+
+                        <div class="mz-logo-wrap">
+
+                            <img src="/mentorize/static/src/css/logo.png"
+                                class="mz-logo"/>
+
+                            <div>
+
+                                <h2>Mentorize</h2>
+                                <p>Admin Panel</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MENU -->
+                    <div class="mz-sidebar-menu">
+
+                        <a href="/mentorize/admin/dashboard"
+                        class="mz-menu-item active">
+
+                            <i class="fa fa-chart-line"></i>
+                            Dashboard
+
+                        </a>
+
+                        <a href="/mentorize/admin/users"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Kelola User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/laporan"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Laporan
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/pelanggaran"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Pelanggaran
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/aktivitas"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Aktivitas User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/skill-minat"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Skill &amp; Minat
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/profile"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Profil Admin
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+    <!-- MAIN -->
+    <div class="mz-admin-main">
+
+        <!-- TOPBAR -->
+        <div class="mz-admin-topbar">
+
+            <div>
+                <h1>Aktivitas User</h1>
+                <p>Monitoring login, logout, dan aktivitas sistem</p>
+            </div>
+
+        </div>
+
+        <!-- STATS -->
+        <div class="mz-stats-grid">
+
+            <div class="mz-stat-card">
+                <h2><t t-esc="total"/></h2>
+                <p>Total Aktivitas</p>
+            </div>
+
+            <div class="mz-stat-card">
+                <h2><t t-esc="login"/></h2>
+                <p>Login</p>
+            </div>
+
+            <div class="mz-stat-card">
+                <h2><t t-esc="logout"/></h2>
+                <p>Logout</p>
+            </div>
+
+        </div>
+
+        <!-- TABLE -->
+        <div class="mz-dashboard-card">
+
+            <table class="mz-user-table">
+
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Aktivitas</th>
+                        <th>Deskripsi</th>
+                        <th>Waktu</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <t t-foreach="logs" t-as="item">
+
+                        <tr>
+
+                            <td><t t-esc="item.user"/></td>
+
+                            <td>
+                                <span class="mz-status pending">
+                                    <t t-esc="item.type"/>
+                                </span>
+                            </td>
+
+                            <td><t t-esc="item.desc"/></td>
+
+                            <td><t t-esc="item.time"/></td>
+
+                        </tr>
+
+                    </t>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</t>
+
+</template>
+
+</odoo>

@@ -7,5 +7,7 @@ from . import mentorize_request
 from . import mentorize_session
 from . import mentorize_chat
 from . import mentorize_feedback
-from . import mentorize_skill
-from . import mentorize_minat
+from . import laporan
+from . import pelanggaran
+from . import aktivitas
+from . import skill_minat

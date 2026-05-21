@@ -1,0 +1,94 @@
+<odoo>
+<template id="admin_login" name="Admin Login">
+<t t-call="website.layout">
+
+<div style="display:flex; height:100vh; font-family:Arial, sans-serif;">
+
+    <!-- LEFT: BRANDING -->
+    <div style="flex:1; background:linear-gradient(135deg,#1f2a44,#4c6ef5);
+                color:white; display:flex; flex-direction:column;
+                justify-content:center; align-items:center;">
+
+        <img src="/mentorize/static/src/css/logo.png"
+             style="width:110px; margin-bottom:18px;"/>
+
+        <h1 style="font-size:28px; margin:0;">Mentorize Admin</h1>
+
+        <p style="opacity:0.85; margin-top:10px; font-size:14px; text-align:center;">
+            Kelola seluruh aktivitas platform dengan mudah
+        </p>
+
+    </div>
+
+    <!-- RIGHT: FORM (NO CARD, CLEAN) -->
+    <div style="flex:1; background:white;
+                display:flex; justify-content:center; align-items:center;">
+
+        <div style="width:320px;">
+
+            <h2 style="font-size:20px; margin-bottom:6px; color:#222;">
+                Login sebagai Admin
+            </h2>
+
+            <p style="font-size:13px; color:#777; margin-bottom:25px;">
+                Masukkan email dan password Anda
+            </p>
+
+            <t t-if="error">
+                <div style="background:#ffe3e3; color:#c92a2a;
+                            padding:10px; border-radius:6px;
+                            font-size:13px; margin-bottom:15px;">
+                    Email atau password salah!
+                </div>
+            </t>
+
+            <form action="/mentorize/admin/login/submit" method="post">
+
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <!-- EMAIL -->
+                <div style="margin-bottom:15px;">
+                    <label style="font-size:12px; color:#555;">Email</label>
+                    <input type="email" name="email" required="1"
+                        placeholder="nama@email.com"
+                        style="width:100%; padding:10px;
+                               border:1px solid #ddd;
+                               border-radius:8px;
+                               outline:none;"/>
+                </div>
+
+                <!-- PASSWORD -->
+                <div style="margin-bottom:20px;">
+                    <label style="font-size:12px; color:#555;">Password</label>
+                    <input type="password" name="password" required="1"
+                        placeholder="••••••••"
+                        style="width:100%; padding:10px;
+                               border:1px solid #ddd;
+                               border-radius:8px;
+                               outline:none;"/>
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit"
+                        style="width:100%;
+                               background:#4c6ef5;
+                               color:white;
+                               padding:11px;
+                               border:none;
+                               border-radius:8px;
+                               font-size:14px;
+                               cursor:pointer;">
+                    Masuk sebagai Admin
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</t>
+</template>
+</odoo>

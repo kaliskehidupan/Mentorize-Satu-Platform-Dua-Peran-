@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="admin_laporan" name="Admin Laporan">
+
+        <t t-call="mentorize.layout_admin">
+
+            <div class="mz-admin-layout">
+
+                <!-- ================= SIDEBAR ================= -->
+                <div class="mz-admin-sidebar">
+
+                    <!-- LOGO -->
+                    <div class="mz-sidebar-header">
+
+                        <div class="mz-logo-wrap">
+
+                            <img src="/mentorize/static/src/css/logo.png"
+                                class="mz-logo"/>
+
+                            <div>
+
+                                <h2>Mentorize</h2>
+                                <p>Admin Panel</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MENU -->
+                    <div class="mz-sidebar-menu">
+
+                        <a href="/mentorize/admin/dashboard"
+                        class="mz-menu-item active">
+
+                            <i class="fa fa-chart-line"></i>
+                            Dashboard
+
+                        </a>
+
+                        <a href="/mentorize/admin/users"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Kelola User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/laporan"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Laporan
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/pelanggaran"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Pelanggaran
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/aktivitas"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Aktivitas User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/skill-minat"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Skill &amp; Minat
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/profile"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Profil Admin
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- ================= MAIN ================= -->
+                <div class="mz-admin-main">
+
+                    <!-- TOPBAR -->
+                    <div class="mz-admin-topbar">
+
+                        <div>
+                            <h1>Laporan Akhir Mahasiswa</h1>
+                            <p>Review dan validasi laporan hasil mentoring</p>
+                        </div>
+
+                        <div class="mz-admin-profile">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"/>
+                            <div>
+                                <h4>Admin Mentorize</h4>
+                                <p>Administrator</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= STATS ================= -->
+                    <div class="mz-stats-grid">
+
+                        <div class="mz-stat-card">
+                            <h2><t t-esc="total_laporan"/></h2>
+                            <p>Total Laporan</p>
+                        </div>
+
+                        <div class="mz-stat-card">
+                            <h2><t t-esc="total_pending"/></h2>
+                            <p>Menunggu Review</p>
+                        </div>
+
+                        <div class="mz-stat-card">
+                            <h2><t t-esc="total_approved"/></h2>
+                            <p>Disetujui</p>
+                        </div>
+
+                        <div class="mz-stat-card">
+                            <h2><t t-esc="total_rejected"/></h2>
+                            <p>Ditolak</p>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= TABLE ================= -->
+                    <div class="mz-dashboard-card">
+
+                        <div class="mz-card-header">
+                            <h3>Daftar Laporan Masuk</h3>
+                        </div>
+
+                        <table class="mz-user-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Mahasiswa</th>
+                                    <th>Judul Laporan</th>
+                                    <th>Tanggal Upload</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <t t-if="not laporan">
+                                    <tr>
+                                        <td colspan="5" style="text-align:center; padding:20px;">
+                                            Tidak ada laporan yang tersedia
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <t t-foreach="laporan" t-as="item">
+
+                                    <tr>
+
+                                        <!-- MAHASISWA -->
+                                        <td>
+                                            <strong>
+                                                <t t-esc="item.mahasiswa"/>
+                                            </strong>
+                                        </td>
+
+                                        <!-- JUDUL -->
+                                        <td>
+                                            <t t-esc="item.judul"/>
+                                        </td>
+
+                                        <!-- TANGGAL -->
+                                        <td>
+                                            <t t-esc="item.tanggal"/>
+                                        </td>
+
+                                        <!-- STATUS -->
+                                        <td>
+
+                                            <t t-if="item.status == 'pending'">
+                                                <span class="mz-status pending">Pending</span>
+                                            </t>
+
+                                            <t t-elif="item.status == 'approved'">
+                                                <span class="mz-status active">Approved</span>
+                                            </t>
+
+                                            <t t-elif="item.status == 'rejected'">
+                                                <span class="mz-status suspend">Rejected</span>
+                                            </t>
+
+                                        </td>
+
+                                        <!-- ACTION -->
+                                        <td>
+
+                                            <div class="mz-action-group">
+
+                                                <a t-att-href="'/mentorize/admin/laporan/approve/%s' % item.id"
+                                                   class="mz-btn-success">
+                                                    Approve
+                                                </a>
+
+                                                <a t-att-href="'/mentorize/admin/laporan/reject/%s' % item.id"
+                                                   class="mz-btn-danger">
+                                                    Reject
+                                                </a>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </t>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

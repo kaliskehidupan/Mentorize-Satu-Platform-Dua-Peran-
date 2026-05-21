@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="profil_admin" name="Profil Admin">
+
+        <t t-call="mentorize.layout_admin">
+
+            <div class="mz-admin-layout">
+
+                <!-- ================= SIDEBAR ================= -->
+                <div class="mz-admin-sidebar">
+
+                    <!-- LOGO -->
+                    <div class="mz-sidebar-header">
+
+                        <div class="mz-logo-wrap">
+
+                            <img src="/mentorize/static/src/css/logo.png"
+                                class="mz-logo"/>
+
+                            <div>
+
+                                <h2>Mentorize</h2>
+                                <p>Admin Panel</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MENU -->
+                    <div class="mz-sidebar-menu">
+
+                        <a href="/mentorize/admin/dashboard"
+                        class="mz-menu-item active">
+
+                            <i class="fa fa-chart-line"></i>
+                            Dashboard
+
+                        </a>
+
+                        <a href="/mentorize/admin/users"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Kelola User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/laporan"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Laporan
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/pelanggaran"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Pelanggaran
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/aktivitas"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Aktivitas User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/skill-minat"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Skill &amp; Minat
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/profile"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Profil Admin
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- ================= MAIN ================= -->
+                <div class="mz-admin-main">
+
+                    <!-- ================= TOPBAR ================= -->
+                    <div class="mz-admin-topbar">
+
+                        <div>
+
+                            <h1>Profil Admin</h1>
+
+                            <p>
+                                Kelola akun administrator Mentorize
+                            </p>
+
+                        </div>
+
+                        <div class="mz-admin-profile">
+
+                            <img src="/mentorize/static/src/img/admin.png"
+                                 alt="Admin"/>
+
+                            <div>
+
+                                <h4>
+                                    <t t-esc="user.name"/>
+                                </h4>
+
+                                <p>Administrator</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================= PROFILE CARD ================= -->
+                    <div class="mz-profile-container">
+
+                        <form action="/mentorize/admin/profil/update"
+                              method="post">
+
+                            <input type="hidden"
+                                   name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+
+                            <div class="mz-profile-layout">
+
+                                <!-- ================= LEFT ================= -->
+                                <div class="mz-profile-left">
+
+                                    <img src="/web/static/img/avatar.png"
+                                         class="mz-profile-avatar"
+                                         alt="Admin Avatar"/>
+
+                                    <h3>
+                                        <t t-esc="user.name"/>
+                                    </h3>
+
+                                    <p>
+                                        Administrator Mentorize
+                                    </p>
+
+                                </div>
+
+                                <!-- ================= RIGHT ================= -->
+                                <div class="mz-profile-right">
+
+                                    <!-- NAMA -->
+                                    <div class="mz-form-group">
+
+                                        <label>
+                                            Nama Lengkap
+                                        </label>
+
+                                        <input type="text"
+                                               name="name"
+                                               t-att-value="user.name"
+                                               required="required"/>
+
+                                    </div>
+
+                                    <!-- EMAIL -->
+                                    <div class="mz-form-group">
+
+                                        <label>
+                                            Email
+                                        </label>
+
+                                        <input type="email"
+                                               name="email"
+                                               t-att-value="user.email"
+                                               required="required"/>
+
+                                    </div>
+
+                                    <!-- PASSWORD -->
+                                    <div class="mz-form-group">
+
+                                        <label>
+                                            Password Baru
+                                        </label>
+
+                                        <input type="password"
+                                               name="password"
+                                               placeholder="Kosongkan jika tidak diubah"/>
+
+                                    </div>
+
+                                    <!-- KONFIRMASI PASSWORD -->
+                                    <div class="mz-form-group">
+
+                                        <label>
+                                            Konfirmasi Password
+                                        </label>
+
+                                        <input type="password"
+                                               name="confirm_password"
+                                               placeholder="Ulangi password baru"/>
+
+                                    </div>
+
+                                    <!-- BIO -->
+                                    <div class="mz-form-group">
+
+                                        <label>
+                                            About Me
+                                        </label>
+
+                                        <textarea name="bio"
+                                                  rows="5"
+                                                  placeholder="Tulis deskripsi admin..."></textarea>
+
+                                    </div>
+
+                                    <!-- BUTTON -->
+                                    <div class="mz-profile-buttons">
+
+                                        <button type="submit"
+                                                class="mz-btn-success">
+
+                                            Simpan Perubahan
+
+                                        </button>
+
+                                        <a href="/web/session/logout?redirect=/"
+                                           class="mz-btn-danger">
+
+                                            Logout
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

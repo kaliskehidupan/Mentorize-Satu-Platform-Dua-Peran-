@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="layout_admin" name="Mentorize Admin Layout">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+        <t t-call="website.layout">
+
+            <!-- REMOVE ODOO NAVBAR -->
+            <style>
+
+                header,
+                footer,
+                #top,
+                .o_footer,
+                .o_main_navbar {
+                    display: none !important;
+                }
+
+                main {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+
+            </style>
+
+            <!-- CHART JS -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <!-- PAGE CONTENT -->
+            <t t-out="0"/>
+
+        </t>
+
+    </template>
+
+</odoo>

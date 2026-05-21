@@ -1,22 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
-<data>
-<template id="dashboard_admin" name="Dashboard Admin Mentorize">
-  <t t-call="web.layout">
-    <t t-set="head"><link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/></t>
-    <main class="mtz-app-page">
-      <nav class="mtz-app-nav mtz-animate-down"><a href="/admin/dashboard" class="mtz-brand"><span class="mtz-logo-circle">M</span><span>Mentorize</span></a><div class="mtz-app-menu"><a class="active" href="/admin/dashboard">Dashboard Admin</a></div><div class="mtz-user-chip"><span class="mtz-avatar-circle">A</span><span><b t-esc="user.name"/><small>Admin</small></span></div></nav>
-      <section class="mtz-dashboard-shell">
-        <div class="mtz-hero-dashboard mtz-animate-up"><div><span class="mtz-kicker-light">Admin Mentorize</span><h1>Monitoring Platform</h1><p>Pantau data pengguna, request, dan sesi mentoring.</p></div></div>
-        <div class="mtz-stats-row four mtz-animate-up mtz-delay-1">
-          <div class="mtz-stat-box"><span class="mtz-stat-icon green">🎓</span><div><small>Mahasiswa</small><strong t-esc="stats['mahasiswa']"/></div></div>
-          <div class="mtz-stat-box"><span class="mtz-stat-icon yellow">⭐</span><div><small>Alumni</small><strong t-esc="stats['alumni']"/></div></div>
-          <div class="mtz-stat-box"><span class="mtz-stat-icon blue">🤝</span><div><small>Request</small><strong t-esc="stats['request']"/></div></div>
-          <div class="mtz-stat-box"><span class="mtz-stat-icon purple">📅</span><div><small>Sesi</small><strong t-esc="stats['session']"/></div></div>
-        </div>
-      </section>
-    </main>
-  </t>
-</template>
-</data>
+
+    <template id="dashboard_admin" name="Dashboard Admin">
+
+        <t t-call="mentorize.layout_admin">
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <div class="mz-admin-layout">
+
+                <!-- ================= SIDEBAR (TETAP PUNYAMU) ================= -->
+                <div class="mz-admin-sidebar">
+
+                    <div class="mz-sidebar-header">
+
+                        <div class="mz-logo-wrap">
+
+                            <img src="/mentorize/static/src/css/logo.png"
+                                 class="mz-logo"/>
+
+                            <div>
+                                <h2>Mentorize</h2>
+                                <p>Admin Panel</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mz-sidebar-menu">
+
+                        <a href="/mentorize/admin/dashboard" class="mz-menu-item active">
+                            <i class="fa fa-chart-line"></i>
+                            Dashboard
+                        </a>
+
+                        <a href="/mentorize/admin/users" class="mz-menu-item">
+                            <span class="mz-menu-icon"></span>
+                            <span>Kelola User</span>
+                        </a>
+
+                        <a href="/mentorize/admin/laporan" class="mz-menu-item">
+                            <span class="mz-menu-icon"></span>
+                            <span>Laporan</span>
+                        </a>
+
+                        <a href="/mentorize/admin/pelanggaran" class="mz-menu-item">
+                            <span class="mz-menu-icon"></span>
+                            <span>Pelanggaran</span>
+                        </a>
+
+                        <a href="/mentorize/admin/aktivitas" class="mz-menu-item">
+                            <span class="mz-menu-icon"></span>
+                            <span>Aktivitas User</span>
+                        </a>
+
+                        <a href="/mentorize/admin/skill-minat" class="mz-menu-item">
+                            <span class="mz-menu-icon"></span>
+                            <span>Skill &amp; Minat</span>
+                        </a>
+
+                        <a href="/mentorize/admin/profile" class="mz-menu-item">
+                            <span class="mz-menu-icon"></span>
+                            <span>Profil Admin</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- ================= MAIN ================= -->
+                <div class="mz-admin-main">
+
+                    <!-- ================= TOPBAR ================= -->
+                    <div class="mz-admin-topbar">
+
+                        <div>
+                            <h1>Dashboard Admin</h1>
+                            <p>Monitoring dan pengelolaan platform Mentorize</p>
+                        </div>
+
+                        <div class="mz-admin-profile">
+
+                            <img src="/mentorize/static/src/img/admin.png"
+                                 alt="Admin"/>
+
+                            <div>
+                                <h4>Admin Mentorize</h4>
+                                <p>Administrator</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================= WELCOME ================= -->
+                    <div class="mz-dashboard-card">
+
+                        <div class="mz-card-header">
+                            <h3>Selamat datang kembali 👋 <t t-esc="user.name"/></h3>
+                            <p>Kelola dan pantau sistem Mentorize secara realtime</p>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= STATS ================= -->
+                    <div class="mz-stats-grid">
+
+                        <div class="mz-stat-card blue">
+                            <div class="mz-stat-icon">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div class="mz-stat-info">
+                                <h2><t t-esc="total_mahasiswa"/></h2>
+                                <p>Total Mahasiswa</p>
+                            </div>
+                        </div>
+
+                        <div class="mz-stat-card green">
+                            <div class="mz-stat-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <div class="mz-stat-info">
+                                <h2><t t-esc="total_alumni"/></h2>
+                                <p>Total Alumni</p>
+                            </div>
+                        </div>
+
+                        <div class="mz-stat-card purple">
+                            <div class="mz-stat-icon">
+                                <i class="fa-solid fa-people-arrows"></i>
+                            </div>
+                            <div class="mz-stat-info">
+                                <h2><t t-esc="mentoring_active"/></h2>
+                                <p>Mentoring Aktif</p>
+                            </div>
+                        </div>
+
+                        <div class="mz-stat-card red">
+                            <div class="mz-stat-icon">
+                                <i class="fa-solid fa-user-slash"></i>
+                            </div>
+                            <div class="mz-stat-info">
+                                <h2><t t-esc="suspended_users"/></h2>
+                                <p>User Suspended</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= CHART ================= -->
+                    <div class="mz-dashboard-card">
+
+                        <div class="mz-card-header">
+                            <h3>Statistik Pengguna</h3>
+                            <p>Overview data pengguna Mentorize</p>
+                        </div>
+
+                        <canvas id="userChart"
+                                t-att-data-chart="user_chart_data"></canvas>
+
+                    </div>
+
+                    <!-- ================= ACTIVITY ================= -->
+                    <div class="mz-dashboard-card">
+
+                        <div class="mz-card-header">
+                            <h3>Aktivitas Terbaru</h3>
+                            <p>User yang baru bergabung</p>
+                        </div>
+
+                        <div class="mz-activity-list">
+
+                            <t t-foreach="recent_users" t-as="user">
+
+                                <div class="mz-activity-item">
+
+                                    <div class="mz-activity-avatar">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+
+                                    <div class="mz-activity-content">
+
+                                        <h4>
+                                            <t t-esc="user.name"/>
+                                        </h4>
+
+                                        <p>
+                                            Terdaftar sebagai
+                                            <strong>
+                                                <t t-esc="user.mentorize_role"/>
+                                            </strong>
+                                        </p>
+
+                                    </div>
+
+                                    <span class="mz-activity-date">
+                                        <t t-esc="user.create_date.strftime('%d %b %Y')"/>
+                                    </span>
+
+                                </div>
+
+                            </t>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
 </odoo>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<!-- =================== PROFIL ALUMNI =================== -->
+<template id="page_profil_alumni" name="Profil Alumni">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+
+    <!-- NAVBAR -->
+    <nav class="mtz-navbar">
+      <div class="mtz-navbar-inner">
+
+        <div class="mtz-navbar-logo">
+          <div class="mtz-logo-circle">M</div>
+          <span>Mentorize</span>
+        </div>
+
+        <div class="mtz-navbar-menu">
+          <a href="/mentorize/alumni/dashboard" class="mtz-nav-link">Dashboard</a>
+          <a href="/mentorize/alumni/profil" class="mtz-nav-link">Profil</a>
+          <a href="/mentorize/alumni/sessions" class="mtz-nav-link">Sesi</a>
+          <a href="/mentorize/alumni/chat" class="mtz-nav-link">Chat</a>
+        </div>
+
+        <div class="mtz-navbar-user">
+          <div class="mtz-avatar-circle" t-esc="user.name[0].upper()"/>
+          <span t-esc="user.name"/>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="mtz-dashboard">
+
+      <!-- HEADER -->
+      <div class="mtz-profil-header">
+
+        <div class="mtz-profil-avatar">
+          <t t-esc="user.name[0].upper()"/>
+        </div>
+
+        <div class="mtz-profil-info">
+          <h1 t-esc="user.name"/>
+          <p t-esc="alumni.bidang or 'Belum diisi'"/>
+          <span class="mtz-badge-nim" t-esc="alumni.company or 'Belum ada perusahaan'"/>
+        </div>
+
+        <a href="/mentorize/alumni/profil/edit" class="mtz-btn-edit">
+          Edit Profil
+        </a>
+
+      </div>
+
+      <!-- GRID -->
+      <div class="mtz-profil-grid">
+
+        <!-- INFORMASI DASAR -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Informasi Alumni</h3>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Nama</span>
+            <span class="mtz-profil-value" t-esc="user.name"/>
+          </div>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Email</span>
+            <span class="mtz-profil-value" t-esc="user.email"/>
+          </div>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Perusahaan</span>
+            <span class="mtz-profil-value" t-esc="alumni.company or '-'"/>
+          </div>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Posisi</span>
+            <span class="mtz-profil-value" t-esc="alumni.posisi or '-'"/>
+          </div>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Bidang</span>
+            <span class="mtz-profil-value" t-esc="alumni.bidang or '-'"/>
+          </div>
+
+        </div>
+
+        <!-- BIO -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Bio</h3>
+          <p class="mtz-profil-text" t-esc="alumni.bio or 'Belum diisi'"/>
+        </div>
+
+        <!-- PENGALAMAN -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Pengalaman</h3>
+          <p class="mtz-profil-text" t-esc="alumni.pengalaman or 'Belum diisi'"/>
+        </div>
+
+        <!-- MENTORING INFO -->
+        <div class="mtz-profil-card">
+          <h3 class="mtz-card-title">Mentoring</h3>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Slot</span>
+            <span class="mtz-profil-value" t-esc="alumni.slot or '-'"/>
+          </div>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">Status</span>
+            <span class="mtz-profil-value" t-esc="alumni.availability or '-'"/>
+          </div>
+
+          <div class="mtz-profil-row">
+            <span class="mtz-profil-label">LinkedIn</span>
+            <span class="mtz-profil-value" t-esc="alumni.linkedin or '-'"/>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </t>
+</template>
+
+<!-- =================== EDIT PROFIL ALUMNI =================== -->
+<template id="page_edit_profil_alumni" name="Edit Profil Alumni">
+  <t t-call="web.layout">
+    <t t-set="head">
+      <link rel="stylesheet" href="/mentorize/static/src/css/mentorize.css"/>
+    </t>
+
+    <div class="mtz-dashboard">
+
+      <div class="mtz-form-page">
+
+        <div class="mtz-form-header">
+          <a href="/mentorize/alumni/profil" class="mtz-back-link">← Kembali</a>
+          <h2>Edit Profil Alumni</h2>
+        </div>
+
+        <t t-if="success">
+          <div class="mtz-alert-success">Berhasil update profil!</div>
+        </t>
+
+        <t t-if="error">
+          <div class="mtz-alert-error" t-esc="error"/>
+        </t>
+
+        <form action="/mentorize/alumni/profil/update" method="post" class="mtz-form-card">
+
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+          <div class="mtz-form-section">
+            <h3>Data Alumni</h3>
+
+            <div class="mtz-form-group">
+              <label>Perusahaan</label>
+              <input type="text" name="company" t-att-value="alumni.company"/>
+            </div>
+
+            <div class="mtz-form-group">
+              <label>Posisi</label>
+              <input type="text" name="posisi" t-att-value="alumni.posisi"/>
+            </div>
+
+            <div class="mtz-form-group">
+              <label>Bidang</label>
+              <input type="text" name="bidang" t-att-value="alumni.bidang"/>
+            </div>
+
+            <div class="mtz-form-group">
+              <label>LinkedIn</label>
+              <input type="text" name="linkedin" t-att-value="alumni.linkedin"/>
+            </div>
+
+          </div>
+
+          <div class="mtz-form-section">
+            <h3>Detail Tambahan</h3>
+
+            <div class="mtz-form-group">
+              <label>Bio</label>
+              <textarea name="bio" rows="4"><t t-esc="alumni.bio or ''"/></textarea>
+            </div>
+
+            <div class="mtz-form-group">
+              <label>Pengalaman</label>
+              <textarea name="pengalaman" rows="4"><t t-esc="alumni.pengalaman or ''"/></textarea>
+            </div>
+
+            <div class="mtz-form-group">
+              <label>Slot Mentoring</label>
+              <input type="text" name="slot" t-att-value="alumni.slot"/>
+            </div>
+
+            <div class="mtz-form-group">
+              <label>Status</label>
+              <select name="availability">
+                <option value="available" t-att-selected="alumni.availability=='available' and 'selected' or None">Available</option>
+                <option value="busy" t-att-selected="alumni.availability=='busy' and 'selected' or None">Busy</option>
+                <option value="offline" t-att-selected="alumni.availability=='offline' and 'selected' or None">Offline</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="mtz-form-actions">
+            <button type="submit" class="mtz-btn-primary">Simpan</button>
+            <a href="/mentorize/alumni/profil" class="mtz-btn-secondary">Batal</a>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </t>
+</template>
+
+</data>
+</odoo>

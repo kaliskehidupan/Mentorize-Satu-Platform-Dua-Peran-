@@ -1,14 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mentorize_mahasiswa,mentorize.mahasiswa,model_mentorize_mahasiswa,,1,1,1,1
-access_mentorize_alumni,mentorize.alumni,model_mentorize_alumni,,1,1,1,1
-access_mentorize_request,mentorize.request,model_mentorize_request,,1,1,1,1
-access_mentorize_matchmaking,mentorize.matchmaking,model_mentorize_matchmaking,,1,1,1,1
-access_mentorize_skill,mentorize.skill,model_mentorize_skill,,1,1,1,1
-access_mentorize_minat,mentorize.minat,model_mentorize_minat,,1,1,1,1
-access_mentorize_experience,mentorize.experience,model_mentorize_experience,,1,1,1,1
-access_mentorize_session,mentorize.session,model_mentorize_session,,1,1,1,1
-access_mentorize_feedback,mentorize.feedback,model_mentorize_feedback,,1,1,1,1
-access_mentorize_roomchat,mentorize.roomchat,model_mentorize_roomchat,,1,1,1,1
-access_mentorize_message,mentorize.message,model_mentorize_message,,1,1,1,1
 access_mahasiswa_public,access_mahasiswa_public,model_mentorize_mahasiswa,base.group_public,1,0,1,0
 access_alumni_public,access_alumni_public,model_mentorize_alumni,base.group_public,1,0,1,0

@@ -18,6 +18,8 @@
         </record>
 
         <!-- ===================== RECORD RULES ===================== -->
+
+        <!-- Mahasiswa hanya bisa lihat data miliknya sendiri -->
         <record id="rule_mahasiswa_own_profile" model="ir.rule">
             <field name="name">Mahasiswa: hanya lihat profil sendiri</field>
             <field name="model_id" ref="model_mentorize_mahasiswa"/>
@@ -29,6 +31,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- Mahasiswa hanya bisa lihat request miliknya sendiri -->
         <record id="rule_mahasiswa_own_request" model="ir.rule">
             <field name="name">Mahasiswa: hanya lihat request sendiri</field>
             <field name="model_id" ref="model_mentorize_request"/>
@@ -40,6 +43,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- Alumni hanya bisa lihat profil miliknya sendiri -->
         <record id="rule_alumni_own_profile" model="ir.rule">
             <field name="name">Alumni: hanya lihat profil sendiri</field>
             <field name="model_id" ref="model_mentorize_alumni"/>
@@ -51,6 +55,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- Alumni hanya bisa lihat request yang ditujukan kepadanya -->
         <record id="rule_alumni_own_request" model="ir.rule">
             <field name="name">Alumni: hanya lihat request untuk dirinya</field>
             <field name="model_id" ref="model_mentorize_request"/>
@@ -62,6 +67,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- Mahasiswa hanya lihat session miliknya -->
         <record id="rule_mahasiswa_own_session" model="ir.rule">
             <field name="name">Mahasiswa: hanya lihat sesi sendiri</field>
             <field name="model_id" ref="model_mentorize_session"/>
@@ -73,6 +79,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- Alumni hanya lihat session miliknya -->
         <record id="rule_alumni_own_session" model="ir.rule">
             <field name="name">Alumni: hanya lihat sesi sendiri</field>
             <field name="model_id" ref="model_mentorize_session"/>
@@ -84,6 +91,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- Mahasiswa hanya lihat roomchat miliknya -->
         <record id="rule_mahasiswa_own_chat" model="ir.rule">
             <field name="name">Mahasiswa: hanya lihat chat sendiri</field>
             <field name="model_id" ref="model_mentorize_roomchat"/>
@@ -95,6 +103,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- Alumni hanya lihat roomchat miliknya -->
         <record id="rule_alumni_own_chat" model="ir.rule">
             <field name="name">Alumni: hanya lihat chat sendiri</field>
             <field name="model_id" ref="model_mentorize_roomchat"/>
@@ -106,32 +115,5 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
-        <record id="rule_mahasiswa_own_message" model="ir.rule">
-            <field name="name">Mahasiswa: hanya lihat pesan sendiri</field>
-            <field name="model_id" ref="model_mentorize_message"/>
-            <field name="domain_force">[('room_id.request_id.mahasiswa_id.user_id', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
-        </record>
-
-        <record id="rule_alumni_own_message" model="ir.rule">
-            <field name="name">Alumni: hanya lihat pesan sendiri</field>
-            <field name="model_id" ref="model_mentorize_message"/>
-            <field name="domain_force">[('room_id.request_id.alumni_id.user_id', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
-        </record>
-
-        <record id="rule_mahasiswa_own_feedback" model="ir.rule">
-            <field name="name">Mahasiswa: hanya lihat feedback sendiri</field>
-            <field name="model_id" ref="model_mentorize_feedback"/>
-            <field name="domain_force">[('mahasiswa_id.user_id', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('group_mentorize_mahasiswa'))]"/>
-        </record>
-
-        <record id="rule_alumni_own_feedback" model="ir.rule">
-            <field name="name">Alumni: hanya lihat feedback untuk dirinya</field>
-            <field name="model_id" ref="model_mentorize_feedback"/>
-            <field name="domain_force">[('alumni_id.user_id', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('group_mentorize_alumni'))]"/>
-        </record>
     </data>
 </odoo>

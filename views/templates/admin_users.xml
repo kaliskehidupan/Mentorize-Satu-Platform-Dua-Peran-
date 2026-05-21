@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="admin_users"
+              name="Admin Users">
+
+        <t t-call="mentorize.layout_admin">
+
+            <div class="mz-admin-layout">
+
+                <!-- ================= SIDEBAR ================= -->
+                <div class="mz-admin-sidebar">
+
+                    <!-- LOGO -->
+                    <div class="mz-sidebar-header">
+
+                        <div class="mz-logo-wrap">
+
+                            <img src="/mentorize/static/src/css/logo.png"
+                                class="mz-logo"/>
+
+                            <div>
+
+                                <h2>Mentorize</h2>
+                                <p>Admin Panel</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MENU -->
+                    <div class="mz-sidebar-menu">
+
+                        <a href="/mentorize/admin/dashboard"
+                        class="mz-menu-item active">
+
+                            <i class="fa fa-chart-line"></i>
+                            Dashboard
+
+                        </a>
+
+                        <a href="/mentorize/admin/users"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Kelola User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/laporan"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Laporan
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/pelanggaran"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Pelanggaran
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/aktivitas"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Aktivitas User
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/skill-minat"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Skill &amp; Minat
+                            </span>
+
+                        </a>
+
+                        <a href="/mentorize/admin/profile"
+                        class="mz-menu-item">
+
+                            <span class="mz-menu-icon"></span>
+
+                            <span>
+                                Profil Admin
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- MAIN -->
+                <div class="mz-admin-main">
+
+                    <!-- TOPBAR -->
+                    <div class="mz-admin-topbar">
+
+                        <div>
+                            <h1>Kelola User</h1>
+
+                            <p>
+                                Monitoring data mahasiswa dan alumni Mentorize
+                            </p>
+                        </div>
+
+                        <div class="mz-admin-profile">
+
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"/>
+
+                            <div>
+                                <h4>Admin Mentorize</h4>
+                                <p>Administrator</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- STATS -->
+                    <div class="mz-stats-grid">
+
+                        <div class="mz-stat-card">
+
+                            <div class="mz-stat-info">
+
+                                <h2>
+                                    <t t-esc="total_users"/>
+                                </h2>
+
+                                <p>Total Pengguna</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mz-stat-card">
+
+                            <div class="mz-stat-info">
+
+                                <h2>
+                                    <t t-esc="total_active"/>
+                                </h2>
+
+                                <p>User Aktif</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mz-stat-card">
+
+                            <div class="mz-stat-info">
+
+                                <h2>
+                                    <t t-esc="total_suspend"/>
+                                </h2>
+
+                                <p>User Suspend</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CARD -->
+                    <div class="mz-dashboard-card">
+
+                        <!-- TOOLBAR -->
+                        <form action="/mentorize/admin/users"
+                              method="get"
+                              class="mz-user-toolbar">
+
+                            <!-- SEARCH -->
+                            <div class="mz-search-box">
+
+                                <input type="text"
+                                       name="search"
+                                       t-att-value="search"
+                                       placeholder="Cari nama atau email pengguna..."/>
+
+                                <button type="submit">
+                                    Cari
+                                </button>
+
+                            </div>
+
+                            <!-- FILTER -->
+                            <div class="mz-filter-box">
+
+                                <select name="role"
+                                        onchange="this.form.submit()">
+
+                                    <option value="">
+                                        Semua Role
+                                    </option>
+
+                                    <option value="mahasiswa">
+                                        Mahasiswa
+                                    </option>
+
+                                    <option value="alumni">
+                                        Alumni
+                                    </option>
+
+                                    <option value="admin">
+                                        Admin
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </form>
+
+                        <!-- TABLE -->
+                        <table class="mz-user-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Jurusan</th>
+                                    <th>Progress Profil</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <t t-foreach="users"
+                                   t-as="user">
+
+                                    <tr>
+
+                                        <!-- NAME -->
+                                        <td>
+
+                                            <strong>
+                                                <t t-esc="user['name']"/>
+                                            </strong>
+
+                                        </td>
+
+                                        <!-- EMAIL -->
+                                        <td>
+
+                                            <t t-esc="user['email']"/>
+
+                                        </td>
+
+                                        <!-- ROLE -->
+                                        <td>
+
+                                            <span class="mz-role-badge">
+
+                                                <t t-esc="user['role']"/>
+
+                                            </span>
+
+                                        </td>
+
+                                        <!-- JURUSAN -->
+                                        <td>
+
+                                            <t t-esc="user['jurusan']"/>
+
+                                        </td>
+
+                                        <!-- PROGRESS -->
+                                        <td>
+
+                                            <div class="mz-progress">
+
+                                                <div class="mz-progress-bar"
+                                                     t-att-style="'width:%s%%' % user['progress']">
+
+                                                </div>
+
+                                            </div>
+
+                                            <small>
+
+                                                <t t-esc="user['progress']"/>%
+
+                                            </small>
+
+                                        </td>
+
+                                        <!-- STATUS -->
+                                        <td>
+
+                                            <t t-if="user['active']">
+
+                                                <span class="mz-status active">
+
+                                                    Aktif
+
+                                                </span>
+
+                                            </t>
+
+                                            <t t-else="">
+
+                                                <span class="mz-status suspend">
+
+                                                    Suspend
+
+                                                </span>
+
+                                            </t>
+
+                                        </td>
+
+                                        <!-- ACTION -->
+                                        <td>
+
+                                            <t t-if="user['active']">
+
+                                                <a t-att-href="'/mentorize/admin/user/suspend/%s' % user['id']"
+                                                   class="mz-btn-danger">
+
+                                                    Suspend
+
+                                                </a>
+
+                                            </t>
+
+                                            <t t-else="">
+
+                                                <a t-att-href="'/mentorize/admin/user/activate/%s' % user['id']"
+                                                   class="mz-btn-success">
+
+                                                    Activate
+
+                                                </a>
+
+                                            </t>
+
+                                        </td>
+
+                                    </tr>
+
+                                </t>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>
