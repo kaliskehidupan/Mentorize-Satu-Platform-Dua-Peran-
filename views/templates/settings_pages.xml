@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="page_settings" name="Pengaturan Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-page-hero mtz-animate-up"><div><span class="mtz-kicker">Setting</span><h1>Pengaturan Akun</h1><p>Kelola informasi akun, foto profil, password, dan preferensi notifikasi.</p></div></section>
+      <t t-if="success"><div class="mtz-alert success">Pengaturan berhasil disimpan.</div></t>
+      <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+      <div class="mtz-settings-grid">
+        <form action="/settings/account" method="post" enctype="multipart/form-data" class="mtz-card mtz-form">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+          <div class="mtz-card-head"><h2>Informasi Akun</h2></div>
+          <div class="mtz-profile-mini"><img t-att-src="'/web/image/res.partner/%s/image_128' % user.partner_id.id"/><div><strong t-esc="user.name"/><p><t t-esc="user.email"/> • <t t-esc="user.mentorize_role or 'user'"/></p></div></div>
+          <label>Foto Profil<input type="file" name="photo" accept="image/*"/></label>
+          <label>Nama<input type="text" name="name" t-att-value="user.name" required="required"/></label>
+          <label>Email<input type="email" name="email" t-att-value="user.email or user.login" required="required"/></label>
+          <label class="mtz-check"><input type="checkbox" name="mentorize_notification_email" t-att-checked="user.mentorize_notification_email and 'checked' or None"/> Aktifkan notifikasi email jika tersedia</label>
+          <button class="mtz-btn primary" type="submit">Simpan Akun</button>
+        </form>
+        <form action="/settings/password" method="post" class="mtz-card mtz-form">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+          <div class="mtz-card-head"><h2>Keamanan</h2></div>
+          <label>Password Lama<input type="password" name="old_password" required="required"/></label>
+          <label>Password Baru<input type="password" name="new_password" required="required"/></label>
+          <label>Konfirmasi Password Baru<input type="password" name="confirm_password" required="required"/></label>
+          <button class="mtz-btn primary" type="submit">Ubah Password</button>
+        </form>
+      </div>
+    </t>
+  </template>
+</odoo>

@@ -1,0 +1,139 @@
+PANDUAN INSTALL / UPDATE MENTORIZE FINAL
+=======================================
+
+FILE HASIL:
+- mentorize_final.zip
+- Folder di dalam ZIP harus menjadi: mentorize/__manifest__.py
+
+A. SEBELUM INSTALL
+------------------
+1. Pastikan Odoo 17 berjalan normal.
+2. Pastikan nama database benar. Contoh yang sering dipakai: Mentorize
+3. Tutup browser yang sedang membuka Odoo, atau minimal logout dulu.
+4. Backup database jika memungkinkan.
+5. Backup folder module lama sebelum ditimpa.
+
+B. LANGKAH INSTALL DI WINDOWS
+-----------------------------
+1. Stop service Odoo:
+
+   net stop odoo-server-17.0
+
+2. Backup folder module lama:
+
+   Rename folder:
+   D:\odoo\server\odoo\addons\mentorize
+
+   Menjadi contoh:
+   D:\odoo\server\odoo\addons\mentorize_backup_sebelum_final
+
+3. Extract mentorize_final.zip.
+
+   Pastikan hasil akhirnya seperti ini:
+
+   D:\odoo\server\odoo\addons\mentorize\__manifest__.py
+   D:\odoo\server\odoo\addons\mentorize\controllers\main.py
+   D:\odoo\server\odoo\addons\mentorize\models\...
+   D:\odoo\server\odoo\addons\mentorize\views\...
+
+   PENTING:
+   Jangan sampai menjadi:
+   D:\odoo\server\odoo\addons\mentorize\mentorize\__manifest__.py
+
+4. Upgrade module lewat CMD / PowerShell:
+
+   "D:\odoo\python\python.exe" "D:\odoo\server\odoo-bin" -c "D:\odoo\server\odoo.conf" -d Mentorize -u mentorize --stop-after-init --dev=assets
+
+   Jika nama database bukan Mentorize, ganti bagian ini:
+   -d Mentorize
+
+   Contoh jika database bernama odoo17:
+   -d odoo17
+
+5. Start service Odoo:
+
+   net start odoo-server-17.0
+
+6. Buka browser:
+
+   http://localhost:8069/
+   http://localhost:8069/login
+   http://localhost:8069/register
+   http://localhost:8069/dashboard
+   http://localhost:8069/alumni/dashboard
+   http://localhost:8069/admin/dashboard
+
+7. Hard refresh browser:
+
+   Tekan CTRL + F5
+
+C. JIKA CSS / TAMPILAN BELUM BERUBAH
+------------------------------------
+1. Pastikan command upgrade memakai --dev=assets.
+2. Tekan CTRL + F5 di browser.
+3. Clear cache browser.
+4. Restart Odoo lagi:
+
+   net stop odoo-server-17.0
+   net start odoo-server-17.0
+
+D. JIKA ERROR column does not exist
+----------------------------------
+Error ini biasanya muncul karena module belum di-upgrade setelah ada field baru.
+Jalankan ulang command upgrade:
+
+   "D:\odoo\python\python.exe" "D:\odoo\server\odoo-bin" -c "D:\odoo\server\odoo.conf" -d Mentorize -u mentorize --stop-after-init --dev=assets
+
+Lalu start lagi service Odoo.
+
+E. CATATAN AKUN ADMIN
+---------------------
+Fitur admin Mentorize bisa diakses oleh user yang memiliki:
+- mentorize_role = admin, atau
+- group Admin Mentorize.
+
+Jika /admin/dashboard kembali ke /dashboard, berarti akun yang login belum dikenali sebagai admin Mentorize.
+Atur role akun tersebut menjadi Admin Mentorize lewat backend Odoo / mode developer.
+
+F. URUTAN TEST SETELAH INSTALL
+------------------------------
+1. Register mahasiswa.
+2. Lengkapi profil mahasiswa, skill, minat, dan foto.
+3. Register alumni.
+4. Lengkapi profil alumni, skill, bidang mentoring, availability, dan foto.
+5. Login admin.
+6. Buka /admin/users dan verifikasi akun alumni.
+7. Login mahasiswa, buka /mentors, ajukan mentoring ke alumni.
+8. Login alumni, terima request.
+9. Buka /chat, pastikan layout 3 kolom tampil.
+10. Kirim chat dari mahasiswa dan alumni.
+11. Ajukan selesai mentoring dari mahasiswa melalui tombol detail/form laporan.
+12. Login alumni dan setujui selesai mentoring.
+13. Cek /history, pastikan laporan tidak kosong.
+14. Buat laporan dari halaman chat.
+15. Login admin, cek /admin/reports dan tindak laporan.
+16. Cek /admin/dashboard, diagram dan statistik harus muncul.
+
+G. FITUR FINAL YANG DITAMBAHKAN
+-------------------------------
+- Admin dashboard glossy dengan diagram data.
+- Admin kelola user, verifikasi alumni, aktif/nonaktif akun.
+- Admin monitoring request, sesi, matchmaking, feedback, laporan, aktivitas.
+- Laporan mahasiswa/alumni ke admin.
+- Status laporan bisa dipantau user.
+- Chat 3 kolom: profil kiri, chat tengah, detail mentoring kanan.
+- Chat aktif hanya jika request disetujui.
+- Chat terkunci saat mentoring selesai/dihentikan.
+- Foto profil tampil lintas akun lewat partner avatar.
+- Form selesai mentoring detail.
+- Riwayat mentoring menampilkan laporan hasil mentoring.
+- Berhenti mentoring dipisah dari selesai mentoring.
+- Matchmaking tersimpan sebagai riwayat rekomendasi.
+
+H. FILE YANG SUDAH DIBERSIHKAN DARI ZIP FINAL
+---------------------------------------------
+- .git
+- __pycache__
+- *.pyc
+- logs
+- file testing tidak perlu

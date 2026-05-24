@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="dashboard_alumni" name="Dashboard Alumni Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-animate-up">
+        <div>
+          <span class="mtz-kicker">Dashboard Alumni</span>
+          <h1>Selamat datang, <t t-esc="user.name"/> ⭐</h1>
+          <p>Kelola request mentoring, kalender sesi, chat, dan pengajuan akhir sesi.</p>
+        </div>
+        <a href="/chat" class="mtz-btn primary large">Buka Chat</a>
+      </section>
+      <t t-if="success"><div class="mtz-alert success" t-esc="success"/></t>
+      <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+
+      <div class="mtz-stat-grid">
+        <div class="mtz-stat-card"><span>Request Baru</span><strong t-esc="stats['permintaan_baru']"/><small>menunggu respon</small></div>
+        <div class="mtz-stat-card"><span>Sesi Aktif</span><strong t-esc="stats['sesi_aktif']"/><small>terjadwal</small></div>
+        <div class="mtz-stat-card"><span>Sesi Selesai</span><strong t-esc="stats['sesi_selesai']"/><small>riwayat</small></div>
+        <div class="mtz-stat-card"><span>Rating Mentor</span><strong t-esc="stats['rating']"/><small>dari feedback</small></div>
+      </div>
+
+      <div class="mtz-dashboard-grid">
+        <section class="mtz-card span-7">
+          <div class="mtz-card-head"><div><h2>Request Mentoring Masuk</h2><p>Terima atau tolak pengajuan dari mahasiswa.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="requests">
+              <t t-foreach="requests" t-as="req">
+                <div class="mtz-request-item">
+                  <img t-att-src="'/web/image/res.partner/%s/image_128' % req.mahasiswa_id.user_id.partner_id.id"/>
+                  <div class="grow"><strong t-esc="req.mahasiswa_id.name"/><p><t t-esc="req.topik"/> • <t t-esc="req.requested_datetime.strftime('%d %b %Y %H:%M')"/></p><small t-esc="req.deskripsi or 'Tidak ada catatan tambahan.'"/><div class="mtz-request-match"><span>🪄 <t t-esc="request_match_scores.get(req.id, 0)"/>% cocok</span><em t-esc="request_match_labels.get(req.id, 'Cocok')"/></div></div>
+                  <div class="mtz-action-stack"><a class="mtz-btn primary small" t-att-href="'/alumni/request/%s/approve' % req.id">Terima</a><a class="mtz-btn danger-soft small" t-att-href="'/alumni/request/%s/reject' % req.id">Tolak</a></div>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state">Belum ada request baru.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-5">
+          <div class="mtz-card-head"><div><h2>Kalender Mentoring</h2><p>Tanggal yang sudah ada mahasiswanya.</p></div></div>
+          <div class="mtz-calendar-list">
+            <t t-if="upcoming_sessions">
+              <t t-foreach="upcoming_sessions" t-as="sesi">
+                <div class="mtz-calendar-item">
+                  <div class="date"><b t-esc="sesi.tanggal_mentoring.strftime('%d')"/><span t-esc="sesi.tanggal_mentoring.strftime('%b')"/></div>
+                  <div class="grow"><strong t-esc="sesi.topik"/><p><t t-esc="sesi.mahasiswa_id.name"/> • <t t-esc="sesi.tanggal_mentoring.strftime('%H:%M')"/></p></div>
+                  <a t-if="sesi.request_id.room_chat_id" t-att-href="'/chat?room_id=%s' % sesi.request_id.room_chat_id.id">Chat</a>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada jadwal mentoring.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-7">
+          <div class="mtz-card-head"><div><h2>Pengajuan Akhir Sesi</h2><p>Mahasiswa yang merasa sesi mentoring sudah cukup.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="end_requests">
+              <t t-foreach="end_requests" t-as="sesi">
+                <div class="mtz-request-item">
+                  <img t-att-src="'/web/image/res.partner/%s/image_128' % sesi.mahasiswa_id.user_id.partner_id.id"/>
+                  <div class="grow"><strong t-esc="sesi.mahasiswa_id.name"/><p t-esc="sesi.topik"/><small t-esc="sesi.end_request_note or 'Mahasiswa mengajukan sesi untuk diakhiri.'"/></div>
+                  <div class="mtz-action-stack"><a class="mtz-btn primary small" t-att-href="'/session/%s/end/approve' % sesi.id">Setujui</a><a class="mtz-btn danger-soft small" t-att-href="'/session/%s/end/reject' % sesi.id">Tolak</a></div>
+                </div>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada pengajuan akhir sesi.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-5">
+          <div class="mtz-card-head"><div><h2>Riwayat Singkat</h2><p>Sesi mentoring yang telah selesai.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="completed_sessions">
+              <t t-foreach="completed_sessions" t-as="sesi"><div class="mtz-list-item"><div class="grow"><strong t-esc="sesi.topik"/><p><t t-esc="sesi.mahasiswa_id.name"/> • <t t-esc="sesi.tanggal_mentoring.strftime('%d %b %Y')"/></p></div><span class="mtz-pill success">Selesai</span></div></t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada riwayat selesai.</div></t>
+          </div>
+        </section>
+      </div>
+    </t>
+  </template>
+
+  <template id="dashboard_admin" name="Dashboard Admin Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-admin-hero mtz-animate-up">
+        <div>
+          <span class="mtz-kicker">Admin Mentorize</span>
+          <h1>Dashboard Monitoring</h1>
+          <p>Pantau data mahasiswa, alumni, request, sesi mentoring, laporan, feedback, dan aktivitas sistem secara real-time.</p>
+        </div>
+        <div class="mtz-admin-quick-actions">
+          <a href="/admin/users" class="mtz-btn primary large">Kelola User</a>
+          <a href="/admin/reports" class="mtz-btn soft large">Laporan</a>
+        </div>
+      </section>
+
+      <div class="mtz-stat-grid admin-stats">
+        <div class="mtz-stat-card"><span>Mahasiswa</span><strong t-esc="total_mahasiswa"/><small>pengguna mentee</small></div>
+        <div class="mtz-stat-card"><span>Alumni</span><strong t-esc="total_alumni"/><small>calon/mentor aktif</small></div>
+        <div class="mtz-stat-card"><span>Request</span><strong t-esc="total_requests"/><small>seluruh pengajuan</small></div>
+        <div class="mtz-stat-card"><span>Sesi</span><strong t-esc="total_sessions"/><small>jadwal mentoring</small></div>
+        <div class="mtz-stat-card"><span>Verifikasi</span><strong t-esc="pending_alumni"/><small>alumni menunggu</small></div>
+        <div class="mtz-stat-card"><span>Laporan Aktif</span><strong t-esc="active_reports"/><small>baru/diproses</small></div>
+      </div>
+
+      <div class="mtz-admin-grid">
+        <section class="mtz-card mtz-chart-card span-6">
+          <div class="mtz-card-head"><div><h2>Komposisi Pengguna</h2><p>Mahasiswa dibanding alumni.</p></div></div>
+          <div class="mtz-donut-wrap">
+            <div class="mtz-donut" t-attf-style="background:conic-gradient(var(--mtz-primary) 0 #{(user_mahasiswa_pct or 0) * 3.6}deg, var(--mtz-navy) #{(user_mahasiswa_pct or 0) * 3.6}deg 360deg);"><span><t t-esc="total_mahasiswa + total_alumni"/></span></div>
+            <div class="mtz-chart-legend"><span><i class="dot a"></i>Mahasiswa: <t t-esc="total_mahasiswa"/></span><span><i class="dot b"></i>Alumni: <t t-esc="total_alumni"/></span></div>
+          </div>
+        </section>
+
+        <section class="mtz-card mtz-chart-card span-6">
+          <div class="mtz-card-head"><div><h2>Status Request</h2><p>Pending, diterima, ditolak, dan selesai.</p></div></div>
+          <div class="mtz-bars">
+            <div><span>Pending</span><b t-attf-style="width:#{((request_chart['pending'] * 100.0) / request_total_chart)}%"></b><em t-esc="request_chart['pending']"/></div>
+            <div><span>Diterima</span><b t-attf-style="width:#{((request_chart['approved'] * 100.0) / request_total_chart)}%"></b><em t-esc="request_chart['approved']"/></div>
+            <div><span>Ditolak</span><b t-attf-style="width:#{((request_chart['rejected'] * 100.0) / request_total_chart)}%"></b><em t-esc="request_chart['rejected']"/></div>
+            <div><span>Selesai</span><b t-attf-style="width:#{((request_chart['done'] * 100.0) / request_total_chart)}%"></b><em t-esc="request_chart['done']"/></div>
+          </div>
+        </section>
+
+        <section class="mtz-card mtz-chart-card span-6">
+          <div class="mtz-card-head"><div><h2>Status Sesi Mentoring</h2><p>Jadwal aktif, pengajuan selesai, selesai, dan dihentikan.</p></div></div>
+          <div class="mtz-bars mtz-bars-alt">
+            <div><span>Terjadwal/Aktif</span><b t-attf-style="width:#{((session_chart['scheduled'] * 100.0) / session_total_chart)}%"></b><em t-esc="session_chart['scheduled']"/></div>
+            <div><span>Pengajuan selesai</span><b t-attf-style="width:#{((session_chart['end_requested'] * 100.0) / session_total_chart)}%"></b><em t-esc="session_chart['end_requested']"/></div>
+            <div><span>Selesai</span><b t-attf-style="width:#{((session_chart['completed'] * 100.0) / session_total_chart)}%"></b><em t-esc="session_chart['completed']"/></div>
+            <div><span>Dihentikan/Batal</span><b t-attf-style="width:#{((session_chart['stopped'] * 100.0) / session_total_chart)}%"></b><em t-esc="session_chart['stopped']"/></div>
+          </div>
+        </section>
+
+        <section class="mtz-card mtz-chart-card span-6">
+          <div class="mtz-card-head"><div><h2>Status Laporan</h2><p>Laporan pengguna dari mahasiswa dan alumni.</p></div></div>
+          <div class="mtz-report-pills">
+            <div><strong t-esc="report_chart['baru']"/><span>Baru</span></div>
+            <div><strong t-esc="report_chart['diproses']"/><span>Diproses</span></div>
+            <div><strong t-esc="report_chart['selesai']"/><span>Selesai</span></div>
+            <div><strong t-esc="report_chart['ditolak']"/><span>Ditolak</span></div>
+          </div>
+        </section>
+
+        <section class="mtz-card span-7">
+          <div class="mtz-card-head"><div><h2>Skill &amp; Minat Terpopuler</h2><p>Diambil dari profil mahasiswa dan alumni.</p></div><a href="/admin/users">Lihat user</a></div>
+          <div class="mtz-skill-chart">
+            <t t-if="skill_chart">
+              <t t-foreach="skill_chart" t-as="sk"><div><span t-esc="sk['name']"/><b t-attf-style="width:#{((sk['count'] * 100.0) / max_skill)}%"></b><em t-esc="sk['count']"/></div></t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada data skill/minat.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-5">
+          <div class="mtz-card-head"><div><h2>Alumni Teraktif</h2><p>Berdasarkan sesi selesai dan rating.</p></div></div>
+          <div class="mtz-list">
+            <t t-if="top_alumni">
+              <t t-foreach="top_alumni" t-as="al"><div class="mtz-list-item"><img class="mtz-list-avatar" t-att-src="'/web/image/res.partner/%s/image_128' % al.user_id.partner_id.id"/><div class="grow"><strong t-esc="al.name"/><p><t t-esc="al.pekerjaan or 'Alumni Mentor'"/> • ⭐ <t t-esc="al.rating"/></p></div><span class="mtz-pill success" t-if="al.is_verified">Verified</span><span class="mtz-pill warning" t-else="">Pending</span></div></t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada data alumni.</div></t>
+          </div>
+        </section>
+
+        <section class="mtz-card span-7">
+          <div class="mtz-card-head"><div><h2>Aktivitas Terbaru</h2><p>Log penting sistem Mentorize.</p></div><a href="/admin/activities">Lihat semua</a></div>
+          <div class="mtz-activity-list"><t t-foreach="recent_activities" t-as="act"><div><b t-esc="act.activity_type"/><p t-esc="act.description"/><small t-esc="act.timestamp.strftime('%d %b %Y %H:%M') if act.timestamp else '-'"/></div></t><t t-if="not recent_activities"><div class="mtz-empty-state small">Belum ada aktivitas.</div></t></div>
+        </section>
+
+        <section class="mtz-card span-5">
+          <div class="mtz-card-head"><div><h2>Laporan Terbaru</h2><p>Laporan yang perlu ditinjau admin.</p></div><a href="/admin/reports">Kelola</a></div>
+          <div class="mtz-list"><t t-foreach="recent_reports" t-as="rep"><div class="mtz-list-item"><div class="grow"><strong t-esc="rep.judul"/><p><t t-esc="rep.pelapor_id.name"/> → <t t-esc="rep.dilaporkan_id.name or 'Sistem'"/></p></div><span t-att-class="'mtz-pill warning' if rep.status in ['baru','diproses'] else 'mtz-pill success'" t-esc="rep.status"/></div></t><t t-if="not recent_reports"><div class="mtz-empty-state small">Belum ada laporan.</div></t></div>
+        </section>
+      </div>
+    </t>
+  </template>
+</odoo>

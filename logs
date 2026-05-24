@@ -1,0 +1,1184 @@
+2026-05-22 10:09:11,256 23872 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-22 10:09:11,256 23872 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-22 10:09:11,256 23872 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-22 10:09:11,256 23872 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-22 10:09:11,519 23872 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-22 10:09:11,984 23872 INFO Mentorize odoo.modules.loading: loading 1 modules... 
+2026-05-22 10:09:11,988 23872 INFO Mentorize odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-05-22 10:09:12,004 23872 INFO Mentorize odoo.modules.loading: updating modules list 
+2026-05-22 10:09:12,009 23872 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-05-22 10:09:12,695 23872 WARNING Mentorize odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-22 10:09:12,864 23872 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Mentorize'] to user __system__ #1 via n/a 
+2026-05-22 10:09:12,864 23872 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Mentorize'] to user __system__ #1 via n/a 
+2026-05-22 10:09:13,248 23872 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-05-22 10:09:13,273 23872 INFO Mentorize odoo.modules.loading: loading 40 modules... 
+2026-05-22 10:09:13,628 23872 INFO Mentorize odoo.modules.loading: Loading module mentorize (35/40) 
+2026-05-22 10:09:13,848 23872 INFO Mentorize odoo.modules.registry: module mentorize: creating or updating database tables 
+2026-05-22 10:09:13,931 23872 INFO Mentorize odoo.schema: Table 'mentorize_request': unable to set NOT NULL on column 'requested_datetime' 
+2026-05-22 10:09:13,933 23872 INFO Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'mahasiswa_id' 
+2026-05-22 10:09:13,934 23872 INFO Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'alumni_id' 
+2026-05-22 10:09:13,944 23872 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-22 10:09:13,967 23872 INFO Mentorize odoo.modules.loading: loading mentorize/security/mentorize_groups.xml 
+2026-05-22 10:09:14,002 23872 INFO Mentorize odoo.modules.loading: loading mentorize/security/ir.model.access.csv 
+2026-05-22 10:09:14,031 23872 INFO Mentorize odoo.modules.loading: loading mentorize/data/mentorize_master_data.xml 
+2026-05-22 10:09:14,040 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/backend/admin_views.xml 
+2026-05-22 10:09:14,094 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/layout.xml 
+2026-05-22 10:09:14,115 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/public_pages.xml 
+2026-05-22 10:09:14,162 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/dashboard_mahasiswa.xml 
+2026-05-22 10:09:14,180 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/dashboard_alumni.xml 
+2026-05-22 10:09:14,205 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/profile_pages.xml 
+2026-05-22 10:09:14,221 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/mentor_pages.xml 
+2026-05-22 10:09:14,229 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/chat_pages.xml 
+2026-05-22 10:09:14,248 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/history_pages.xml 
+2026-05-22 10:09:14,278 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/settings_pages.xml 
+2026-05-22 10:09:14,286 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/admin_pages.xml 
+2026-05-22 10:09:14,327 23872 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/report_pages.xml 
+2026-05-22 10:09:14,348 23872 INFO Mentorize odoo.modules.loading: Module mentorize loaded in 0.72s, 676 queries (+676 other) 
+2026-05-22 10:09:14,377 23872 INFO Mentorize odoo.modules.loading: 40 modules loaded in 1.10s, 676 queries (+676 extra) 
+2026-05-22 10:09:14,442 23872 WARNING Mentorize odoo.schema: Table 'mentorize_request': unable to set NOT NULL on column 'requested_datetime' 
+2026-05-22 10:09:14,443 23872 WARNING Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'mahasiswa_id' 
+2026-05-22 10:09:14,445 23872 WARNING Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'alumni_id' 
+2026-05-22 10:09:14,514 23872 INFO Mentorize odoo.modules.registry: verifying fields for every extended model 
+2026-05-22 10:09:14,757 23872 INFO Mentorize odoo.modules.loading: Modules loaded. 
+2026-05-22 10:09:14,762 23872 INFO Mentorize odoo.modules.registry: Registry loaded in 2.823s 
+2026-05-22 10:09:14,762 23872 INFO Mentorize odoo.service.server: Initiating shutdown 
+2026-05-22 10:09:14,762 23872 INFO Mentorize odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-22 10:09:14,762 23872 INFO Mentorize odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-05-22 10:09:28,708 9240 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-22 10:09:28,708 9240 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-22 10:09:28,708 9240 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-22 10:09:28,708 9240 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-22 10:09:28,827 9240 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-22 10:09:30,618 9240 INFO ? odoo.service.server: Initiating shutdown 
+2026-05-22 10:09:30,618 9240 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-22 10:09:30,620 9240 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 2 connections  
+2026-05-22 10:09:32,966 19152 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-22 10:09:32,966 19152 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-22 10:09:32,966 19152 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-22 10:09:32,966 19152 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-22 10:09:33,084 19152 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-22 10:09:34,224 19152 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
+2026-05-22 10:09:34,355 19152 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-05-22 10:09:34,362 19152 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-05-22 10:09:34,373 19152 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-22 10:09:34,385 19152 INFO ? odoo.modules.loading: loading 40 modules... 
+2026-05-22 10:09:34,801 19152 INFO ? odoo.modules.loading: 40 modules loaded in 0.42s, 0 queries (+0 extra) 
+2026-05-22 10:09:34,848 19152 INFO ? odoo.modules.loading: Modules loaded. 
+2026-05-22 10:09:34,852 19152 INFO ? odoo.modules.registry: Registry loaded in 0.548s 
+2026-05-22 10:09:34,855 19152 INFO Mentorize odoo.addons.base.models.ir_http: Generating routing map for key 1 
+2026-05-22 10:09:35,195 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:35] "GET /dashboard HTTP/1.1" 200 - 92 0.085 0.808
+2026-05-22 10:09:39,944 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:39] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 14 0.014 4.511
+2026-05-22 10:09:39,959 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 10:09:39,976 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:39] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 16 0.017 4.539
+2026-05-22 10:09:39,977 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 10:09:39,998 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:39] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.027 4.245
+2026-05-22 10:09:39,999 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 10:09:40,009 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:40] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.007 4.281
+2026-05-22 10:09:43,364 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:43] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 2 0.006 0.020
+2026-05-22 10:09:43,572 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:43] "GET /login HTTP/1.1" 200 - 20 0.020 0.072
+2026-05-22 10:09:58,898 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:09:58] "GET /admin/login HTTP/1.1" 200 - 10 0.003 0.014
+2026-05-22 10:10:05,589 19152 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-22 10:10:05,605 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:05] "POST /admin/login/submit HTTP/1.1" 303 - 48 0.043 1.993
+2026-05-22 10:10:05,710 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:05] "GET /admin/dashboard HTTP/1.1" 200 - 70 0.022 0.082
+2026-05-22 10:10:06,051 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 10:10:06,082 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:06] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 15 0.013 0.036
+2026-05-22 10:10:06,101 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 10:10:06,102 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:06] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.009 0.044
+2026-05-22 10:10:06,116 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 10:10:06,120 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:06] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.018 0.062
+2026-05-22 10:10:06,137 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:06] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.038 0.061
+2026-05-22 10:10:08,458 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:08] "GET /admin/users HTTP/1.1" 200 - 12 0.005 0.023
+2026-05-22 10:10:08,768 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:08] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.003 0.019
+2026-05-22 10:10:08,819 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 10:10:08,820 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 10:10:08,983 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:08] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.031 0.173
+2026-05-22 10:10:08,984 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:08] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.035 0.176
+2026-05-22 10:10:09,003 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 10:10:09,011 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [53], uid: 2, model: res.partner 
+2026-05-22 10:10:09,011 19152 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [51], uid: 2, model: res.partner 
+2026-05-22 10:10:09,032 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:09] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.024 0.220
+2026-05-22 10:10:09,033 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:09] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 13 0.022 0.211
+2026-05-22 10:10:09,050 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:09] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 200 - 13 0.048 0.216
+2026-05-22 10:10:10,906 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:10] "GET /admin/mentoring HTTP/1.1" 200 - 22 0.023 0.080
+2026-05-22 10:10:10,947 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:10] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.005 0.017
+2026-05-22 10:10:12,500 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:12] "GET /admin/feedback HTTP/1.1" 200 - 11 0.002 0.015
+2026-05-22 10:10:12,811 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:12] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.003 0.012
+2026-05-22 10:10:14,352 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:14] "GET /admin/reports HTTP/1.1" 200 - 11 0.008 0.045
+2026-05-22 10:10:14,431 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:14] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.003 0.004
+2026-05-22 10:10:15,373 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:15] "GET /admin/activities HTTP/1.1" 200 - 12 0.005 0.012
+2026-05-22 10:10:15,687 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:15] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.001 0.012
+2026-05-22 10:10:16,721 19152 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 10:10:16] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.004
+2026-05-22 10:10:33,409 19152 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Base: Auto-vacuum internal data`. 
+2026-05-22 10:10:33,437 19152 INFO Mentorize odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 0 removed 
+2026-05-22 10:10:33,502 19152 INFO Mentorize odoo.addons.base.models.res_users: GC'd 7 user log entries 
+2026-05-22 10:10:33,523 19152 INFO Mentorize odoo.addons.auth_totp.models.auth_totp: GC'd 0 totp devices entries 
+2026-05-22 10:10:33,532 19152 INFO Mentorize odoo.models.unlink: User #1 deleted bus.bus records with IDs: [283] 
+2026-05-22 10:10:33,593 19152 INFO Mentorize odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-05-22 10:10:33,617 19152 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Base: Auto-vacuum internal data` (0.207s). 
+2026-05-22 10:10:43,109 19152 INFO Mentorize odoo.sql_db: Connection to the database failed 
+2026-05-22 10:10:43,109 19152 WARNING Mentorize odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "D:\odoo\server\odoo\addons\base\models\ir_cron.py", line 119, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "D:\odoo\server\odoo\sql_db.py", line 773, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\odoo\server\odoo\sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "D:\odoo\python\Lib\site-packages\decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\odoo\server\odoo\tools\func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\odoo\server\odoo\sql_db.py", line 701, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "D:\odoo\python\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  the database system is shutting down
+
+2026-05-22 10:10:43,203 19152 INFO ? odoo.service.server: Initiating shutdown 
+2026-05-22 10:10:43,203 19152 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-22 10:10:43,391 19152 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 7 connections  
+2026-05-22 11:14:39,592 6528 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-22 11:14:39,592 6528 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-22 11:14:39,592 6528 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-22 11:14:39,592 6528 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-22 11:14:39,750 6528 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-22 11:14:40,469 6528 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
+2026-05-22 11:49:34,926 6528 INFO ? odoo.service.server: Initiating shutdown 
+2026-05-22 11:49:34,926 6528 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-22 11:49:35,036 6528 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 2 connections  
+2026-05-22 13:57:24,489 6336 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-22 13:57:24,489 6336 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-22 13:57:24,489 6336 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-22 13:57:24,489 6336 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-22 13:57:24,648 6336 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-22 13:57:28,380 6336 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
+2026-05-22 14:03:28,443 6336 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-05-22 14:03:28,448 6336 INFO ? odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-05-22 14:03:28,656 6336 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-22 14:03:29,282 6336 INFO ? odoo.modules.loading: loading 40 modules... 
+2026-05-22 14:03:32,169 6336 INFO ? odoo.modules.loading: 40 modules loaded in 2.89s, 0 queries (+0 extra) 
+2026-05-22 14:03:32,272 6336 INFO ? odoo.modules.loading: Modules loaded. 
+2026-05-22 14:03:32,288 6336 INFO ? odoo.modules.registry: Registry loaded in 4.013s 
+2026-05-22 14:03:32,302 6336 INFO Mentorize odoo.addons.base.models.ir_http: Generating routing map for key 1 
+2026-05-22 14:03:32,594 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:32] "GET / HTTP/1.1" 303 - 35 0.254 4.113
+2026-05-22 14:03:32,855 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:32] "GET /admin/dashboard HTTP/1.1" 200 - 74 0.116 0.143
+2026-05-22 14:03:34,737 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-22 14:03:34,773 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.036s). 
+2026-05-22 14:03:34,783 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-22 14:03:34,792 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.009s). 
+2026-05-22 14:03:34,802 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-22 14:03:34,811 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.009s). 
+2026-05-22 14:03:34,818 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-22 14:03:34,824 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.006s). 
+2026-05-22 14:03:34,834 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-22 14:03:34,841 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.006s). 
+2026-05-22 14:03:40,486 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:40] "GET /admin/users HTTP/1.1" 200 - 12 0.018 0.106
+2026-05-22 14:03:49,165 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [53], uid: 2, model: res.partner 
+2026-05-22 14:03:49,168 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [51], uid: 2, model: res.partner 
+2026-05-22 14:03:49,225 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 21 0.075 8.311
+2026-05-22 14:03:49,227 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 17 0.048 8.343
+2026-05-22 14:03:49,268 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 14:03:49,290 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.016 16.344
+2026-05-22 14:03:49,302 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 14:03:49,316 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 14:03:49,318 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.018 16.057
+2026-05-22 14:03:49,332 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.010 16.083
+2026-05-22 14:03:49,338 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.017 16.084
+2026-05-22 14:03:49,761 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 14:03:49,765 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /admin/mentoring HTTP/1.1" 200 - 22 0.040 0.082
+2026-05-22 14:03:49,767 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.011 0.111
+2026-05-22 14:03:49,784 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 14:03:49,790 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 14:03:49,804 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.058 0.103
+2026-05-22 14:03:49,811 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.023 0.132
+2026-05-22 14:03:49,815 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:49] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.059 0.102
+2026-05-22 14:03:50,180 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:50] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.003 0.010
+2026-05-22 14:03:55,045 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:55] "GET /admin/feedback HTTP/1.1" 200 - 11 0.009 0.033
+2026-05-22 14:03:55,131 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:55] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.002 0.007
+2026-05-22 14:03:56,451 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:56] "GET /admin/activities HTTP/1.1" 200 - 12 0.003 0.012
+2026-05-22 14:03:56,763 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:03:56] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.006 0.016
+2026-05-22 14:04:08,126 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:04:08] "GET /admin/reports HTTP/1.1" 200 - 11 0.013 0.067
+2026-05-22 14:04:08,197 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:04:08] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.000 0.015
+2026-05-22 14:04:13,063 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:04:13] "GET /admin/activities HTTP/1.1" 200 - 9 0.003 0.009
+2026-05-22 14:04:13,367 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:04:13] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.003 0.009
+2026-05-22 14:04:24,671 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:04:24] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 2 0.001 0.013
+2026-05-22 14:04:24,880 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:04:24] "GET /login HTTP/1.1" 200 - 21 0.014 0.068
+2026-05-22 14:05:33,007 6336 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:valen@gmail.com from 127.0.0.1 
+2026-05-22 14:05:33,042 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:33] "POST /login/submit HTTP/1.1" 303 - 44 0.070 1.997
+2026-05-22 14:05:33,149 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:33] "GET /dashboard HTTP/1.1" 200 - 53 0.015 0.087
+2026-05-22 14:05:33,191 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:33] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 200 - 14 0.007 0.027
+2026-05-22 14:05:33,532 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:05:33,534 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:05:33,545 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:05:33,566 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:33] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 14 0.043 0.037
+2026-05-22 14:05:33,569 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:33] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 14 0.045 0.036
+2026-05-22 14:05:33,576 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:33] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.049 0.035
+2026-05-22 14:05:41,163 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:41] "GET /mentors HTTP/1.1" 200 - 26 0.017 0.099
+2026-05-22 14:05:41,185 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:41] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.001 0.013
+2026-05-22 14:05:41,327 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:05:41,343 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:41] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.011 0.030
+2026-05-22 14:05:41,510 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:05:41,511 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:05:41,532 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:41] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.020 0.022
+2026-05-22 14:05:41,533 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:41] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.019 0.028
+2026-05-22 14:05:49,014 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:49] "GET /chat HTTP/1.1" 200 - 22 0.029 0.168
+2026-05-22 14:05:49,034 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:49] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.006 0.007
+2026-05-22 14:05:49,092 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:49] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.007
+2026-05-22 14:05:49,374 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:05:49,375 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:05:49,392 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:49] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.019 0.023
+2026-05-22 14:05:49,394 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:49] "GET /web/image/res.partner/52/image_1920 HTTP/1.1" 304 - 13 0.015 0.025
+2026-05-22 14:05:50,762 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:50] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.007
+2026-05-22 14:05:51,847 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:51] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.002
+2026-05-22 14:05:53,558 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:53] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.008
+2026-05-22 14:05:53,911 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:53] "GET /history HTTP/1.1" 200 - 13 0.003 0.017
+2026-05-22 14:05:54,225 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:54] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.007 0.013
+2026-05-22 14:05:55,444 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:55] "GET /chat HTTP/1.1" 200 - 19 0.011 0.044
+2026-05-22 14:05:55,524 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:55] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.007
+2026-05-22 14:05:55,679 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:55] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.007 0.018
+2026-05-22 14:05:55,790 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:05:55,790 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:05:55,805 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:55] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.021 0.015
+2026-05-22 14:05:55,807 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:55] "GET /web/image/res.partner/52/image_1920 HTTP/1.1" 304 - 13 0.013 0.027
+2026-05-22 14:05:56,879 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:56] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.006
+2026-05-22 14:05:58,591 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:58] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.005
+2026-05-22 14:05:59,670 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:05:59] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.006
+2026-05-22 14:06:01,385 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:01] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.007
+2026-05-22 14:06:02,470 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:02] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.004
+2026-05-22 14:06:04,187 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:04] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.004
+2026-05-22 14:06:05,283 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:05] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.004 0.006
+2026-05-22 14:06:06,977 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:06] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.006
+2026-05-22 14:06:08,071 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:08] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.006
+2026-05-22 14:06:09,787 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:09] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.008
+2026-05-22 14:06:10,871 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:10] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.000 0.003
+2026-05-22 14:06:12,595 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:12] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.005 0.006
+2026-05-22 14:06:13,668 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:13] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.007
+2026-05-22 14:06:15,397 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:15] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.004 0.005
+2026-05-22 14:06:16,472 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:16] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.007
+2026-05-22 14:06:18,285 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:18] "GET /profile HTTP/1.1" 200 - 19 0.013 0.095
+2026-05-22 14:06:18,429 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:18] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.011
+2026-05-22 14:06:18,464 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:18] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.008 0.022
+2026-05-22 14:06:18,640 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:18] "GET /web/image/res.partner/51/image_1920 HTTP/1.1" 304 - 8 0.004 0.019
+2026-05-22 14:06:29,638 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:29] "GET /reports HTTP/1.1" 200 - 12 0.003 0.018
+2026-05-22 14:06:29,952 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:29] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.008 0.017
+2026-05-22 14:06:31,020 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:31] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.002 0.047
+2026-05-22 14:06:31,401 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:31] "GET /dashboard HTTP/1.1" 200 - 44 0.008 0.020
+2026-05-22 14:06:31,698 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:31] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.003 0.018
+2026-05-22 14:06:31,755 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:06:31,763 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:06:31,773 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:06:31,793 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:31] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.035 0.036
+2026-05-22 14:06:31,797 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:31] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.041 0.032
+2026-05-22 14:06:31,802 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:06:31] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.036 0.040
+2026-05-22 14:08:20,627 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:20] "GET /mentors HTTP/1.1" 200 - 23 0.012 0.079
+2026-05-22 14:08:20,667 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:20] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.004 0.018
+2026-05-22 14:08:20,811 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:08:20,827 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:20] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.008 0.023
+2026-05-22 14:08:20,967 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:08:20,968 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:08:20,987 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:20] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.016 0.025
+2026-05-22 14:08:20,989 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:20] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.017 0.029
+2026-05-22 14:08:22,551 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:22] "GET /dashboard HTTP/1.1" 200 - 44 0.007 0.021
+2026-05-22 14:08:22,848 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:22] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.005 0.015
+2026-05-22 14:08:22,884 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:08:22,887 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:08:22,911 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:08:22,913 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:22] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.025 0.022
+2026-05-22 14:08:22,924 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:22] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.019 0.037
+2026-05-22 14:08:22,936 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:22] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.028 0.036
+2026-05-22 14:08:24,214 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:24] "GET /chat HTTP/1.1" 200 - 19 0.005 0.032
+2026-05-22 14:08:24,309 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:24] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.007
+2026-05-22 14:08:24,451 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:24] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.007 0.018
+2026-05-22 14:08:24,548 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:08:24,549 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:08:24,570 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:24] "GET /web/image/res.partner/52/image_1920 HTTP/1.1" 304 - 13 0.018 0.018
+2026-05-22 14:08:24,572 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:24] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.012 0.023
+2026-05-22 14:08:25,650 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:25] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.006
+2026-05-22 14:08:26,031 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:26] "GET /mentors HTTP/1.1" 200 - 23 0.019 0.036
+2026-05-22 14:08:26,070 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:26] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.005 0.017
+2026-05-22 14:08:26,262 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:08:26,279 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:26] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.012 0.026
+2026-05-22 14:08:26,383 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:08:26,387 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:08:26,409 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:26] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.016 0.029
+2026-05-22 14:08:26,410 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:26] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.017 0.027
+2026-05-22 14:08:27,279 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:27] "GET /mentors?match=1 HTTP/1.1" 200 - 23 0.026 0.057
+2026-05-22 14:08:27,325 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:27] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.005 0.017
+2026-05-22 14:08:27,467 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:08:27,483 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:27] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.010 0.026
+2026-05-22 14:08:27,643 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:08:27,647 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:08:27,673 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:27] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.033 0.037
+2026-05-22 14:08:27,676 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:27] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.031 0.044
+2026-05-22 14:08:28,961 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:28] "GET /profile HTTP/1.1" 200 - 16 0.006 0.015
+2026-05-22 14:08:29,281 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:29] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.008 0.017
+2026-05-22 14:08:29,308 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:29] "GET /web/image/res.partner/51/image_1920 HTTP/1.1" 304 - 8 0.005 0.018
+2026-05-22 14:08:31,821 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:31] "GET /reports HTTP/1.1" 200 - 9 0.010 0.027
+2026-05-22 14:08:31,913 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:31] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.004 0.016
+2026-05-22 14:08:33,336 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:33] "GET /history HTTP/1.1" 200 - 10 0.002 0.010
+2026-05-22 14:08:33,649 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:33] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.002 0.013
+2026-05-22 14:08:35,450 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:35] "GET /dashboard HTTP/1.1" 200 - 44 0.028 0.049
+2026-05-22 14:08:35,514 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:35] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 8 0.004 0.012
+2026-05-22 14:08:35,665 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 9, model: res.partner 
+2026-05-22 14:08:35,684 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:35] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.011 0.033
+2026-05-22 14:08:35,790 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 9, model: res.partner 
+2026-05-22 14:08:35,809 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 9, model: res.partner 
+2026-05-22 14:08:35,826 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:35] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.023 0.039
+2026-05-22 14:08:35,836 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:35] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.023 0.043
+2026-05-22 14:08:40,309 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:40] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.001 0.007
+2026-05-22 14:08:40,739 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:40] "GET /login HTTP/1.1" 200 - 6 0.006 0.116
+2026-05-22 14:08:49,241 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:08:49] "GET /admin/login HTTP/1.1" 200 - 9 0.008 0.045
+2026-05-22 14:18:28,738 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-22 14:18:28,741 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.003s). 
+2026-05-22 14:18:28,745 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-22 14:18:28,747 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.002s). 
+2026-05-22 14:18:28,751 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-22 14:18:28,753 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.002s). 
+2026-05-22 14:18:28,756 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-22 14:18:28,758 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.002s). 
+2026-05-22 14:18:28,762 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-22 14:18:28,763 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.001s). 
+2026-05-22 14:18:50,608 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 14:18:50] "GET /web/service-worker.js HTTP/1.1" 200 - 5 0.004 0.019
+2026-05-22 15:18:31,191 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-22 15:18:31,203 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.012s). 
+2026-05-22 15:18:31,208 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-22 15:18:31,211 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.003s). 
+2026-05-22 15:18:31,216 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-22 15:18:31,220 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.004s). 
+2026-05-22 15:18:31,224 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-22 15:18:31,227 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.003s). 
+2026-05-22 15:18:31,232 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-22 15:18:31,234 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.002s). 
+2026-05-22 16:17:04,953 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Base: Auto-vacuum internal data`. 
+2026-05-22 16:17:05,095 6336 INFO Mentorize odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-05-22 16:17:05,249 6336 INFO Mentorize odoo.addons.base.models.res_users: GC'd 1 user log entries 
+2026-05-22 16:17:05,296 6336 INFO Mentorize odoo.addons.auth_totp.models.auth_totp: GC'd 0 totp devices entries 
+2026-05-22 16:17:05,441 6336 INFO Mentorize odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-05-22 16:17:05,495 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Base: Auto-vacuum internal data` (0.542s). 
+2026-05-22 16:17:05,501 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Base: Portal Users Deletion`. 
+2026-05-22 16:17:05,507 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Base: Portal Users Deletion` (0.006s). 
+2026-05-22 16:18:06,523 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Discuss: channel member unmute`. 
+2026-05-22 16:18:06,537 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Discuss: channel member unmute` (0.014s). 
+2026-05-22 16:18:06,542 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: send web push notification`. 
+2026-05-22 16:18:06,546 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: send web push notification` (0.004s). 
+2026-05-22 16:18:06,551 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Delete Notifications older than 6 Month`. 
+2026-05-22 16:18:06,562 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Delete Notifications older than 6 Month` (0.011s). 
+2026-05-22 16:18:06,566 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-22 16:18:06,572 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.005s). 
+2026-05-22 16:18:06,576 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-22 16:18:06,579 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.003s). 
+2026-05-22 16:18:31,976 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Users: Notify About Unregistered Users`. 
+2026-05-22 16:18:31,996 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Users: Notify About Unregistered Users` (0.020s). 
+2026-05-22 16:18:32,002 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Website Visitor : clean inactive visitors`. 
+2026-05-22 16:18:32,006 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Website Visitor : clean inactive visitors` (0.004s). 
+2026-05-22 16:18:32,010 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-22 16:18:32,015 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.005s). 
+2026-05-22 16:18:32,019 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-22 16:18:32,022 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.003s). 
+2026-05-22 16:18:32,025 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-22 16:18:32,027 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.002s). 
+2026-05-22 19:33:23,444 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Digest Emails`. 
+2026-05-22 19:33:23,455 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Digest Emails` (0.011s). 
+2026-05-22 19:33:23,460 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-22 19:33:23,466 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.006s). 
+2026-05-22 19:33:23,471 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-22 19:33:23,474 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.003s). 
+2026-05-22 19:33:23,478 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-22 19:33:23,481 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.004s). 
+2026-05-22 19:33:23,486 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-22 19:33:23,491 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.004s). 
+2026-05-22 19:33:23,495 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-22 19:33:23,498 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.003s). 
+2026-05-22 21:57:51,888 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-22 21:57:51,898 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.010s). 
+2026-05-22 21:57:51,903 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-22 21:57:51,908 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.005s). 
+2026-05-22 21:57:51,914 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-22 21:57:51,918 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.004s). 
+2026-05-22 21:57:51,923 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-22 21:57:51,924 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.001s). 
+2026-05-22 21:57:51,929 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-22 21:57:51,935 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.005s). 
+2026-05-22 21:59:52,736 6336 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-22 21:59:52,775 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 21:59:52] "POST /admin/login/submit HTTP/1.1" 303 - 26 0.106 1.806
+2026-05-22 21:59:52,836 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 21:59:52] "GET /admin/dashboard HTTP/1.1" 200 - 63 0.023 0.036
+2026-05-22 21:59:52,888 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 21:59:52] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.005 0.012
+2026-05-22 21:59:53,212 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 21:59:53,230 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 21:59:53,247 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 21:59:53,281 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 21:59:53] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.048 0.055
+2026-05-22 21:59:53,282 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 21:59:53] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.047 0.058
+2026-05-22 21:59:53,282 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 21:59:53] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.063 0.036
+2026-05-22 22:00:02,147 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:02] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.001 0.017
+2026-05-22 22:00:02,307 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:02] "GET /login HTTP/1.1" 200 - 6 0.008 0.030
+2026-05-22 22:00:10,808 6336 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:aisyah@gmail.com from 127.0.0.1 
+2026-05-22 22:00:10,841 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:10] "POST /login/submit HTTP/1.1" 303 - 35 0.018 1.644
+2026-05-22 22:00:10,918 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:10] "GET /dashboard HTTP/1.1" 200 - 47 0.035 0.036
+2026-05-22 22:00:11,345 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 11, model: res.partner 
+2026-05-22 22:00:11,359 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 11, model: res.partner 
+2026-05-22 22:00:11,360 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 11, model: res.partner 
+2026-05-22 22:00:11,360 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:11] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.032 0.073
+2026-05-22 22:00:11,376 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:11] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 17 0.039 0.086
+2026-05-22 22:00:11,378 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:11] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 17 0.045 0.088
+2026-05-22 22:00:11,379 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:11] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 19 0.040 0.092
+2026-05-22 22:00:14,128 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:14] "GET /profile HTTP/1.1" 200 - 17 0.006 0.013
+2026-05-22 22:00:14,455 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:14] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.010 0.022
+2026-05-22 22:00:14,475 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:14] "GET /web/image/res.partner/53/image_1920 HTTP/1.1" 304 - 7 0.002 0.017
+2026-05-22 22:00:27,493 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:27] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.001 0.015
+2026-05-22 22:00:27,640 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:27] "GET /login HTTP/1.1" 200 - 6 0.004 0.018
+2026-05-22 22:00:35,610 6336 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:khubaib@gmail.com from 127.0.0.1 
+2026-05-22 22:00:35,633 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:35] "POST /login/submit HTTP/1.1" 303 - 35 0.015 1.646
+2026-05-22 22:00:35,722 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:35] "GET /alumni/dashboard HTTP/1.1" 200 - 26 0.012 0.073
+2026-05-22 22:00:36,074 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:36] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 12 0.011 0.021
+2026-05-22 22:00:38,365 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:38] "GET /alumni/profile/setup HTTP/1.1" 200 - 19 0.006 0.023
+2026-05-22 22:00:38,670 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:38] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 7 0.005 0.020
+2026-05-22 22:00:38,715 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:38] "GET /web/image/res.partner/54/image_1920 HTTP/1.1" 304 - 7 0.007 0.017
+2026-05-22 22:00:48,230 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:48] "POST /notifications/read HTTP/1.1" 200 - 4 0.002 0.015
+2026-05-22 22:00:50,717 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:50] "POST /alumni/profile/update HTTP/1.1" 303 - 22 0.020 0.025
+2026-05-22 22:00:51,039 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:51] "GET /alumni/dashboard HTTP/1.1" 200 - 17 0.015 0.033
+2026-05-22 22:00:51,384 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:51] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 7 0.005 0.015
+2026-05-22 22:00:54,464 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:54] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.001 0.007
+2026-05-22 22:00:54,794 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:00:54] "GET /login HTTP/1.1" 200 - 6 0.006 0.027
+2026-05-22 22:01:01,058 6336 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:aisyah@gmail.com from 127.0.0.1 
+2026-05-22 22:01:01,084 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:01] "POST /login/submit HTTP/1.1" 303 - 30 0.021 1.717
+2026-05-22 22:01:01,129 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:01] "GET /dashboard HTTP/1.1" 200 - 40 0.008 0.031
+2026-05-22 22:01:01,153 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:01] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.004 0.011
+2026-05-22 22:01:01,493 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 11, model: res.partner 
+2026-05-22 22:01:01,496 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 11, model: res.partner 
+2026-05-22 22:01:01,499 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 11, model: res.partner 
+2026-05-22 22:01:01,527 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:01] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.046 0.034
+2026-05-22 22:01:01,530 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:01] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.044 0.037
+2026-05-22 22:01:01,531 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:01] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.045 0.040
+2026-05-22 22:01:04,037 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:04] "GET /mentors HTTP/1.1" 200 - 24 0.017 0.050
+2026-05-22 22:01:04,110 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:04] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.003 0.014
+2026-05-22 22:01:04,251 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 11, model: res.partner 
+2026-05-22 22:01:04,266 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:04] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.009 0.022
+2026-05-22 22:01:04,390 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 11, model: res.partner 
+2026-05-22 22:01:04,393 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 11, model: res.partner 
+2026-05-22 22:01:04,419 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:04] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.027 0.032
+2026-05-22 22:01:04,422 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:04] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.027 0.033
+2026-05-22 22:01:05,345 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:05] "GET /mentors?match=1 HTTP/1.1" 200 - 23 0.007 0.015
+2026-05-22 22:01:05,661 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:05] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.011 0.022
+2026-05-22 22:01:05,685 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 11, model: res.partner 
+2026-05-22 22:01:05,689 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 11, model: res.partner 
+2026-05-22 22:01:05,695 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 11, model: res.partner 
+2026-05-22 22:01:05,721 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:05] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.029 0.030
+2026-05-22 22:01:05,722 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:05] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.027 0.031
+2026-05-22 22:01:05,724 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:05] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.029 0.035
+2026-05-22 22:01:18,735 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:18] "GET /profile HTTP/1.1" 200 - 16 0.015 0.043
+2026-05-22 22:01:18,897 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:18] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.004 0.015
+2026-05-22 22:01:18,966 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:18] "GET /web/image/res.partner/53/image_1920 HTTP/1.1" 304 - 7 0.006 0.020
+2026-05-22 22:01:44,814 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:44] "GET /mentors HTTP/1.1" 200 - 23 0.010 0.010
+2026-05-22 22:01:45,130 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:45] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.005 0.018
+2026-05-22 22:01:45,167 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 11, model: res.partner 
+2026-05-22 22:01:45,173 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 11, model: res.partner 
+2026-05-22 22:01:45,174 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 11, model: res.partner 
+2026-05-22 22:01:45,209 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:45] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.041 0.033
+2026-05-22 22:01:45,215 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:45] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.037 0.045
+2026-05-22 22:01:45,219 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:45] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.035 0.046
+2026-05-22 22:01:52,682 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:52] "GET /dashboard HTTP/1.1" 200 - 40 0.020 0.055
+2026-05-22 22:01:52,746 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:52] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 7 0.008 0.014
+2026-05-22 22:01:52,891 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 11, model: res.partner 
+2026-05-22 22:01:52,904 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:52] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.011 0.025
+2026-05-22 22:01:53,045 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 11, model: res.partner 
+2026-05-22 22:01:53,046 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 11, model: res.partner 
+2026-05-22 22:01:53,076 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:53] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.029 0.039
+2026-05-22 22:01:53,077 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:01:53] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.031 0.037
+2026-05-22 22:02:19,590 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:02:19] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.001 0.012
+2026-05-22 22:02:19,716 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:02:19] "GET /login HTTP/1.1" 200 - 6 0.003 0.012
+2026-05-22 22:02:28,656 6336 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:muhammadsaifulamin05@gmail.com from 127.0.0.1 
+2026-05-22 22:02:28,701 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:02:28] "POST /login/submit HTTP/1.1" 303 - 35 0.022 1.617
+2026-05-22 22:02:28,739 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:02:28] "GET /alumni/dashboard HTTP/1.1" 200 - 29 0.007 0.027
+2026-05-22 22:02:29,125 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:02:29] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 200 - 14 0.016 0.048
+2026-05-22 22:04:14,399 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:14] "GET /chat?room_id=4 HTTP/1.1" 200 - 19 0.016 0.032
+2026-05-22 22:04:14,520 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:14] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.004 0.010
+2026-05-22 22:04:14,621 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:14] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 8 0.006 0.016
+2026-05-22 22:04:14,750 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [51], uid: 10, model: res.partner 
+2026-05-22 22:04:14,768 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [51], uid: 10, model: res.partner 
+2026-05-22 22:04:14,785 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:14] "GET /web/image/res.partner/51/image_1920 HTTP/1.1" 200 - 14 0.026 0.038
+2026-05-22 22:04:14,825 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:14] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 200 - 13 0.018 0.069
+2026-05-22 22:04:15,826 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:15] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.007
+2026-05-22 22:04:17,541 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:17] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.009
+2026-05-22 22:04:18,623 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:18] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.006
+2026-05-22 22:04:20,338 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:20] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.000 0.010
+2026-05-22 22:04:21,429 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:21] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.007
+2026-05-22 22:04:23,151 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:23] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.015
+2026-05-22 22:04:24,217 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:24] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.003
+2026-05-22 22:04:25,942 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:25] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.007
+2026-05-22 22:04:27,021 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:27] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.007
+2026-05-22 22:04:28,741 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:28] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.002 0.008
+2026-05-22 22:04:29,830 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:29] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.005 0.005
+2026-05-22 22:04:31,548 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:31] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.003 0.009
+2026-05-22 22:04:32,618 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:32] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.001 0.005
+2026-05-22 22:04:34,341 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:34] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 200 - 4 0.004 0.007
+2026-05-22 22:04:35,070 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:35] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.000 0.007
+2026-05-22 22:04:35,406 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:35] "GET /login HTTP/1.1" 200 - 6 0.006 0.026
+2026-05-22 22:04:35,725 6336 INFO Mentorize odoo.http: Session expired 
+2026-05-22 22:04:35,726 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:04:35] "GET /chat/data?room_id=4&after_id=10 HTTP/1.1" 303 - 1 0.001 0.008
+2026-05-22 22:05:24,140 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:05:24] "GET /admin/login HTTP/1.1" 200 - 6 0.004 0.009
+2026-05-22 22:06:13,946 6336 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-22 22:06:13,969 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:13] "POST /admin/login/submit HTTP/1.1" 303 - 24 0.013 1.759
+2026-05-22 22:06:14,015 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:14] "GET /admin/dashboard HTTP/1.1" 200 - 63 0.009 0.033
+2026-05-22 22:06:14,348 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 22:06:14,349 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 22:06:14,371 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 22:06:14,383 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:14] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.025 0.027
+2026-05-22 22:06:14,392 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:14] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.005 0.033
+2026-05-22 22:06:14,394 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:14] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.032 0.027
+2026-05-22 22:06:14,417 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:14] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 200 - 13 0.023 0.062
+2026-05-22 22:06:18,088 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:18] "GET /admin/users HTTP/1.1" 200 - 9 0.002 0.012
+2026-05-22 22:06:18,403 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:18] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.006 0.016
+2026-05-22 22:06:18,449 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 22:06:18,469 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [53], uid: 2, model: res.partner 
+2026-05-22 22:06:18,469 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 22:06:18,492 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:18] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 13 0.042 0.043
+2026-05-22 22:06:18,493 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:18] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.038 0.046
+2026-05-22 22:06:18,496 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:18] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.040 0.051
+2026-05-22 22:06:18,508 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 22:06:18,509 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [51], uid: 2, model: res.partner 
+2026-05-22 22:06:18,526 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:18] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.030 0.084
+2026-05-22 22:06:18,530 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:18] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 13 0.033 0.077
+2026-05-22 22:06:21,026 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:21] "GET /admin/mentoring HTTP/1.1" 200 - 19 0.011 0.033
+2026-05-22 22:06:21,100 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:21] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.001 0.011
+2026-05-22 22:06:22,976 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:22] "GET /admin/feedback HTTP/1.1" 200 - 8 0.005 0.008
+2026-05-22 22:06:23,304 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:23] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.006 0.017
+2026-05-22 22:06:24,887 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:24] "GET /admin/reports HTTP/1.1" 200 - 8 0.005 0.018
+2026-05-22 22:06:25,019 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:25] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.007 0.013
+2026-05-22 22:06:32,125 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:32] "GET /admin/dashboard HTTP/1.1" 200 - 63 0.011 0.016
+2026-05-22 22:06:32,427 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:32] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.002 0.014
+2026-05-22 22:06:32,474 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 22:06:32,485 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 22:06:32,493 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 22:06:32,521 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:32] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.038 0.042
+2026-05-22 22:06:32,528 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:32] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.041 0.042
+2026-05-22 22:06:32,531 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:32] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.040 0.041
+2026-05-22 22:06:33,507 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:33] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.039
+2026-05-22 22:06:44,560 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:44] "GET /admin/users HTTP/1.1" 200 - 9 0.003 0.011
+2026-05-22 22:06:44,872 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:44] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.006 0.011
+2026-05-22 22:06:44,908 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 22:06:44,911 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 22:06:44,913 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [53], uid: 2, model: res.partner 
+2026-05-22 22:06:44,932 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [51], uid: 2, model: res.partner 
+2026-05-22 22:06:44,961 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 22:06:44,970 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:44] "GET /web/image/res.partner/53/image_128 HTTP/1.1" 304 - 13 0.050 0.039
+2026-05-22 22:06:44,974 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:44] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.053 0.042
+2026-05-22 22:06:44,987 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:44] "GET /web/image/res.partner/51/image_128 HTTP/1.1" 304 - 13 0.044 0.062
+2026-05-22 22:06:44,989 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:44] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.059 0.049
+2026-05-22 22:06:45,003 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:45] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.045 0.075
+2026-05-22 22:06:48,117 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:48] "GET /admin/mentoring HTTP/1.1" 200 - 19 0.017 0.035
+2026-05-22 22:06:48,201 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:06:48] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.004 0.007
+2026-05-22 22:07:01,991 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:01] "GET /admin/feedback HTTP/1.1" 200 - 8 0.004 0.008
+2026-05-22 22:07:02,317 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:02] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.006 0.014
+2026-05-22 22:07:04,095 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:04] "GET /admin/reports HTTP/1.1" 200 - 8 0.015 0.047
+2026-05-22 22:07:04,146 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:04] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.006 0.023
+2026-05-22 22:07:06,672 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:06] "GET /admin/activities HTTP/1.1" 200 - 9 0.002 0.014
+2026-05-22 22:07:06,981 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:06] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.004 0.013
+2026-05-22 22:07:40,104 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:40] "GET /admin/dashboard HTTP/1.1" 200 - 63 0.035 0.052
+2026-05-22 22:07:40,145 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:40] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.005 0.012
+2026-05-22 22:07:40,307 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-22 22:07:40,329 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:40] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 13 0.013 0.029
+2026-05-22 22:07:40,464 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-22 22:07:40,464 6336 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-22 22:07:40,492 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:40] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.023 0.041
+2026-05-22 22:07:40,493 6336 INFO Mentorize werkzeug: 127.0.0.1 - - [22/May/2026 22:07:40] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.029 0.038
+2026-05-22 22:18:12,407 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-22 22:18:12,415 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.008s). 
+2026-05-22 22:18:12,420 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-22 22:18:12,422 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.002s). 
+2026-05-22 22:18:12,427 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-22 22:18:12,431 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.004s). 
+2026-05-22 22:19:01,208 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-22 22:19:01,212 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.004s). 
+2026-05-22 22:19:01,219 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-22 22:19:01,224 6336 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.003s). 
+2026-05-22 22:59:48,152 6336 INFO Mentorize odoo.sql_db: Connection to the database failed 
+2026-05-22 22:59:48,152 6336 WARNING Mentorize odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "D:\odoo\server\odoo\addons\base\models\ir_cron.py", line 119, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "D:\odoo\server\odoo\sql_db.py", line 773, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\odoo\server\odoo\sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "D:\odoo\python\Lib\site-packages\decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\odoo\server\odoo\tools\func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\odoo\server\odoo\sql_db.py", line 701, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "D:\odoo\python\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  the database system is shutting down
+
+2026-05-22 22:59:48,426 6336 INFO ? odoo.service.server: Initiating shutdown 
+2026-05-22 22:59:48,426 6336 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-22 22:59:48,726 6336 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 3 connections  
+2026-05-23 14:46:43,083 6564 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-23 14:46:43,083 6564 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-23 14:46:43,083 6564 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-23 14:46:43,083 6564 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-23 14:46:43,245 6564 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-23 14:46:44,032 6564 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
+2026-05-23 14:51:13,591 6564 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-05-23 14:51:13,606 6564 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-05-23 14:51:13,830 6564 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-23 14:51:14,182 6564 INFO ? odoo.modules.loading: loading 40 modules... 
+2026-05-23 14:51:15,796 6564 INFO ? odoo.modules.loading: 40 modules loaded in 1.61s, 0 queries (+0 extra) 
+2026-05-23 14:51:15,943 6564 INFO ? odoo.modules.loading: Modules loaded. 
+2026-05-23 14:51:15,961 6564 INFO ? odoo.modules.registry: Registry loaded in 2.705s 
+2026-05-23 14:51:15,976 6564 INFO Mentorize odoo.addons.base.models.ir_http: Generating routing map for key 1 
+2026-05-23 14:51:16,198 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:51:16] "GET / HTTP/1.1" 303 - 35 0.375 2.600
+2026-05-23 14:51:16,498 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:51:16] "GET /admin/dashboard HTTP/1.1" 200 - 74 0.136 0.160
+2026-05-23 14:51:28,126 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:51:28] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 6 0.022 11.522
+2026-05-23 14:51:28,193 6564 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-23 14:51:28,238 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:51:28] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 20 0.048 11.289
+2026-05-23 14:51:28,247 6564 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-23 14:51:28,257 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:51:28] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 13 0.012 11.330
+2026-05-23 14:51:28,261 6564 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-23 14:51:28,273 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:51:28] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.028 11.319
+2026-05-23 14:51:44,322 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-23 14:51:44,342 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.020s). 
+2026-05-23 14:51:44,350 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-23 14:51:44,352 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.003s). 
+2026-05-23 14:51:44,356 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-23 14:51:44,368 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.012s). 
+2026-05-23 14:51:44,372 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-23 14:51:44,378 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.006s). 
+2026-05-23 14:51:44,383 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-23 14:51:44,388 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.005s). 
+2026-05-23 14:51:44,393 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Gamification: Goal Challenge Check`. 
+2026-05-23 14:51:44,872 6564 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Gamification: Goal Challenge Check` (0.479s). 
+2026-05-23 14:52:38,177 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:52:38] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 2 0.001 0.017
+2026-05-23 14:52:38,434 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:52:38] "GET /login HTTP/1.1" 200 - 21 0.015 0.103
+2026-05-23 14:55:17,976 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:55:17] "GET /web?debug=1 HTTP/1.1" 303 - 4 0.006 0.023
+2026-05-23 14:55:18,572 6564 WARNING Mentorize odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-23 14:55:20,532 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:55:20] "GET /web/login?debug=1 HTTP/1.1" 200 - 139 0.231 2.315
+2026-05-23 14:55:38,642 6564 INFO Mentorize odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1/7d9423e/web.assets_frontend.min.css (id:556) 
+2026-05-23 14:55:38,645 6564 INFO Mentorize odoo.addons.base.models.assetsbundle: Deleting attachments [554] (matching /web/assets/1/_______/web.assets_frontend.min.css) because it was replaced with /web/assets/1/7d9423e/web.assets_frontend.min.css 
+2026-05-23 14:55:38,692 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:55:38] "GET /web/assets/1/7d9423e/web.assets_frontend.min.css HTTP/1.1" 200 - 17 0.169 17.976
+2026-05-23 14:56:02,474 6564 INFO Mentorize odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1/142e3a7/web.assets_frontend_lazy.min.js (id:557) 
+2026-05-23 14:56:02,475 6564 INFO Mentorize odoo.addons.base.models.assetsbundle: Deleting attachments [555] (matching /web/assets/1/_______/web.assets_frontend_lazy.min.js) because it was replaced with /web/assets/1/142e3a7/web.assets_frontend_lazy.min.js 
+2026-05-23 14:56:02,510 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:56:02] "GET /web/assets/1/142e3a7/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 14 0.044 23.346
+2026-05-23 14:56:13,144 6564 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 14:56:13,156 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:56:13] "POST /web/login HTTP/1.1" 303 - 32 0.055 1.175
+2026-05-23 14:56:13,896 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:56:13] "GET /my HTTP/1.1" 200 - 70 0.102 0.629
+2026-05-23 14:56:30,760 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:56:30] "GET /settings HTTP/1.1" 200 - 9 0.024 0.043
+2026-05-23 14:56:30,777 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:56:30] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.004 0.006
+2026-05-23 14:56:43,282 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:56:43] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.000 0.006
+2026-05-23 14:56:43,608 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:56:43] "GET /login HTTP/1.1" 200 - 5 0.007 0.025
+2026-05-23 14:58:23,663 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:58:23] "GET /web/login HTTP/1.1" 200 - 11 0.012 0.246
+2026-05-23 14:58:27,400 6564 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 14:58:27,408 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:58:27] "POST /web/login HTTP/1.1" 303 - 23 0.018 1.890
+2026-05-23 14:58:27,476 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:58:27] "GET /my HTTP/1.1" 200 - 21 0.004 0.055
+2026-05-23 14:58:40,012 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:58:40] "GET /web HTTP/1.1" 303 - 2 0.000 0.007
+2026-05-23 14:58:40,131 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 14:58:40] "GET /my HTTP/1.1" 200 - 21 0.011 0.084
+2026-05-23 15:01:01,114 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:01] "GET /web/session/logout?redirect=/web/login HTTP/1.1" 303 - 1 0.000 0.048
+2026-05-23 15:01:01,201 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:01] "GET /web/login HTTP/1.1" 200 - 10 0.010 0.065
+2026-05-23 15:01:06,179 6564 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 15:01:06,188 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:06] "POST /web/login HTTP/1.1" 303 - 23 0.012 1.620
+2026-05-23 15:01:06,234 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:06] "GET /my HTTP/1.1" 200 - 21 0.006 0.034
+2026-05-23 15:01:42,217 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:42] "GET /web/login?redirect=/web HTTP/1.1" 303 - 2 0.011 0.104
+2026-05-23 15:01:44,980 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:44] "GET /web/database/selector HTTP/1.1" 200 - 14 0.252 2.362
+2026-05-23 15:01:45,058 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:45] "GET /web/static/src/libs/fontawesome/css/font-awesome.css HTTP/1.1" 200 - 1 0.003 0.049
+2026-05-23 15:01:45,553 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:45] "GET /web/static/lib/bootstrap/dist/css/bootstrap.css HTTP/1.1" 200 - 1 0.005 0.230
+2026-05-23 15:01:45,564 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:45] "GET /web/static/lib/bootstrap/js/dist/base-component.js HTTP/1.1" 200 - 1 0.006 0.182
+2026-05-23 15:01:45,568 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:45] "GET /web/static/lib/bootstrap/js/dist/dom/data.js HTTP/1.1" 200 - 1 0.005 0.245
+2026-05-23 15:01:45,568 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:45] "GET /web/static/lib/bootstrap/js/dist/dom/event-handler.js HTTP/1.1" 200 - 1 0.003 0.247
+2026-05-23 15:01:45,570 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:45] "GET /web/static/lib/bootstrap/js/dist/dom/manipulator.js HTTP/1.1" 200 - 1 0.004 0.246
+2026-05-23 15:01:45,571 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:45] "GET /web/static/lib/bootstrap/js/dist/dom/selector-engine.js HTTP/1.1" 200 - 1 0.002 0.244
+2026-05-23 15:01:46,048 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:46] "GET /web/static/img/logo2.png HTTP/1.1" 200 - 1 0.005 0.156
+2026-05-23 15:01:46,061 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:46] "GET /web/static/src/public/database_manager.js HTTP/1.1" 200 - 1 0.007 0.172
+2026-05-23 15:01:46,162 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:46] "GET /web/static/lib/bootstrap/js/dist/modal.js HTTP/1.1" 200 - 1 0.004 0.279
+2026-05-23 15:01:46,592 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:46] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.005 0.084
+2026-05-23 15:01:48,919 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:48] "GET /web?db=Mentorize HTTP/1.1" 302 - 1 0.007 0.068
+2026-05-23 15:01:49,325 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:49] "GET /web?db=Mentorize HTTP/1.1" 303 - 4 0.006 0.058
+2026-05-23 15:01:49,569 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:49] "GET /web/login?db=Mentorize HTTP/1.1" 200 - 8 0.006 0.064
+2026-05-23 15:01:49,677 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:49] "GET /web/assets/1/7d9423e/web.assets_frontend.min.css HTTP/1.1" 200 - 7 0.008 0.032
+2026-05-23 15:01:49,935 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:49] "GET /web/static/lib/odoo_ui_icons/fonts/odoo_ui_icons.woff2 HTTP/1.1" 200 - 0 0.000 0.033
+2026-05-23 15:01:49,938 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:49] "GET /web/static/fonts/twitter_x_only.woff HTTP/1.1" 200 - 0 0.000 0.029
+2026-05-23 15:01:50,028 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:50] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 0 0.000 0.033
+2026-05-23 15:01:50,225 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:01:50] "GET /web/static/img/odoo_logo_tiny.png HTTP/1.1" 200 - 0 0.000 0.031
+2026-05-23 15:01:50,235 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:50] "GET /web/image/website/1/logo/My%20Website?unique=4ee8c65 HTTP/1.1" 200 - 8 0.012 0.031
+2026-05-23 15:01:50,275 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:50] "GET /web/assets/1/cdca8cc/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 7 0.010 0.073
+2026-05-23 15:01:50,653 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:50] "GET /web/image/website/1/favicon?unique=4ee8c65 HTTP/1.1" 200 - 8 0.014 0.048
+2026-05-23 15:01:51,672 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:51] "GET /web/assets/1/142e3a7/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 7 0.011 1.069
+2026-05-23 15:01:51,761 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:01:51] "GET /website/translations/ebe299e7d80a8135389f8233d120748d54993854?lang=en_US HTTP/1.1" 200 - 5 0.002 0.007
+2026-05-23 15:02:17,393 6564 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 15:02:17,410 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:02:17] "POST /web/login HTTP/1.1" 303 - 23 0.025 1.647
+2026-05-23 15:02:17,464 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:02:17] "GET /my HTTP/1.1" 200 - 21 0.006 0.045
+2026-05-23 15:02:17,889 6564 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:02:17] "GET /portal/static/src/img/portal-connection.svg HTTP/1.1" 200 - 0 0.000 0.035
+2026-05-23 15:04:36,166 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:04:36] "GET /my/home HTTP/1.1" 200 - 21 0.014 0.094
+2026-05-23 15:04:41,762 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:04:41] "GET /web/session/logout?redirect=/ HTTP/1.1" 303 - 1 0.000 0.006
+2026-05-23 15:04:41,785 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:04:41] "GET / HTTP/1.1" 200 - 8 0.006 0.011
+2026-05-23 15:04:47,511 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:04:47] "GET /web/session/logout?redirect=/ HTTP/1.1" 303 - 4 0.003 0.009
+2026-05-23 15:04:47,835 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:04:47] "GET / HTTP/1.1" 200 - 5 0.005 0.024
+2026-05-23 15:05:05,492 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:05] "GET /web?debug=1 HTTP/1.1" 303 - 4 0.003 0.013
+2026-05-23 15:05:05,587 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:05] "GET /web/login?debug=1 HTTP/1.1" 200 - 8 0.009 0.079
+2026-05-23 15:05:11,948 6564 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 15:05:11,958 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:11] "POST /web/login HTTP/1.1" 303 - 22 0.015 1.490
+2026-05-23 15:05:11,995 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:11] "GET /web/become HTTP/1.1" 303 - 2 0.001 0.022
+2026-05-23 15:05:12,419 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:12] "GET /my HTTP/1.1" 200 - 21 0.024 0.090
+2026-05-23 15:05:51,794 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:51] "GET /web/login?redirect=/web HTTP/1.1" 303 - 2 0.000 0.006
+2026-05-23 15:05:52,107 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:52] "GET /web HTTP/1.1" 303 - 2 0.003 0.008
+2026-05-23 15:05:52,557 6564 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:05:52] "GET /my HTTP/1.1" 200 - 21 0.024 0.097
+2026-05-23 15:14:20,873 6564 INFO ? odoo.service.server: Initiating shutdown 
+2026-05-23 15:14:20,873 6564 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-23 15:14:21,934 6564 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 4 connections  
+2026-05-23 15:14:49,625 15136 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-23 15:14:49,627 15136 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-23 15:14:49,627 15136 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-23 15:14:49,627 15136 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-23 15:14:50,705 15136 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-23 15:14:52,475 15136 INFO ? odoo.service.server: Initiating shutdown 
+2026-05-23 15:14:52,475 15136 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-23 15:14:52,585 15136 INFO Mentorize odoo.modules.loading: loading 1 modules... 
+2026-05-23 15:14:52,605 15136 INFO Mentorize odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-05-23 15:14:53,232 15136 WARNING Mentorize odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-23 15:14:53,957 15136 INFO Mentorize odoo.modules.loading: loading 40 modules... 
+2026-05-23 15:14:55,404 15136 INFO Mentorize odoo.modules.loading: 40 modules loaded in 1.45s, 0 queries (+0 extra) 
+2026-05-23 15:14:55,590 15136 INFO Mentorize odoo.modules.loading: Modules loaded. 
+2026-05-23 15:14:55,602 15136 INFO Mentorize odoo.modules.registry: Registry loaded in 3.111s 
+2026-05-23 15:15:34,140 26572 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-23 15:15:34,141 26572 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-23 15:15:34,141 26572 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-23 15:15:34,141 26572 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-23 15:15:34,282 26572 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-23 15:15:35,968 26572 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
+2026-05-23 15:15:45,215 26572 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-05-23 15:15:45,234 26572 INFO ? odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-05-23 15:15:45,304 26572 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-23 15:15:45,375 26572 INFO ? odoo.modules.loading: loading 40 modules... 
+2026-05-23 15:15:47,516 26572 INFO ? odoo.modules.loading: 40 modules loaded in 2.14s, 0 queries (+0 extra) 
+2026-05-23 15:15:47,729 26572 INFO ? odoo.modules.loading: Modules loaded. 
+2026-05-23 15:15:47,738 26572 INFO ? odoo.modules.registry: Registry loaded in 2.582s 
+2026-05-23 15:15:47,747 26572 INFO Mentorize odoo.addons.base.models.ir_http: Generating routing map for key 1 
+2026-05-23 15:15:47,978 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:15:47] "GET /web/login?redirect=/web HTTP/1.1" 303 - 34 0.098 2.727
+2026-05-23 15:15:47,986 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:15:47] "GET /web HTTP/1.1" 303 - 2 0.001 0.002
+2026-05-23 15:15:48,545 26572 WARNING Mentorize odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-23 15:15:50,145 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:15:50] "GET /my HTTP/1.1" 200 - 186 0.174 1.982
+2026-05-23 15:16:16,933 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:16:16] "GET /web/session/logout?redirect=/ HTTP/1.1" 303 - 2 0.002 20.561
+2026-05-23 15:16:16,966 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:16:16] "GET / HTTP/1.1" 200 - 18 0.005 0.018
+2026-05-23 15:16:36,149 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:16:36] "GET /web/login?redirect=/web HTTP/1.1" 200 - 30 0.019 0.289
+2026-05-23 15:16:47,403 26572 INFO Mentorize odoo.addons.base.models.res_users: Login failed for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 15:16:47,434 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:16:47] "POST /web/login HTTP/1.1" 200 - 18 0.032 1.881
+2026-05-23 15:17:06,461 26572 INFO Mentorize odoo.addons.base.models.res_users: Login failed for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 15:17:06,494 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:06] "POST /web/login HTTP/1.1" 200 - 13 0.010 1.608
+2026-05-23 15:17:20,780 26572 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:admin@mentorize.com from 127.0.0.1 
+2026-05-23 15:17:20,791 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:20] "POST /web/login HTTP/1.1" 303 - 32 0.102 1.583
+2026-05-23 15:17:20,822 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:20] "GET /web HTTP/1.1" 303 - 2 0.001 0.021
+2026-05-23 15:17:21,199 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:21] "GET /my HTTP/1.1" 200 - 21 0.017 0.051
+2026-05-23 15:17:30,999 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:30] "GET /admin/login HTTP/1.1" 303 - 2 0.001 0.005
+2026-05-23 15:17:31,679 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:31] "GET /admin/dashboard HTTP/1.1" 200 - 68 0.066 0.308
+2026-05-23 15:17:32,141 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:32] "GET /web/image/res.partner/3/image_128 HTTP/1.1" 304 - 5 0.006 0.100
+2026-05-23 15:17:32,158 26572 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [54], uid: 2, model: res.partner 
+2026-05-23 15:17:32,161 26572 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 2, model: res.partner 
+2026-05-23 15:17:32,179 26572 INFO Mentorize odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [41], uid: 2, model: res.partner 
+2026-05-23 15:17:32,245 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:32] "GET /web/image/res.partner/54/image_128 HTTP/1.1" 304 - 16 0.082 0.123
+2026-05-23 15:17:32,245 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:32] "GET /web/image/res.partner/41/image_128 HTTP/1.1" 304 - 13 0.078 0.121
+2026-05-23 15:17:32,246 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:17:32] "GET /web/image/res.partner/52/image_128 HTTP/1.1" 304 - 15 0.077 0.127
+2026-05-23 15:18:05,852 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:18:05] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 1 0.000 0.006
+2026-05-23 15:18:06,191 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:18:06] "GET /login HTTP/1.1" 200 - 8 0.008 0.034
+2026-05-23 15:18:34,605 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-05-23 15:18:34,626 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.020s). 
+2026-05-23 15:18:34,672 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-05-23 15:18:34,675 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.004s). 
+2026-05-23 15:18:34,687 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-05-23 15:18:34,696 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.009s). 
+2026-05-23 15:18:34,704 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-05-23 15:18:34,711 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.007s). 
+2026-05-23 15:18:34,718 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-05-23 15:18:34,724 26572 INFO Mentorize odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.006s). 
+2026-05-23 15:19:25,989 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:19:25] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 4 0.001 0.044
+2026-05-23 15:19:26,298 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:19:26] "GET /login HTTP/1.1" 200 - 5 0.006 0.031
+2026-05-23 15:19:29,734 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:19:29] "GET /web/session/logout?redirect=/login HTTP/1.1" 303 - 4 0.005 0.038
+2026-05-23 15:19:30,043 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:19:30] "GET /login HTTP/1.1" 200 - 5 0.007 0.028
+2026-05-23 15:20:59,818 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:20:59] "GET /web/login?redirect=/web HTTP/1.1" 200 - 8 0.008 0.073
+2026-05-23 15:21:26,305 26572 INFO Mentorize odoo.addons.base.models.res_users: Login successful for db:Mentorize login:odoo_admin@mentorize.com from 127.0.0.1 
+2026-05-23 15:21:26,327 26572 INFO Mentorize odoo.modules.registry: Caches invalidated, signaling through the database: ['default'] 
+2026-05-23 15:21:26,328 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:26] "POST /web/login HTTP/1.1" 303 - 57 0.089 1.834
+2026-05-23 15:21:28,443 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:28] "GET /web HTTP/1.1" 200 - 76 0.097 2.012
+2026-05-23 15:21:29,112 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 - 7 0.042 0.066
+2026-05-23 15:21:29,114 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "POST /web/action/load HTTP/1.1" 200 - 6 0.064 0.037
+2026-05-23 15:21:29,142 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.024 0.077
+2026-05-23 15:21:29,149 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "GET /bus/websocket_worker_bundle?v=17.0-3 HTTP/1.1" 304 - 4 0.005 0.091
+2026-05-23 15:21:29,163 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "GET /web/image?model=res.users&field=avatar_128&id=13 HTTP/1.1" 200 - 16 0.040 0.072
+2026-05-23 15:21:29,206 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "POST /mail/init_messaging HTTP/1.1" 200 - 94 0.243 0.136
+2026-05-23 15:21:29,467 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "GET /websocket?version=17.0-3 HTTP/1.1" 101 - 1 0.000 0.007
+2026-05-23 15:21:29,486 26572 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-05-23 15:21:29,530 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "POST /mail/load_message_failures HTTP/1.1" 200 - 3 0.000 0.007
+2026-05-23 15:21:29,546 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "POST /mail/inbox/messages HTTP/1.1" 200 - 6 0.006 0.008
+2026-05-23 15:21:29,577 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:29] "GET /web/image/res.partner/2/avatar_128?unique=2026-04-12%2016:22:58 HTTP/1.1" 200 - 7 0.009 0.028
+2026-05-23 15:21:39,154 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:39] "POST /web/action/load HTTP/1.1" 200 - 8 0.048 0.009
+2026-05-23 15:21:39,546 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:39] "POST /web/dataset/call_kw/res.config.settings/get_views HTTP/1.1" 200 - 18 0.044 0.030
+2026-05-23 15:21:39,816 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:39] "POST /web/dataset/call_kw/res.config.settings/onchange HTTP/1.1" 200 - 57 0.054 0.024
+2026-05-23 15:21:39,869 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:39] "POST /base_setup/demo_active HTTP/1.1" 200 - 2 0.001 0.006
+2026-05-23 15:21:40,174 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:40] "POST /base_setup/data HTTP/1.1" 200 - 6 0.011 0.004
+2026-05-23 15:21:40,194 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:21:40] "GET /base/static/description/settings.png HTTP/1.1" 304 - 0 0.000 0.003
+2026-05-23 15:21:40,538 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:21:40] "GET /website/static/description/icon.png HTTP/1.1" 304 - 0 0.000 0.039
+2026-05-23 15:21:40,561 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:21:40] "GET /base_setup/static/src/img/google_play.png HTTP/1.1" 304 - 0 0.000 0.049
+2026-05-23 15:21:40,567 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:21:40] "GET /base_setup/static/src/img/app_store.png HTTP/1.1" 304 - 0 0.000 0.053
+2026-05-23 15:21:48,366 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "GET /web?debug=1 HTTP/1.1" 200 - 12 0.015 0.038
+2026-05-23 15:21:48,484 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 7 0.011 0.013
+2026-05-23 15:21:48,653 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "POST /mail/init_messaging HTTP/1.1" 200 - 32 0.030 0.049
+2026-05-23 15:21:48,812 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 - 2 0.011 0.010
+2026-05-23 15:21:48,837 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "POST /web/action/load HTTP/1.1" 200 - 6 0.025 0.018
+2026-05-23 15:21:48,838 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "POST /mail/load_message_failures HTTP/1.1" 200 - 3 0.010 0.019
+2026-05-23 15:21:48,862 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "GET /web/image?model=res.users&field=avatar_128&id=13 HTTP/1.1" 304 - 9 0.017 0.033
+2026-05-23 15:21:48,986 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:48] "POST /mail/inbox/messages HTTP/1.1" 200 - 4 0.008 0.014
+2026-05-23 15:21:49,197 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:49] "GET /bus/websocket_worker_bundle?v=17.0-3 HTTP/1.1" 304 - 3 0.004 0.010
+2026-05-23 15:21:49,540 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:21:49] "GET /websocket?version=17.0-3 HTTP/1.1" 101 - 1 0.002 0.013
+2026-05-23 15:26:35,869 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:26:35] "POST /web/action/load HTTP/1.1" 200 - 8 0.012 0.025
+2026-05-23 15:26:36,130 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:26:36] "POST /web/dataset/call_kw/res.config.settings/get_views HTTP/1.1" 200 - 1 0.002 0.034
+2026-05-23 15:26:36,300 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:26:36] "POST /web/dataset/call_kw/res.config.settings/onchange HTTP/1.1" 200 - 18 0.018 0.067
+2026-05-23 15:26:36,516 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:26:36] "POST /base_setup/demo_active HTTP/1.1" 200 - 2 0.005 0.011
+2026-05-23 15:26:36,747 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:26:36] "POST /base_setup/data HTTP/1.1" 200 - 5 0.004 0.010
+2026-05-23 15:27:04,459 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:04] "POST /web/action/load HTTP/1.1" 200 - 9 0.007 0.010
+2026-05-23 15:27:05,016 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:05] "POST /web/dataset/call_kw/mail.mail/get_views HTTP/1.1" 200 - 39 0.108 0.128
+2026-05-23 15:27:05,113 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:05] "POST /web/dataset/call_kw/mail.mail/web_search_read HTTP/1.1" 200 - 7 0.029 0.038
+2026-05-23 15:27:05,371 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:05] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 2 0.005 0.008
+2026-05-23 15:27:09,743 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:09] "POST /web/action/load HTTP/1.1" 200 - 10 0.002 0.016
+2026-05-23 15:27:10,180 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:10] "POST /web/dataset/call_kw/ir.mail_server/get_views HTTP/1.1" 200 - 19 0.053 0.062
+2026-05-23 15:27:10,350 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:10] "POST /web/dataset/call_kw/ir.mail_server/web_search_read HTTP/1.1" 200 - 3 0.008 0.012
+2026-05-23 15:27:30,141 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:27:30] "POST /web/dataset/call_kw/ir.mail_server/onchange HTTP/1.1" 200 - 2 0.003 0.005
+2026-05-23 15:29:51,753 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:29:51] "POST /web/dataset/call_kw/ir.mail_server/onchange HTTP/1.1" 200 - 1 0.002 0.010
+2026-05-23 15:31:01,232 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:31:01] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.163
+2026-05-23 15:31:01,388 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:31:01] "GET /web/offline HTTP/1.1" 200 - 6 0.007 0.051
+2026-05-23 15:31:46,847 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:31:46] "POST /web/dataset/call_kw/ir.mail_server/onchange HTTP/1.1" 200 - 1 0.001 0.010
+2026-05-23 15:32:20,796 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:32:20] "POST /web/dataset/call_kw/ir.mail_server/web_save HTTP/1.1" 200 - 5 0.043 0.018
+2026-05-23 15:32:26,443 26572 WARNING Mentorize odoo.http: Server replied with following exception:
+ (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-84164fafe14sm6175648b3a.42 - gsmtp') 
+2026-05-23 15:32:26,443 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:32:26] "POST /web/dataset/call_button HTTP/1.1" 200 - 2 0.005 5.438
+2026-05-23 15:45:35,108 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:45:35] "POST /web/dataset/call_kw/ir.mail_server/web_save HTTP/1.1" 200 - 6 0.009 0.056
+2026-05-23 15:45:41,202 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:45:41] "POST /web/dataset/call_button HTTP/1.1" 200 - 4 0.006 5.890
+2026-05-23 15:46:33,974 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:46:33] "POST /web/dataset/call_kw/mail.mail/web_search_read HTTP/1.1" 200 - 6 0.006 0.024
+2026-05-23 15:46:49,513 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:46:49] "POST /web/dataset/call_kw/ir.mail_server/web_search_read HTTP/1.1" 200 - 2 0.003 0.013
+2026-05-23 15:46:49,789 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:46:49] "GET /web/static/img/openhand.cur HTTP/1.1" 200 - 0 0.000 0.032
+2026-05-23 15:47:16,694 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:47:16] "GET /forgot-password HTTP/1.1" 200 - 16 0.018 0.030
+2026-05-23 15:47:20,581 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:47:20] "GET /login HTTP/1.1" 200 - 7 0.005 0.023
+2026-05-23 15:47:29,350 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:47:29] "GET /forgot-password HTTP/1.1" 200 - 3 0.003 0.011
+2026-05-23 15:47:39,975 26572 INFO Mentorize odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 30 and Message-Id '<325076025552686.1779551254.301475286483765-openerp-private@LAPTOP-4NQG0R08>' from 'admin@mentorize.com' to (redacted) "'******************05@gmail.com'" successfully sent 
+2026-05-23 15:47:39,975 26572 INFO Mentorize odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-05-23 15:47:40,002 26572 INFO Mentorize odoo.models.unlink: User #13 deleted mail.mail records with IDs: [30] 
+2026-05-23 15:47:40,115 26572 INFO Mentorize odoo.models.unlink: User #13 deleted mail.message records with IDs: [126] 
+2026-05-23 15:47:40,116 26572 INFO Mentorize odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #1 
+2026-05-23 15:47:40,425 26572 INFO Mentorize odoo.addons.auth_signup.models.res_users: Password reset email sent for user <muhammadsaifulamin05@gmail.com> to <muhammadsaifulamin05@gmail.com> 
+2026-05-23 15:47:40,436 26572 INFO Mentorize werkzeug: 127.0.0.1 - - [23/May/2026 15:47:40] "POST /forgot-password/submit HTTP/1.1" 200 - 57 0.241 6.026
+2026-05-23 15:50:00,852 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:50:00] "GET /web/reset_password?db=Mentorize&token=cB6mm4WXx66yWSmJhbtk HTTP/1.1" 404 - 1 0.005 0.085
+2026-05-23 15:50:01,547 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:50:01] "GET /favicon.ico HTTP/1.1" 404 - 1 0.003 0.026
+2026-05-23 15:50:15,136 26572 INFO ? werkzeug: 127.0.0.1 - - [23/May/2026 15:50:15] "GET /web/reset_password?db=Mentorize&token=cB6mm4WXx66yWSmJhbtk HTTP/1.1" 404 - 1 0.005 0.065
+2026-05-23 15:52:55,371 26572 INFO ? odoo.service.server: Initiating shutdown 
+2026-05-23 15:52:55,371 26572 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-23 15:52:56,388 26572 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 5 connections  
+2026-05-23 15:53:05,204 31176 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-23 15:53:05,205 31176 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-23 15:53:05,205 31176 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-23 15:53:05,205 31176 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-23 15:53:05,363 31176 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-23 15:53:05,864 31176 INFO Mentorize odoo.modules.loading: loading 1 modules... 
+2026-05-23 15:53:05,868 31176 INFO Mentorize odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-05-23 15:53:05,881 31176 INFO Mentorize odoo.modules.loading: updating modules list 
+2026-05-23 15:53:05,884 31176 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-05-23 15:53:06,667 31176 WARNING Mentorize odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-23 15:53:06,883 31176 INFO Mentorize odoo.modules.loading: loading 40 modules... 
+2026-05-23 15:53:07,232 31176 INFO Mentorize odoo.modules.loading: Loading module auth_signup (18/40) 
+2026-05-23 15:53:07,368 31176 INFO Mentorize odoo.modules.registry: module auth_signup: creating or updating database tables 
+2026-05-23 15:53:07,641 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:07,708 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/data/ir_config_parameter_data.xml 
+2026-05-23 15:53:07,760 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2026-05-23 15:53:07,796 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/data/mail_template_data.xml 
+2026-05-23 15:53:07,847 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2026-05-23 15:53:07,956 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2026-05-23 15:53:08,081 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2026-05-23 15:53:08,131 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/views/auth_signup_templates_email.xml 
+2026-05-23 15:53:08,180 31176 INFO Mentorize odoo.modules.loading: loading auth_signup/views/webclient_templates.xml 
+2026-05-23 15:53:08,285 31176 INFO Mentorize odoo.modules.loading: Module auth_signup loaded in 1.05s, 290 queries (+290 other) 
+2026-05-23 15:53:08,604 31176 INFO Mentorize odoo.modules.loading: Loading module portal (29/40) 
+2026-05-23 15:53:08,801 31176 INFO Mentorize odoo.modules.registry: module portal: creating or updating database tables 
+2026-05-23 15:53:09,024 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:09,057 31176 INFO Mentorize odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2026-05-23 15:53:09,113 31176 INFO Mentorize odoo.modules.loading: loading portal/data/mail_template_data.xml 
+2026-05-23 15:53:09,139 31176 INFO Mentorize odoo.modules.loading: loading portal/data/mail_templates.xml 
+2026-05-23 15:53:09,178 31176 INFO Mentorize odoo.modules.loading: loading portal/views/mail_templates_public.xml 
+2026-05-23 15:53:09,228 31176 INFO Mentorize odoo.modules.loading: loading portal/views/portal_templates.xml 
+2026-05-23 15:53:09,767 31176 INFO Mentorize odoo.modules.loading: loading portal/views/res_config_settings_views.xml 
+2026-05-23 15:53:09,823 31176 INFO Mentorize odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2026-05-23 15:53:09,851 31176 INFO Mentorize odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2026-05-23 15:53:09,956 31176 INFO Mentorize odoo.modules.loading: Module portal loaded in 1.35s, 630 queries (+630 other) 
+2026-05-23 15:53:10,048 31176 INFO Mentorize odoo.modules.loading: Loading module auth_totp_portal (32/40) 
+2026-05-23 15:53:10,195 31176 INFO Mentorize odoo.modules.registry: module auth_totp_portal: creating or updating database tables 
+2026-05-23 15:53:10,226 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:10,238 31176 INFO Mentorize odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2026-05-23 15:53:10,268 31176 INFO Mentorize odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2026-05-23 15:53:10,340 31176 INFO Mentorize odoo.modules.loading: Module auth_totp_portal loaded in 0.29s, 73 queries (+73 other) 
+2026-05-23 15:53:10,340 31176 INFO Mentorize odoo.modules.loading: Loading module digest (33/40) 
+2026-05-23 15:53:10,570 31176 INFO Mentorize odoo.modules.registry: module digest: creating or updating database tables 
+2026-05-23 15:53:10,657 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:10,683 31176 INFO Mentorize odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2026-05-23 15:53:10,753 31176 INFO Mentorize odoo.modules.loading: loading digest/data/digest_data.xml 
+2026-05-23 15:53:10,832 31176 INFO Mentorize odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2026-05-23 15:53:10,861 31176 INFO Mentorize odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2026-05-23 15:53:10,877 31176 INFO Mentorize odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2026-05-23 15:53:10,889 31176 INFO Mentorize odoo.modules.loading: loading digest/views/digest_views.xml 
+2026-05-23 15:53:10,975 31176 INFO Mentorize odoo.modules.loading: loading digest/views/digest_templates.xml 
+2026-05-23 15:53:11,026 31176 INFO Mentorize odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2026-05-23 15:53:11,116 31176 INFO Mentorize odoo.modules.loading: Module digest loaded in 0.78s, 324 queries (+324 other) 
+2026-05-23 15:53:11,116 31176 INFO Mentorize odoo.modules.loading: Loading module website (34/40) 
+2026-05-23 15:53:11,463 31176 INFO Mentorize odoo.modules.registry: module website: creating or updating database tables 
+2026-05-23 15:53:13,269 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:13,287 31176 INFO Mentorize odoo.modules.loading: loading website/security/website_security.xml 
+2026-05-23 15:53:13,413 31176 INFO Mentorize odoo.modules.loading: loading website/security/ir.model.access.csv 
+2026-05-23 15:53:13,481 31176 INFO Mentorize odoo.modules.loading: loading website/data/image_library.xml 
+2026-05-23 15:53:13,592 31176 INFO Mentorize odoo.modules.loading: loading website/data/ir_asset.xml 
+2026-05-23 15:53:13,611 31176 INFO Mentorize odoo.modules.loading: loading website/data/ir_cron_data.xml 
+2026-05-23 15:53:13,627 31176 INFO Mentorize odoo.modules.loading: loading website/data/mail_mail_data.xml 
+2026-05-23 15:53:13,679 31176 INFO Mentorize odoo.modules.loading: loading website/data/website_data.xml 
+2026-05-23 15:53:13,805 31176 INFO Mentorize odoo.modules.loading: loading website/data/website_visitor_cron.xml 
+2026-05-23 15:53:13,819 31176 INFO Mentorize odoo.modules.loading: loading website/data/digest_data.xml 
+2026-05-23 15:53:13,837 31176 INFO Mentorize odoo.modules.loading: loading website/views/website_templates.xml 
+2026-05-23 15:53:14,940 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/snippets.xml 
+2026-05-23 15:53:15,080 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_title.xml 
+2026-05-23 15:53:15,096 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_cover.xml 
+2026-05-23 15:53:15,110 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_text_cover.xml 
+2026-05-23 15:53:15,125 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_text_image.xml 
+2026-05-23 15:53:15,139 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_image_text.xml 
+2026-05-23 15:53:15,155 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_instagram_page.xml 
+2026-05-23 15:53:15,185 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_banner.xml 
+2026-05-23 15:53:15,199 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_text_block.xml 
+2026-05-23 15:53:15,213 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_features.xml 
+2026-05-23 15:53:15,227 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_three_columns.xml 
+2026-05-23 15:53:15,244 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_picture.xml 
+2026-05-23 15:53:15,260 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_carousel.xml 
+2026-05-23 15:53:15,276 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_alert.xml 
+2026-05-23 15:53:15,306 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_card.xml 
+2026-05-23 15:53:15,323 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_share.xml 
+2026-05-23 15:53:15,342 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_social_media.xml 
+2026-05-23 15:53:15,371 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_rating.xml 
+2026-05-23 15:53:15,403 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_hr.xml 
+2026-05-23 15:53:15,434 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_facebook_page.xml 
+2026-05-23 15:53:15,464 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_image_gallery.xml 
+2026-05-23 15:53:15,502 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_countdown.xml 
+2026-05-23 15:53:15,538 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_product_catalog.xml 
+2026-05-23 15:53:15,579 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_comparisons.xml 
+2026-05-23 15:53:15,596 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_company_team.xml 
+2026-05-23 15:53:15,612 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_call_to_action.xml 
+2026-05-23 15:53:15,627 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_references.xml 
+2026-05-23 15:53:15,643 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_popup.xml 
+2026-05-23 15:53:15,674 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_faq_collapse.xml 
+2026-05-23 15:53:15,702 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_features_grid.xml 
+2026-05-23 15:53:15,719 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_tabs.xml 
+2026-05-23 15:53:15,750 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_table_of_content.xml 
+2026-05-23 15:53:15,787 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_chart.xml 
+2026-05-23 15:53:15,819 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_parallax.xml 
+2026-05-23 15:53:15,832 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_quotes_carousel.xml 
+2026-05-23 15:53:15,850 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_numbers.xml 
+2026-05-23 15:53:15,864 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_masonry_block.xml 
+2026-05-23 15:53:15,960 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_media_list.xml 
+2026-05-23 15:53:15,996 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_showcase.xml 
+2026-05-23 15:53:16,028 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_timeline.xml 
+2026-05-23 15:53:16,076 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_process_steps.xml 
+2026-05-23 15:53:16,110 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_text_highlight.xml 
+2026-05-23 15:53:16,125 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_progress_bar.xml 
+2026-05-23 15:53:16,155 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_blockquote.xml 
+2026-05-23 15:53:16,186 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_badge.xml 
+2026-05-23 15:53:16,218 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_color_blocks_2.xml 
+2026-05-23 15:53:16,235 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_product_list.xml 
+2026-05-23 15:53:16,252 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_multi_menus.xml 
+2026-05-23 15:53:16,269 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_menu_image_menu.xml 
+2026-05-23 15:53:16,285 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_thumbnails.xml 
+2026-05-23 15:53:16,321 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_little_icons.xml 
+2026-05-23 15:53:16,340 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_images_subtitles.xml 
+2026-05-23 15:53:16,367 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_menus_logos.xml 
+2026-05-23 15:53:16,385 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_odoo_menu.xml 
+2026-05-23 15:53:16,404 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_big_icons_subtitles.xml 
+2026-05-23 15:53:16,427 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_mega_menu_cards.xml 
+2026-05-23 15:53:16,449 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_google_map.xml 
+2026-05-23 15:53:16,478 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_map.xml 
+2026-05-23 15:53:16,511 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_dynamic_snippet.xml 
+2026-05-23 15:53:16,549 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_dynamic_snippet_carousel.xml 
+2026-05-23 15:53:16,584 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_embed_code.xml 
+2026-05-23 15:53:16,616 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_website_controller_page_listing_layout.xml 
+2026-05-23 15:53:16,638 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_website_form.xml 
+2026-05-23 15:53:16,680 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_searchbar.xml 
+2026-05-23 15:53:16,715 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_button.xml 
+2026-05-23 15:53:16,729 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_image.xml 
+2026-05-23 15:53:16,742 31176 INFO Mentorize odoo.modules.loading: loading website/views/snippets/s_video.xml 
+2026-05-23 15:53:16,759 31176 INFO Mentorize odoo.modules.loading: loading website/views/new_page_template_templates.xml 
+2026-05-23 15:53:17,790 31176 INFO Mentorize odoo.addons.website.models.ir_module_module: Updated 39 primary page templates for 'website' 
+2026-05-23 15:53:17,792 31176 INFO Mentorize odoo.modules.loading: loading website/views/website_views.xml 
+2026-05-23 15:53:17,919 31176 INFO Mentorize odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [29, 30] 
+2026-05-23 15:53:17,976 31176 INFO Mentorize odoo.modules.loading: loading website/views/website_pages_views.xml 
+2026-05-23 15:53:18,019 31176 INFO Mentorize odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [31, 32] 
+2026-05-23 15:53:18,041 31176 INFO Mentorize odoo.modules.loading: loading website/views/website_controller_pages_views.xml 
+2026-05-23 15:53:18,067 31176 INFO Mentorize odoo.modules.loading: loading website/views/website_visitor_views.xml 
+2026-05-23 15:53:18,109 31176 INFO Mentorize odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [33, 34] 
+2026-05-23 15:53:18,163 31176 INFO Mentorize odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [35, 36] 
+2026-05-23 15:53:18,170 31176 INFO Mentorize odoo.modules.loading: loading website/views/res_config_settings_views.xml 
+2026-05-23 15:53:18,241 31176 INFO Mentorize odoo.modules.loading: loading website/views/website_rewrite.xml 
+2026-05-23 15:53:18,273 31176 INFO Mentorize odoo.modules.loading: loading website/views/ir_actions_server_views.xml 
+2026-05-23 15:53:18,307 31176 INFO Mentorize odoo.modules.loading: loading website/views/ir_asset_views.xml 
+2026-05-23 15:53:18,327 31176 INFO Mentorize odoo.modules.loading: loading website/views/ir_attachment_views.xml 
+2026-05-23 15:53:18,346 31176 INFO Mentorize odoo.modules.loading: loading website/views/ir_model_views.xml 
+2026-05-23 15:53:18,373 31176 INFO Mentorize odoo.modules.loading: loading website/views/res_partner_views.xml 
+2026-05-23 15:53:18,393 31176 INFO Mentorize odoo.modules.loading: loading website/views/neutralize_views.xml 
+2026-05-23 15:53:18,414 31176 INFO Mentorize odoo.modules.loading: loading website/wizard/base_language_install_views.xml 
+2026-05-23 15:53:18,428 31176 INFO Mentorize odoo.modules.loading: loading website/wizard/website_robots.xml 
+2026-05-23 15:53:18,443 31176 INFO Mentorize odoo.modules.loading: loading website/data/update_theme_images.xml 
+2026-05-23 15:53:18,540 31176 INFO Mentorize odoo.modules.loading: Module website: loading demo 
+2026-05-23 15:53:18,540 31176 INFO Mentorize odoo.modules.loading: loading website/data/website_demo.xml 
+2026-05-23 15:53:18,609 31176 INFO Mentorize odoo.modules.loading: loading website/data/website_visitor_demo.xml 
+2026-05-23 15:53:18,714 31176 INFO Mentorize odoo.modules.loading: Module website loaded in 7.60s, 9753 queries (+9753 other) 
+2026-05-23 15:53:18,714 31176 INFO Mentorize odoo.modules.loading: Loading module mentorize (35/40) 
+2026-05-23 15:53:18,789 31176 INFO Mentorize odoo.modules.registry: module mentorize: creating or updating database tables 
+2026-05-23 15:53:18,876 31176 INFO Mentorize odoo.schema: Table 'mentorize_request': unable to set NOT NULL on column 'requested_datetime' 
+2026-05-23 15:53:18,878 31176 INFO Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'mahasiswa_id' 
+2026-05-23 15:53:18,880 31176 INFO Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'alumni_id' 
+2026-05-23 15:53:18,887 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:18,899 31176 INFO Mentorize odoo.modules.loading: loading mentorize/security/mentorize_groups.xml 
+2026-05-23 15:53:18,946 31176 INFO Mentorize odoo.modules.loading: loading mentorize/security/ir.model.access.csv 
+2026-05-23 15:53:18,983 31176 INFO Mentorize odoo.modules.loading: loading mentorize/data/mentorize_master_data.xml 
+2026-05-23 15:53:19,006 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/backend/admin_views.xml 
+2026-05-23 15:53:19,061 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/layout.xml 
+2026-05-23 15:53:19,086 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/public_pages.xml 
+2026-05-23 15:53:19,135 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/dashboard_mahasiswa.xml 
+2026-05-23 15:53:19,154 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/dashboard_alumni.xml 
+2026-05-23 15:53:19,183 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/profile_pages.xml 
+2026-05-23 15:53:19,207 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/mentor_pages.xml 
+2026-05-23 15:53:19,224 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/chat_pages.xml 
+2026-05-23 15:53:19,242 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/history_pages.xml 
+2026-05-23 15:53:19,278 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/settings_pages.xml 
+2026-05-23 15:53:19,295 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/admin_pages.xml 
+2026-05-23 15:53:19,349 31176 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/report_pages.xml 
+2026-05-23 15:53:19,382 31176 INFO Mentorize odoo.modules.loading: Module mentorize loaded in 0.67s, 691 queries (+691 other) 
+2026-05-23 15:53:19,382 31176 INFO Mentorize odoo.modules.loading: Loading module website_mail (36/40) 
+2026-05-23 15:53:19,448 31176 INFO Mentorize odoo.modules.registry: module website_mail: creating or updating database tables 
+2026-05-23 15:53:19,457 31176 INFO Mentorize odoo.modules.loading: loading website_mail/views/website_mail_templates.xml 
+2026-05-23 15:53:19,484 31176 INFO Mentorize odoo.modules.loading: Module website_mail loaded in 0.10s, 35 queries (+35 other) 
+2026-05-23 15:53:19,485 31176 INFO Mentorize odoo.modules.loading: Loading module website_partner (37/40) 
+2026-05-23 15:53:19,552 31176 INFO Mentorize odoo.modules.registry: module website_partner: creating or updating database tables 
+2026-05-23 15:53:19,584 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:19,591 31176 INFO Mentorize odoo.modules.loading: loading website_partner/views/res_partner_views.xml 
+2026-05-23 15:53:19,658 31176 INFO Mentorize odoo.modules.loading: loading website_partner/views/website_partner_templates.xml 
+2026-05-23 15:53:19,675 31176 INFO Mentorize odoo.modules.loading: loading website_partner/data/website_partner_data.xml 
+2026-05-23 15:53:19,693 31176 INFO Mentorize odoo.modules.loading: Module website_partner: loading demo 
+2026-05-23 15:53:19,694 31176 INFO Mentorize odoo.modules.loading: loading website_partner/data/website_partner_demo.xml 
+2026-05-23 15:53:19,829 31176 INFO Mentorize odoo.modules.loading: Module website_partner loaded in 0.34s, 340 queries (+340 other) 
+2026-05-23 15:53:19,829 31176 INFO Mentorize odoo.modules.loading: Loading module website_sms (38/40) 
+2026-05-23 15:53:19,892 31176 INFO Mentorize odoo.modules.registry: module website_sms: creating or updating database tables 
+2026-05-23 15:53:19,906 31176 INFO Mentorize odoo.modules.loading: loading website_sms/views/website_visitor_views.xml 
+2026-05-23 15:53:19,950 31176 INFO Mentorize odoo.modules.loading: Module website_sms loaded in 0.12s, 80 queries (+80 other) 
+2026-05-23 15:53:19,950 31176 INFO Mentorize odoo.modules.loading: Loading module website_profile (39/40) 
+2026-05-23 15:53:20,019 31176 INFO Mentorize odoo.modules.registry: module website_profile: creating or updating database tables 
+2026-05-23 15:53:20,046 31176 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:20,054 31176 INFO Mentorize odoo.modules.loading: loading website_profile/data/mail_template_data.xml 
+2026-05-23 15:53:20,073 31176 INFO Mentorize odoo.modules.loading: loading website_profile/views/gamification_badge_views.xml 
+2026-05-23 15:53:20,090 31176 INFO Mentorize odoo.modules.loading: loading website_profile/views/website_profile.xml 
+2026-05-23 15:53:20,211 31176 INFO Mentorize odoo.modules.loading: loading website_profile/views/website_views.xml 
+2026-05-23 15:53:20,227 31176 INFO Mentorize odoo.modules.loading: loading website_profile/security/ir.model.access.csv 
+2026-05-23 15:53:20,260 31176 INFO Mentorize odoo.modules.loading: Module website_profile loaded in 0.31s, 329 queries (+329 other) 
+2026-05-23 15:53:20,260 31176 INFO Mentorize odoo.modules.loading: Loading module website_forum (40/40) 
+2026-05-23 15:53:20,340 31176 INFO Mentorize odoo.modules.registry: module website_forum: creating or updating database tables 
+2026-05-23 15:53:20,435 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/ir_config_parameter_data.xml 
+2026-05-23 15:53:20,445 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/forum_forum_template_faq.xml 
+2026-05-23 15:53:20,470 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/forum_forum_data.xml 
+2026-05-23 15:53:20,502 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/forum_post_reason_data.xml 
+2026-05-23 15:53:20,525 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/ir_actions_data.xml 
+2026-05-23 15:53:20,537 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/mail_message_subtype_data.xml 
+2026-05-23 15:53:20,550 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/mail_templates.xml 
+2026-05-23 15:53:20,577 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/website_menu_data.xml 
+2026-05-23 15:53:20,588 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_post_views.xml 
+2026-05-23 15:53:20,738 31176 INFO Mentorize odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [39, 40] 
+2026-05-23 15:53:20,743 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_post_reason_views.xml 
+2026-05-23 15:53:20,757 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_tag_views.xml 
+2026-05-23 15:53:20,777 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_forum_views.xml 
+2026-05-23 15:53:20,812 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/res_users_views.xml 
+2026-05-23 15:53:20,831 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/gamification_karma_tracking_views.xml 
+2026-05-23 15:53:20,846 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_menus.xml 
+2026-05-23 15:53:20,872 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/base_contact_templates.xml 
+2026-05-23 15:53:20,890 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_forum_templates.xml 
+2026-05-23 15:53:20,924 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_forum_templates_forum_all.xml 
+2026-05-23 15:53:20,968 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_forum_templates_layout.xml 
+2026-05-23 15:53:21,042 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_forum_templates_moderation.xml 
+2026-05-23 15:53:21,074 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_forum_templates_post.xml 
+2026-05-23 15:53:21,139 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_forum_templates_tools.xml 
+2026-05-23 15:53:21,181 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/forum_templates_mail.xml 
+2026-05-23 15:53:21,197 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/website_profile_templates.xml 
+2026-05-23 15:53:21,243 31176 INFO Mentorize odoo.modules.loading: loading website_forum/views/snippets/snippets.xml 
+2026-05-23 15:53:21,290 31176 INFO Mentorize odoo.modules.loading: loading website_forum/security/ir.model.access.csv 
+2026-05-23 15:53:21,314 31176 INFO Mentorize odoo.modules.loading: loading website_forum/security/ir_rule_data.xml 
+2026-05-23 15:53:21,359 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/gamification_badge_data_question.xml 
+2026-05-23 15:53:21,494 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/gamification_badge_data_answer.xml 
+2026-05-23 15:53:21,592 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/gamification_badge_data_participation.xml 
+2026-05-23 15:53:21,662 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/gamification_badge_data_moderation.xml 
+2026-05-23 15:53:21,725 31176 INFO Mentorize odoo.modules.loading: Module website_forum: loading demo 
+2026-05-23 15:53:21,725 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/forum_tag_demo.xml 
+2026-05-23 15:53:21,739 31176 INFO Mentorize odoo.modules.loading: loading website_forum/data/forum_post_demo.xml 
+2026-05-23 15:53:22,024 31176 INFO Mentorize odoo.modules.loading: Module website_forum loaded in 1.76s, 2213 queries (+2213 other) 
+2026-05-23 15:53:22,024 31176 INFO Mentorize odoo.modules.loading: 40 modules loaded in 15.14s, 14758 queries (+14758 extra) 
+2026-05-23 15:53:22,089 31176 WARNING Mentorize odoo.schema: Table 'mentorize_request': unable to set NOT NULL on column 'requested_datetime' 
+2026-05-23 15:53:22,091 31176 WARNING Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'mahasiswa_id' 
+2026-05-23 15:53:22,092 31176 WARNING Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'alumni_id' 
+2026-05-23 15:53:22,552 31176 INFO Mentorize odoo.modules.loading: Modules loaded. 
+2026-05-23 15:53:22,557 31176 INFO Mentorize odoo.modules.registry: Registry loaded in 16.753s 
+2026-05-23 15:53:22,557 31176 INFO Mentorize odoo.service.server: Initiating shutdown 
+2026-05-23 15:53:22,557 31176 INFO Mentorize odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-23 15:53:22,558 31176 INFO Mentorize odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-05-23 15:53:42,276 2556 INFO ? odoo: Odoo version 17.0-20260217 
+2026-05-23 15:53:42,276 2556 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-05-23 15:53:42,276 2556 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-05-23 15:53:42,276 2556 INFO ? odoo: database: openpg@localhost:5432 
+2026-05-23 15:53:42,434 2556 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-05-23 15:53:42,820 2556 INFO Mentorize odoo.modules.loading: loading 1 modules... 
+2026-05-23 15:53:42,825 2556 INFO Mentorize odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-05-23 15:53:42,840 2556 INFO Mentorize odoo.modules.loading: updating modules list 
+2026-05-23 15:53:42,845 2556 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-05-23 15:53:43,570 2556 WARNING Mentorize odoo.modules.module: Missing `license` key in manifest for 'techmerch_finance', defaulting to LGPL-3 
+2026-05-23 15:53:43,734 2556 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Mentorize'] to user __system__ #1 via n/a 
+2026-05-23 15:53:43,735 2556 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Mentorize'] to user __system__ #1 via n/a 
+2026-05-23 15:53:44,142 2556 INFO Mentorize odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-05-23 15:53:44,169 2556 INFO Mentorize odoo.modules.loading: loading 40 modules... 
+2026-05-23 15:53:44,571 2556 INFO Mentorize odoo.modules.loading: Loading module mentorize (35/40) 
+2026-05-23 15:53:44,689 2556 INFO Mentorize odoo.modules.registry: module mentorize: creating or updating database tables 
+2026-05-23 15:53:44,780 2556 INFO Mentorize odoo.schema: Table 'mentorize_request': unable to set NOT NULL on column 'requested_datetime' 
+2026-05-23 15:53:44,783 2556 INFO Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'mahasiswa_id' 
+2026-05-23 15:53:44,785 2556 INFO Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'alumni_id' 
+2026-05-23 15:53:44,796 2556 INFO Mentorize odoo.schema: Keep unexpected index res_users__create_date_index on table res_users 
+2026-05-23 15:53:44,819 2556 INFO Mentorize odoo.modules.loading: loading mentorize/security/mentorize_groups.xml 
+2026-05-23 15:53:44,854 2556 INFO Mentorize odoo.modules.loading: loading mentorize/security/ir.model.access.csv 
+2026-05-23 15:53:44,885 2556 INFO Mentorize odoo.modules.loading: loading mentorize/data/mentorize_master_data.xml 
+2026-05-23 15:53:44,895 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/backend/admin_views.xml 
+2026-05-23 15:53:44,945 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/layout.xml 
+2026-05-23 15:53:44,956 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/public_pages.xml 
+2026-05-23 15:53:44,992 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/dashboard_mahasiswa.xml 
+2026-05-23 15:53:45,002 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/dashboard_alumni.xml 
+2026-05-23 15:53:45,020 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/profile_pages.xml 
+2026-05-23 15:53:45,034 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/mentor_pages.xml 
+2026-05-23 15:53:45,042 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/chat_pages.xml 
+2026-05-23 15:53:45,051 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/history_pages.xml 
+2026-05-23 15:53:45,074 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/settings_pages.xml 
+2026-05-23 15:53:45,082 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/admin_pages.xml 
+2026-05-23 15:53:45,114 2556 INFO Mentorize odoo.modules.loading: loading mentorize/views/templates/report_pages.xml 
+2026-05-23 15:53:45,137 2556 INFO Mentorize odoo.modules.loading: Module mentorize loaded in 0.57s, 676 queries (+676 other) 
+2026-05-23 15:53:45,166 2556 INFO Mentorize odoo.modules.loading: 40 modules loaded in 1.00s, 676 queries (+676 extra) 
+2026-05-23 15:53:45,232 2556 WARNING Mentorize odoo.schema: Table 'mentorize_request': unable to set NOT NULL on column 'requested_datetime' 
+2026-05-23 15:53:45,234 2556 WARNING Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'mahasiswa_id' 
+2026-05-23 15:53:45,236 2556 WARNING Mentorize odoo.schema: Table 'mentorize_session': unable to set NOT NULL on column 'alumni_id' 
+2026-05-23 15:53:45,313 2556 INFO Mentorize odoo.modules.registry: verifying fields for every extended model 
+2026-05-23 15:53:45,605 2556 INFO Mentorize odoo.modules.loading: Modules loaded. 
+2026-05-23 15:53:45,609 2556 INFO Mentorize odoo.modules.registry: Registry loaded in 2.854s 
+2026-05-23 15:53:45,609 2556 INFO Mentorize odoo.service.server: Initiating shutdown 
+2026-05-23 15:53:45,609 2556 INFO Mentorize odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-05-23 15:53:45,609 2556 INFO Mentorize odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
