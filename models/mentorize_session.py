@@ -1,69 +1,63 @@
 from odoo import models, fields
-from odoo.exceptions import UserError
+
 
 class MentorizeSession(models.Model):
     _name = 'mentorize.session'
     _description = 'Sesi Mentoring'
-    _order = 'tanggal_mentoring desc'
+    _order = 'tanggal_mentoring asc'
 
-    request_id = fields.Many2one(
-        'mentorize.request',
-        string='Request',
-        required=True,
-        ondelete='cascade'
-    )
-    tanggal_mentoring = fields.Datetime(
-        string='Tanggal & Jam Sesi',
-        required=True
-    )
-    durasi = fields.Integer(
-        string='Durasi (menit)',
-        default=60
-    )
+    request_id = fields.Many2one('mentorize.request', string='Request', required=True, ondelete='cascade')
+    mahasiswa_id = fields.Many2one('mentorize.mahasiswa', string='Mahasiswa', required=True, ondelete='cascade')
+    alumni_id = fields.Many2one('mentorize.alumni', string='Alumni / Mentor', required=True, ondelete='cascade')
+    topik = fields.Char(string='Topik Mentoring')
+    tanggal_mentoring = fields.Datetime(string='Tanggal & Jam Sesi', required=True)
+    durasi = fields.Integer(string='Durasi (menit)', default=60)
     mode = fields.Selection([
         ('online', 'Online'),
         ('offline', 'Offline'),
-    ], string='Mode', default='offline')
+    ], string='Mode', default='online')
     lokasi_link = fields.Char(string='Lokasi / Link Meeting')
-    ringkasan_materi = fields.Text(string='Ringkasan Materi')
     status = fields.Selection([
         ('scheduled', 'Terjadwal'),
+        ('active', 'Berjalan'),
+        ('end_requested', 'Pengajuan Selesai'),
         ('completed', 'Selesai'),
         ('cancelled', 'Dibatalkan'),
-        ('rescheduled', 'Dijadwalkan Ulang'),
-    ], string='Status', default='scheduled')
+        ('reschedule_requested', 'Pengajuan Reschedule'),
+        ('stop_requested', 'Pengajuan Berhenti'),
+        ('stopped', 'Dihentikan'),
+    ], string='Status', default='scheduled', index=True)
+    end_request_note = fields.Text(string='Catatan Pengajuan Selesai')
+    end_requested_at = fields.Datetime(string='Pengajuan Selesai Pada')
+    completed_at = fields.Datetime(string='Selesai Pada')
+    summary_saved = fields.Boolean(string='Rangkuman Disimpan', default=False)
+    summary_topic = fields.Char(string='Judul Rangkuman')
+    summary_learnings = fields.Text(string='Hal yang Dipelajari')
+    summary_advice = fields.Text(string='Saran Mentor')
+    summary_next_steps = fields.Text(string='Tindak Lanjut')
+    summary_notes = fields.Text(string='Catatan Tambahan')
     feedback_id = fields.Many2one('mentorize.feedback', string='Feedback')
 
-    def action_complete(self):
-        for session in self:
-            if session.status == 'cancelled':
-                raise UserError('Sesi yang sudah dibatalkan tidak bisa ditandai selesai.')
-            session.status = 'completed'
-            if session.request_id and 'status' in session.request_id._fields:
-                session.request_id.status = 'completed'
-        return True
+    completion_title = fields.Char(string='Judul Laporan Selesai')
+    completion_method = fields.Selection([
+        ('online', 'Online'),
+        ('offline', 'Offline'),
+    ], string='Metode Pelaksanaan')
+    completion_summary = fields.Text(string='Ringkasan Pembahasan')
+    material_discussed = fields.Text(string='Materi yang Dibahas')
+    mentoring_result = fields.Text(string='Hasil / Insight Mentoring')
+    follow_up_note = fields.Text(string='Catatan Tindak Lanjut')
+    student_obstacle = fields.Text(string='Kendala Selama Mentoring')
+    completion_feedback = fields.Text(string='Feedback untuk Mentor')
+    completion_rating = fields.Integer(string='Rating Mentor', default=5)
+    completion_requested_by = fields.Many2one('res.users', string='Pengaju Selesai', ondelete='set null')
+    completion_approved_by = fields.Many2one('res.users', string='Penyetuju Selesai', ondelete='set null')
 
-    def action_cancel(self):
-        for session in self:
-            if session.status == 'completed':
-                raise UserError('Sesi yang sudah selesai tidak bisa dibatalkan.')
-            session.status = 'cancelled'
-            if session.request_id and 'status' in session.request_id._fields:
-                session.request_id.status = 'cancelled'
-        return True
+    stop_requested_by = fields.Many2one('res.users', string='Pengaju Berhenti', ondelete='set null')
+    stop_reason = fields.Text(string='Alasan Berhenti')
+    stop_requested_at = fields.Datetime(string='Pengajuan Berhenti Pada')
+    stop_approved_by = fields.Many2one('res.users', string='Penyetuju Berhenti', ondelete='set null')
+    stopped_at = fields.Datetime(string='Dihentikan Pada')
 
-    def action_reschedule(self, tanggal_mentoring=None, lokasi_link=None, ringkasan_materi=None):
-        for session in self:
-            if session.status == 'completed':
-                raise UserError('Sesi yang sudah selesai tidak bisa dijadwalkan ulang.')
-            if session.status == 'cancelled':
-                raise UserError('Sesi yang sudah dibatalkan tidak bisa dijadwalkan ulang.')
-            vals = {'status': 'rescheduled'}
-            if tanggal_mentoring:
-                vals['tanggal_mentoring'] = tanggal_mentoring
-            if lokasi_link:
-                vals['lokasi_link'] = lokasi_link
-            if ringkasan_materi:
-                vals['ringkasan_materi'] = ringkasan_materi
-            session.write(vals)
-        return True
+    reschedule_reason = fields.Text(string='Alasan Reschedule')
+    reschedule_requested_at = fields.Datetime(string='Pengajuan Reschedule Pada')

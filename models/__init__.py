@@ -1,11 +1,11 @@
 from . import res_users
 from . import mentorize_master
-from . import mentorize_mahasiswa
-from . import mentorize_alumni
-from . import mentorize_matchmaking
+from . import mentorize_profile
 from . import mentorize_request
 from . import mentorize_session
 from . import mentorize_chat
 from . import mentorize_feedback
-from . import mentorize_skill
-from . import mentorize_minat
+from . import mentorize_notification
+
+from . import mentorize_admin
+from . import mentorize_matchmaking
