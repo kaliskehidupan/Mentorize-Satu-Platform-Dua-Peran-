@@ -1,5 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-    </data>
+  <template id="app_layout" name="Mentorize App Layout">
+    <html>
+      <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Mentorize</title>
+        <link rel="stylesheet" type="text/css" href="/mentorize/static/src/css/mentorize.css"/>
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+      </head>
+      <body class="mtz-body">
+        <t t-if="is_admin_page">
+          <div class="mtz-admin-shell">
+            <aside class="mtz-admin-sidebar mtz-animate-left">
+              <a class="mtz-admin-brand" href="/admin/dashboard">
+                <img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/>
+                <div>
+                  <strong>Mentorize</strong>
+                  <span>Admin Panel</span>
+                </div>
+              </a>
+
+              <div class="mtz-admin-side-section">
+                <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/admin/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+              </div>
+
+              <div class="mtz-admin-side-section">
+                  <small>Manajemen User</small>
+
+                  <a t-att-class="'active' if active_menu == 'users' else ''"
+                    href="/admin/users">
+                      <i class="fas fa-users"></i>
+                      Kelola User
+                  </a>
+
+                  <a t-att-class="'active' if active_menu == 'skills' else ''"
+                    href="/admin/skills">
+                      <i class="fa-solid fa-layer-group"></i>
+                      Minat &amp; Skill
+                  </a>
+              </div>
+
+              <div class="mtz-admin-side-section">
+                <small>Mentoring</small>
+                <a t-att-class="'active' if active_menu == 'mentoring' else ''" href="/admin/mentoring"><i class="fas fa-comments"></i> Monitoring Mentoring</a>
+                <a t-att-class="'active' if active_menu == 'feedback' else ''" href="/admin/feedback"><i class="fas fa-star"></i> Feedback &amp; Review</a>
+              </div>
+
+              <div class="mtz-admin-side-section">
+                <small>Moderasi</small>
+                <a t-att-class="'active' if active_menu == 'reports' else ''" href="/admin/reports"><i class="fas fa-flag"></i> Laporan</a>
+                <a t-att-class="'active' if active_menu == 'activities' else ''" href="/admin/activities"><i class="fas fa-clock-rotate-left"></i> Aktivitas Sistem</a>
+              </div>
+
+              <div class="mtz-admin-side-footer">
+                <button type="button" class="mtz-admin-logout" data-mtz-open-logout="1">Logout</button>
+              </div>
+            </aside>
+
+            <main class="mtz-admin-workspace">
+              <header class="mtz-admin-topbar mtz-animate-down">
+                <div>
+                  <span class="mtz-admin-eyebrow">Admin Mentorize</span>
+                  <h2>
+                    <t t-if="active_menu == 'dashboard'">Dashboard Monitoring</t>
+                    <t t-elif="active_menu == 'users'">Kelola Pengguna</t>
+                    <t t-elif="active_menu == 'mentoring'">Monitoring Mentoring</t>
+                    <t t-elif="active_menu == 'feedback'">Feedback &amp; Review</t>
+                    <t t-elif="active_menu == 'reports'">Laporan &amp; Moderasi</t>
+                    <t t-elif="active_menu == 'activities'">Aktivitas Sistem</t>
+                    <t t-else="">Panel Admin</t>
+                  </h2>
+                </div>
+                <div class="mtz-top-actions">
+                  <div class="mtz-notif-wrap">
+                    <button type="button" class="mtz-icon-btn" data-mtz-toggle="notifications" aria-label="Notifikasi">
+                      <span>🔔</span>
+                      <t t-if="unread_count"><em class="mtz-notif-badge" t-esc="unread_count"/></t>
+                    </button>
+                    <div class="mtz-dropdown mtz-notif-dropdown" id="mtz-notifications">
+                      <div class="mtz-dropdown-head"><strong>Notifikasi</strong><button type="button" class="mtz-link-btn" data-mtz-read-notifications="1">Tandai dibaca</button></div>
+                      <t t-if="notifications">
+                        <t t-foreach="notifications" t-as="notif"><a t-att-href="notif.url or '#'" t-att-class="'mtz-notif-item unread' if not notif.is_read else 'mtz-notif-item'"><span class="mtz-notif-dot"></span><div><strong t-esc="notif.title"/><p t-esc="notif.message"/></div></a></t>
+                      </t>
+                      <t t-else=""><div class="mtz-empty-small">Belum ada notifikasi.</div></t>
+                    </div>
+                  </div>
+                  <div class="mtz-user-wrap">
+                    <button type="button" class="mtz-user-btn" data-mtz-toggle="user-menu"><img t-att-src="'/web/image/res.partner/%s/image_128' % user.partner_id.id" alt="Foto Profil"/><span t-esc="user.name"/></button>
+                    <div class="mtz-dropdown mtz-user-dropdown" id="mtz-user-menu"><a href="/settings">Setting</a></div>
+                  </div>
+                </div>
+              </header>
+
+              <section class="mtz-admin-content">
+                <t t-out="0"/>
+              </section>
+            </main>
+          </div>
+        </t>
+        <t t-else="">
+          <div class="mtz-app-shell">
+            <nav class="mtz-topbar mtz-animate-down">
+              <a class="mtz-brand" t-att-href="'/admin/dashboard' if role == 'admin' else ('/alumni/dashboard' if role == 'alumni' else '/dashboard')">
+                <img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/>
+                <span>Mentorize</span>
+              </a>
+
+              <div class="mtz-navlinks">
+                <t t-if="role == 'alumni'">
+                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/alumni/dashboard">Dashboard</a>
+                  <a t-att-class="'active' if active_menu == 'chat' else ''" href="/chat">Chat</a>
+                  <a t-att-class="'active' if active_menu == 'profile' else ''" href="/alumni/profile/setup">Profil</a>
+                  <a t-att-class="'active' if active_menu == 'reports' else ''" href="/reports">Laporan</a>
+                  <a t-att-class="'active' if active_menu == 'history' else ''" href="/history">Riwayat</a>
+                </t>
+                <t t-elif="role == 'admin'">
+                </t>
+                <t t-else="">
+                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/dashboard">Dashboard</a>
+                  <a t-att-class="'active' if active_menu == 'mentors' else ''" href="/mentors">Mentor</a>
+                  <a t-att-class="'active' if active_menu == 'chat' else ''" href="/chat">Chat</a>
+                  <a t-att-class="'active' if active_menu == 'history' else ''" href="/history">Riwayat</a>
+                  <a t-att-class="'active' if active_menu == 'profile' else ''" href="/profile">Profil</a>
+                  <a t-att-class="'active' if active_menu == 'reports' else ''" href="/reports">Laporan</a>
+                </t>
+              </div>
+
+              <div class="mtz-top-actions">
+                <div class="mtz-notif-wrap">
+                  <button type="button" class="mtz-icon-btn" data-mtz-toggle="notifications" aria-label="Notifikasi">
+                    <span>🔔</span>
+                    <t t-if="unread_count"><em class="mtz-notif-badge" t-esc="unread_count"/></t>
+                  </button>
+                  <div class="mtz-dropdown mtz-notif-dropdown" id="mtz-notifications">
+                    <div class="mtz-dropdown-head"><strong>Notifikasi</strong><button type="button" class="mtz-link-btn" data-mtz-read-notifications="1">Tandai dibaca</button></div>
+                    <t t-if="notifications">
+                      <t t-foreach="notifications" t-as="notif"><a t-att-href="notif.url or '#'" t-att-class="'mtz-notif-item unread' if not notif.is_read else 'mtz-notif-item'"><span class="mtz-notif-dot"></span><div><strong t-esc="notif.title"/><p t-esc="notif.message"/></div></a></t>
+                    </t>
+                    <t t-else=""><div class="mtz-empty-small">Belum ada notifikasi.</div></t>
+                  </div>
+                </div>
+
+                  <div class="mtz-user-wrap">
+                      <button type="button" class="mtz-user-btn"
+                              data-mtz-toggle="user-menu">
+
+                          <img t-att-src="'/web/image/res.partner/%s/image_128' % user.partner_id.id"/>
+                          <span t-esc="user.name"/>
+
+                      </button>
+
+                      <div class="mtz-dropdown mtz-user-dropdown" id="mtz-user-menu">
+
+                          <a href="/dashboard">Dashboard</a>
+
+                          <button type="button"
+                                  data-mtz-open-logout="1">
+                              Logout
+                          </button>
+
+                      </div>
+                  </div>
+              </div>
+            </nav>
+
+            <main class="mtz-main-content">
+              <t t-out="0"/>
+            </main>
+          </div>
+        </t>
+
+        <div class="mtz-modal-backdrop" id="mtz-logout-modal">
+          <div class="mtz-confirm-modal">
+            <div class="mtz-modal-icon">↪</div>
+            <h3>Keluar dari Mentorize?</h3>
+            <p>Pastikan semua perubahan sudah tersimpan sebelum logout.</p>
+            <div class="mtz-modal-actions"><button type="button" class="mtz-btn ghost" data-mtz-close-logout="1">Batal</button><a class="mtz-btn danger" href="/web/session/logout?redirect=/login">Ya, Logout</a></div>
+          </div>
+        </div>
+
+        <script type="text/javascript" src="/mentorize/static/src/js/mentorize.js"></script>
+      </body>
+    </html>
+  </template>
 </odoo>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="public_layout" name="Mentorize Public Layout">
+    <html>
+      <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Mentorize</title>
+        <link rel="stylesheet" type="text/css" href="/mentorize/static/src/css/mentorize.css"/>
+        <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+      </head>
+      <body class="mtz-body">
+        <t t-out="0"/>
+        <script type="text/javascript" src="/mentorize/static/src/js/mentorize.js"></script>
+      </body>
+    </html>
+  </template>
+
+  <template id="page_landing" name="Mentorize Landing Page">
+    <t t-call="mentorize.public_layout">
+      <div class="mtz-public-page">
+        <nav class="mtz-public-nav mtz-animate-down">
+          <a class="mtz-brand" href="/">
+            <img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/>
+            <span>Mentorize</span>
+          </a>
+          <div class="mtz-public-links">
+            <a href="#fitur">Fitur</a>
+            <a href="#manfaat">Manfaat</a>
+            <a href="#alur">Alur</a>
+          </div>
+          <div class="mtz-public-actions">
+            <a class="mtz-btn ghost" href="/login">Masuk</a>
+            <a class="mtz-btn primary" href="/register">Daftar</a>
+          </div>
+        </nav>
+
+        <section class="mtz-hero mtz-animate-up">
+          <div class="mtz-hero-copy">
+            <span class="mtz-kicker">Platform Mentorship Alumni-Mahasiswa</span>
+            <h1>Satu Platform, Dua Peran untuk mentoring yang lebih terarah.</h1>
+            <p>Mentorize membantu mahasiswa menemukan alumni mentor yang relevan berdasarkan minat, skill, dan tujuan karier. Semua proses mulai dari request, jadwal, chat, sampai riwayat mentoring tersimpan rapi.</p>
+            <div class="mtz-hero-actions">
+              <a class="mtz-btn primary large" href="/register">Mulai Daftar</a>
+              <a class="mtz-btn soft large" href="/login">Masuk Akun</a>
+            </div>
+          </div>
+          <div class="mtz-hero-visual">
+            <div class="mtz-logo-mark"><img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/></div>
+            <div class="mtz-floating-card card-a"><i class="fa-solid fa-users-viewfinder"></i> Rekomendasi mentor</div>
+            <div class="mtz-floating-card card-b"><i class="fa-solid fa-comments"></i> Chat aktif setelah diterima</div>
+            <div class="mtz-floating-card card-c"><i class="fa-solid fa-calendar-days"></i> Jadwal mentoring</div>
+          </div>
+        </section>
+
+        <section id="fitur" class="mtz-section">
+          <div class="mtz-section-head"><span>Keunggulan</span><h2>Satu dashboard untuk seluruh proses mentoring</h2></div>
+          <div class="mtz-feature-grid">
+            <div class="mtz-feature-card"><b><i class="fa-solid fa-users-viewfinder"></i></b><h3>Rekomendasi Mentor</h3><p>Mentor direkomendasikan berdasarkan kecocokan minat dan skill mahasiswa dengan bidang alumni.</p></div>
+            <div class="mtz-feature-card"><b><i class="fa-solid fa-calendar-days"></i></b><h3>Penjadwalan Kalender</h3><p>Mahasiswa mengajukan tanggal mentoring dengan batas 90 hari, alumni bisa menerima atau menolak.</p></div>
+            <div class="mtz-feature-card"><b><i class="fa-solid fa-comments"></i></b><h3>Chat Real-time</h3><p>Setelah request diterima, mahasiswa dan alumni langsung bisa berdiskusi di room chat.</p></div>
+            <div class="mtz-feature-card"><b><i class="fa-solid fa-clock-rotate-left"></i></b><h3>Riwayat &amp; Rangkuman</h3><p>Mahasiswa menulis rangkuman setelah sesi selesai dan dapat membukanya kembali dari riwayat.</p></div>
+          </div>
+        </section>
+
+        <section id="manfaat" class="mtz-split-section">
+          <div><span class="mtz-kicker">Untuk Mahasiswa</span><h2>Dapat arahan dari alumni yang relevan.</h2><p>Cocok untuk persiapan magang, pengembangan skill, akademik, dan rencana karier.</p></div>
+          <div><span class="mtz-kicker">Untuk Alumni</span><h2>Berbagi pengalaman dengan lebih terstruktur.</h2><p>Alumni dapat mengelola request, jadwal mentoring, chat, dan feedback dengan mudah.</p></div>
+        </section>
+
+        <section id="alur" class="mtz-section mtz-last-section">
+          <div class="mtz-section-head"><span>Cara Kerja</span><h2>Alur sederhana dari daftar sampai riwayat</h2></div>
+          <div class="mtz-steps"><div>1<span>Daftar Akun</span></div><div>2<span>Lengkapi Profil</span></div><div>3<span>Ajukan Mentoring</span></div><div>4<span>Chat &amp; Sesi</span></div><div>5<span>Simpan Rangkuman</span></div></div>
+        </section>
+      </div>
+    </t>
+  </template>
+
+  <template id="page_login" name="Mentorize Login">
+    <t t-call="mentorize.public_layout">
+      <div class="mtz-auth-page">
+        <div class="mtz-auth-left mtz-animate-left">
+          <a class="mtz-brand" href="/"><img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/><span>Mentorize</span></a>
+          <div class="mtz-auth-illustration"><div class="mtz-orbit"></div><div class="mtz-auth-bubble">Mentoring lebih mudah</div></div>
+          <h2>Masuk dan lanjutkan perjalanan mentoringmu.</h2>
+          <p>Kelola profil, jadwal, chat, dan riwayat mentoring dari satu dashboard modern.</p>
+        </div>
+        <div class="mtz-auth-right mtz-animate-right">
+          <div class="mtz-auth-card">
+            <h1>Masuk Akun</h1>
+            <p>Gunakan email yang terdaftar di Mentorize.</p>
+            <t t-if="registered"><div class="mtz-alert success">Akun berhasil dibuat. Silakan login.</div></t>
+            <t t-if="reset"><div class="mtz-alert success">Silakan cek email untuk reset password.</div></t>
+            <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+            <form action="/login/submit" method="post" class="mtz-form" id="mtz-login-form">
+              <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+              <input type="hidden" name="role" id="mtz-role-input" t-att-value="selected_role or 'mahasiswa'"/>
+              <div class="mtz-role-tabs" data-mtz-role-tabs="1">
+                <button type="button" t-att-class="'active' if (selected_role or 'mahasiswa') == 'mahasiswa' else ''" data-role="mahasiswa">🎓 Mahasiswa</button>
+                <button type="button" t-att-class="'active' if selected_role == 'alumni' else ''" data-role="alumni">⭐ Alumni</button>
+              </div>
+              <label>Email<input type="email" name="email" placeholder="nama@email.com" t-att-value="old_email or ''" required="required"/></label>
+              <label>Password<input type="password" name="password" placeholder="Masukkan password" required="required"/></label>
+              <div class="mtz-form-row"><label class="mtz-check"><input type="checkbox"/> Ingat saya</label><a href="/forgot-password">Lupa password?</a></div>
+              <button class="mtz-btn primary full" type="submit">Masuk</button>
+            </form>
+            <p class="mtz-auth-footer">Belum punya akun? <a href="/register">Daftar sekarang</a></p>
+          </div>
+        </div>
+      </div>
+    </t>
+  </template>
+
+  <template id="page_register" name="Mentorize Register">
+    <t t-call="mentorize.public_layout">
+      <div class="mtz-auth-page register">
+        <div class="mtz-auth-left mtz-animate-left">
+          <a class="mtz-brand" href="/"><img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/><span>Mentorize</span></a>
+          <h2>Daftar sebagai mahasiswa atau alumni.</h2>
+          <p>Verifikasi NIM/KAPA sudah disiapkan sebagai hook API. Saat ini masih mode bebas untuk kebutuhan demo.</p>
+          <div class="mtz-mini-list"><span>✓ Email unik</span><span>✓ NIM/KAPA satu kali daftar</span><span>✓ Role otomatis</span></div>
+        </div>
+        <div class="mtz-auth-right mtz-animate-right">
+          <div class="mtz-auth-card wide">
+            <h1>Buat Akun</h1><p>Pilih peran lalu isi data akunmu.</p>
+            <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+            <form action="/register/submit" method="post" class="mtz-form" id="mtz-register-form">
+              <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+              <input type="hidden" name="role" id="mtz-role-input" t-att-value="selected_role or 'mahasiswa'"/>
+              <div class="mtz-role-tabs" data-mtz-role-tabs="1">
+                <button type="button" t-att-class="'active' if (selected_role or 'mahasiswa') == 'mahasiswa' else ''" data-role="mahasiswa">🎓 Mahasiswa</button>
+                <button type="button" t-att-class="'active' if selected_role == 'alumni' else ''" data-role="alumni">⭐ Alumni</button>
+              </div>
+              <div class="mtz-form-grid two">
+                <label>Nama Lengkap<input type="text" name="name" t-att-value="old and old.get('name') or ''" required="required"/></label>
+                <label>Email<input type="email" name="email" t-att-value="old and old.get('email') or ''" required="required"/></label>
+                <label><span id="mtz-identity-label"><t t-esc="'KAPA / ID Alumni' if selected_role == 'alumni' else 'NIM'"/></span><input id="mtz-identity-input" type="text" name="identity" t-att-placeholder="'Masukkan KAPA alumni' if selected_role == 'alumni' else 'Masukkan NIM mahasiswa'" t-att-value="old and old.get('identity') or ''" required="required"/></label>
+                <label>Password<input type="password" name="password" required="required"/></label>
+                <label>Konfirmasi Password<input type="password" name="confirm_password" required="required"/></label>
+              </div>
+              <button class="mtz-btn primary full" type="submit">Daftar</button>
+            </form>
+            <p class="mtz-auth-footer">Sudah punya akun? <a href="/login">Masuk</a></p>
+          </div>
+        </div>
+      </div>
+    </t>
+  </template>
+
+  <template id="page_forgot_password" name="Mentorize Forgot Password">
+    <t t-call="mentorize.public_layout">
+      <div class="mtz-auth-page compact">
+        <div class="mtz-auth-card center mtz-animate-up">
+          <a class="mtz-brand center-brand" href="/"><img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/><span>Mentorize</span></a>
+          <h1>Lupa Password</h1><p>Masukkan email yang digunakan saat daftar. Sistem akan mengirim link reset password melalui SMTP Odoo.</p>
+          <t t-if="success"><div class="mtz-alert success">Link reset password berhasil dikirim. Silakan cek email.</div></t>
+          <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+          <form action="/forgot-password/submit" method="post" class="mtz-form">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <label>Email<input type="email" name="email" placeholder="nama@email.com" required="required"/></label>
+            <button class="mtz-btn primary full" type="submit">Kirim Link Reset</button>
+          </form>
+          <p class="mtz-auth-footer"><a href="/login">Kembali ke login</a></p>
+        </div>
+      </div>
+    </t>
+  </template>
+
+  <template id="page_admin_login" name="Mentorize Admin Login">
+    <t t-call="mentorize.public_layout">
+      <div class="mtz-admin-login-page">
+        <div class="mtz-admin-login-visual mtz-animate-left">
+          <a class="mtz-brand" href="/">
+            <img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/>
+            <span>Mentorize</span>
+          </a>
+          <span class="mtz-admin-login-badge">Admin Console</span>
+          <h1>Panel kontrol untuk monitoring mentorship.</h1>
+          <p>Masuk sebagai admin untuk memantau mahasiswa, alumni, request, sesi, laporan, feedback, dan aktivitas sistem Mentorize.</p>
+          <div class="mtz-admin-login-cards">
+            <div><i class="fa-solid fa-chart-line"></i><strong>Dashboard Data</strong><span>Statistik &amp; diagram realtime</span></div>
+            <div><i class="fa-solid fa-circle-check"></i><strong>Verifikasi Alumni</strong><span>Kelola mentor resmi</span></div>
+            <div><i class="fa-solid fa-flag"></i><strong>Moderasi Laporan</strong><span>Tindak lanjut pelanggaran</span></div>
+          </div>
+        </div>
+        <div class="mtz-admin-login-form-wrap mtz-animate-right">
+          <div class="mtz-auth-card mtz-admin-login-card">
+            <div class="mtz-admin-lock"><i class="fa-solid fa-user-shield"></i></div>
+            <h1>Login Admin</h1>
+            <p>Gunakan akun dengan role Admin Mentorize.</p>
+            <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+            <form action="/admin/login/submit" method="post" class="mtz-form">
+              <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+              <label>Email Admin<input type="email" name="email" placeholder="admin@mentorize.com" t-att-value="old_email or ''" required="required"/></label>
+              <label>Password<input type="password" name="password" placeholder="Masukkan password admin" required="required"/></label>
+              <button class="mtz-btn primary full" type="submit">Masuk Admin</button>
+            </form>
+            <p class="mtz-auth-footer"><a href="/login">Masuk sebagai mahasiswa/alumni</a></p>
+          </div>
+        </div>
+      </div>
+    </t>
+  </template>
+
+</odoo>

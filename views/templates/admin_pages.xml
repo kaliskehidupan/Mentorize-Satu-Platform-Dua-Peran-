@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="admin_users" name="Admin Kelola User Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-admin-hero mtz-admin-page-hero mtz-animate-up"><div><span class="mtz-kicker">Admin</span><h1>Kelola Pengguna</h1><p>Data mahasiswa, alumni, dan admin dari database Mentorize.</p></div><a href="/admin/dashboard" class="mtz-btn soft">Dashboard</a></section>
+      <div class="mtz-stat-grid">
+        <div class="mtz-stat-card"><span>Total User</span><strong t-esc="total_users"/><small>semua role</small></div>
+        <div class="mtz-stat-card"><span>Aktif</span><strong t-esc="total_active"/><small>bisa mengakses</small></div>
+        <div class="mtz-stat-card"><span>Nonaktif</span><strong t-esc="total_suspend"/><small>dibatasi admin</small></div>
+      </div>
+      <form action="/admin/users" method="get" class="mtz-searchbar">
+        <input type="text" name="search" t-att-value="search" placeholder="Cari nama atau email..."/>
+        <select name="role"><option value="">Semua Role</option><option value="mahasiswa" t-att-selected="selected_role == 'mahasiswa' and 'selected' or None">Mahasiswa</option><option value="alumni" t-att-selected="selected_role == 'alumni' and 'selected' or None">Alumni</option><option value="admin" t-att-selected="selected_role == 'admin' and 'selected' or None">Admin</option></select>
+        <button class="mtz-btn primary" type="submit">Filter</button>
+      </form>
+      <section class="mtz-card mtz-table-card">
+        <div class="mtz-table-wrap"><table class="mtz-admin-table">
+          <thead><tr><th>User</th><th>Role</th><th>Status</th><th>Verifikasi</th><th>Aksi</th></tr></thead>
+          <tbody>
+            <t t-if="users">
+              <t t-foreach="users" t-as="u"><tr>
+                <td><div class="mtz-user-cell"><img t-att-src="'/web/image/res.partner/%s/image_128' % u.partner_id.id"/><div><strong t-esc="u.name"/><p t-esc="u.email or u.login"/></div></div></td>
+                <td><span class="mtz-pill info" t-esc="u.mentorize_role or '-'"/></td>
+                <td><span t-att-class="'mtz-pill success' if u.active else 'mtz-pill warning'" t-esc="'Aktif' if u.active else 'Nonaktif'"/></td>
+                <td><span t-att-class="'mtz-pill success' if u.is_verified else 'mtz-pill warning'" t-esc="'Terverifikasi' if u.is_verified else 'Menunggu'"/></td>
+                <td>
+                    <div class="mtz-action-stack horizontal">
+                        <a class="mtz-btn soft small" t-att-href="'/admin/user/%s/detail' % u.id">Detail</a>
+                        
+                        <a t-if="not u.is_verified and u.mentorize_role != 'admin'"
+                        class="mtz-btn primary small"
+                        t-att-href="'/admin/user/%s/verify?next=/admin/users' % u.id">
+                        Verifikasi
+                        </a>
+
+                        <a t-if="u.is_verified and u.mentorize_role == 'alumni'"
+                        class="mtz-btn soft small"
+                        t-att-href="'/admin/user/%s/unverify?next=/admin/users' % u.id">
+                        Unverify
+                        </a>
+                        
+                        <a t-if="u.active and u.id != user.id" class="mtz-btn danger-soft small" t-att-href="'/admin/user/%s/suspend?next=/admin/users' % u.id">Nonaktifkan</a>
+                        
+                        <a t-if="not u.active" class="mtz-btn primary small" t-att-href="'/admin/user/%s/activate?next=/admin/users' % u.id">Aktifkan</a>
+                    </div>
+                 </td>
+              </tr></t>
+            </t>
+            <t t-else=""><tr><td colspan="5"><div class="mtz-empty-state small">Tidak ada user.</div></td></tr></t>
+          </tbody>
+        </table></div>
+      </section>
+    </t>
+  </template>
+
+    <template id="admin_user_detail" name="Admin Detail User Mentorize">
+    <t t-call="mentorize.app_layout">
+        <section class="mtz-hero-banner mtz-admin-hero mtz-admin-page-hero mtz-animate-up">
+        <div>
+            <span class="mtz-kicker">Detail User</span>
+            <h1 t-esc="target_user.name"/>
+            <p t-esc="target_user.email or target_user.login"/>
+        </div>
+        <a href="/admin/users" class="mtz-btn soft">Kembali</a>
+        </section>
+        
+        <div class="mtz-profile-layout">
+        <aside class="mtz-profile-card">
+            <img class="mtz-profile-photo" t-att-src="'/web/image/res.partner/%s/image_1920' % target_user.partner_id.id"/>
+            <h2 t-esc="target_user.name"/>
+            <p t-esc="target_user.mentorize_role or '-'"/>
+            <span t-att-class="'mtz-pill success' if target_user.active else 'mtz-pill warning'" t-esc="'Aktif' if target_user.active else 'Nonaktif'"/>
+            
+            <div class="mtz-profile-meta">
+            <div>
+                <small>Email</small>
+                <span t-esc="target_user.email or '-'"/>
+            </div>
+            <div>
+                <small>Verifikasi</small>
+                <span t-esc="'Terverifikasi' if target_user.is_verified else 'Menunggu'"/>
+            </div>
+            <div>
+                <small>Alasan Nonaktif</small>
+                <span t-esc="target_user.mentorize_block_reason or '-'"/>
+            </div>
+            </div>
+        </aside>
+        
+        <section class="mtz-card mtz-summary-view">
+            <h2>Profil Mentorize</h2>
+            
+            <t t-if="mahasiswa">
+            <h3>Mahasiswa</h3>
+            <p>NIM: <t t-esc="mahasiswa.nim or '-'"/> • Jurusan: <t t-esc="mahasiswa.jurusan or '-'"/></p>
+            <h3>Tujuan Karir</h3>
+            <p t-esc="mahasiswa.tujuan_karir or '-'"/>
+            </t>
+            
+            <t t-if="alumni">
+            <h3>Alumni</h3>
+            <p>KAPA: <t t-esc="alumni.kapa or '-'"/> • <t t-esc="alumni.pekerjaan or '-'"/> di <t t-esc="alumni.tempat_bekerja or '-'"/></p>
+            <h3>Deskripsi</h3>
+            <p t-esc="alumni.deskripsi or '-'"/>
+            </t>
+            
+            <h3>Riwayat Sesi</h3>
+            <div class="mtz-list">
+            <t t-foreach="sessions" t-as="s">
+                <div class="mtz-list-item">
+                <div class="grow">
+                    <strong t-esc="s.topik"/>
+                    <p>
+                    <t t-esc="s.mahasiswa_id.name"/> ↔ <t t-esc="s.alumni_id.name"/>
+                    </p>
+                </div>
+                <span class="mtz-pill info" t-esc="s.status"/>
+                </div>
+            </t>
+            <t t-if="not sessions">
+                <div class="mtz-empty-state small">Belum ada sesi.</div>
+            </t>
+            </div>
+            
+            <h3>Laporan Terkait</h3>
+            <div class="mtz-list">
+            <t t-foreach="reports" t-as="r">
+                <div class="mtz-list-item">
+                <div class="grow">
+                    <strong t-esc="r.judul"/>
+                    <p t-esc="r.status"/>
+                </div>
+                </div>
+            </t>
+            <t t-if="not reports">
+                <div class="mtz-empty-state small">Belum ada laporan.</div>
+            </t>
+            </div>
+        </section>
+        </div>
+    </t>
+    </template>
+
+  <template id="admin_skills" name="Admin Minat Skill">
+      <t t-call="mentorize.app_layout">
+
+          <!-- HERO -->
+          <section class="mtz-hero-banner mtz-admin-hero mtz-admin-page-hero">
+              <div>
+                  <span class="mtz-kicker">Admin</span>
+                  <h1>Minat &amp; Skill</h1>
+                  <p>Monitoring data minat dan skill pengguna Mentorize.</p>
+              </div>
+          </section>
+
+          <!-- STATISTIC -->
+          <div class="mtz-dashboard-grid">
+
+              <!-- SKILL -->
+              <section class="mtz-card span-6">
+
+                  <div class="mtz-card-head">
+                      <div>
+                          <h2>Skill Terpopuler</h2>
+                          <p>Jumlah user yang mengambil skill.</p>
+                      </div>
+                  </div>
+
+                  <div class="mtz-activity-list">
+
+                      <t t-foreach="skills" t-as="skill">
+
+                          <div>
+
+                              <b>
+                                  <t t-esc="skill.name"/>
+                              </b>
+
+                              <small>
+                                  <t t-esc="skill_counts.get(skill.id, 0)"/>
+                                  user
+                              </small>
+
+                          </div>
+
+                      </t>
+
+                  </div>
+
+              </section>
+
+              <!-- MINAT -->
+              <section class="mtz-card span-6">
+
+                  <div class="mtz-card-head">
+                      <div>
+                          <h2>Minat Terpopuler</h2>
+                          <p>Jumlah user yang mengambil minat.</p>
+                      </div>
+                  </div>
+
+                  <div class="mtz-activity-list">
+
+                      <t t-foreach="minats" t-as="minat">
+
+                          <div>
+
+                              <b>
+                                  <t t-esc="minat.name"/>
+                              </b>
+
+                              <small>
+                                  <t t-esc="minat_counts.get(minat.id, 0)"/>
+                                  user
+                              </small>
+
+                          </div>
+
+                      </t>
+
+                  </div>
+
+              </section>
+
+          </div>
+
+          <!-- SEARCH & FILTER -->
+          <form action="/admin/skills" method="get" class="mtz-searchbar"> <!-- SEARCH --> <input type="text" name="search" t-att-value="search" placeholder="Cari user..."/> <!-- FILTER SKILL --> <select name="skill_id"> <option value="">Semua Skill</option> <t t-foreach="skills" t-as="skill"> <option t-att-value="skill.id" t-att-selected="selected_skill == str(skill.id) and 'selected' or None"> <t t-esc="skill.name"/> </option> </t> </select> <!-- FILTER MINAT --> <select name="minat_id"> <option value="">Semua Minat</option> <t t-foreach="minats" t-as="minat"> <option t-att-value="minat.id" t-att-selected="selected_minat == str(minat.id) and 'selected' or None"> <t t-esc="minat.name"/> </option> </t> </select> <button class="mtz-btn primary" type="submit"> Filter </button> </form>
+
+          <!-- TABLE -->
+          <section class="mtz-card mtz-table-card">
+
+              <div class="mtz-table-wrap">
+
+                  <table class="mtz-admin-table">
+
+                      <thead>
+
+                          <tr>
+                              <th>User</th>
+                              <th>Role</th>
+                              <th>Skill</th>
+                              <th>Minat</th>
+                          </tr>
+
+                      </thead>
+
+                      <tbody>
+
+                          <!-- MAHASISWA -->
+                          <t t-if="mahasiswa_users">
+
+                              <t t-foreach="mahasiswa_users" t-as="m">
+
+                                  <tr>
+
+                                      <td>
+
+                                          <div class="mtz-user-cell">
+
+                                              <img t-att-src="'/web/image/res.users/%s/avatar_128' % m.user_id.id"/>
+
+                                              <div>
+                                                  <strong t-esc="m.name"/>
+                                                  <p t-esc="m.email"/>
+                                              </div>
+
+                                          </div>
+
+                                      </td>
+
+                                      <td>
+
+                                          <span t-att-class="
+                                              'mtz-pill success' if m.user_id.mentorize_role == 'alumni'
+                                              else 'mtz-pill warning' if m.user_id.mentorize_role == 'admin'
+                                              else 'mtz-pill info'
+                                          ">
+
+                                              <t t-esc="m.user_id.mentorize_role or 'Mahasiswa'"/>
+
+                                          </span>
+
+                                      </td>
+
+                                      <td>
+
+                                          <t t-foreach="m.skill_ids" t-as="s">
+
+                                              <span class="mtz-pill soft">
+                                                  <t t-esc="s.name"/>
+                                              </span>
+
+                                          </t>
+
+                                      </td>
+
+                                      <td>
+
+                                          <t t-foreach="m.minat_ids" t-as="mn">
+
+                                              <span class="mtz-pill warning">
+                                                  <t t-esc="mn.name"/>
+                                              </span>
+
+                                          </t>
+
+                                      </td>
+
+                                  </tr>
+
+                              </t>
+
+                          </t>
+
+                          <!-- ALUMNI -->
+                          <t t-if="alumni_users">
+
+                              <t t-foreach="alumni_users" t-as="a">
+
+                                  <tr>
+
+                                      <td>
+
+                                          <div class="mtz-user-cell">
+
+                                              <img t-att-src="'/web/image/res.users/%s/avatar_128' % a.user_id.id"/>
+
+                                              <div>
+                                                  <strong t-esc="a.name"/>
+                                                  <p t-esc="a.email"/>
+                                              </div>
+
+                                          </div>
+
+                                      </td>
+
+                                      <td>
+
+                                          <span t-att-class="
+                                              'mtz-pill success' if a.user_id.mentorize_role == 'alumni'
+                                              else 'mtz-pill warning' if a.user_id.mentorize_role == 'admin'
+                                              else 'mtz-pill info'
+                                          ">
+
+                                              <t t-esc="a.user_id.mentorize_role or 'Alumni'"/>
+
+                                          </span>
+
+                                      </td>
+
+                                      <td>
+
+                                          <t t-foreach="a.skill_ids" t-as="s">
+
+                                              <span class="mtz-pill soft">
+                                                  <t t-esc="s.name"/>
+                                              </span>
+
+                                          </t>
+
+                                      </td>
+
+                                      <td>
+
+                                          <t t-foreach="a.minat_ids" t-as="mn">
+
+                                              <span class="mtz-pill warning">
+                                                  <t t-esc="mn.name"/>
+                                              </span>
+
+                                          </t>
+
+                                      </td>
+
+                                  </tr>
+
+                              </t>
+
+                          </t>
+
+                          <!-- EMPTY -->
+                          <t t-if="not mahasiswa_users and not alumni_users">
+
+                              <tr>
+
+                                  <td colspan="4">
+
+                                      <div class="mtz-empty-state small">
+                                          Tidak ada data user.
+                                      </div>
+
+                                  </td>
+
+                              </tr>
+
+                          </t>
+
+                      </tbody>
+
+                  </table>
+
+              </div>
+
+          </section>
+
+      </t>
+  </template>
+
+  <template id="admin_mentoring" name="Admin Monitoring Mentoring">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-admin-hero mtz-admin-page-hero mtz-animate-up"><div><span class="mtz-kicker">Admin</span><h1>Monitoring Mentoring</h1><p>Request dan sesi mentoring dari seluruh pengguna.</p></div></section>
+      <div class="mtz-dashboard-grid"><section class="mtz-card span-4"><div class="mtz-card-head"><h2>Matchmaking</h2></div><div class="mtz-list"><t t-foreach="matchmakings" t-as="m"><div class="mtz-list-item"><div class="grow"><strong><t t-esc="m.mahasiswa_id.name"/> → <t t-esc="m.alumni_id.name"/></strong><p>Skor <t t-esc="m.score"/> • <t t-esc="m.alasan or '-'"/></p></div><span class="mtz-pill info" t-esc="m.status"/></div></t><t t-if="not matchmakings"><div class="mtz-empty-state small">Belum ada matchmaking.</div></t></div></section><section class="mtz-card span-4"><div class="mtz-card-head"><h2>Request Mentoring</h2></div><div class="mtz-list"><t t-foreach="requests_data" t-as="r"><div class="mtz-list-item"><div class="grow"><strong t-esc="r.topik"/><p><t t-esc="r.mahasiswa_id.name"/> → <t t-esc="r.alumni_id.name"/></p></div><span class="mtz-pill info" t-esc="r.status"/></div></t><t t-if="not requests_data"><div class="mtz-empty-state small">Belum ada request.</div></t></div></section><section class="mtz-card span-4"><div class="mtz-card-head"><h2>Sesi Mentoring</h2></div><div class="mtz-list"><t t-foreach="sessions" t-as="s"><div class="mtz-list-item"><div class="grow"><strong t-esc="s.topik"/><p><t t-esc="s.tanggal_mentoring.strftime('%d %b %Y %H:%M') if s.tanggal_mentoring else '-'"/> • <t t-esc="s.mahasiswa_id.name"/> ↔ <t t-esc="s.alumni_id.name"/></p></div><span class="mtz-pill info" t-esc="s.status"/></div></t><t t-if="not sessions"><div class="mtz-empty-state small">Belum ada sesi.</div></t></div></section></div>
+    </t>
+  </template>
+
+  <template id="admin_feedback" name="Admin Feedback Mentorize">
+    <t t-call="mentorize.app_layout"><section class="mtz-hero-banner mtz-admin-hero mtz-admin-page-hero mtz-animate-up"><div><span class="mtz-kicker">Admin</span><h1>Feedback &amp; Review</h1><p>Ulasan mahasiswa terhadap mentor.</p></div></section><section class="mtz-card"><div class="mtz-list"><t t-foreach="feedbacks" t-as="fb"><div class="mtz-list-item"><div class="grow"><strong><t t-esc="fb.mahasiswa_id.name"/> → <t t-esc="fb.alumni_id.name"/></strong><p t-esc="fb.komentar or '-'"/></div><span class="mtz-pill warning">⭐ <t t-esc="fb.rating"/></span></div></t><t t-if="not feedbacks"><div class="mtz-empty-state small">Belum ada feedback.</div></t></div></section></t>
+  </template>
+
+  <template id="admin_reports" name="Admin Laporan Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-admin-hero mtz-admin-page-hero mtz-animate-up"><div><span class="mtz-kicker">Admin</span><h1>Laporan &amp; Pelanggaran</h1><p>Tindaklanjuti laporan dari mahasiswa maupun alumni.</p></div></section>
+      <div class="mtz-stat-grid"><div class="mtz-stat-card"><span>Total</span><strong t-esc="total"/><small>laporan</small></div><div class="mtz-stat-card"><span>Baru</span><strong t-esc="baru"/><small>perlu dicek</small></div><div class="mtz-stat-card"><span>Diproses</span><strong t-esc="diproses"/><small>sedang ditangani</small></div><div class="mtz-stat-card"><span>Selesai</span><strong t-esc="selesai"/><small>tertangani</small></div></div>
+      <div class="mtz-report-grid"><t t-foreach="reports" t-as="rep"><article class="mtz-card mtz-report-card"><div class="mtz-card-head"><div><h2 t-esc="rep.judul"/><p><t t-esc="rep.pelapor_id.name"/> melaporkan <t t-esc="rep.dilaporkan_id.name or 'Sistem'"/></p></div><span t-att-class="'mtz-pill warning' if rep.status in ['baru','diproses'] else 'mtz-pill success'" t-esc="rep.status"/></div><p t-esc="rep.deskripsi or '-'"/><div class="mtz-detail-box"><span>Kategori</span><strong t-esc="rep.kategori"/></div><form t-att-action="'/admin/report/%s/update' % rep.id" method="post" class="mtz-form"><input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/><div class="mtz-form-grid two"><label>Status<select name="status"><option value="baru" t-att-selected="rep.status == 'baru' and 'selected' or None">Baru</option><option value="diproses" t-att-selected="rep.status == 'diproses' and 'selected' or None">Diproses</option><option value="selesai" t-att-selected="rep.status == 'selesai' and 'selected' or None">Selesai</option><option value="ditolak" t-att-selected="rep.status == 'ditolak' and 'selected' or None">Ditolak</option></select></label><label>Tindakan<select name="action"><option value="none">Tanpa Sanksi</option><option value="warning">Peringatan</option><option value="disabled">Nonaktifkan Akun</option><option value="ignored">Abaikan</option></select></label></div><label>Catatan Admin<textarea name="admin_note" rows="3"><t t-esc="rep.admin_note or ''"/></textarea></label><button class="mtz-btn primary small" type="submit">Simpan Tindakan</button></form></article></t><t t-if="not reports"><div class="mtz-empty-state">Belum ada laporan.</div></t></div>
+    </t>
+  </template>
+
+  <template id="admin_activities" name="Admin Aktivitas Mentorize">
+    <t t-call="mentorize.app_layout"><section class="mtz-hero-banner mtz-admin-hero mtz-admin-page-hero mtz-animate-up"><div><span class="mtz-kicker">Admin</span><h1>Aktivitas Sistem</h1><p>Log aktivitas penting untuk audit.</p></div></section><section class="mtz-card"><div class="mtz-activity-list"><t t-foreach="activities" t-as="act"><div><b t-esc="act.activity_type"/><p t-esc="act.description"/><small><t t-esc="act.user_id.name or '-'"/> • <t t-esc="act.timestamp.strftime('%d %b %Y %H:%M') if act.timestamp else '-'"/></small></div></t><t t-if="not activities"><div class="mtz-empty-state small">Belum ada aktivitas.</div></t></div></section></t>
+  </template>
+</odoo>
