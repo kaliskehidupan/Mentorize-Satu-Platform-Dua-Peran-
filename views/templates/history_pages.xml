@@ -5,7 +5,7 @@
       <section class="mtz-hero-banner mtz-page-hero mtz-animate-up"><div><span class="mtz-kicker">Laporan Hasil Mentoring</span><h1>Ajukan Selesai Mentoring</h1><p>Isi laporan detail agar riwayat mentoring tidak kosong dan bisa ditinjau alumni/admin.</p></div><a t-att-href="'/chat?room_id=%s' % session.request_id.room_chat_id.id if session.request_id.room_chat_id else '/dashboard'" class="mtz-btn soft">Kembali</a></section>
       <form t-att-action="'/session/%s/end/request' % session.id" method="post" class="mtz-card mtz-form summary-form">
         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.partner/%s/image_128' % session.alumni_id.user_id.partner_id.id"/><div><h2 t-esc="session.alumni_id.name"/><p><t t-esc="session.topik"/> • <t t-esc="session.tanggal_mentoring.strftime('%d %b %Y %H:%M') if session.tanggal_mentoring else '-'"/></p></div></div>
+        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (session.alumni_id.user_id.id, session.alumni_id.user_id.write_date or session.alumni_id.user_id.id)"/><div><h2 t-esc="session.alumni_id.name"/><p><t t-esc="session.topik"/> • <t t-esc="fmt_dt(session.tanggal_mentoring) if session.tanggal_mentoring else '-'"/></p></div></div>
         <label>Judul / Topik Laporan<input type="text" name="completion_title" t-att-value="session.completion_title or session.topik" required="required"/></label>
         <div class="mtz-form-grid two"><label>Metode Pelaksanaan<select name="completion_method"><option value="online" t-att-selected="session.mode == 'online' and 'selected' or None">Online</option><option value="offline" t-att-selected="session.mode == 'offline' and 'selected' or None">Offline</option></select></label><label>Rating Mentor<select name="completion_rating"><option value="5">5 - Sangat baik</option><option value="4">4 - Baik</option><option value="3">3 - Cukup</option><option value="2">2 - Kurang</option><option value="1">1 - Perlu evaluasi</option></select></label></div>
         <label>Ringkasan Pembahasan<textarea name="completion_summary" rows="4" required="required" placeholder="Tuliskan ringkasan pembahasan selama mentoring"><t t-esc="session.completion_summary or ''"/></textarea></label>
@@ -13,7 +13,7 @@
         <label>Hasil atau Insight yang Didapat<textarea name="mentoring_result" rows="4" required="required" placeholder="Hasil, insight, atau pemahaman baru"><t t-esc="session.mentoring_result or ''"/></textarea></label>
         <label>Catatan Tindak Lanjut<textarea name="follow_up_note" rows="3" placeholder="Rencana setelah mentoring"><t t-esc="session.follow_up_note or ''"/></textarea></label>
         <label>Kendala Selama Mentoring<textarea name="student_obstacle" rows="3" placeholder="Kendala jika ada"><t t-esc="session.student_obstacle or ''"/></textarea></label>
-        <label>Feedback untuk Mentor<textarea name="completion_feedback" rows="3" placeholder="Ulasan untuk mentor"><t t-esc="session.completion_feedback or ''"/></textarea></label>
+        <label>Umpan Balik untuk Mentor<textarea name="completion_feedback" rows="3" placeholder="Ulasan untuk mentor"><t t-esc="session.completion_feedback or ''"/></textarea></label>
         <button class="mtz-btn primary" type="submit">Kirim Pengajuan Selesai</button>
       </form>
     </t>
@@ -24,13 +24,13 @@
       <section class="mtz-hero-banner mtz-page-hero mtz-animate-up"><div><span class="mtz-kicker">Rangkuman Mentoring</span><h1>Perbarui hasil mentoring</h1><p>Rangkuman ini tersimpan di riwayat mentoring.</p></div></section>
       <form t-att-action="'/summary/%s/save' % session.id" method="post" class="mtz-card mtz-form summary-form">
         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.partner/%s/image_128' % session.alumni_id.user_id.partner_id.id"/><div><h2 t-esc="session.alumni_id.name"/><p><t t-esc="session.topik"/> • <t t-esc="session.tanggal_mentoring.strftime('%d %b %Y') if session.tanggal_mentoring else '-'"/></p></div></div>
+        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (session.alumni_id.user_id.id, session.alumni_id.user_id.write_date or session.alumni_id.user_id.id)"/><div><h2 t-esc="session.alumni_id.name"/><p><t t-esc="session.topik"/> • <t t-esc="fmt_date(session.tanggal_mentoring) if session.tanggal_mentoring else '-'"/></p></div></div>
         <label>Judul Rangkuman<input type="text" name="summary_topic" t-att-value="session.summary_topic or session.completion_title or session.topik" required="required"/></label>
         <label>Hal yang Didapat<textarea name="summary_learnings" rows="4" required="required"><t t-esc="session.summary_learnings or session.mentoring_result or ''"/></textarea></label>
         <label>Saran / Tindak Lanjut<textarea name="summary_advice" rows="4"><t t-esc="session.summary_advice or session.follow_up_note or ''"/></textarea></label>
         <label>Rencana Tindak Lanjut<textarea name="summary_next_steps" rows="4"><t t-esc="session.summary_next_steps or session.follow_up_note or ''"/></textarea></label>
         <label>Catatan Tambahan<textarea name="summary_notes" rows="3"><t t-esc="session.summary_notes or session.student_obstacle or ''"/></textarea></label>
-        <div class="mtz-form-grid two"><label>Rating Mentor<select name="rating"><option value="5">5 - Sangat baik</option><option value="4">4 - Baik</option><option value="3">3 - Cukup</option><option value="2">2 - Kurang</option><option value="1">1 - Perlu evaluasi</option></select></label><label>Komentar Feedback<input type="text" name="komentar" t-att-value="session.completion_feedback or ''"/></label></div>
+        <div class="mtz-form-grid two"><label>Rating Mentor<select name="rating"><option value="5">5 - Sangat baik</option><option value="4">4 - Baik</option><option value="3">3 - Cukup</option><option value="2">2 - Kurang</option><option value="1">1 - Perlu evaluasi</option></select></label><label>Komentar Umpan Balik<input type="text" name="komentar" t-att-value="session.completion_feedback or ''"/></label></div>
         <button class="mtz-btn primary" type="submit">Simpan ke Riwayat</button>
       </form>
     </t>
@@ -41,7 +41,7 @@
       <section class="mtz-hero-banner mtz-page-hero mtz-animate-up"><div><span class="mtz-kicker">Riwayat Mentoring</span><h1>Riwayat dan Laporan Hasil</h1><p>Sesi selesai, dihentikan, atau dibatalkan tetap memiliki catatan agar proses mentoring terdokumentasi.</p></div></section>
       <div class="mtz-history-grid">
         <t t-if="sessions">
-          <t t-foreach="sessions" t-as="sesi"><a class="mtz-history-big-card" t-att-href="'/history/%s' % sesi.id"><img t-att-src="'/web/image/res.partner/%s/image_128' % (sesi.alumni_id.user_id.partner_id.id if history_role != 'alumni' else sesi.mahasiswa_id.user_id.partner_id.id)"/><div><h3 t-esc="sesi.alumni_id.name if history_role != 'alumni' else sesi.mahasiswa_id.name"/><p t-esc="sesi.completion_title or sesi.summary_topic or sesi.topik or sesi.stop_reason"/><span t-esc="(sesi.completed_at or sesi.stopped_at or sesi.tanggal_mentoring).strftime('%d %b %Y') if (sesi.completed_at or sesi.stopped_at or sesi.tanggal_mentoring) else '-'"/></div><span t-att-class="'mtz-pill success' if sesi.status == 'completed' else 'mtz-pill warning'" t-esc="'Selesai' if sesi.status == 'completed' else 'Dihentikan/Batal'"/></a></t>
+          <t t-foreach="sessions" t-as="sesi"><a class="mtz-history-big-card" t-att-href="'/history/%s' % sesi.id"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % ((sesi.alumni_id.user_id.id if history_role != 'alumni' else sesi.mahasiswa_id.user_id.id), ((sesi.alumni_id.user_id.write_date if history_role != 'alumni' else sesi.mahasiswa_id.user_id.write_date) or (sesi.alumni_id.user_id.id if history_role != 'alumni' else sesi.mahasiswa_id.user_id.id)))"/><div><h3 t-esc="sesi.alumni_id.name if history_role != 'alumni' else sesi.mahasiswa_id.name"/><p t-esc="sesi.completion_title or sesi.summary_topic or sesi.topik or sesi.stop_reason"/><span t-esc="fmt_date(sesi.completed_at or sesi.stopped_at or sesi.tanggal_mentoring) if (sesi.completed_at or sesi.stopped_at or sesi.tanggal_mentoring) else '-'"/></div><span t-att-class="'mtz-pill success' if sesi.status == 'completed' else 'mtz-pill warning'" t-esc="'Selesai' if sesi.status == 'completed' else 'Dihentikan/Batal'"/></a></t>
         </t>
         <t t-else=""><div class="mtz-empty-state">Belum ada riwayat mentoring.</div></t>
       </div>
@@ -52,14 +52,14 @@
     <t t-call="mentorize.app_layout">
       <section class="mtz-hero-banner mtz-page-hero mtz-animate-up"><div><span class="mtz-kicker">Detail Riwayat</span><h1 t-esc="session.completion_title or session.summary_topic or session.topik"/><p><t t-esc="session.mahasiswa_id.name"/> ↔ <t t-esc="session.alumni_id.name"/></p></div><a href="/history" class="mtz-btn soft">Kembali</a></section>
       <article class="mtz-card mtz-summary-view">
-        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.partner/%s/image_128' % session.alumni_id.user_id.partner_id.id"/><div><h2 t-esc="session.alumni_id.name"/><p><t t-esc="session.tanggal_mentoring.strftime('%d %b %Y %H:%M') if session.tanggal_mentoring else '-'"/> • <t t-esc="session.status"/></p></div></div>
+        <div class="mtz-summary-head"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (session.alumni_id.user_id.id, session.alumni_id.user_id.write_date or session.alumni_id.user_id.id)"/><div><h2 t-esc="session.alumni_id.name"/><p><t t-esc="fmt_dt(session.tanggal_mentoring) if session.tanggal_mentoring else '-'"/> • <t t-esc="session.status"/></p></div></div>
         <t t-if="session.status == 'completed'">
           <h3>Ringkasan Pembahasan</h3><p t-esc="session.completion_summary or session.summary_learnings or '-'"/>
           <h3>Materi yang Dibahas</h3><p t-esc="session.material_discussed or '-'"/>
           <h3>Hasil / Insight Mentoring</h3><p t-esc="session.mentoring_result or session.summary_learnings or '-'"/>
           <h3>Tindak Lanjut</h3><p t-esc="session.follow_up_note or session.summary_next_steps or '-'"/>
           <h3>Kendala</h3><p t-esc="session.student_obstacle or '-'"/>
-          <h3>Feedback &amp; Rating</h3><p>⭐ <t t-esc="session.completion_rating or (session.feedback_id.rating if session.feedback_id else 0)"/> — <t t-esc="session.completion_feedback or (session.feedback_id.komentar if session.feedback_id else '-')"/></p>
+          <h3>Umpan Balik &amp; Rating</h3><p>⭐ <t t-esc="session.completion_rating or (session.feedback_id.rating if session.feedback_id else 0)"/> — <t t-esc="session.completion_feedback or (session.feedback_id.komentar if session.feedback_id else '-')"/></p>
         </t>
         <t t-else="">
           <h3>Status Mentoring</h3><p>Mentoring ini dihentikan/dibatalkan.</p>

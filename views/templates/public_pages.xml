@@ -29,8 +29,7 @@
             <a href="#alur">Alur</a>
           </div>
           <div class="mtz-public-actions">
-            <a class="mtz-btn ghost" href="/login">Masuk</a>
-            <a class="mtz-btn primary" href="/register">Daftar</a>
+            <a class="mtz-btn primary" href="/login">Masuk SSO UNISA</a>
           </div>
         </nav>
 
@@ -40,25 +39,97 @@
             <h1>Satu Platform, Dua Peran untuk mentoring yang lebih terarah.</h1>
             <p>Mentorize membantu mahasiswa menemukan alumni mentor yang relevan berdasarkan minat, skill, dan tujuan karier. Semua proses mulai dari request, jadwal, chat, sampai riwayat mentoring tersimpan rapi.</p>
             <div class="mtz-hero-actions">
-              <a class="mtz-btn primary large" href="/register">Mulai Daftar</a>
-              <a class="mtz-btn soft large" href="/login">Masuk Akun</a>
+              <a class="mtz-btn primary large" href="/login">Masuk dengan SSO UNISA</a>
+              <a class="mtz-btn soft large" href="/admin/login">Masuk Admin</a>
             </div>
           </div>
-          <div class="mtz-hero-visual">
-            <div class="mtz-logo-mark"><img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/></div>
-            <div class="mtz-floating-card card-a">🎯 Rekomendasi mentor</div>
-            <div class="mtz-floating-card card-b">💬 Chat aktif setelah diterima</div>
-            <div class="mtz-floating-card card-c">📅 Kalender mentoring</div>
-          </div>
+            <div class="mtz-landing-visual-clean">
+              <div class="mtz-clean-orb orb-a"></div>
+              <div class="mtz-clean-orb orb-b"></div>
+              <div class="mtz-clean-ring"></div>
+
+              <div class="mtz-clean-logo-card">
+                <img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/>
+                <span>MENTORIZE</span>
+              </div>
+
+              <div class="mtz-clean-tags">
+                <div class="mtz-clean-tag">
+                  <span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 2a10 10 0 1 0 10 10h-2a8 8 0 1 1-8-8V2Zm1 5v6l5 3 .9-1.6-4-2.4V7h-1.9Z"/>
+                    </svg>
+                  </span>
+                  <b>Rekomendasi mentor</b>
+                </div>
+
+                <div class="mtz-clean-tag">
+                  <span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20 4H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3v3l4-3h9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-13 7h10v2H7v-2Zm0-3h10v2H7V8Z"/>
+                    </svg>
+                  </span>
+                  <b>Pesan aktif</b>
+                </div>
+
+                <div class="mtz-clean-tag">
+                  <span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 8H5V7h14v3Zm-3 4h-4v4h4v-4Z"/>
+                    </svg>
+                  </span>
+                  <b>Kalender mentoring</b>
+                </div>
+              </div>
+            </div>
         </section>
 
         <section id="fitur" class="mtz-section">
-          <div class="mtz-section-head"><span>Keunggulan</span><h2>Satu dashboard untuk seluruh proses mentoring</h2></div>
+          <div class="mtz-section-head">
+            <span>Keunggulan</span>
+            <h2>Satu dashboard untuk seluruh proses mentoring</h2>
+          </div>
+
           <div class="mtz-feature-grid">
-            <div class="mtz-feature-card"><b>🎯</b><h3>Rekomendasi Mentor</h3><p>Mentor direkomendasikan berdasarkan kecocokan minat dan skill mahasiswa dengan bidang alumni.</p></div>
-            <div class="mtz-feature-card"><b>📅</b><h3>Penjadwalan Kalender</h3><p>Mahasiswa mengajukan tanggal mentoring dengan batas 90 hari, alumni bisa menerima atau menolak.</p></div>
-            <div class="mtz-feature-card"><b>💬</b><h3>Chat Real-time</h3><p>Setelah request diterima, mahasiswa dan alumni langsung bisa berdiskusi di room chat.</p></div>
-            <div class="mtz-feature-card"><b>📘</b><h3>Riwayat &amp; Rangkuman</h3><p>Mahasiswa menulis rangkuman setelah sesi selesai dan dapat membukanya kembali dari riwayat.</p></div>
+            <div class="mtz-feature-card">
+              <span class="mtz-clean-feature-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2a10 10 0 1 0 10 10h-2a8 8 0 1 1-8-8V2Zm1 5v6l5 3 .9-1.6-4-2.4V7h-1.9Z"/>
+                </svg>
+              </span>
+              <h3>Rekomendasi Mentor</h3>
+              <p>Mentor direkomendasikan berdasarkan kecocokan minat dan skill mahasiswa dengan bidang alumni.</p>
+            </div>
+
+            <div class="mtz-feature-card">
+              <span class="mtz-clean-feature-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 8H5V7h14v3Zm-3 4h-4v4h4v-4Z"/>
+                </svg>
+              </span>
+              <h3>Penjadwalan Kalender</h3>
+              <p>Mahasiswa mengajukan tanggal mentoring dengan batas 90 hari, alumni bisa menerima atau menolak.</p>
+            </div>
+
+            <div class="mtz-feature-card">
+              <span class="mtz-clean-feature-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 4H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3v3l4-3h9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-13 7h10v2H7v-2Zm0-3h10v2H7V8Z"/>
+                </svg>
+              </span>
+              <h3>Pesan Real-time</h3>
+              <p>Setelah request diterima, mahasiswa dan alumni langsung bisa berdiskusi di room chat.</p>
+            </div>
+
+            <div class="mtz-feature-card">
+              <span class="mtz-clean-feature-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 4h11a3 3 0 0 1 3 3v13H7a2 2 0 0 0-2 2V4Zm2 2v12.2c.3-.1.6-.2 1-.2h9V7a1 1 0 0 0-1-1H7Zm2 3h6v2H9V9Zm0 4h6v2H9v-2Z"/>
+                </svg>
+              </span>
+              <h3>Riwayat &amp; Rangkuman</h3>
+              <p>Mahasiswa menulis rangkuman setelah sesi selesai dan dapat membukanya kembali dari riwayat.</p>
+            </div>
           </div>
         </section>
 
@@ -69,13 +140,13 @@
 
         <section id="alur" class="mtz-section mtz-last-section">
           <div class="mtz-section-head"><span>Cara Kerja</span><h2>Alur sederhana dari daftar sampai riwayat</h2></div>
-          <div class="mtz-steps"><div>1<span>Daftar Akun</span></div><div>2<span>Lengkapi Profil</span></div><div>3<span>Ajukan Mentoring</span></div><div>4<span>Chat &amp; Sesi</span></div><div>5<span>Simpan Rangkuman</span></div></div>
+          <div class="mtz-steps"><div>1<span>Daftar Akun</span></div><div>2<span>Lengkapi Profil</span></div><div>3<span>Ajukan Mentoring</span></div><div>4<span>Pesan &amp; Sesi</span></div><div>5<span>Simpan Rangkuman</span></div></div>
         </section>
       </div>
     </t>
   </template>
 
-  <template id="page_login" name="Mentorize Login">
+  <template id="page_login" name="Mentorize Masuk">
     <t t-call="mentorize.public_layout">
       <div class="mtz-auth-page">
         <div class="mtz-auth-left mtz-animate-left">
@@ -87,7 +158,7 @@
         <div class="mtz-auth-right mtz-animate-right">
           <div class="mtz-auth-card">
             <h1>Masuk Akun</h1>
-            <p>Gunakan email yang terdaftar di Mentorize.</p>
+            <p>Login mahasiswa dan alumni menggunakan SSO UNISA.</p>
             <t t-if="registered"><div class="mtz-alert success">Akun berhasil dibuat. Silakan login.</div></t>
             <t t-if="reset"><div class="mtz-alert success">Silakan cek email untuk reset password.</div></t>
             <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
@@ -103,21 +174,21 @@
               <div class="mtz-form-row"><label class="mtz-check"><input type="checkbox"/> Ingat saya</label><a href="/forgot-password">Lupa password?</a></div>
               <button class="mtz-btn primary full" type="submit">Masuk</button>
             </form>
-            <p class="mtz-auth-footer">Belum punya akun? <a href="/register">Daftar sekarang</a></p>
+            <p class="mtz-auth-footer"><a href="/sso/login">Masuk dengan SSO UNISA</a></p>
           </div>
         </div>
       </div>
     </t>
   </template>
 
-  <template id="page_register" name="Mentorize Register">
+  <template id="page_register" name="Mentorize Daftar">
     <t t-call="mentorize.public_layout">
       <div class="mtz-auth-page register">
         <div class="mtz-auth-left mtz-animate-left">
           <a class="mtz-brand" href="/"><img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/><span>Mentorize</span></a>
           <h2>Daftar sebagai mahasiswa atau alumni.</h2>
           <p>Verifikasi NIM/KAPA sudah disiapkan sebagai hook API. Saat ini masih mode bebas untuk kebutuhan demo.</p>
-          <div class="mtz-mini-list"><span>✓ Email unik</span><span>✓ NIM/KAPA satu kali daftar</span><span>✓ Role otomatis</span></div>
+          <div class="mtz-mini-list"><span>✓ Email unik</span><span>✓ NIM/KAPA satu kali daftar</span><span>✓ Peran otomatis</span></div>
         </div>
         <div class="mtz-auth-right mtz-animate-right">
           <div class="mtz-auth-card wide">
@@ -139,7 +210,7 @@
               </div>
               <button class="mtz-btn primary full" type="submit">Daftar</button>
             </form>
-            <p class="mtz-auth-footer">Sudah punya akun? <a href="/login">Masuk</a></p>
+            <p class="mtz-auth-footer"><a href="/login">Masuk melalui SSO UNISA</a></p>
           </div>
         </div>
       </div>
@@ -159,13 +230,13 @@
             <label>Email<input type="email" name="email" placeholder="nama@email.com" required="required"/></label>
             <button class="mtz-btn primary full" type="submit">Kirim Link Reset</button>
           </form>
-          <p class="mtz-auth-footer"><a href="/login">Kembali ke login</a></p>
+          <p class="mtz-auth-footer"><a href="/">Kembali ke beranda</a></p>
         </div>
       </div>
     </t>
   </template>
 
-  <template id="page_admin_login" name="Mentorize Admin Login">
+  <template id="page_admin_login" name="Mentorize Admin Masuk">
     <t t-call="mentorize.public_layout">
       <div class="mtz-admin-login-page">
         <div class="mtz-admin-login-visual mtz-animate-left">
@@ -177,15 +248,15 @@
           <h1>Panel kontrol untuk monitoring mentorship.</h1>
           <p>Masuk sebagai admin untuk memantau mahasiswa, alumni, request, sesi, laporan, feedback, dan aktivitas sistem Mentorize.</p>
           <div class="mtz-admin-login-cards">
-            <div>📊<strong>Dashboard Data</strong><span>Statistik &amp; diagram realtime</span></div>
-            <div>✅<strong>Verifikasi Alumni</strong><span>Kelola mentor resmi</span></div>
-            <div>🚩<strong>Moderasi Laporan</strong><span>Tindak lanjut pelanggaran</span></div>
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19h14v2H5a2 2 0 0 1-2-2V5h2v14Zm3-2V9h3v8H8Zm5 0V4h3v13h-3Zm5 0v-6h3v6h-3Z"/></svg><strong>Dashboard Data</strong><span>Statistik &amp; diagram realtime</span></div>
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3Zm-1 14-3.5-3.5 1.42-1.42L11 13.16l4.58-4.58L17 10l-6 6Z"/></svg><strong>Kelola Pengguna</strong><span>Atur aktif dan nonaktif akun</span></div>
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4h9l.5 2H21v10h-8.5l-.5-2H7v7H5Z"/></svg><strong>Moderasi Laporan</strong><span>Tindak lanjut pelanggaran</span></div>
           </div>
         </div>
         <div class="mtz-admin-login-form-wrap mtz-animate-right">
           <div class="mtz-auth-card mtz-admin-login-card">
-            <div class="mtz-admin-lock">🛡️</div>
-            <h1>Login Admin</h1>
+            <div class="mtz-admin-lock"><svg class="mtz-ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3Zm-1.1 13.6-3.5-3.5 1.42-1.42 2.08 2.08 4.58-4.58 1.42 1.42-6 6Z"/></svg></div>
+            <h1>Masuk Admin</h1>
             <p>Gunakan akun dengan role Admin Mentorize.</p>
             <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
             <form action="/admin/login/submit" method="post" class="mtz-form">
@@ -194,7 +265,7 @@
               <label>Password<input type="password" name="password" placeholder="Masukkan password admin" required="required"/></label>
               <button class="mtz-btn primary full" type="submit">Masuk Admin</button>
             </form>
-            <p class="mtz-auth-footer"><a href="/login">Masuk sebagai mahasiswa/alumni</a></p>
+            <p class="mtz-auth-footer"><a href="/login">Masuk SSO mahasiswa/alumni</a></p>
           </div>
         </div>
       </div>

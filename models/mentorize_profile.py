@@ -20,10 +20,23 @@ class MentorizeMahasiswa(models.Model):
     session_ids = fields.One2many('mentorize.session', 'mahasiswa_id', string='Sesi Mentoring')
     profile_complete = fields.Boolean(string='Profil Lengkap', compute='_compute_profile_complete')
 
-    @api.depends('nim', 'jurusan', 'semester', 'tujuan_karir', 'minat_ids', 'skill_ids')
+    @api.depends('nim', 'jurusan', 'semester', 'tujuan_karir', 'bio', 'minat_ids', 'skill_ids', 'user_id.name', 'user_id.email', 'user_id.login')
     def _compute_profile_complete(self):
         for rec in self:
-            rec.profile_complete = bool(rec.nim and rec.jurusan and rec.semester and rec.tujuan_karir and rec.minat_ids and rec.skill_ids)
+            login = (rec.user_id.login or '').strip()
+            name = (rec.user_id.name or '').strip()
+            email = (rec.user_id.email or '').strip()
+            valid_identity = bool(name and name != login and email and '@' in email and email != login)
+            rec.profile_complete = bool(
+                valid_identity
+                and rec.nim
+                and rec.jurusan
+                and rec.semester
+                and rec.tujuan_karir
+                and rec.bio
+                and rec.minat_ids
+                and rec.skill_ids
+            )
 
 
 class MentorizeAlumni(models.Model):
@@ -60,7 +73,23 @@ class MentorizeAlumni(models.Model):
             feedbacks = Feedback.search([('alumni_id', '=', rec.id)])
             rec.rating = round(sum(feedbacks.mapped('rating')) / len(feedbacks), 1) if feedbacks else 0.0
 
-    @api.depends('kapa', 'tempat_bekerja', 'pekerjaan', 'deskripsi', 'skill_ids', 'minat_ids')
+    @api.depends('kapa', 'tempat_bekerja', 'pekerjaan', 'deskripsi', 'skill_ids', 'minat_ids', 'experience_ids', 'experience_ids.perusahaan', 'experience_ids.posisi', 'experience_ids.tahun_mulai', 'experience_ids.tahun_selesai', 'experience_ids.tanggal', 'user_id.name', 'user_id.email', 'user_id.login')
     def _compute_profile_complete(self):
         for rec in self:
-            rec.profile_complete = bool(rec.kapa and rec.tempat_bekerja and rec.pekerjaan and rec.deskripsi and rec.skill_ids and rec.minat_ids)
+            login = (rec.user_id.login or '').strip()
+            name = (rec.user_id.name or '').strip()
+            email = (rec.user_id.email or '').strip()
+            valid_identity = bool(name and name != login and email and '@' in email and email != login)
+            complete_experiences = rec.experience_ids.filtered(
+                lambda exp: exp.perusahaan and exp.posisi and (exp.tahun_mulai or exp.tahun_selesai or exp.tanggal)
+            )
+            rec.profile_complete = bool(
+                valid_identity
+                and rec.kapa
+                and rec.tempat_bekerja
+                and rec.pekerjaan
+                and rec.deskripsi
+                and rec.skill_ids
+                and rec.minat_ids
+                and len(complete_experiences) >= 3
+            )

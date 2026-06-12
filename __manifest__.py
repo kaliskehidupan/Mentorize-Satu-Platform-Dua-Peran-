@@ -10,6 +10,7 @@
         'security/mentorize_groups.xml',
         'security/ir.model.access.csv',
         'data/mentorize_master_data.xml',
+        'data/mentorize_cron.xml',
         'views/backend/admin_views.xml',
         'views/templates/layout.xml',
         'views/templates/public_pages.xml',

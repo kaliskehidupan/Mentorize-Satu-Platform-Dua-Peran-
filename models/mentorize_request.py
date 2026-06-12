@@ -53,7 +53,7 @@ class MentorizeRequest(models.Model):
             Notification.create_notification(
                 rec.mahasiswa_id.user_id,
                 'Request mentoring diterima',
-                'Request mentoring dengan %s telah diterima. Room chat sudah aktif.' % (rec.alumni_id.name or 'mentor'),
+                'Pengajuan mentoring dengan %s telah diterima. Chat akan aktif otomatis pada jadwal yang disepakati.' % (rec.alumni_id.name or 'mentor'),
                 notif_type='request_approved',
                 url='/chat?room_id=%s' % room.id,
             )
@@ -66,8 +66,8 @@ class MentorizeRequest(models.Model):
             self.env['mentorize.matchmaking'].sudo().search([('request_id', '=', rec.id)]).write({'status': 'rejected'})
             Notification.create_notification(
                 rec.mahasiswa_id.user_id,
-                'Request mentoring ditolak',
-                'Request mentoring dengan %s ditolak. Kamu bisa membuat request baru.' % (rec.alumni_id.name or 'mentor'),
+                'Pengajuan mentoring ditolak',
+                'Pengajuan mentoring dengan %s ditolak. Kamu bisa membuat pengajuan baru.' % (rec.alumni_id.name or 'mentor'),
                 notif_type='request_rejected',
                 url='/mentors',
             )

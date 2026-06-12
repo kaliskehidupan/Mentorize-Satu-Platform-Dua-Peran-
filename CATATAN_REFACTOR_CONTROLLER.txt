@@ -1,0 +1,29 @@
+CATATAN REFACTOR CONTROLLER MENTORIZE
+
+Perubahan utama:
+1. controllers/main.py sudah diperkecil. Route dipisah sesuai fitur agar mudah dicek.
+2. Helper umum dipindah ke controllers/base.py.
+3. File controller baru:
+   - auth_controller.py: login, register, lupa password, logout
+   - dashboard_controller.py: dashboard mahasiswa dan alumni
+   - admin_controller.py: dashboard admin, kelola user, verifikasi, monitoring, feedback, laporan, aktivitas
+   - profile_controller.py: profil mahasiswa/alumni dan settings
+   - mentor_controller.py: cari/detail mentor, request mentoring, approve/reject request
+   - chat_controller.py: halaman chat, data chat, kirim pesan
+   - session_controller.py: sesi, akhir sesi, stop/reschedule, summary, history
+   - report_controller.py: laporan user
+   - notification_controller.py: notifikasi
+4. Bug sidebar admin diperbaiki:
+   - Kelola User memakai active_menu = users
+   - Verifikasi Alumni memakai active_menu = verification
+   - Link verifikasi diarahkan ke /admin/verification
+5. Bug logout admin diperbaiki:
+   - Admin logout kembali ke /admin/login
+   - Mahasiswa/alumni logout tetap kembali ke /login
+6. Pilihan minat dan skill dobel di halaman profil dirapikan dari sisi tampilan:
+   - data database tidak dihapus
+   - pilihan dengan nama sama hanya tampil satu kali
+
+Catatan:
+- Route lama yang memakai /mentorize tetap dipertahankan sebagai alias cadangan agar link lama tidak langsung rusak.
+- Tidak ada model/database yang dihapus.

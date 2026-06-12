@@ -16,36 +16,35 @@
                 <img src="/mentorize/static/src/img/logo_mentorize.jpeg" alt="Mentorize"/>
                 <div>
                   <strong>Mentorize</strong>
-                  <span>Admin Panel</span>
+                  <span>Panel Admin</span>
                 </div>
               </a>
 
               <div class="mtz-admin-side-section">
-                <small>Overview</small>
-                <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/admin/dashboard"><span>📊</span> Dashboard</a>
+                <small>Ringkasan</small>
+                <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/admin/dashboard"><span class="mtz-admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19h14v2H5a2 2 0 0 1-2-2V5h2v14Zm3-2V9h3v8H8Zm5 0V4h3v13h-3Zm5 0v-6h3v6h-3Z"/></svg></span> Beranda</a>
               </div>
 
               <div class="mtz-admin-side-section">
-                <small>User Management</small>
-                <a t-att-class="'active' if active_menu == 'users' else ''" href="/admin/users"><span>👥</span> Kelola User</a>
-                <a t-att-class="'active' if active_menu == 'users' else ''" href="/admin/users?role=alumni"><span>✅</span> Verifikasi Alumni</a>
+                <small>Manajemen Pengguna</small>
+                <a t-att-class="'active' if active_menu == 'users' else ''" href="/admin/users"><span class="mtz-admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-3.46-6A5 5 0 0 1 16 11ZM8 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-3.31 0-6 1.79-6 4v2h12v-2c0-2.21-2.69-4-6-4Zm8-.5c-.74 0-1.44.1-2.08.29A5.62 5.62 0 0 1 16 18v2h6v-2c0-2.49-2.69-4.5-6-4.5Z"/></svg></span> Kelola Pengguna</a>
+                <a t-att-class="'active' if active_menu == 'skills' else ''" href="/admin/skills"><span class="mtz-admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Zm0 4L12 16l8-4.5v3L12 19 4 14.5v-3Zm0 6L12 22l8-4.5V20l-8 4.5L4 20v-2.5Z"/></svg></span> Minat &amp; Skill</a>
               </div>
 
               <div class="mtz-admin-side-section">
                 <small>Mentoring</small>
-                <a t-att-class="'active' if active_menu == 'mentoring' else ''" href="/admin/mentoring"><span>🔗</span> Monitoring Mentoring</a>
-                <a t-att-class="'active' if active_menu == 'feedback' else ''" href="/admin/feedback"><span>⭐</span> Feedback &amp; Review</a>
+                <a t-att-class="'active' if active_menu == 'mentoring' else ''" href="/admin/mentoring"><span class="mtz-admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12a5 5 0 0 1 5-5h4v2h-4a3 3 0 0 0 0 6h4v2h-4a5 5 0 0 1-5-5Zm6 1v-2h4v2h-4Zm1-6h4a5 5 0 0 1 0 10h-4v-2h4a3 3 0 0 0 0-6h-4V7Z"/></svg></span> Pantau Mentoring</a>
+                <a t-att-class="'active' if active_menu == 'feedback' else ''" href="/admin/feedback"><span class="mtz-admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.26 6.85.82-5.05 4.7 1.34 6.77L12 17.16l-6.04 3.39 1.34-6.77-5.05-4.7 6.85-.82L12 2Z"/></svg></span> Umpan Balik &amp; Ulasan</a>
               </div>
 
               <div class="mtz-admin-side-section">
                 <small>Moderasi</small>
-                <a t-att-class="'active' if active_menu == 'reports' else ''" href="/admin/reports"><span>🚩</span> Laporan</a>
-                <a t-att-class="'active' if active_menu == 'activities' else ''" href="/admin/activities"><span>🕒</span> Aktivitas Sistem</a>
+                <a t-att-class="'active' if active_menu == 'reports' else ''" href="/admin/reports"><span class="mtz-admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4h9l.5 2H21v10h-8.5l-.5-2H7v7H5Z"/></svg></span> Laporan</a>
+                <a t-att-class="'active' if active_menu == 'activities' else ''" href="/admin/activities"><span class="mtz-admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20Zm1-10.4V6h-2v7l5 3 1-1.73-4-2.67Z"/></svg></span> Aktivitas Sistem</a>
               </div>
 
               <div class="mtz-admin-side-footer">
-                <a href="/dashboard" class="mtz-admin-mini-link">← Ke Website</a>
-                <button type="button" class="mtz-admin-logout" data-mtz-open-logout="1">Logout</button>
+                <button type="button" class="mtz-admin-logout" data-mtz-open-logout="1">Keluar</button>
               </div>
             </aside>
 
@@ -54,10 +53,12 @@
                 <div>
                   <span class="mtz-admin-eyebrow">Admin Mentorize</span>
                   <h2>
-                    <t t-if="active_menu == 'dashboard'">Dashboard Monitoring</t>
+                    <t t-if="active_menu == 'dashboard'">Beranda Monitoring</t>
                     <t t-elif="active_menu == 'users'">Kelola Pengguna</t>
-                    <t t-elif="active_menu == 'mentoring'">Monitoring Mentoring</t>
-                    <t t-elif="active_menu == 'feedback'">Feedback &amp; Review</t>
+                    <t t-elif="active_menu == 'skills'">Minat &amp; Skill</t>
+                    <t t-elif="active_menu == 'settings'">Pengaturan Admin</t>
+                    <t t-elif="active_menu == 'mentoring'">Pantau Mentoring</t>
+                    <t t-elif="active_menu == 'feedback'">Umpan Balik &amp; Ulasan</t>
                     <t t-elif="active_menu == 'reports'">Laporan &amp; Moderasi</t>
                     <t t-elif="active_menu == 'activities'">Aktivitas Sistem</t>
                     <t t-else="">Panel Admin</t>
@@ -66,7 +67,7 @@
                 <div class="mtz-top-actions">
                   <div class="mtz-notif-wrap">
                     <button type="button" class="mtz-icon-btn" data-mtz-toggle="notifications" aria-label="Notifikasi">
-                      <span>🔔</span>
+                      <svg class="mtz-ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.7V3a2 2 0 1 0-4 0v1.3A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg>
                       <t t-if="unread_count"><em class="mtz-notif-badge" t-esc="unread_count"/></t>
                     </button>
                     <div class="mtz-dropdown mtz-notif-dropdown" id="mtz-notifications">
@@ -78,8 +79,8 @@
                     </div>
                   </div>
                   <div class="mtz-user-wrap">
-                    <button type="button" class="mtz-user-btn" data-mtz-toggle="user-menu"><img t-att-src="'/web/image/res.partner/%s/image_128' % user.partner_id.id" alt="Foto Profil"/><span t-esc="user.name"/></button>
-                    <div class="mtz-dropdown mtz-user-dropdown" id="mtz-user-menu"><a href="/settings">Setting</a><button type="button" data-mtz-open-logout="1">Logout</button></div>
+                    <button type="button" class="mtz-user-btn" data-mtz-toggle="user-menu"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (user.id, user.write_date or user.id)" alt="Foto Profil"/><span t-esc="user.name"/></button>
+                    <div class="mtz-dropdown mtz-user-dropdown" id="mtz-user-menu"><a href="/settings">Pengaturan</a><button type="button" data-mtz-open-logout="1">Keluar</button></div>
                   </div>
                 </div>
               </header>
@@ -100,23 +101,24 @@
 
               <div class="mtz-navlinks">
                 <t t-if="role == 'alumni'">
-                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/alumni/dashboard">Dashboard</a>
-                  <a t-att-class="'active' if active_menu == 'chat' else ''" href="/chat">Chat</a>
+                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/alumni/dashboard">Beranda</a>
+                  <a t-att-class="'active' if active_menu == 'chat' else ''" href="/chat">Pesan</a>
                   <a t-att-class="'active' if active_menu == 'profile' else ''" href="/alumni/profile/setup">Profil</a>
                   <a t-att-class="'active' if active_menu == 'reports' else ''" href="/reports">Laporan</a>
                   <a t-att-class="'active' if active_menu == 'history' else ''" href="/history">Riwayat</a>
                 </t>
                 <t t-elif="role == 'admin'">
-                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/admin/dashboard">Dashboard</a>
-                  <a t-att-class="'active' if active_menu == 'users' else ''" href="/admin/users">User</a>
+                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/admin/dashboard">Beranda</a>
+                  <a t-att-class="'active' if active_menu == 'users' else ''" href="/admin/users">Pengguna</a>
+                  <a t-att-class="'active' if active_menu == 'skills' else ''" href="/admin/skills">Minat &amp; Skill</a>
                   <a t-att-class="'active' if active_menu == 'mentoring' else ''" href="/admin/mentoring">Mentoring</a>
                   <a t-att-class="'active' if active_menu == 'reports' else ''" href="/admin/reports">Laporan</a>
                   <a t-att-class="'active' if active_menu == 'activities' else ''" href="/admin/activities">Aktivitas</a>
                 </t>
                 <t t-else="">
-                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/dashboard">Dashboard</a>
+                  <a t-att-class="'active' if active_menu == 'dashboard' else ''" href="/dashboard">Beranda</a>
                   <a t-att-class="'active' if active_menu == 'mentors' else ''" href="/mentors">Mentor</a>
-                  <a t-att-class="'active' if active_menu == 'chat' else ''" href="/chat">Chat</a>
+                  <a t-att-class="'active' if active_menu == 'chat' else ''" href="/chat">Pesan</a>
                   <a t-att-class="'active' if active_menu == 'history' else ''" href="/history">Riwayat</a>
                   <a t-att-class="'active' if active_menu == 'profile' else ''" href="/profile">Profil</a>
                   <a t-att-class="'active' if active_menu == 'reports' else ''" href="/reports">Laporan</a>
@@ -126,7 +128,7 @@
               <div class="mtz-top-actions">
                 <div class="mtz-notif-wrap">
                   <button type="button" class="mtz-icon-btn" data-mtz-toggle="notifications" aria-label="Notifikasi">
-                    <span>🔔</span>
+                    <svg class="mtz-ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.7V3a2 2 0 1 0-4 0v1.3A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg>
                     <t t-if="unread_count"><em class="mtz-notif-badge" t-esc="unread_count"/></t>
                   </button>
                   <div class="mtz-dropdown mtz-notif-dropdown" id="mtz-notifications">
@@ -139,8 +141,8 @@
                 </div>
 
                 <div class="mtz-user-wrap">
-                  <button type="button" class="mtz-user-btn" data-mtz-toggle="user-menu"><img t-att-src="'/web/image/res.partner/%s/image_128' % user.partner_id.id" alt="Foto Profil"/><span t-esc="user.name"/></button>
-                  <div class="mtz-dropdown mtz-user-dropdown" id="mtz-user-menu"><a t-att-href="'/settings' if role == 'admin' else ('/alumni/profile/setup' if role == 'alumni' else '/profile')">Profil</a><a href="/settings">Setting</a><button type="button" data-mtz-open-logout="1">Logout</button></div>
+                  <button type="button" class="mtz-user-btn" data-mtz-toggle="user-menu"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (user.id, user.write_date or user.id)" alt="Foto Profil"/><span t-esc="user.name"/></button>
+                  <div class="mtz-dropdown mtz-user-dropdown" id="mtz-user-menu"><a t-att-href="'/settings' if role == 'admin' else ('/alumni/profile/setup' if role == 'alumni' else '/profile')">Profil</a><a href="/settings">Pengaturan</a><button type="button" data-mtz-open-logout="1">Keluar</button></div>
                 </div>
               </div>
             </nav>
@@ -153,10 +155,10 @@
 
         <div class="mtz-modal-backdrop" id="mtz-logout-modal">
           <div class="mtz-confirm-modal">
-            <div class="mtz-modal-icon">↪</div>
+            <div class="mtz-modal-icon"><svg class="mtz-modal-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17v-3H3v-4h7V7l5 5-5 5Zm2-15h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-8v-2h8V4h-8V2Z"/></svg></div>
             <h3>Keluar dari Mentorize?</h3>
             <p>Pastikan semua perubahan sudah tersimpan sebelum logout.</p>
-            <div class="mtz-modal-actions"><button type="button" class="mtz-btn ghost" data-mtz-close-logout="1">Batal</button><a class="mtz-btn danger" href="/web/session/logout?redirect=/login">Ya, Logout</a></div>
+            <div class="mtz-modal-actions"><button type="button" class="mtz-btn ghost" data-mtz-close-logout="1">Batal</button><a class="mtz-btn danger" href="/logout/confirm">Ya, Keluar</a></div>
           </div>
         </div>
 

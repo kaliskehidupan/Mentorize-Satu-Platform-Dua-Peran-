@@ -52,7 +52,11 @@ class MentorizePelanggaran(models.Model):
         ('lainnya', 'Lainnya'),
     ], string='Kategori', default='lainnya', required=True)
     judul = fields.Char(string='Judul Laporan', required=True)
-    deskripsi = fields.Text(string='Deskripsi')
+    deskripsi = fields.Text(string='Deskripsi', required=True)
+    attachment_id = fields.Many2one('ir.attachment', string='Bukti Gambar', ondelete='set null')
+    attachment_name = fields.Char(string='Nama Bukti')
+    attachment_mimetype = fields.Char(string='Tipe Bukti')
+    attachment_size = fields.Integer(string='Ukuran Bukti')
     status = fields.Selection([
         ('baru', 'Baru'),
         ('diproses', 'Diproses'),

@@ -10,54 +10,190 @@
         </div>
         <a class="mtz-btn magic large" href="/mentors?match=1">🪄 Cari Mentor Paling Cocok</a>
       </section>
+
       <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
-      <t t-if="success"><div class="mtz-alert success">Request mentoring berhasil dikirim.</div></t>
+      <t t-if="success"><div class="mtz-alert success">Pengajuan mentoring berhasil dikirim.</div></t>
       <t t-if="match_active"><div class="mtz-alert success">✨ Matchmaking aktif. Mentor diurutkan dari skor kecocokan tertinggi.</div></t>
+
       <form action="/mentors" method="get" class="mtz-searchbar mtz-match-search">
         <input type="text" name="q" t-att-value="q" placeholder="Cari nama, pekerjaan, skill, atau bidang..."/>
         <button class="mtz-btn primary" type="submit">Cari</button>
       </form>
+
       <div class="mtz-mentor-grid">
         <t t-if="mentors">
           <t t-foreach="mentors" t-as="mentor">
-            <div class="mtz-mentor-card match-card">
+            <article class="mtz-mentor-card match-card mtz-mentor-card-clickable">
+              <a t-att-href="'/mentors/%s' % mentor.id" class="mtz-mentor-card-link" aria-label="Lihat profil mentor"></a>
+
               <div class="mtz-match-topline">
-                <img t-att-src="'/web/image/res.partner/%s/image_128' % mentor.user_id.partner_id.id"/>
+                <img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (mentor.user_id.id, mentor.user_id.write_date or mentor.user_id.id)" alt="Foto Mentor"/>
                 <div class="mtz-match-score-badge">
                   <span>🪄 <t t-esc="match_scores.get(mentor.id, 0)"/>%</span>
                   <small t-esc="match_labels.get(mentor.id, 'Cocok')"/>
                 </div>
               </div>
+
               <h3 t-esc="mentor.name"/>
               <p t-esc="mentor.pekerjaan or 'Alumni Mentor'"/>
               <small t-esc="mentor.tempat_bekerja or 'Instansi belum diisi'"/>
+
               <div class="mtz-match-meter"><b t-attf-style="width:#{match_scores.get(mentor.id, 0)}%"></b></div>
+
               <div class="mtz-match-reasons">
                 <t t-foreach="match_reasons.get(mentor.id, [])[:2]" t-as="reason"><span t-esc="reason"/></t>
               </div>
-              <div class="mtz-tags"><t t-foreach="mentor.minat_ids[:3]" t-as="minat"><span t-esc="minat.name"/></t><t t-foreach="mentor.skill_ids[:3]" t-as="skill"><span t-esc="skill.name"/></t></div>
-              <div class="mtz-mentor-meta"><span>⭐ <t t-esc="mentor.rating"/></span><span t-esc="'Tersedia' if mentor.availability == 'available' else ('Sibuk' if mentor.availability == 'busy' else 'Offline')"/></div>
-              <button class="mtz-btn primary full" data-mtz-open-request="1" t-att-data-mentor-id="mentor.id" t-att-data-mentor-name="mentor.name">Ajukan Mentoring</button>
-            </div>
+
+              <div class="mtz-tags">
+                <t t-foreach="mentor.minat_ids[:3]" t-as="minat"><span t-esc="minat.name"/></t>
+                <t t-foreach="mentor.skill_ids[:3]" t-as="skill"><span t-esc="skill.name"/></t>
+              </div>
+
+              <div class="mtz-mentor-meta">
+                <span>⭐ <t t-esc="mentor.rating"/></span>
+                <span t-esc="'Tersedia' if mentor.availability == 'available' else ('Sibuk' if mentor.availability == 'busy' else 'Offline')"/>
+              </div>
+
+              <div class="mtz-mentor-card-actions">
+                <a t-att-href="'/mentors/%s' % mentor.id" class="mtz-btn primary full">Lihat Profil Mentor</a>
+              </div>
+            </article>
           </t>
         </t>
         <t t-else=""><div class="mtz-empty-state">Belum ada mentor yang cocok dengan pencarianmu.</div></t>
       </div>
-      <div class="mtz-modal-backdrop" id="mtz-request-modal">
-        <div class="mtz-modal-card">
-          <button type="button" class="mtz-modal-close" data-mtz-close-modal="1">×</button>
-          <h2>Ajukan Mentoring</h2>
-          <form action="/mentoring/request" method="post" class="mtz-form">
-            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-            <input type="hidden" name="alumni_id" id="mtz-request-mentor-id"/>
-            <label>Mentor<input type="text" id="mtz-request-mentor-name" readonly="readonly"/></label>
-            <label>Topik Mentoring<input type="text" name="topik" required="required"/></label>
-            <label>Tanggal &amp; Jam<input type="datetime-local" name="requested_datetime" t-att-min="today_min" t-att-max="max_datetime" required="required"/></label>
-            <label>Catatan<textarea name="deskripsi" rows="4"></textarea></label>
-            <button class="mtz-btn primary full" type="submit">Kirim Request</button>
-          </form>
+    </t>
+  </template>
+
+  <template id="page_mentor_detail" name="Detail Profil Mentor">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-mentor-detail-page">
+        <div class="mtz-mentor-detail-topbar">
+          <a href="/mentors" class="mtz-back-link">← Kembali ke Cari Mentor</a>
+          <strong>Profil Mentor</strong>
+          <button type="button" class="mtz-btn primary" data-mtz-scroll-request="1">Ajukan Mentoring</button>
         </div>
-      </div>
+
+        <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+        <t t-if="success"><div class="mtz-alert success">Pengajuan mentoring berhasil dikirim.</div></t>
+
+        <div class="mtz-mentor-profile-hero mtz-animate-up">
+          <div class="mtz-mentor-photo-ring">
+            <img t-att-src="'/web/image/res.users/%s/image_1920?unique=%s' % (mentor.user_id.id, mentor.user_id.write_date or mentor.user_id.id)" alt="Foto Mentor"/>
+          </div>
+
+          <h1 t-esc="mentor.name"/>
+          <p class="mtz-mentor-role" t-esc="mentor.pekerjaan or 'Alumni Mentor'"/>
+          <p class="mtz-mentor-company" t-esc="mentor.tempat_bekerja or 'Instansi belum diisi'"/>
+
+          <div class="mtz-mentor-status-line">
+            <span t-att-class="'mtz-dot-status available' if mentor.availability == 'available' else ('mtz-dot-status busy' if mentor.availability == 'busy' else 'mtz-dot-status offline')"></span>
+            <strong t-esc="'Tersedia' if mentor.availability == 'available' else ('Sibuk' if mentor.availability == 'busy' else 'Offline')"/>
+          </div>
+
+          <div class="mtz-mentor-rating-line">
+            <span>★ ★ ★ ★ ★</span>
+            <strong><t t-esc="mentor.rating or 0.0"/></strong>
+            <small>Skor kecocokan <t t-esc="match_score"/>% · <t t-esc="match_label"/></small>
+          </div>
+        </div>
+
+        <div class="mtz-mentor-detail-grid">
+          <section class="mtz-mentor-detail-main">
+            <article class="mtz-profile-section-card">
+              <h2>Tentang Mentor</h2>
+              <p class="mtz-mentor-long-text" t-esc="mentor.deskripsi or 'Mentor belum menambahkan deskripsi. Alumni ini siap membantu proses mentoring sesuai bidang keahliannya.'"/>
+            </article>
+
+            <article class="mtz-profile-section-card">
+              <h2>Keahlian Utama</h2>
+              <div class="mtz-detail-chip-list">
+                <t t-if="mentor.skill_ids">
+                  <t t-foreach="mentor.skill_ids" t-as="skill"><span t-esc="skill.name"/></t>
+                </t>
+                <t t-else=""><em>Skill belum diisi.</em></t>
+              </div>
+            </article>
+
+            <article class="mtz-profile-section-card">
+              <h2>Bidang Mentoring</h2>
+              <div class="mtz-detail-chip-list">
+                <t t-if="mentor.minat_ids">
+                  <t t-foreach="mentor.minat_ids" t-as="minat"><span t-esc="minat.name"/></t>
+                </t>
+                <t t-else=""><em>Bidang mentoring belum diisi.</em></t>
+              </div>
+            </article>
+
+            <article class="mtz-profile-section-card">
+              <h2>Pengalaman &amp; Latar Belakang</h2>
+              <t t-if="mentor.experience_ids">
+                <div class="mtz-experience-timeline">
+                  <t t-foreach="mentor.experience_ids" t-as="exp">
+                    <div class="mtz-experience-timeline-item">
+                      <div class="mtz-experience-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6V5a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v1h3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3Zm2 0h2V5a1 1 0 0 0-2 0v1Zm-5 5h12V8H6v3Zm0 2v6h12v-6h-5v1h-2v-1H6Z"/></svg></div>
+                      <div>
+                        <h3 t-esc="exp.posisi or exp.nama_experience or 'Pengalaman Kerja'"/>
+                        <strong t-esc="exp.perusahaan or 'Perusahaan belum diisi'"/>
+                        <small t-esc="exp.get_tahun_display() or 'Tahun belum diisi'"/>
+                        <p t-if="exp.deskripsi" t-esc="exp.deskripsi"/>
+                      </div>
+                    </div>
+                  </t>
+                </div>
+              </t>
+              <t t-else="">
+                <div class="mtz-empty-small">Mentor belum menambahkan pengalaman kerja.</div>
+              </t>
+            </article>
+          </section>
+
+          <aside class="mtz-mentor-detail-side">
+            <article class="mtz-profile-section-card">
+              <h2>Informasi Mentoring</h2>
+              <div class="mtz-mentor-info-grid">
+                <div><span>Durasi Sesi</span><strong>60 menit</strong></div>
+                <div><span>Total Slot</span><strong><t t-esc="mentor.slot_mentoring or 3"/> sesi</strong></div>
+                <div><span>Metode</span><strong>Pesan</strong></div>
+                <div><span>Bahasa</span><strong>Indonesia</strong></div>
+              </div>
+            </article>
+
+            <article class="mtz-profile-section-card">
+              <h2>Alasan Cocok</h2>
+              <div class="mtz-match-reasons detail">
+                <t t-if="match_reasons">
+                  <t t-foreach="match_reasons" t-as="reason"><span t-esc="reason"/></t>
+                </t>
+                <t t-else=""><span>Profil mentor ini bisa menjadi pilihan untuk pengembangan kariermu.</span></t>
+              </div>
+            </article>
+
+            <article class="mtz-profile-section-card" id="mtz-request-section">
+              <h2>Ajukan Mentoring</h2>
+              <p class="mtz-muted-copy">Pilih topik dan jadwal mentoring. Alumni akan menerima notifikasi untuk menyetujui atau menolak request.</p>
+
+              <form action="/mentoring/request" method="post" class="mtz-form mtz-request-detail-form">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="alumni_id" t-att-value="mentor.id"/>
+
+                <label>Topik Mentoring<input type="text" name="topik" required="required" placeholder="Contoh: Persiapan karier sebagai Data Analyst"/></label>
+                <label>Tanggal &amp; Jam
+                  <div class="mtz-calendar-field" t-att-data-busy-url="'/mentors/%s/busy-dates' % mentor.id">
+                    <input type="hidden" name="requested_datetime" required="required"/>
+                    <button type="button" class="mtz-calendar-trigger" data-mtz-calendar-open="1">Pilih tanggal dan jam</button>
+                    <small class="mtz-calendar-value">Belum ada jadwal dipilih</small>
+                  </div>
+                </label>
+                <label>Catatan<textarea name="deskripsi" rows="4" placeholder="Ceritakan kebutuhan atau target mentoringmu."></textarea></label>
+
+                <button class="mtz-btn primary full" type="submit" t-att-disabled="mentor.availability == 'offline' and 'disabled' or None">Kirim Pengajuan Mentoring</button>
+                <small t-if="mentor.availability == 'offline'" class="mtz-form-note danger">Mentor sedang offline dan belum menerima request mentoring.</small>
+              </form>
+            </article>
+          </aside>
+        </div>
+      </section>
     </t>
   </template>
 </odoo>
