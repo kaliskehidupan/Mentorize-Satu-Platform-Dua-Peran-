@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="page_reports" name="Laporan Saya Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-page-hero mtz-animate-up"><div><span class="mtz-kicker">Laporan</span><h1>Laporan Saya</h1><p>Pantau laporan yang kamu kirim ke admin Mentorize beserta status tindak lanjutnya.</p></div><a href="/chat" class="mtz-btn soft">Kembali ke Pesan</a></section>
+      <t t-if="success"><div class="mtz-alert success">Laporan berhasil dikirim ke admin.</div></t>
+      <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+      <section class="mtz-card">
+        <div class="mtz-card-head"><div><h2>Status Laporan</h2><p>Laporan dari akunmu ke admin.</p></div></div>
+        <div class="mtz-report-grid">
+          <t t-if="reports">
+            <t t-foreach="reports" t-as="rep"><article class="mtz-report-card mini"><div class="mtz-card-head"><div><h2 t-esc="rep.judul"/><p><t t-esc="rep.dilaporkan_id.name or 'Sistem'"/> • <t t-esc="fmt_date(rep.create_date) if rep.create_date else '-'"/></p></div><span t-att-class="'mtz-pill warning' if rep.status in ['baru','diproses'] else 'mtz-pill success'" t-esc="rep.status"/></div><p t-esc="rep.deskripsi or '-'"/><t t-if="rep.attachment_id"><a t-att-href="'/report/attachment/%s' % rep.id" target="_blank" class="mtz-report-proof"><img t-att-src="'/report/attachment/%s' % rep.id"/><span>Lihat bukti gambar</span></a></t><div class="mtz-detail-box"><span>Catatan Admin</span><strong t-esc="rep.admin_note or 'Belum ada catatan admin.'"/></div><div class="mtz-detail-box"><span>Tindakan</span><strong t-esc="rep.action"/></div></article></t>
+          </t>
+          <t t-else=""><div class="mtz-empty-state">Belum ada laporan. Kamu bisa membuat laporan dari halaman chat/detail mentoring.</div></t>
+        </div>
+      </section>
+    </t>
+  </template>
+</odoo>

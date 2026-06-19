@@ -1,17 +1,8 @@
-# Python cache
 __pycache__/
 *.pyc
-
-# Logs
+*.pyo
 *.log
 logs/
-
-# Virtual env
-venv/
 .env
-
-# VS Code
-.vscode/
-
-# Odoo
-*.sqlite3
+odoo.conf
+.DS_Store

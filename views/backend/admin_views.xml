@@ -1,6 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <!-- Admin views akan diisi nanti -->
-    </data>
+  <record id="view_mentorize_mahasiswa_tree" model="ir.ui.view">
+    <field name="name">mentorize.mahasiswa.tree</field>
+    <field name="model">mentorize.mahasiswa</field>
+    <field name="arch" type="xml">
+      <tree string="Mahasiswa Mentorize">
+        <field name="name"/>
+        <field name="nim"/>
+        <field name="jurusan"/>
+        <field name="semester"/>
+        <field name="profile_complete"/>
+      </tree>
+    </field>
+  </record>
+  <record id="view_mentorize_mahasiswa_form" model="ir.ui.view">
+    <field name="name">mentorize.mahasiswa.form</field>
+    <field name="model">mentorize.mahasiswa</field>
+    <field name="arch" type="xml">
+      <form string="Mahasiswa Mentorize">
+        <sheet>
+          <group>
+            <field name="user_id"/>
+            <field name="nim"/>
+            <field name="jurusan"/>
+            <field name="semester"/>
+            <field name="tujuan_karir"/>
+            <field name="bio"/>
+            <field name="minat_ids" widget="many2many_tags"/>
+            <field name="skill_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record id="action_mentorize_mahasiswa" model="ir.actions.act_window">
+    <field name="name">Mahasiswa</field>
+    <field name="res_model">mentorize.mahasiswa</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="view_mentorize_alumni_tree" model="ir.ui.view">
+    <field name="name">mentorize.alumni.tree</field>
+    <field name="model">mentorize.alumni</field>
+    <field name="arch" type="xml">
+      <tree string="Alumni Mentorize">
+        <field name="name"/>
+        <field name="kapa"/>
+        <field name="pekerjaan"/>
+        <field name="tempat_bekerja"/>
+        <field name="availability"/>
+        <field name="rating"/>
+      </tree>
+    </field>
+  </record>
+  <record id="view_mentorize_alumni_form" model="ir.ui.view">
+    <field name="name">mentorize.alumni.form</field>
+    <field name="model">mentorize.alumni</field>
+    <field name="arch" type="xml">
+      <form string="Alumni Mentorize">
+        <sheet>
+          <group>
+            <field name="user_id"/>
+            <field name="kapa"/>
+            <field name="pekerjaan"/>
+            <field name="tempat_bekerja"/>
+            <field name="tahun_lulus"/>
+            <field name="availability"/>
+            <field name="slot_mentoring"/>
+            <field name="deskripsi"/>
+            <field name="minat_ids" widget="many2many_tags"/>
+            <field name="skill_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record id="action_mentorize_alumni" model="ir.actions.act_window">
+    <field name="name">Alumni</field>
+    <field name="res_model">mentorize.alumni</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="view_mentorize_request_tree" model="ir.ui.view">
+    <field name="name">mentorize.request.tree</field>
+    <field name="model">mentorize.request</field>
+    <field name="arch" type="xml">
+      <tree string="Request Mentoring">
+        <field name="mahasiswa_id"/>
+        <field name="alumni_id"/>
+        <field name="topik"/>
+        <field name="requested_datetime"/>
+        <field name="status"/>
+      </tree>
+    </field>
+  </record>
+  <record id="action_mentorize_request" model="ir.actions.act_window">
+    <field name="name">Request Mentoring</field>
+    <field name="res_model">mentorize.request</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="view_mentorize_session_tree" model="ir.ui.view">
+    <field name="name">mentorize.session.tree</field>
+    <field name="model">mentorize.session</field>
+    <field name="arch" type="xml">
+      <tree string="Sesi Mentoring">
+        <field name="mahasiswa_id"/>
+        <field name="alumni_id"/>
+        <field name="topik"/>
+        <field name="tanggal_mentoring"/>
+        <field name="status"/>
+        <field name="summary_saved"/>
+      </tree>
+    </field>
+  </record>
+  <record id="action_mentorize_session" model="ir.actions.act_window">
+    <field name="name">Sesi Mentoring</field>
+    <field name="res_model">mentorize.session</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_mentorize_root" name="Mentorize" sequence="10"/>
+  <menuitem id="menu_mentorize_mahasiswa" name="Mahasiswa" parent="menu_mentorize_root" action="action_mentorize_mahasiswa" sequence="10"/>
+  <menuitem id="menu_mentorize_alumni" name="Alumni" parent="menu_mentorize_root" action="action_mentorize_alumni" sequence="20"/>
+  <menuitem id="menu_mentorize_request" name="Request Mentoring" parent="menu_mentorize_root" action="action_mentorize_request" sequence="30"/>
+  <menuitem id="menu_mentorize_session" name="Sesi Mentoring" parent="menu_mentorize_root" action="action_mentorize_session" sequence="40"/>
 </odoo>

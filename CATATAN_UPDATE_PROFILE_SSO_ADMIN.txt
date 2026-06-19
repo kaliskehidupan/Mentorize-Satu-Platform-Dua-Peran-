@@ -1,0 +1,26 @@
+UPDATE PROFILE + SSO + ADMIN
+
+Perubahan utama:
+1. SSO tidak lagi menimpa data profil yang sudah dilengkapi user.
+   - Nama/email yang sudah valid tidak akan kembali menjadi NIM saat logout-login.
+   - SSO hanya menyinkronkan role, grup akses, NIM/KAPA jika masih kosong, dan status valid alumni.
+
+2. Profil wajib lengkap sebelum user mengakses fitur utama.
+   - Mahasiswa/alumni yang masih memakai data fallback SSO seperti nama=NIM atau email=NIM diarahkan ke halaman profil.
+   - Fitur dashboard, mentor, chat, laporan, sesi, dan riwayat dikunci sampai profil lengkap.
+
+3. Field wajib diberi tanda bintang merah.
+   - Nama, email notifikasi, NIM/KAPA, jurusan, tujuan karir, bio/deskripsi, minat, skill, dan pengalaman alumni wajib jelas.
+
+4. Verifikasi alumni manual dihapus dari UI admin.
+   - Menu Verifikasi Alumni tidak ditampilkan lagi.
+   - Kolom Verifikasi dan tombol Verify/Unverify dihapus dari Kelola Pengguna.
+   - Admin cukup mengatur Aktif/Nonaktif akun dari Kelola Pengguna.
+   - Field is_verified tetap ada untuk kompatibilitas sistem, alumni SSO otomatis dianggap valid.
+
+5. Mentor aktif tidak lagi bergantung pada verifikasi manual admin.
+   - Alumni aktif dan tidak offline bisa tampil sesuai kelengkapan/availability.
+
+Catatan:
+- Struktur database tidak dihapus.
+- Route lama /admin/verification tetap ada, tetapi diarahkan ke /admin/users?role=alumni agar tidak error jika ada link lama.

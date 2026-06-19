@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="minat_web" model="mentorize.minat"><field name="name">Web Development</field></record>
+    <record id="minat_mobile" model="mentorize.minat"><field name="name">Mobile Development</field></record>
+    <record id="minat_uiux" model="mentorize.minat"><field name="name">UI/UX Design</field></record>
+    <record id="minat_data" model="mentorize.minat"><field name="name">Data Science</field></record>
+    <record id="minat_ai" model="mentorize.minat"><field name="name">Artificial Intelligence</field></record>
+    <record id="minat_network" model="mentorize.minat"><field name="name">Jaringan Komputer</field></record>
+    <record id="minat_cyber" model="mentorize.minat"><field name="name">Cyber Security</field></record>
+    <record id="minat_career" model="mentorize.minat"><field name="name">Karier &amp; Magang</field></record>
+
+    <record id="skill_python" model="mentorize.skill"><field name="name">Python</field></record>
+    <record id="skill_javascript" model="mentorize.skill"><field name="name">JavaScript</field></record>
+    <record id="skill_php" model="mentorize.skill"><field name="name">PHP</field></record>
+    <record id="skill_laravel" model="mentorize.skill"><field name="name">Laravel</field></record>
+    <record id="skill_odoo" model="mentorize.skill"><field name="name">Odoo</field></record>
+    <record id="skill_sql" model="mentorize.skill"><field name="name">SQL</field></record>
+    <record id="skill_figma" model="mentorize.skill"><field name="name">Figma</field></record>
+    <record id="skill_networking" model="mentorize.skill"><field name="name">Networking</field></record>
+    <record id="skill_public_speaking" model="mentorize.skill"><field name="name">Public Speaking</field></record>
+    <record id="skill_project" model="mentorize.skill"><field name="name">Project Management</field></record>
+  </data>
+</odoo>
