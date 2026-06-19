@@ -1,0 +1,33 @@
+UPDATE ADMIN, SSO PASSWORD, DAN EMAIL SERVER MENTORIZE
+=====================================================
+
+Perubahan utama:
+1. Admin panel
+   - Tambah menu Minat & Skill di sidebar admin.
+   - Tambah halaman /admin/skills untuk melihat skill/minat populer, filter user berdasarkan skill/minat, dan tabel user + role + skill + minat.
+   - Topbar admin mengenali menu Minat & Skill dan Pengaturan Admin.
+   - Kartu fitur di login admin diganti memakai SVG icon, bukan emoji.
+
+2. Keamanan akun SSO
+   - Mahasiswa dan alumni tidak lagi mengubah password lokal Mentorize.
+   - Halaman Pengaturan menampilkan tombol Reset Password SSO.
+   - Link reset password SSO default: https://service.unisayogya.ac.id/sso/resetpassword.php
+   - Admin tetap bisa ubah password lokal karena admin login manual.
+   - /forgot-password diarahkan ke reset password SSO.
+
+3. Email server / SMTP
+   - Profil dan Pengaturan memiliki Email Notifikasi.
+   - Login SSO tetap memakai NIM; email hanya dipakai untuk notifikasi.
+   - SMTP Mentorize dipakai untuk:
+     a. Peringatan akun setelah laporan diproses admin.
+     b. Pemberitahuan akun dinonaktifkan.
+     c. Pemberitahuan akun diaktifkan kembali.
+     d. Email laporan selesai mentoring ke mahasiswa dan alumni.
+   - Pengiriman email dibuat aman: jika SMTP/email gagal, proses utama tetap berjalan.
+
+4. SSO controller
+   - SSO controller memakai versi aman dengan fallback session Odoo 17.
+   - SIMPTT dicek aman agar tidak error 500 jika schema/tabel tidak tersedia di lokal.
+
+System Parameters opsional:
+- mentorize.sso.reset_password_url = https://service.unisayogya.ac.id/sso/resetpassword.php

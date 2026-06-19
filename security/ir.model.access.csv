@@ -1,14 +1,34 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mentorize_mahasiswa,mentorize.mahasiswa,model_mentorize_mahasiswa,,1,1,1,1
-access_mentorize_alumni,mentorize.alumni,model_mentorize_alumni,,1,1,1,1
-access_mentorize_request,mentorize.request,model_mentorize_request,,1,1,1,1
-access_mentorize_matchmaking,mentorize.matchmaking,model_mentorize_matchmaking,,1,1,1,1
-access_mentorize_skill,mentorize.skill,model_mentorize_skill,,1,1,1,1
-access_mentorize_minat,mentorize.minat,model_mentorize_minat,,1,1,1,1
-access_mentorize_experience,mentorize.experience,model_mentorize_experience,,1,1,1,1
-access_mentorize_session,mentorize.session,model_mentorize_session,,1,1,1,1
-access_mentorize_feedback,mentorize.feedback,model_mentorize_feedback,,1,1,1,1
-access_mentorize_roomchat,mentorize.roomchat,model_mentorize_roomchat,,1,1,1,1
-access_mentorize_message,mentorize.message,model_mentorize_message,,1,1,1,1
-access_mahasiswa_public,access_mahasiswa_public,model_mentorize_mahasiswa,base.group_public,1,0,1,0
-access_alumni_public,access_alumni_public,model_mentorize_alumni,base.group_public,1,0,1,0
+access_mentorize_minat_user,mentorize.minat user,model_mentorize_minat,,1,0,0,0
+access_mentorize_skill_user,mentorize.skill user,model_mentorize_skill,,1,0,0,0
+access_mentorize_experience_user,mentorize.experience user,model_mentorize_experience,,1,1,1,0
+access_mentorize_mahasiswa_user,mentorize.mahasiswa user,model_mentorize_mahasiswa,,1,1,1,0
+access_mentorize_alumni_user,mentorize.alumni user,model_mentorize_alumni,,1,1,1,0
+access_mentorize_request_user,mentorize.request user,model_mentorize_request,,1,1,1,0
+access_mentorize_session_user,mentorize.session user,model_mentorize_session,,1,1,1,0
+access_mentorize_roomchat_user,mentorize.roomchat user,model_mentorize_roomchat,,1,1,1,0
+access_mentorize_message_user,mentorize.message user,model_mentorize_message,,1,1,1,0
+access_mentorize_feedback_user,mentorize.feedback user,model_mentorize_feedback,,1,1,1,0
+access_mentorize_notification_user,mentorize.notification user,model_mentorize_notification,,1,1,1,0
+access_mentorize_minat_admin,mentorize.minat admin,model_mentorize_minat,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_skill_admin,mentorize.skill admin,model_mentorize_skill,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_experience_admin,mentorize.experience admin,model_mentorize_experience,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_mahasiswa_admin,mentorize.mahasiswa admin,model_mentorize_mahasiswa,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_alumni_admin,mentorize.alumni admin,model_mentorize_alumni,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_request_admin,mentorize.request admin,model_mentorize_request,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_session_admin,mentorize.session admin,model_mentorize_session,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_roomchat_admin,mentorize.roomchat admin,model_mentorize_roomchat,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_message_admin,mentorize.message admin,model_mentorize_message,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_feedback_admin,mentorize.feedback admin,model_mentorize_feedback,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_notification_admin,mentorize.notification admin,model_mentorize_notification,mentorize.group_mentorize_admin,1,1,1,1
+access_res_lang_public_mentorize,access.res.lang.public.mentorize,base.model_res_lang,base.group_public,1,0,0,0
+access_res_lang_portal_mentorize,access.res.lang.portal.mentorize,base.model_res_lang,base.group_portal,1,0,0,0
+access_res_lang_all_mentorize,access.res.lang.all.mentorize,base.model_res_lang,,1,0,0,0
+access_mentorize_activity_user,mentorize.activity user,model_mentorize_activity,,1,1,1,0
+access_mentorize_pelanggaran_user,mentorize.pelanggaran user,model_mentorize_pelanggaran,,1,1,1,0
+access_mentorize_laporan_user,mentorize.laporan user,model_mentorize_laporan,,1,0,0,0
+access_mentorize_activity_admin,mentorize.activity admin,model_mentorize_activity,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_pelanggaran_admin,mentorize.pelanggaran admin,model_mentorize_pelanggaran,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_laporan_admin,mentorize.laporan admin,model_mentorize_laporan,mentorize.group_mentorize_admin,1,1,1,1
+access_mentorize_matchmaking_user,mentorize.matchmaking user,model_mentorize_matchmaking,,1,1,1,0
+access_mentorize_matchmaking_admin,mentorize.matchmaking admin,model_mentorize_matchmaking,mentorize.group_mentorize_admin,1,1,1,1

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="page_settings" name="Pengaturan Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-page-hero mtz-animate-up">
+        <div>
+          <span class="mtz-kicker">Pengaturan</span>
+          <h1>Pengaturan Akun</h1>
+          <p>Kelola informasi akun, foto profil, email notifikasi, dan keamanan akun.</p>
+        </div>
+      </section>
+      <t t-if="success"><div class="mtz-alert success">Pengaturan berhasil disimpan.</div></t>
+      <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+      <div class="mtz-settings-grid">
+        <form action="/settings/account" method="post" enctype="multipart/form-data" class="mtz-card mtz-form">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+          <div class="mtz-card-head"><div><h2>Informasi Akun</h2><p>Email ini dipakai untuk notifikasi Mentorize, bukan untuk login SSO.</p></div></div>
+          <div class="mtz-profile-mini"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (user.id, user.write_date or user.id)"/><div><strong t-esc="user.name"/><p><t t-esc="user.login"/> • <t t-esc="user.mentorize_role or 'user'"/></p></div></div>
+          <label>Foto Profil<input type="file" name="photo" accept="image/*"/></label>
+          <label>Nama <span class="mtz-required">*</span><input type="text" name="name" t-att-value="user.name" required="required"/></label>
+          <label>Email Notifikasi <span class="mtz-required">*</span><input type="email" name="email" required="required" t-att-value="user.email or ''" placeholder="nama@email.com"/></label>
+          <label class="mtz-check"><input type="checkbox" name="mentorize_notification_email" t-att-checked="user.mentorize_notification_email and 'checked' or None"/> Aktifkan notifikasi email jika tersedia</label>
+          <button class="mtz-btn primary" type="submit">Simpan Akun</button>
+        </form>
+
+        <t t-if="is_sso_account">
+          <section class="mtz-card mtz-form mtz-security-sso-card">
+            <div class="mtz-card-head"><div><h2>Keamanan</h2><p>Akun mahasiswa dan alumni menggunakan SSO UNISA.</p></div></div>
+            <div class="mtz-sso-security-box">
+              <div class="mtz-sso-security-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3Zm-1 14-3.5-3.5 1.42-1.42L11 13.16l4.58-4.58L17 10l-6 6Z"/></svg>
+              </div>
+              <h3>Password dikelola oleh SSO</h3>
+              <p>Perubahan atau reset password tidak dilakukan di Mentorize. Silakan gunakan layanan reset password resmi SSO Universitas ‘Aisyiyah Yogyakarta.</p>
+              <a class="mtz-btn primary full" t-att-href="sso_reset_password_url" target="_blank" rel="noopener">Reset Password SSO</a>
+            </div>
+          </section>
+        </t>
+        <t t-else="">
+          <form action="/settings/password" method="post" class="mtz-card mtz-form">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div class="mtz-card-head"><h2>Keamanan</h2></div>
+            <label>Password Lama<input type="password" name="old_password" required="required"/></label>
+            <label>Password Baru<input type="password" name="new_password" required="required"/></label>
+            <label>Konfirmasi Password Baru<input type="password" name="confirm_password" required="required"/></label>
+            <button class="mtz-btn primary" type="submit">Ubah Password</button>
+          </form>
+        </t>
+      </div>
+    </t>
+  </template>
+</odoo>

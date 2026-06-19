@@ -1,0 +1,51 @@
+CATATAN UPDATE BESAR MENTORIZE
+
+Perubahan yang dikerjakan pada versi ini:
+
+1. Chat / Pesan
+- Mahasiswa dan alumni bisa saling kirim teks, foto, dan file.
+- Ukuran lampiran chat maksimal 2 MB.
+- Format yang diizinkan: jpg, png, webp, pdf, doc/docx, xls/xlsx, ppt/pptx, txt.
+- Foto tampil sebagai preview gambar di bubble pesan.
+- File non-gambar tampil sebagai kartu lampiran dengan tombol buka/download.
+- Lampiran chat disimpan sebagai ir.attachment private.
+- Lampiran hanya bisa dibuka oleh peserta room chat atau admin.
+
+2. Foto Profil
+- Upload foto profil mahasiswa/alumni/settings divalidasi maksimal 2 MB.
+- Format foto profil yang diizinkan: jpg, png, webp.
+- Foto profil tetap disimpan di res.users.image_1920.
+- Tampilan profil, mentor, dashboard, chat, riwayat, dan admin diarahkan memakai gambar dari res.users agar foto yang diupload terlihat oleh akun lain.
+
+3. Laporan ke Admin
+- Deskripsi laporan wajib diisi.
+- Laporan bisa menyertakan gambar bukti.
+- Gambar bukti maksimal 2 MB.
+- Format bukti: jpg, png, webp.
+- Bukti laporan disimpan sebagai ir.attachment private.
+- Bukti hanya bisa dilihat oleh pelapor dan admin.
+
+4. Bahasa Tampilan
+- Istilah UI utama diseragamkan ke Bahasa Indonesia.
+- Dashboard menjadi Beranda, Chat menjadi Pesan, Request menjadi Pengajuan, Login menjadi Masuk, Register menjadi Daftar, Logout menjadi Keluar, Settings menjadi Pengaturan, Feedback menjadi Umpan Balik, User menjadi Pengguna.
+- Route teknis tetap dipertahankan supaya tidak merusak link lama.
+
+5. Sesi Mentoring 2 x 24 Jam
+- Sesi yang sudah disetujui masuk status Terjadwal.
+- Chat baru aktif otomatis saat tanggal mentoring tiba.
+- Cron Odoo mengecek sesi setiap 10 menit.
+- Saat sesi mulai, batas akhir otomatis dihitung 2 x 24 jam.
+- Setelah 2 x 24 jam, status sesi menjadi Waktu Habis dan chat terkunci.
+- User bisa mengajukan tambah waktu atau penyelesaian sesi.
+- Pengajuan tambah waktu harus memilih tanggal baru dan dicek agar tidak bentrok dengan kalender mentor.
+- Alumni bisa menyetujui atau menolak pengajuan tambah waktu.
+- Jadwal mentor dikunci untuk sesi yang sudah disetujui/terjadwal/aktif/menunggu tambah waktu.
+
+6. Kalender Mentor
+- Kalender dikunci berdasarkan alumni/mentor.
+- Pending request belum mengunci jadwal.
+- Jadwal dianggap bentrok jika rentang 2 x 24 jam saling beririsan dengan sesi mentor yang sudah disetujui.
+
+Catatan:
+- Integrasi SSO UNISA belum dimasukkan karena masih membutuhkan kepastian struktur data status mahasiswa aktif/nonaktif/lulus di database kampus.
+- Setelah replace module, wajib upgrade modul dan restart Odoo.

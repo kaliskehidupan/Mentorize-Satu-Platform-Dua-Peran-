@@ -1,0 +1,19 @@
+CATATAN MENTORIZE FINAL
+=======================
+
+Base utama:
+- mentorize_terbaru.zip
+
+Pelengkap yang diintegrasikan:
+- mentorize_main.zip untuk matchmaking, sesi mentoring, reschedule, selesai/berhenti mentoring.
+- mentorize_admin.zip untuk admin dashboard, laporan, aktivitas, dan kelola user.
+
+Validasi yang dilakukan:
+- Python compile check: OK
+- XML parse check: OK
+- Manifest parse check: OK
+- File sampah .git, __pycache__, *.pyc, logs dibersihkan.
+
+Catatan kejujuran:
+- Validasi dilakukan secara statis di lingkungan file. Aku tidak menjalankan Odoo server langsung di sini, jadi tetap perlu uji install/upgrade di Odoo lokal kamu.
+- Jika database lama sudah memiliki data/field lama, upgrade module wajib dilakukan agar field baru dibuat di PostgreSQL.

@@ -1,0 +1,37 @@
+CATATAN UPDATE FIX CHAT, KALENDER, FOTO PROFIL, DAN ADMIN UI
+
+Perubahan utama:
+1. Chat yang sudah waktunya aktif tidak lagi hanya bergantung pada cron.
+   - Saat membuka Beranda/Pesan, sistem menjalankan sinkronisasi sesi.
+   - Sesi scheduled yang tanggalnya sudah tiba otomatis menjadi active.
+   - Sesi active yang sudah melewati 2 x 24 jam otomatis menjadi time_expired.
+
+2. Parsing tanggal mentoring diperbaiki.
+   - Input kalender dari browser dianggap sebagai waktu lokal user.
+   - Sistem menyimpan datetime ke format UTC Odoo.
+   - Digunakan pada pengajuan mentoring, tambah waktu, dan ubah jadwal.
+
+3. Kalender pengajuan diganti custom calendar Mentorize.
+   - Hari ini, tanggal tersedia, tanggal dipilih, tanggal lewat, dan tanggal terpakai punya warna berbeda.
+   - Tanggal yang sudah dipakai mentor ditandai merah dan tidak bisa dipilih.
+   - Kalender digunakan di pengajuan mentoring, detail mentor, tambah waktu, dan ubah jadwal.
+
+4. Endpoint jadwal terpakai mentor ditambahkan.
+   - /mentors/<mentor_id>/busy-dates
+   - Mendukung exclude_session_id untuk tambah waktu/ubah jadwal.
+
+5. Foto profil lintas akun diperkuat.
+   - Tampilan mentor/mahasiswa/alumni memakai foto dari res.users.
+   - URL gambar diberi cache buster berdasarkan write_date agar foto terbaru lebih cepat muncul.
+
+6. Admin sidebar dirapikan.
+   - Emoji sidebar diganti inline SVG icon.
+   - Tombol Ke Website di sidebar admin dihapus.
+   - Teks Monitoring Mentoring diganti Pantau Mentoring.
+
+7. Pesan chat terkunci dibuat lebih jelas.
+   - Menampilkan alasan spesifik: sesi belum dimulai, waktu habis, menunggu tambah waktu, selesai, dll.
+
+Catatan:
+- Setelah replace folder, wajib upgrade module dan hard refresh Ctrl+F5.
+- Cron tetap ada, tetapi sekarang sudah ada fallback saat halaman dibuka.

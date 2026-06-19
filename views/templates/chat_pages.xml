@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="page_chat" name="Pesan Mentorize">
+    <t t-call="mentorize.app_layout">
+      <section class="mtz-hero-banner mtz-page-hero mtz-animate-up"><div><span class="mtz-kicker">Pesan Mentoring</span><h1>Ruang Pesan Mentoring</h1><p>Pesan aktif saat sesi mentoring berjalan dan otomatis terkunci ketika waktu habis, sesi selesai, atau mentoring dihentikan.</p></div></section>
+      <t t-if="error"><div class="mtz-alert error" t-esc="error"/></t>
+      <t t-if="success"><div class="mtz-alert success" t-esc="success"/></t>
+
+      <div class="mtz-chat-grid final-chat" id="mtz-chat-app" t-att-data-room-id="selected_room.id if selected_room else 0" t-att-data-user-id="user.id" t-att-data-can-chat="1 if can_chat else 0">
+        <aside class="mtz-chat-sidebar mtz-profile-chat-panel">
+          <t t-if="selected_room and other_user">
+            <img class="mtz-profile-photo" t-att-src="'/web/image/res.users/%s/image_1920?unique=%s' % (other_user.id, other_user.write_date or other_user.id)"/>
+            <h2 t-esc="other_user.name"/>
+            <p t-esc="other_user.email or other_user.login"/>
+            <span class="mtz-pill success">Akun Aktif</span>
+            <div class="mtz-profile-meta" t-if="selected_room.alumni_user_id.id == other_user.id">
+              <div><small>Peran</small><span>Alumni / Mentor</span></div>
+              <div><small>Pekerjaan</small><span t-esc="selected_room.request_id.alumni_id.pekerjaan or '-'"/></div>
+              <div><small>Instansi</small><span t-esc="selected_room.request_id.alumni_id.tempat_bekerja or '-'"/></div>
+              <div><small>Rating</small><span>⭐ <t t-esc="selected_room.request_id.alumni_id.rating"/></span></div>
+            </div>
+            <div class="mtz-profile-meta" t-if="selected_room.mahasiswa_user_id.id == other_user.id">
+              <div><small>Peran</small><span>Mahasiswa / Mentee</span></div>
+              <div><small>NIM</small><span t-esc="selected_room.request_id.mahasiswa_id.nim or '-'"/></div>
+              <div><small>Jurusan</small><span t-esc="selected_room.request_id.mahasiswa_id.jurusan or '-'"/></div>
+              <div><small>Tujuan</small><span t-esc="selected_room.request_id.mahasiswa_id.tujuan_karir or '-'"/></div>
+            </div>
+          </t>
+          <t t-else=""><div class="mtz-empty-state small">Pilih percakapan untuk melihat profil.</div></t>
+          <hr class="mtz-soft-line"/>
+          <h3>Percakapan</h3>
+          <div class="mtz-room-list">
+            <t t-if="rooms">
+              <t t-foreach="rooms" t-as="room">
+                <a t-att-class="'mtz-room-item active' if selected_room and room.id == selected_room.id else 'mtz-room-item'" t-att-href="'/chat?room_id=%s' % room.id">
+                  <img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % ((room.alumni_user_id.id if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.id), ((room.alumni_user_id.write_date if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.write_date) or (room.alumni_user_id.id if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.id)))"/>
+                  <div><strong t-esc="room.alumni_user_id.name if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.name"/><p t-esc="room.request_id.topik or 'Mentoring'"/></div>
+                </a>
+              </t>
+            </t>
+            <t t-else=""><div class="mtz-empty-state small">Belum ada percakapan.</div></t>
+          </div>
+        </aside>
+
+        <section class="mtz-chat-main">
+          <t t-if="selected_room">
+            <div class="mtz-chat-title">
+              <div><h2 t-esc="other_user.name if other_user else 'Pesan Mentoring'"/><p><t t-esc="selected_room.request_id.topik"/> • <t t-esc="selected_room.session_id.status if selected_room.session_id else selected_room.status"/></p></div>
+              <span t-att-class="'mtz-pill success' if can_chat else 'mtz-pill warning'" t-esc="'Pesan Aktif' if can_chat else 'Pesan Terkunci'"/>
+            </div>
+            <div class="mtz-chat-messages" id="mtz-chat-messages">
+              <t t-foreach="selected_room.message_ids" t-as="msg">
+                <div t-att-class="'mtz-message me' if msg.sender_id.id == user.id else 'mtz-message other'" t-att-data-message-id="msg.id">
+                  <p t-if="msg.isi_pesan" t-esc="msg.isi_pesan"/>
+                  <t t-if="msg.attachment_id">
+                    <a t-if="msg.attachment_mimetype and msg.attachment_mimetype.startswith('image/')" t-att-href="'/chat/attachment/%s' % msg.id" target="_blank" class="mtz-chat-image-link">
+                      <img t-att-src="'/chat/attachment/%s' % msg.id" t-att-alt="msg.attachment_name or 'Gambar chat'"/>
+                    </a>
+                    <a t-else="" t-att-href="'/chat/attachment/%s' % msg.id" target="_blank" class="mtz-chat-file-link">
+                      <span class="mtz-file-icon">FILE</span>
+                      <strong t-esc="msg.attachment_name or 'Lampiran'"/>
+                      <small><t t-esc="round((msg.attachment_size or 0) / 1024.0, 1)"/> KB</small>
+                    </a>
+                  </t>
+                  <span><t t-esc="msg.sender_id.name"/> • <t t-esc="fmt_time(msg.waktu_kirim) if msg.waktu_kirim else ''"/></span>
+                </div>
+              </t>
+            </div>
+            <form t-if="can_chat" class="mtz-chat-form" id="mtz-chat-form" enctype="multipart/form-data">
+              <input type="text" id="mtz-chat-text" name="message" placeholder="Tulis pesan..." autocomplete="off"/>
+              <label class="mtz-chat-file-picker" title="Kirim foto atau file maksimal 2 MB">
+                📎
+                <input type="file" id="mtz-chat-attachment" name="attachment" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"/>
+              </label>
+              <button class="mtz-btn primary" type="submit">Kirim</button>
+            </form>
+            <div t-if="can_chat" class="mtz-chat-form-note">Bisa kirim foto atau file. Maksimal 2 MB.</div>
+            <div t-else="" class="mtz-chat-locked"><strong>Pesan sedang terkunci.</strong><p t-esc="chat_lock_message or 'Pesan lama tetap bisa dibaca, tetapi tidak bisa mengirim pesan baru karena sesi belum aktif, waktu 2 x 24 jam sudah habis, atau mentoring sudah selesai.'"/></div>
+          </t>
+          <t t-else=""><div class="mtz-chat-empty"><h2>Belum ada ruang pesan</h2><p>Ruang pesan akan muncul setelah alumni menerima pengajuan mentoring dan sesi terjadwal.</p></div></t>
+        </section>
+
+        <aside class="mtz-chat-detail">
+          <h2>Detail Mentoring</h2>
+          <t t-if="selected_room">
+            <div class="mtz-detail-box"><span>Topik</span><strong t-esc="selected_room.request_id.topik"/></div>
+            <div class="mtz-detail-box"><span>Deskripsi</span><p t-esc="selected_room.request_id.deskripsi or '-'"/></div>
+            <div class="mtz-detail-box"><span>Jadwal</span><strong t-esc="fmt_dt(selected_room.session_id.tanggal_mentoring) if selected_room.session_id and selected_room.session_id.tanggal_mentoring else '-'"/></div>
+            <div class="mtz-detail-box"><span>Mode</span><strong t-esc="selected_room.session_id.mode if selected_room.session_id else '-'"/></div>
+            <div class="mtz-detail-box"><span>Status Pengajuan</span><strong t-esc="selected_room.request_id.status"/></div>
+            <div class="mtz-detail-box"><span>Status Sesi</span><strong t-esc="selected_room.session_id.status if selected_room.session_id else selected_room.status"/></div>
+            <div t-if="selected_room.session_id" class="mtz-detail-box"><span>Mulai</span><strong t-esc="fmt_dt(selected_room.session_id.tanggal_mentoring) if selected_room.session_id.tanggal_mentoring else '-'"/></div>
+            <div t-if="selected_room.session_id" class="mtz-detail-box"><span>Batas 2 x 24 Jam</span><strong t-esc="fmt_dt(selected_room.session_id.expired_at) if selected_room.session_id.expired_at else 'Aktif otomatis pada jadwal mulai'"/></div>
+
+            <t t-if="selected_room.session_id and selected_room.session_id.status == 'time_expired'">
+              <div class="mtz-alert warning"><strong>Waktu sesi sudah habis.</strong><p>Ajukan tambah waktu jika mentoring belum selesai, atau ajukan penyelesaian sesi.</p></div>
+              <form t-att-action="'/session/%s/extension/request' % selected_room.session_id.id" method="post" class="mtz-form compact-form">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <label>Jadwal Tambahan
+                  <div class="mtz-calendar-field" t-att-data-busy-url="'/mentors/%s/busy-dates?exclude_session_id=%s' % (selected_room.request_id.alumni_id.id, selected_room.session_id.id)">
+                    <input type="hidden" name="extension_datetime" required="required"/>
+                    <button type="button" class="mtz-calendar-trigger" data-mtz-calendar-open="1">Pilih jadwal tambahan</button>
+                    <small class="mtz-calendar-value">Belum ada jadwal dipilih</small>
+                  </div>
+                </label>
+                <label>Alasan Tambah Waktu<textarea name="extension_note" rows="3" placeholder="Jelaskan alasan membutuhkan tambahan waktu" required="required"></textarea></label>
+                <button class="mtz-btn primary small full" type="submit">Ajukan Tambah Waktu</button>
+              </form>
+              <a t-if="current_role == 'mahasiswa'" class="mtz-btn soft full" t-att-href="'/session/%s/finish' % selected_room.session_id.id">Ajukan Penyelesaian Sesi</a>
+            </t>
+
+            <t t-if="selected_room.session_id and selected_room.session_id.status == 'extension_pending'">
+              <div class="mtz-alert warning"><strong>Menunggu persetujuan tambah waktu.</strong><p>Jadwal yang diajukan: <t t-esc="fmt_dt(selected_room.session_id.extension_requested_datetime) if selected_room.session_id.extension_requested_datetime else '-'"/></p></div>
+              <t t-if="current_role == 'alumni'">
+                <a class="mtz-btn primary full" t-att-href="'/session/%s/extension/approve' % selected_room.session_id.id">Setujui Tambah Waktu</a>
+                <a class="mtz-btn danger-soft full" t-att-href="'/session/%s/extension/reject' % selected_room.session_id.id">Tolak Tambah Waktu</a>
+              </t>
+            </t>
+
+            <t t-if="selected_room.session_id and can_chat">
+              <a t-if="current_role == 'mahasiswa'" class="mtz-btn primary full" t-att-href="'/session/%s/finish' % selected_room.session_id.id">Ajukan Selesai Mentoring</a>
+              <form t-att-action="'/session/%s/reschedule' % selected_room.session_id.id" method="post" class="mtz-form compact-form">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <label>Ubah Jadwal
+                  <div class="mtz-calendar-field" t-att-data-busy-url="'/mentors/%s/busy-dates?exclude_session_id=%s' % (selected_room.request_id.alumni_id.id, selected_room.session_id.id)">
+                    <input type="hidden" name="tanggal_mentoring" required="required"/>
+                    <button type="button" class="mtz-calendar-trigger" data-mtz-calendar-open="1">Pilih jadwal baru</button>
+                    <small class="mtz-calendar-value">Belum ada jadwal dipilih</small>
+                  </div>
+                </label>
+                <label>Alasan<input type="text" name="reschedule_reason" placeholder="Alasan singkat"/></label>
+                <button class="mtz-btn soft small full" type="submit">Ubah Jadwal</button>
+              </form>
+              <form t-att-action="'/session/%s/stop/request' % selected_room.session_id.id" method="post" class="mtz-form compact-form">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <label>Alasan Berhenti<textarea name="stop_reason" rows="3" placeholder="Jelaskan alasan berhenti mentoring" required="required"></textarea></label>
+                <button class="mtz-btn danger-soft small full" type="submit">Ajukan Berhenti</button>
+              </form>
+            </t>
+
+            <t t-if="selected_room.session_id and selected_room.session_id.status == 'stop_requested' and selected_room.session_id.stop_requested_by.id != user.id">
+              <a class="mtz-btn danger full" t-att-href="'/session/%s/stop/approve' % selected_room.session_id.id">Setujui Berhenti</a>
+            </t>
+
+            <hr class="mtz-soft-line"/>
+            <h3>Laporkan ke Admin</h3>
+            <form action="/report/create" method="post" enctype="multipart/form-data" class="mtz-form compact-form">
+              <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+              <input type="hidden" name="dilaporkan_id" t-att-value="other_user.id if other_user else ''"/>
+              <input type="hidden" name="request_id" t-att-value="selected_room.request_id.id"/>
+              <input type="hidden" name="session_id" t-att-value="selected_room.session_id.id if selected_room.session_id else ''"/>
+              <label>Kategori<select name="kategori"><option value="perilaku">Perilaku</option><option value="jadwal">Jadwal</option><option value="chat">Pesan</option><option value="tidak_respon">Tidak Merespons</option><option value="teknis">Teknis</option><option value="lainnya">Lainnya</option></select></label>
+              <label>Judul<input type="text" name="judul" placeholder="Judul laporan" required="required"/></label>
+              <label>Deskripsi<textarea name="deskripsi" rows="3" placeholder="Jelaskan masalahnya" required="required"></textarea></label>
+              <label>Bukti Gambar<input type="file" name="bukti_gambar" accept="image/*"/></label>
+              <small class="mtz-form-note">Opsional. Format gambar JPG, PNG, atau WEBP. Maksimal 2 MB.</small>
+              <button class="mtz-btn soft small full" type="submit">Kirim Laporan</button>
+            </form>
+          </t>
+          <t t-else=""><div class="mtz-empty-state small">Detail mentoring akan muncul setelah memilih chat.</div></t>
+        </aside>
+      </div>
+    </t>
+  </template>
+</odoo>

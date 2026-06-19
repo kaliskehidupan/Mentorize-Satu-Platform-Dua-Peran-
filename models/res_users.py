@@ -1,5 +1,6 @@
 from odoo import models, fields
 
+
 class ResUsers(models.Model):
     _inherit = 'res.users'
 
@@ -8,6 +9,7 @@ class ResUsers(models.Model):
         ('alumni', 'Alumni'),
         ('admin', 'Admin Mentorize'),
     ], string='Role Mentorize')
+
     nim = fields.Char(string='NIM')
     kapa = fields.Char(string='KAPA')
     jurusan = fields.Char(string='Jurusan')
@@ -18,4 +20,9 @@ class ResUsers(models.Model):
         ('available', 'Tersedia'),
         ('busy', 'Sibuk'),
         ('offline', 'Offline'),
-    ], string='Ketersediaan', default='available')
+    ], string='Ketersediaan Legacy', default='available')
+    mentorize_notification_email = fields.Boolean(string='Email Notification Mentorize', default=True)
+
+    mentorize_block_reason = fields.Text(string='Alasan Nonaktif Mentorize')
+    mentorize_verified_at = fields.Datetime(string='Diverifikasi Pada')
+    mentorize_verified_by = fields.Many2one('res.users', string='Diverifikasi Oleh')
