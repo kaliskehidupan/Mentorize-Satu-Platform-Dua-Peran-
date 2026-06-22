@@ -1,0 +1,43 @@
+name: Deploy Mentorize to Production
+
+on:
+  push:
+    branches:
+      - Fix
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: |
+            echo "=== Mulai Deploy Mentorize ==="
+
+            # Pull code terbaru
+            cd /opt/odoo/mentorize
+            git pull origin Fix
+
+            # Stop Odoo
+            systemctl stop odoo17
+
+            # Upgrade module Mentorize
+            sudo -u odoo /opt/odoo/venv/bin/python /opt/odoo/odoo17/odoo-bin \
+              -c /etc/odoo17.conf \
+              -d Mentorize \
+              -u mentorize \
+              --stop-after-init
+
+            # Start Odoo kembali
+            systemctl start odoo17
+
+            echo "=== Deploy Selesai ==="
