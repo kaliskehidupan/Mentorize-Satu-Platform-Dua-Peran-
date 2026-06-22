@@ -5,7 +5,7 @@
       <section class="mtz-hero-banner mtz-animate-up">
         <div>
           <span class="mtz-kicker">Beranda Alumni</span>
-          <h1>Selamat datang, <t t-esc="user.name"/> </h1>
+          <h1>Selamat datang, <t t-esc="user.name"/>di mentorize </h1>
           <p>Kelola request mentoring, kalender sesi, chat, dan pengajuan akhir sesi.</p>
         </div>
         <a href="/chat" class="mtz-btn primary large">Buka Pesan</a>
