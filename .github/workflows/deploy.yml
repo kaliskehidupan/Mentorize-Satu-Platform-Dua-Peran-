@@ -23,7 +23,7 @@ jobs:
           script: |
             echo "=== Mulai Deploy Mentorize ==="
             cd /opt/odoo/mentorize
-            git pull origin Fix
+            git pull origin main
             systemctl stop odoo17
             sudo -u odoo /opt/odoo/venv/bin/python /opt/odoo/odoo17/odoo-bin \
               -c /etc/odoo17.conf \
