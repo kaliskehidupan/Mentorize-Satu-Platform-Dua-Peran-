@@ -20,15 +20,16 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          script: |
-            echo "=== Mulai Deploy Mentorize ==="
-            cd /opt/odoo/mentorize
-            git pull origin Fix
-            systemctl stop odoo17
-            sudo -u odoo /opt/odoo/venv/bin/python /opt/odoo/odoo17/odoo-bin \
-              -c /etc/odoo17.conf \
-              -d Mentorize \
-              -u mentorize \
-              --stop-after-init
-            systemctl start odoo17
-            echo "=== Deploy Selesai ==="
+        script: |
+          echo "=== Mulai Deploy Mentorize ==="
+          cd /opt/odoo/mentorize
+          git fetch origin
+          git reset --hard origin/Fix
+          systemctl stop odoo17
+          sudo -u odoo /opt/odoo/venv/bin/python /opt/odoo/odoo17/odoo-bin \
+            -c /etc/odoo17.conf \
+            -d Mentorize \
+            -u mentorize \
+            --stop-after-init
+          systemctl start odoo17
+          echo "=== Deploy Selesai ==="
