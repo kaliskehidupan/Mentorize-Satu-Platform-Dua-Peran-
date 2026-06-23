@@ -106,7 +106,7 @@
                 <label>Alasan Tambah Waktu<textarea name="extension_note" rows="3" placeholder="Jelaskan alasan membutuhkan tambahan waktu" required="required"></textarea></label>
                 <button class="mtz-btn primary small full" type="submit">Ajukan Tambah Waktu</button>
               </form>
-              <a t-if="current_role == 'mahasiswa'" class="mtz-btn soft full" t-att-href="'/session/%s/finish' % selected_room.session_id.id">Ajukan Penyelesaian Sesi</a>
+              <a t-if="current_role == 'mahasiswa'" class="mtz-btn soft full" style="margin-top: 15px;" t-att-href="'/session/%s/finish' % selected_room.session_id.id">Ajukan Penyelesaian Sesi</a>
             </t>
 
             <t t-if="selected_room.session_id and selected_room.session_id.status == 'extension_pending'">
