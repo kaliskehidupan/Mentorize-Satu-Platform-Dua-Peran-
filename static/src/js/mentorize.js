@@ -425,6 +425,48 @@
           })
           .catch(function () {});
       }
+
+      // Hapus satu notifikasi
+      var deleteBtn = ev.target.closest('.mtz-notif-delete-btn[data-notif-id]');
+      if (deleteBtn) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        var notifId = deleteBtn.getAttribute('data-notif-id');
+        var notifItem = deleteBtn.closest('.mtz-notif-item');
+        fetch('/notifications/delete', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'notif_id=' + encodeURIComponent(notifId),
+        }).then(function (resp) {
+          if (resp.ok && notifItem) {
+            notifItem.remove();
+            // Update badge
+            var remaining = qsa('.mtz-notif-item.unread').length;
+            qsa('.mtz-notif-badge').forEach(function (badge) {
+              if (remaining > 0) { badge.textContent = remaining; } else { badge.remove(); }
+            });
+            // Tampilkan placeholder jika kosong
+            var scroll = qs('.mtz-notif-scroll');
+            if (scroll && !qs('.mtz-notif-item', scroll)) {
+              scroll.innerHTML = '<div class="mtz-empty-small">Belum ada notifikasi.</div>';
+            }
+          }
+        }).catch(function () {});
+        return;
+      }
+
+      // Hapus semua notifikasi
+      if (ev.target.closest('[data-mtz-delete-all-notifications]')) {
+        ev.preventDefault();
+        fetch('/notifications/delete-all', { method: 'POST', credentials: 'same-origin' })
+          .then(function () {
+            var scroll = qs('.mtz-notif-scroll');
+            if (scroll) scroll.innerHTML = '<div class="mtz-empty-small">Belum ada notifikasi.</div>';
+            qsa('.mtz-notif-badge').forEach(function (badge) { badge.remove(); });
+          })
+          .catch(function () {});
+      }
     });
 
     document.addEventListener('submit', function (ev) {

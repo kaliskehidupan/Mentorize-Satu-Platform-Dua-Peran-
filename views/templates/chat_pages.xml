@@ -9,7 +9,7 @@
       <div class="mtz-chat-grid final-chat" id="mtz-chat-app" t-att-data-room-id="selected_room.id if selected_room else 0" t-att-data-user-id="user.id" t-att-data-can-chat="1 if can_chat else 0">
         <aside class="mtz-chat-sidebar mtz-profile-chat-panel">
           <t t-if="selected_room and other_user">
-            <img class="mtz-profile-photo" t-att-src="'/web/image/res.users/%s/image_1920?unique=%s' % (other_user.id, other_user.write_date or other_user.id)"/>
+            <img class="mtz-profile-photo" t-att-src="'/web/image/res.users/%s/image_1920?unique=%s' % (other_user.id, other_user.write_date or other_user.id)" onerror="this.onerror=null;this.src='/mentorize/static/src/img/logo_mentorize.jpeg';"/>
             <h2 t-esc="other_user.name"/>
             <p t-esc="other_user.email or other_user.login"/>
             <span class="mtz-pill success">Akun Aktif</span>
@@ -33,7 +33,7 @@
             <t t-if="rooms">
               <t t-foreach="rooms" t-as="room">
                 <a t-att-class="'mtz-room-item active' if selected_room and room.id == selected_room.id else 'mtz-room-item'" t-att-href="'/chat?room_id=%s' % room.id">
-                  <img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % ((room.alumni_user_id.id if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.id), ((room.alumni_user_id.write_date if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.write_date) or (room.alumni_user_id.id if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.id)))"/>
+                  <img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % ((room.alumni_user_id.id if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.id), ((room.alumni_user_id.write_date if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.write_date) or (room.alumni_user_id.id if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.id)))" onerror="this.onerror=null;this.src='/mentorize/static/src/img/logo_mentorize.jpeg';"/>
                   <div><strong t-esc="room.alumni_user_id.name if user.id == room.mahasiswa_user_id.id else room.mahasiswa_user_id.name"/><p t-esc="room.request_id.topik or 'Mentoring'"/></div>
                 </a>
               </t>
@@ -69,12 +69,12 @@
             <form t-if="can_chat" class="mtz-chat-form" id="mtz-chat-form" enctype="multipart/form-data">
               <input type="text" id="mtz-chat-text" name="message" placeholder="Tulis pesan..." autocomplete="off"/>
               <label class="mtz-chat-file-picker" title="Kirim foto atau file maksimal 2 MB">
-                📎
+                &#128206;
                 <input type="file" id="mtz-chat-attachment" name="attachment" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"/>
               </label>
               <button class="mtz-btn primary" type="submit">Kirim</button>
             </form>
-            <div t-if="can_chat" class="mtz-chat-form-note">Bisa kirim foto atau file. Maksimal 2 MB.</div>
+            <div t-if="can_chat" class="mtz-chat-form-note">Kirim foto atau file &#183; Maks. 2 MB</div>
             <div t-else="" class="mtz-chat-locked"><strong>Pesan sedang terkunci.</strong><p t-esc="chat_lock_message or 'Pesan lama tetap bisa dibaca, tetapi tidak bisa mengirim pesan baru karena sesi belum aktif, waktu 2 x 24 jam sudah habis, atau mentoring sudah selesai.'"/></div>
           </t>
           <t t-else=""><div class="mtz-chat-empty"><h2>Belum ada ruang pesan</h2><p>Ruang pesan akan muncul setelah alumni menerima pengajuan mentoring dan sesi terjadwal.</p></div></t>

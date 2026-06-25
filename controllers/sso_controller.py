@@ -542,6 +542,15 @@ def _log_activity_safe(controller, user, description='Login melalui SSO UNISA.')
 
 
 # ------------------------------------------------------------------
+# Helper error SSO
+# ------------------------------------------------------------------
+def _sso_error_redirect(message):
+    """Redirect ke halaman error SSO yang proper dengan tombol kembali."""
+    from urllib.parse import quote_plus
+    return request.redirect('/sso/error?msg=' + quote_plus(message), code=303, local=True)
+
+
+# ------------------------------------------------------------------
 # Controller route SSO
 # ------------------------------------------------------------------
 class MentorizeSsoController(MentorizeBaseController):
@@ -584,6 +593,13 @@ class MentorizeSsoController(MentorizeBaseController):
         _logger.warning('=== SSO SAFE FINAL CALLBACK 2026-06-09 KEBACA ===')
         return _handle_sso_callback(self, kwargs)
 
+    @http.route('/sso/error', type='http', auth='public', website=True, csrf=False, sitemap=False)
+    def sso_error_page(self, msg='', **kwargs):
+        """Menampilkan halaman error SSO dengan tombol kembali ke landing page."""
+        return request.render('mentorize.page_sso_error', {
+            'error_message': msg or 'Terjadi kesalahan saat proses masuk SSO.',
+        })
+
 
 def _handle_sso_callback(controller, kwargs):
     """Memproses callback SSO dan membuat session Odoo."""
@@ -592,14 +608,13 @@ def _handle_sso_callback(controller, kwargs):
 
     auth_code = kwargs.get('code')
     if not auth_code:
-        return request.make_response('Kode SSO tidak ditemukan.', status=403)
+        return _sso_error_redirect('Kode autentikasi SSO tidak ditemukan. Silakan coba login kembali.')
 
     client_id = _sso_client_id()
     client_secret = _sso_client_secret()
     if not client_secret:
-        return request.make_response(
-            'Client secret SSO belum diatur. Isi System Parameters: mentorize.sso.client_secret',
-            status=403,
+        return _sso_error_redirect(
+            'Konfigurasi SSO belum lengkap. Hubungi administrator sistem.'
         )
 
     redirect_uri = request.session.get('mentorize_sso_redirect_uri') or _sso_redirect_uri()
@@ -623,41 +638,40 @@ def _handle_sso_callback(controller, kwargs):
         _logger.info('SSO token response: %s', resp.text)
     except Exception as exc:
         _logger.exception('Gagal menghubungi server SSO: %s', exc)
-        return request.make_response('Gagal menghubungi server SSO.', status=403)
+        return _sso_error_redirect('Tidak dapat menghubungi server SSO. Periksa koneksi atau coba beberapa saat lagi.')
 
     if resp.status_code != 200:
-        return request.make_response('SSO gagal. Server SSO menolak pertukaran token.', status=403)
+        return _sso_error_redirect('Server SSO menolak permintaan login. Coba ulangi atau hubungi admin.')
 
     try:
         data = resp.json()
     except Exception:
-        return request.make_response('Response SSO tidak valid.', status=403)
+        return _sso_error_redirect('Respons dari server SSO tidak valid. Coba beberapa saat lagi.')
 
     isallowed = data.get('isallowed')
     if isallowed is not None and str(isallowed).lower() in ('false', '0', 'no', 'n'):
-        return request.make_response('Akun Anda tidak diizinkan masuk ke Mentorize oleh SSO.', status=403)
+        return _sso_error_redirect('Akun Anda tidak diizinkan masuk ke Mentorize oleh SSO. Hubungi admin kampus.')
 
     access_token = data.get('access_token')
     if not access_token:
-        return request.make_response('Access token SSO tidak ditemukan.', status=403)
+        return _sso_error_redirect('Token akses SSO tidak ditemukan. Coba login kembali.')
 
     claims = _extract_claims_from_jwt(access_token)
     _logger.info('JWT Claims: %s', claims)
 
     username = claims.get('sub') or data.get('username') or data.get('nim') or kwargs.get('username') or kwargs.get('nim')
     if not username:
-        return request.make_response('Username/NIM tidak ditemukan dari SSO.', status=403)
+        return _sso_error_redirect('Identitas pengguna tidak ditemukan dari SSO. Hubungi admin.')
     username = str(username).strip()
 
     role = _resolve_role_from_sso(username, kwargs, data, claims)
     if not role:
         kdstatus_info = _first_value(kwargs.get('kdstatus'), data.get('kdstatus'), claims.get('kdstatus'), '-')
         _logger.warning('SSO login ditolak karena kdstatus belum didukung. username=%s kdstatus=%s data=%s kwargs=%s', username, kdstatus_info, data, kwargs)
-        return request.make_response(
-            'Status akademik Anda belum didukung untuk masuk ke Mentorize. '
+        return _sso_error_redirect(
+            'Status akademik Anda (kdstatus: %s) belum didukung untuk masuk ke Mentorize. '
             'Hanya mahasiswa aktif (A) dan alumni/lulus (L) yang dapat masuk. '
-            'Silakan hubungi admin atau pihak kampus.',
-            status=403,
+            'Silakan hubungi admin atau pihak kampus.' % kdstatus_info
         )
 
     profile = _fetch_profile_from_database(username, role)
@@ -665,13 +679,13 @@ def _handle_sso_callback(controller, kwargs):
 
     user, create_error = _create_or_update_sso_user(username, role, profile)
     if create_error:
-        return request.make_response(create_error, status=403)
+        return _sso_error_redirect(create_error)
     if not user:
-        return request.make_response('Gagal membuat atau memperbarui user SSO.', status=403)
+        return _sso_error_redirect('Gagal membuat atau memperbarui akun SSO. Hubungi administrator.')
 
     uid = _authenticate_sso_user(user)
     if not uid:
-        return request.make_response('Gagal membuat session Odoo dari SSO.', status=403)
+        return _sso_error_redirect('Gagal membuat sesi login dari SSO. Coba ulangi login.')
 
     try:
         request.update_env(user=uid)

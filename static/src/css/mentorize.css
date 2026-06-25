@@ -670,3 +670,60 @@
 
 /* Required field marker and profile-completion guard UI */
 .mtz-required{color:#ef4444!important;font-weight:950;margin-left:4px}.mtz-form label .mtz-required,.mtz-select-section h3 .mtz-required{display:inline;font-size:1em}.mtz-profile-card .mtz-pill.warning{background:#fff7ed;color:#b45309}.mtz-alert.profile-lock{border-color:#fed7aa;background:#fff7ed;color:#9a3412}
+
+/* ================= UPDATE JUNI 2026: 8 Perbaikan ================= */
+
+/* Fix 1: Bintang/rating profil alumni inline (bukan di bawah tulisan) */
+.mtz-user-btn{display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
+.mtz-user-btn span{display:inline-flex;align-items:center;gap:4px}
+.mtz-profile-rating-inline{display:inline-flex;align-items:center;gap:4px;font-weight:950;color:#a86a00}
+.mtz-profile-rating-inline .mtz-star{font-size:13px;line-height:1}
+
+/* Fix 2: Notifikasi dropdown – maks 4 item tampil, sisanya scroll */
+.mtz-notif-scroll{max-height:264px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--mtz-line) transparent}
+.mtz-notif-scroll::-webkit-scrollbar{width:4px}
+.mtz-notif-scroll::-webkit-scrollbar-track{background:transparent}
+.mtz-notif-scroll::-webkit-scrollbar-thumb{background:var(--mtz-line);border-radius:4px}
+
+/* Fix 3: Hapus notifikasi – tombol hapus per item dan hapus semua */
+.mtz-notif-head-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.mtz-link-btn-danger{color:var(--mtz-danger)!important}
+.mtz-link-btn-danger:hover{color:#c73333!important}
+.mtz-notif-item{display:grid;grid-template-columns:12px 1fr auto;gap:8px;padding:11px 12px;border-radius:14px;align-items:start}
+.mtz-notif-content{display:block;text-decoration:none;color:var(--mtz-text);min-width:0}
+.mtz-notif-content strong{display:block;font-weight:900;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mtz-notif-content p{margin:3px 0 0;color:var(--mtz-muted);font-size:12px;line-height:1.4;white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.mtz-notif-delete-btn{border:0;background:transparent;color:var(--mtz-muted);cursor:pointer;font-size:14px;padding:2px 4px;border-radius:8px;line-height:1;transition:.15s;flex:0 0 auto;margin-top:2px}
+.mtz-notif-delete-btn:hover{background:#fff0f0;color:var(--mtz-danger)}
+
+/* Fix 5 & 6: Area chat scroll fixed height + teks 2MB tidak nabrak */
+.mtz-chat-main{display:flex;flex-direction:column;padding:0;overflow:hidden}
+.mtz-chat-messages{flex:1;min-height:200px;max-height:420px;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(#fbfffe,#fff);scrollbar-width:thin;scrollbar-color:var(--mtz-line) transparent}
+.mtz-chat-messages::-webkit-scrollbar{width:4px}
+.mtz-chat-messages::-webkit-scrollbar-track{background:transparent}
+.mtz-chat-messages::-webkit-scrollbar-thumb{background:var(--mtz-line);border-radius:4px}
+.mtz-chat-form{padding:12px 16px;border-top:1px solid var(--mtz-line);display:grid;grid-template-columns:1fr auto auto;gap:9px;align-items:center;flex:0 0 auto}
+.mtz-chat-form input{border:1px solid var(--mtz-line);border-radius:16px;padding:12px 15px;font-family:inherit;font-size:14px}
+.mtz-chat-form-note{flex:0 0 auto;padding:5px 16px 10px;font-size:12px;color:var(--mtz-muted);font-weight:800;line-height:1.5;border-top:0;background:transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Fix 7: Banner profil belum lengkap */
+.mtz-profile-incomplete-banner{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#fff8e6,#fffbf0);border:1px solid #fddfa0;border-radius:18px;padding:13px 18px;margin:14px 0;font-weight:850;color:#8a5c00;box-shadow:0 8px 24px rgba(248,180,20,.12)}
+.mtz-profile-incomplete-icon{font-size:18px;flex:0 0 auto}
+.mtz-profile-incomplete-banner span:last-of-type{flex:1}
+.mtz-profile-incomplete-link{margin-left:auto;flex:0 0 auto;background:var(--mtz-warning);color:#fff;border-radius:12px;padding:8px 14px;font-weight:950;font-size:13px;white-space:nowrap;transition:.18s}
+.mtz-profile-incomplete-link:hover{background:#d9922c;transform:translateY(-1px)}
+@media(max-width:640px){.mtz-profile-incomplete-banner{flex-wrap:wrap}.mtz-profile-incomplete-link{width:100%;text-align:center}}
+
+/* Fix 8: Halaman SSO Error */
+.mtz-sso-error-card{background:white;border:1px solid var(--mtz-line);border-radius:28px;padding:38px 36px;box-shadow:0 30px 80px rgba(20,51,49,.11);margin:auto;width:min(520px,96vw);text-align:center;display:grid;gap:16px}
+.mtz-sso-error-card .mtz-brand.center-brand{justify-content:center;margin-bottom:8px}
+.mtz-sso-error-icon{width:72px;height:72px;border-radius:24px;background:#fff3f0;display:grid;place-items:center;margin:0 auto}
+.mtz-sso-error-icon svg{width:36px;height:36px;fill:var(--mtz-danger)}
+.mtz-sso-error-card h1{font-size:28px;letter-spacing:-.8px;color:var(--mtz-navy);margin:0}
+.mtz-sso-error-msg{color:var(--mtz-muted);font-size:15px;line-height:1.6;margin:0;background:#fff8f8;border:1px solid #ffd3d3;border-radius:14px;padding:14px 16px;text-align:left}
+.mtz-sso-error-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.mtz-sso-error-actions .mtz-btn{gap:8px}
+.mtz-sso-error-actions .mtz-btn svg{fill:currentColor}
+.mtz-sso-error-hint{font-size:13px;color:var(--mtz-muted);margin:0}
+.mtz-sso-error-hint a{color:var(--mtz-primary-dark);font-weight:900}
+.mtz-sso-error-hint a:hover{text-decoration:underline}

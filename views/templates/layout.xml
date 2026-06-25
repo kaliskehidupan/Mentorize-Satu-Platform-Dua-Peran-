@@ -71,11 +71,25 @@
                       <t t-if="unread_count"><em class="mtz-notif-badge" t-esc="unread_count"/></t>
                     </button>
                     <div class="mtz-dropdown mtz-notif-dropdown" id="mtz-notifications">
-                      <div class="mtz-dropdown-head"><strong>Notifikasi</strong><button type="button" class="mtz-link-btn" data-mtz-read-notifications="1">Tandai dibaca</button></div>
-                      <t t-if="notifications">
-                        <t t-foreach="notifications" t-as="notif"><a t-att-href="notif.url or '#'" t-att-class="'mtz-notif-item unread' if not notif.is_read else 'mtz-notif-item'"><span class="mtz-notif-dot"></span><div><strong t-esc="notif.title"/><p t-esc="notif.message"/></div></a></t>
-                      </t>
-                      <t t-else=""><div class="mtz-empty-small">Belum ada notifikasi.</div></t>
+                      <div class="mtz-dropdown-head">
+                        <strong>Notifikasi</strong>
+                        <div class="mtz-notif-head-actions">
+                          <button type="button" class="mtz-link-btn" data-mtz-read-notifications="1">Tandai dibaca</button>
+                          <button type="button" class="mtz-link-btn mtz-link-btn-danger" data-mtz-delete-all-notifications="1">Hapus semua</button>
+                        </div>
+                      </div>
+                      <div class="mtz-notif-scroll">
+                        <t t-if="notifications">
+                          <t t-foreach="notifications" t-as="notif">
+                            <div t-att-class="'mtz-notif-item unread' if not notif.is_read else 'mtz-notif-item'" t-att-data-notif-id="notif.id">
+                              <span class="mtz-notif-dot"></span>
+                              <a t-att-href="notif.url or '#'" class="mtz-notif-content"><strong t-esc="notif.title"/><p t-esc="notif.message"/></a>
+                              <button type="button" class="mtz-notif-delete-btn" t-att-data-notif-id="notif.id" aria-label="Hapus notifikasi">&#x2715;</button>
+                            </div>
+                          </t>
+                        </t>
+                        <t t-else=""><div class="mtz-empty-small">Belum ada notifikasi.</div></t>
+                      </div>
                     </div>
                   </div>
                   <div class="mtz-user-wrap">
@@ -132,11 +146,25 @@
                     <t t-if="unread_count"><em class="mtz-notif-badge" t-esc="unread_count"/></t>
                   </button>
                   <div class="mtz-dropdown mtz-notif-dropdown" id="mtz-notifications">
-                    <div class="mtz-dropdown-head"><strong>Notifikasi</strong><button type="button" class="mtz-link-btn" data-mtz-read-notifications="1">Tandai dibaca</button></div>
-                    <t t-if="notifications">
-                      <t t-foreach="notifications" t-as="notif"><a t-att-href="notif.url or '#'" t-att-class="'mtz-notif-item unread' if not notif.is_read else 'mtz-notif-item'"><span class="mtz-notif-dot"></span><div><strong t-esc="notif.title"/><p t-esc="notif.message"/></div></a></t>
-                    </t>
-                    <t t-else=""><div class="mtz-empty-small">Belum ada notifikasi.</div></t>
+                    <div class="mtz-dropdown-head">
+                      <strong>Notifikasi</strong>
+                      <div class="mtz-notif-head-actions">
+                        <button type="button" class="mtz-link-btn" data-mtz-read-notifications="1">Tandai dibaca</button>
+                        <button type="button" class="mtz-link-btn mtz-link-btn-danger" data-mtz-delete-all-notifications="1">Hapus semua</button>
+                      </div>
+                    </div>
+                    <div class="mtz-notif-scroll">
+                      <t t-if="notifications">
+                        <t t-foreach="notifications" t-as="notif">
+                          <div t-att-class="'mtz-notif-item unread' if not notif.is_read else 'mtz-notif-item'" t-att-data-notif-id="notif.id">
+                            <span class="mtz-notif-dot"></span>
+                            <a t-att-href="notif.url or '#'" class="mtz-notif-content"><strong t-esc="notif.title"/><p t-esc="notif.message"/></a>
+                            <button type="button" class="mtz-notif-delete-btn" t-att-data-notif-id="notif.id" aria-label="Hapus notifikasi">&#x2715;</button>
+                          </div>
+                        </t>
+                      </t>
+                      <t t-else=""><div class="mtz-empty-small">Belum ada notifikasi.</div></t>
+                    </div>
                   </div>
                 </div>
 
@@ -146,6 +174,14 @@
                 </div>
               </div>
             </nav>
+
+            <t t-if="profile_incomplete">
+              <div class="mtz-profile-incomplete-banner">
+                <span class="mtz-profile-incomplete-icon">&#9888;</span>
+                <span>Profil Anda belum lengkap. Beberapa fitur mungkin tidak tersedia.</span>
+                <a t-att-href="'/alumni/profile/setup' if role == 'alumni' else '/profile'" class="mtz-profile-incomplete-link">Lengkapi Sekarang &#8594;</a>
+              </div>
+            </t>
 
             <main class="mtz-main-content">
               <t t-out="0"/>

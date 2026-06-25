@@ -200,13 +200,31 @@ class MentorizeBaseController(http.Controller):
         ])
 
     def _layout_values(self, active='dashboard'):
-        role = self._infer_user_role(request.env.user) if not request.env.user._is_public() else False
+        user = request.env.user
+        role = self._infer_user_role(user) if not user._is_public() else False
+
+        # Hitung apakah profil user sudah lengkap untuk ditampilkan banner peringatan
+        profile_incomplete = False
+        if not user._is_public() and role in ('mahasiswa', 'alumni'):
+            try:
+                if role == 'mahasiswa':
+                    mahasiswa = self._current_mahasiswa()
+                    if mahasiswa and not mahasiswa.profile_complete:
+                        profile_incomplete = True
+                elif role == 'alumni':
+                    alumni = self._current_alumni()
+                    if alumni and not alumni.profile_complete:
+                        profile_incomplete = True
+            except Exception:
+                pass
+
         return {
-            'user': request.env.user,
+            'user': user,
             'role': role,
             'active_menu': active,
             'notifications': self._get_notifications(),
             'unread_count': self._unread_count(),
+            'profile_incomplete': profile_incomplete,
             'is_admin_page': False,
             # Helper tampilan waktu. Jangan pakai strftime langsung di template,
             # karena datetime Odoo tersimpan UTC dan perlu ditampilkan sebagai WIB.
