@@ -205,6 +205,7 @@ class MentorizeBaseController(http.Controller):
 
         # Hitung apakah profil user sudah lengkap untuk ditampilkan banner peringatan
         profile_incomplete = False
+        user_rating = 0.0
         if not user._is_public() and role in ('mahasiswa', 'alumni'):
             try:
                 if role == 'mahasiswa':
@@ -213,14 +214,17 @@ class MentorizeBaseController(http.Controller):
                         profile_incomplete = True
                 elif role == 'alumni':
                     alumni = self._current_alumni()
-                    if alumni and not alumni.profile_complete:
-                        profile_incomplete = True
+                    if alumni:
+                        if not alumni.profile_complete:
+                            profile_incomplete = True
+                        user_rating = alumni.rating
             except Exception:
                 pass
 
         return {
             'user': user,
             'role': role,
+            'user_rating': user_rating,
             'active_menu': active,
             'notifications': self._get_notifications(),
             'unread_count': self._unread_count(),

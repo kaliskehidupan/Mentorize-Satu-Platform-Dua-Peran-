@@ -169,7 +169,14 @@
                 </div>
 
                 <div class="mtz-user-wrap">
-                  <button type="button" class="mtz-user-btn" data-mtz-toggle="user-menu"><img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (user.id, user.write_date or user.id)" alt="Foto Profil"/><span t-esc="user.name"/></button>
+                  <button type="button" class="mtz-user-btn" data-mtz-toggle="user-menu">
+                    <img t-att-src="'/web/image/res.users/%s/image_128?unique=%s' % (user.id, user.write_date or user.id)" alt="Foto Profil"/>
+                    <span class="mtz-profile-rating-inline" t-if="role == 'alumni' and user_rating">
+                      <t t-esc="user.name"/>
+                      <span class="mtz-star">&#11088;</span> <t t-esc="'%.1f' % user_rating"/>
+                    </span>
+                    <span t-else="" t-esc="user.name"/>
+                  </button>
                   <div class="mtz-dropdown mtz-user-dropdown" id="mtz-user-menu"><a t-att-href="'/settings' if role == 'admin' else ('/alumni/profile/setup' if role == 'alumni' else '/profile')">Profil</a><a href="/settings">Pengaturan</a><button type="button" data-mtz-open-logout="1">Keluar</button></div>
                 </div>
               </div>
