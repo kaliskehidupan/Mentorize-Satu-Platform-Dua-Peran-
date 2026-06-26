@@ -1631,15 +1631,6 @@ img {
   color: var(--mtz-muted)
 }
 
-/* ===== FIX TOMBOL AJUKAN SELESAI MENTORING ===== */
-.mtz-chat-detail .mtz-btn.primary.full {
-  margin-top: 32px !important;
-  margin-bottom: 28px !important;
-  display: block !important;
-  clear: both !important;
-  position: relative !important;
-}
-
 /* History */
 .mtz-history-list {
   display: grid;
@@ -4870,12 +4861,29 @@ img {
 }
 
 /* ===== FIX TOMBOL AJUKAN SELESAI MENTORING ===== */
+.mtz-chat-detail {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: calc(100vh - 160px) !important;
+  padding-bottom: 32px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 .mtz-chat-detail .mtz-btn.primary.full {
-  margin-top: 40px !important;
-  margin-bottom: 28px !important;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
   display: block !important;
-  clear: both !important;
-  position: relative !important;
+  position: static !important;
+  flex-shrink: 0 !important;
+}
+
+.mtz-chat-detail .mtz-detail-box:last-of-type {
+  margin-bottom: 8px;
+}
+
+.mtz-chat-detail .mtz-alert {
+  margin-bottom: 16px;
 }
 
 /* Beri jarak ekstra ke elemen di atasnya */
