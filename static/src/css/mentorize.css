@@ -4885,19 +4885,3 @@ img {
 .mtz-chat-detail .mtz-alert {
   margin-bottom: 16px;
 }
-
-/* Beri jarak ekstra ke elemen di atasnya */
-.mtz-chat-detail .mtz-detail-box:last-of-type {
-  margin-bottom: 8px;
-}
-
-/* Jika ada alert di atas tombol, beri jarak */
-.mtz-chat-detail .mtz-alert {
-  margin-bottom: 16px;
-}
-
-/* Pastikan container sidebar punya padding bawah cukup */
-.mtz-chat-detail {
-  padding-bottom: 32px !important;
-  overflow: visible !important;
-}
