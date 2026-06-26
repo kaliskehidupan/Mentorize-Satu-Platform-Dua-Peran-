@@ -627,6 +627,11 @@ img {
   margin-top: 8px
 }
 
+/* ===== FIX BINTANG SEMESTER & FIELD TUNGGAL ===== */
+.mtz-form-grid.two>label {
+  display: block !important;
+}
+
 
 .mtz-form input,
 .mtz-form textarea,
