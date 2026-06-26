@@ -615,10 +615,16 @@ img {
 }
 
 .mtz-form label {
-  display: flex;
-  flex-direction: coloumn;
-  gap: 6px;
+  display: block;
   font-weight: 900
+}
+
+.mtz-form label input,
+.mtz-form label select,
+.mtz-form label textarea {
+  display: block;
+  width: 100%;
+  margin-top: 8px
 }
 
 .mtz-form input,
@@ -4834,23 +4840,4 @@ img {
 
 .mtz-sso-error-hint a:hover {
   text-decoration: underline
-}
-
-/* ===== FIX BINTANG SEJAJAR LABEL ===== */
-.mtz-form label,
-.profile-form label {
-  display: block !important;
-  font-weight: 900;
-  margin-bottom: 6px;
-}
-
-.mtz-form label input,
-.mtz-form label textarea,
-.mtz-form label select,
-.profile-form label input,
-.profile-form label textarea,
-.profile-form label select {
-  display: block !important;
-  margin-top: 6px;
-  width: 100%;
 }
