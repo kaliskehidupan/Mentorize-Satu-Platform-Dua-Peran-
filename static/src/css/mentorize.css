@@ -627,6 +627,14 @@ img {
   margin-top: 8px
 }
 
+/* ===== FIX FINAL: label di atas, input di bawah ===== */
+.mtz-form-grid.two>label,
+.mtz-form-grid.two>label.mtz-check {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
 .mtz-form input,
 .mtz-form textarea,
 .mtz-form select {
