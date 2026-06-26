@@ -1631,18 +1631,6 @@ img {
   color: var(--mtz-muted)
 }
 
-/* ===== FIX: jarak tombol Ajukan Selesai Mentoring ===== */
-.mtz-chat-detail a.mtz-btn.primary {
-  display: block !important;
-  margin-bottom: 16px !important;
-}
-
-.mtz-chat-detail .mtz-form.compact-form {
-  border-top: 1px solid var(--mtz-line) !important;
-  padding-top: 14px !important;
-  margin-top: 8px !important;
-}
-
 /* History */
 .mtz-history-list {
   display: grid;
