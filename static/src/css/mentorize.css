@@ -4849,3 +4849,15 @@ img {
 .mtz-sso-error-hint a:hover {
   text-decoration: underline
 }
+
+/* ===== FIX: kembalikan tampilan chip minat & skill ===== */
+.mtz-chip-grid .mtz-choice {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+
+.mtz-choice input[type="checkbox"] {
+  display: none !important;
+}
