@@ -118,7 +118,7 @@
             </t>
 
             <t t-if="selected_room.session_id and can_chat">
-              <a t-if="current_role == 'mahasiswa'" class="mtz-btn primary full" style="margin-top: 50px !important; margin-bottom: 24px; display: block;" t-att-href="'/session/%s/finish' % selected_room.session_id.id">Ajukan Selesai Mentoring</a>
+              <a t-if="current_role == 'mahasiswa'" class="mtz-btn primary full" style="margin-top: 18px; margin-bottom: 24px; display: block;" t-att-href="'/session/%s/finish' % selected_room.session_id.id">Ajukan Selesai Mentoring</a>
               <form t-att-action="'/session/%s/reschedule' % selected_room.session_id.id" method="post" class="mtz-form compact-form" style="border-top: 1px solid #d9ebe7; padding-top: 16px; margin-top: 8px;">
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                 <label>Ubah Jadwal
