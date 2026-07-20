@@ -1,0 +1,24 @@
+2026-07-17 06:19:24,986 6528 INFO ? odoo: Odoo version 17.0-20260217 
+2026-07-17 06:19:24,986 6528 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-07-17 06:19:24,986 6528 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-07-17 06:19:24,986 6528 INFO ? odoo: database: openpg@localhost:5432 
+2026-07-17 06:19:25,207 6528 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-07-17 06:19:28,834 6528 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
+2026-07-17 08:45:21,673 6528 INFO ? odoo.service.server: Initiating shutdown 
+2026-07-17 08:45:21,730 6528 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-17 08:45:22,159 6528 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 2 connections  
+2026-07-18 12:36:57,389 6800 INFO ? odoo: Odoo version 17.0-20260217 
+2026-07-18 12:36:57,389 6800 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-07-18 12:36:57,393 6800 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-07-18 12:36:57,393 6800 INFO ? odoo: database: openpg@localhost:5432 
+2026-07-18 12:36:57,802 6800 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-07-18 12:37:01,107 6800 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
+2026-07-18 17:16:03,772 6800 INFO ? odoo.service.server: Initiating shutdown 
+2026-07-18 17:16:03,788 6800 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-18 17:16:03,838 6800 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 2 connections  
+2026-07-18 17:16:48,975 6624 INFO ? odoo: Odoo version 17.0-20260217 
+2026-07-18 17:16:48,977 6624 INFO ? odoo: Using configuration file at D:\odoo\server\odoo.conf 
+2026-07-18 17:16:48,977 6624 INFO ? odoo: addons paths: ['D:\\odoo\\server\\odoo\\addons', 'd:\\odoo\\sessions\\addons\\17.0', 'd:\\odoo\\server\\odoo\\addons'] 
+2026-07-18 17:16:48,977 6624 INFO ? odoo: database: openpg@localhost:5432 
+2026-07-18 17:16:49,354 6624 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\odoo\thirdparty\wkhtmltopdf.exe 
+2026-07-18 17:16:52,731 6624 INFO ? odoo.service.server: HTTP service (werkzeug) running on LAPTOP-4NQG0R08:8069 
